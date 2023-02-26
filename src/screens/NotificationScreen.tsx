@@ -10,6 +10,7 @@ import {
   Platform,
   TouchableOpacity,
   Image,
+  Alert,
 } from 'react-native';
 import {Colors} from '../constants';
 import {FlatList} from 'react-native-gesture-handler';
@@ -20,6 +21,11 @@ import IconBadge from 'react-native-icon-badge';
 import notification from '../constants/Notification';
 
 export default function NotificationScreen({navigation}) {
+  const showAlert = () =>
+    Alert.alert('Thông báo', 'Bạn chắc chắn muốn xoá thông báo này', [
+      {text: 'Yes', onPress: () => {}},
+      {text: 'No', onPress: () => {}},
+    ]);
   const CartCard = ({item}: any) => {
     return (
       <TouchableOpacity>
@@ -47,9 +53,11 @@ export default function NotificationScreen({navigation}) {
               {item.title}
             </Text>
           </View>
-          <View style={{marginRight: 15, alignItems: 'center'}}>
-            <Iconss name="trash" size={28} color={Colors.DEFAULT_GREEN} />
-          </View>
+          <TouchableOpacity onPress={showAlert}>
+            <View style={{marginRight: 16, alignItems: 'center'}}>
+              <Iconss name="trash" size={28} color={Colors.DEFAULT_GREEN} />
+            </View>
+          </TouchableOpacity>
         </View>
       </TouchableOpacity>
     );
@@ -72,7 +80,7 @@ export default function NotificationScreen({navigation}) {
           }}>
           Notification
         </Text>
-        <View style={{position: 'absolute', right: 25}}>
+        <View style={{position: 'absolute', right: 24}}>
           <IconBadge
             MainElement={
               <View>
