@@ -6,7 +6,7 @@ import 'react-native-gesture-handler';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import HomeScreen from './HomeScreen';
-import {Colors} from '../constants';
+import {Colors} from '@constants';
 import CartScreen from './CartScreen';
 import Search from './Search';
 import BookmarkScreen from './BookmarkScreen';

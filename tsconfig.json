@@ -1,6 +1,26 @@
 {
   "extends": "@tsconfig/react-native/tsconfig.json",
   "compilerOptions":{
-    "noImplicitAny":false
-  }
+    "noImplicitAny":false,
+    "strict":true,
+    // Path alias config
+    "baseUrl": ".",
+    "paths": {
+      // "components/*": ["src/components/*"],
+
+      "@components": ["src/components/index"],
+      "@constants": ["src/constants/index"],
+      "@navigators": ["src/navigators/index"],
+      "@screens": ["src/screens/index"],
+      "@utils": ["src/utils/index"],
+      
+      // "@button":[".src/components/Button"],
+      // "@input":[".src/components/Input"],
+      // "@Loader":[".src/components/Loader"],
+      // "@secondaryButton":[".src/components/SecondaryButton"],
+      // "@separator":[".src/components/Separator"],
+      // "@toggleButton":[".src/components/ToggleButton"],
+      // "@welcomeCard":[".src/components/WelcomeCard"],
+    }
+  },
 }

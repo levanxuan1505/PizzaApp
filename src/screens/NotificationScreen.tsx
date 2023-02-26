@@ -1,6 +1,5 @@
-/* eslint-disable @typescript-eslint/no-shadow */
-/* eslint-disable react/no-unstable-nested-components */
 /* eslint-disable react-native/no-inline-styles */
+/* eslint-disable react/no-unstable-nested-components */
 import React from 'react';
 import {
   SafeAreaView,
@@ -12,13 +11,14 @@ import {
   Image,
   Alert,
 } from 'react-native';
-import {Colors} from '../constants';
 import {FlatList} from 'react-native-gesture-handler';
 import Icons from 'react-native-vector-icons/MaterialIcons';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import Iconss from 'react-native-vector-icons/Ionicons';
 import IconBadge from 'react-native-icon-badge';
-import notification from '../constants/Notification';
+
+import {Colors} from '@constants';
+import {notification} from '@constants';
 
 export default function NotificationScreen({navigation}) {
   const showAlert = () =>
@@ -36,20 +36,21 @@ export default function NotificationScreen({navigation}) {
           />
           <View
             style={{
+              flex: 1,
               height: 100,
               marginLeft: 10,
-              paddingTop: 25,
-              flex: 1,
+              marginRight: 10,
+              justifyContent: 'center',
             }}>
             <Text
               style={{
                 fontWeight: 'bold',
-                fontSize: 16,
+                fontSize: 17,
                 color: Colors.DEFAULT_GREEN,
               }}>
               {item.name}
             </Text>
-            <Text style={{fontSize: 13, color: Colors.DEFAULT_GREY}}>
+            <Text style={{fontSize: 13.5, color: Colors.DARK_THREE}}>
               {item.title}
             </Text>
           </View>

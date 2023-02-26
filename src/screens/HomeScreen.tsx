@@ -15,13 +15,14 @@ import {
   Platform,
 } from 'react-native';
 import React, {useState} from 'react';
-import {Colors} from '../constants';
-import Categories from '../constants/Categories';
 import Icon from 'react-native-vector-icons/MaterialIcons';
-import IconBadge from 'react-native-icon-badge';
-import Icons from 'react-native-vector-icons/Ionicons';
 import {ScrollView, TextInput} from 'react-native-gesture-handler';
-import foods from '../constants/foods';
+import Icons from 'react-native-vector-icons/Ionicons';
+import IconBadge from 'react-native-icon-badge';
+
+import {Colors} from '@constants';
+import {Categories} from '@constants';
+import {foods} from '@constants';
 
 const {width} = Dimensions.get('screen');
 const cardWidth = width / 2 - 20;

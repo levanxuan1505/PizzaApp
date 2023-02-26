@@ -1,18 +1,5 @@
 /* eslint-disable react-native/no-inline-styles */
-// import {StyleSheet, Text, View, SafeAreaView} from 'react-native';
-// import React from 'react';
 
-// export default function SignInScreen() {
-//   return (
-//     <SafeAreaView>
-//       <View>
-//         <Text>SignInScreen enter</Text>
-//       </View>
-//     </SafeAreaView>
-//   );
-// }
-
-// const styles = StyleSheet.create({});
 import React from 'react';
 import {
   View,
@@ -22,11 +9,10 @@ import {
   Alert,
   StatusBar,
 } from 'react-native';
-import {Colors} from '../constants';
-import Button from '../components/Button';
-import Input from '../components/Input';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import Loader from '../components/Loader';
+
+import {Colors} from '@constants';
+import {Button, Input, Loader} from '@components';
 
 const SignInScreen = ({navigation}: any) => {
   const [inputs, setInputs] = React.useState({email: '', password: ''});

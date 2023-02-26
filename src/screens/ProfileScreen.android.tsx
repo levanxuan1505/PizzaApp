@@ -1,4 +1,5 @@
 /* eslint-disable react-native/no-inline-styles */
+import React from 'react';
 import {
   SafeAreaView,
   StyleSheet,
@@ -11,8 +12,7 @@ import {
 } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import Icons from 'react-native-vector-icons/MaterialCommunityIcons';
-import {Colors} from '../constants';
-import React from 'react';
+import {Colors} from '@constants';
 
 export default function ProfileScreen({navigation}: any) {
   return (

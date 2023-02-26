@@ -4,8 +4,6 @@ import {createStackNavigator} from '@react-navigation/stack';
 import {WelcomeScreen, Options, SignInScreen} from '../screens';
 import BottomHomeScreen from '../screens/BottomHomeScreen';
 import DetailCardScreen from '../screens/DetailCardScreen';
-import CartScreen from '../screens/CartScreen';
-import Search from '../screens/Search';
 import RegisterScreen from '../screens/RegisterScreen';
 import {getFocusedRouteNameFromRoute} from '@react-navigation/native';
 import EditProfileScreen from '../screens/EditProfileScreen';
@@ -14,7 +12,7 @@ import CheckoutScreen from '../screens/CheckoutScreen';
 
 const Stack = createStackNavigator();
 
-function getHeaderTitle(route) {
+function getHeaderTitle(route: any) {
   // If the focused route is not found, we need to assume it's the initial screen
   // This can happen during if there hasn't been any navigation inside the screen
   // In our case, it's "Feed" as that's the first screen inside the navigator

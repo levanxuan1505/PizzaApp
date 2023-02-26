@@ -1,20 +1,6 @@
 /* eslint-disable react-native/no-inline-styles */
-/* eslint-disable no-undef */
-// import {StyleSheet, Text, View} from 'react-native';
-// import React from 'react';
-
-// export default function RegisterScreen() {
-//   return (
-//     <View>
-//       <Text>RegisterScreen</Text>
-//     </View>
-//   );
-// }
-
-// const styles = StyleSheet.create({});
-
-import AsyncStorage from '@react-native-async-storage/async-storage';
 import React from 'react';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import {
   View,
   Text,
@@ -24,10 +10,8 @@ import {
   Alert,
 } from 'react-native';
 
-import {Colors} from '../constants';
-import Button from '../components/Button';
-import Input from '../components/Input';
-import Loader from '../components/Loader';
+import {Colors} from '@constants';
+import {Button, Loader, Input} from '@components';
 
 const RegistrationScreen = ({navigation}: any) => {
   const [inputs, setInputs] = React.useState({

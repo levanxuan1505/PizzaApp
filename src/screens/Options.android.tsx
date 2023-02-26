@@ -8,8 +8,9 @@ import {
 } from 'react-native';
 import React from 'react';
 import {SafeAreaView} from 'react-native-safe-area-context';
-import {Colors, Images} from '../constants';
 import Icon from 'react-native-vector-icons/Ionicons';
+
+import {Colors, Images} from '@constants';
 export default function Options({navigation}: any) {
   return (
     <ImageBackground

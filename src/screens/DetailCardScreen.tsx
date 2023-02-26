@@ -12,8 +12,8 @@ import {
 import {ScrollView} from 'react-native-gesture-handler';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import Icons from 'react-native-vector-icons/Ionicons';
-import {Colors} from '../constants';
-import {SecondaryButton} from '../components/SecondaryButton';
+import {Colors} from '@constants';
+import {SecondaryButton} from '@components';
 
 const DetailsCardScreen = ({navigation, route}: any) => {
   const item = route.params;

@@ -1,4 +1,3 @@
-/* eslint-disable no-shadow */
 /* eslint-disable react-native/no-inline-styles */
 /* eslint-disable react/no-unstable-nested-components */
 import React, {useState} from 'react';
@@ -13,8 +12,9 @@ import {
 import {FlatList} from 'react-native-gesture-handler';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import Icons from 'react-native-vector-icons/Ionicons';
-import {Colors} from '../constants';
-import foods from '../constants/foods';
+
+import {Colors} from '@constants';
+import {foods} from '@constants';
 
 const BookmarkScreen = ({navigation}: any) => {
   const [heart, setHeart] = useState(true);

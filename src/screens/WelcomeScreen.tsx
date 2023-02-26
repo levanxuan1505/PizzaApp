@@ -7,8 +7,9 @@ import {
   FlatList,
   TouchableOpacity,
 } from 'react-native';
-import {Colors, General} from '../constants';
-import {WelcomeCard, Separator} from '../components';
+
+import {Separator, WelcomeCard} from '@components';
+import {Colors, General} from '@constants';
 import {Display} from '../utils';
 
 const pageStyle = (isActive: boolean) =>
@@ -81,7 +82,6 @@ const WelcomeScreen = ({navigation}: any) => {
         <View style={styles.buttonContainer}>
           <TouchableOpacity
             activeOpacity={0.8}
-            // eslint-disable-next-line react-native/no-inline-styles
             style={{marginLeft: 10}}
             onPress={() => welcomeList.current.scrollToEnd()}>
             <Text style={styles.buttonText}>SKIP</Text>

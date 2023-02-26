@@ -14,9 +14,9 @@ import {FlatList} from 'react-native-gesture-handler';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import IconBadge from 'react-native-icon-badge';
 
-import {Colors} from '../constants';
-import foods from '../constants/foods';
-import {PrimaryButton} from '../components/SecondaryButton';
+import {Colors} from '@constants';
+import {foods} from '@constants';
+import {PrimaryButton} from '@components';
 
 const CartScreen = ({navigation}: any) => {
   const CartCard = ({item}: any) => {

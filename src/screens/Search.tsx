@@ -1,4 +1,5 @@
 /* eslint-disable react-native/no-inline-styles */
+import React from 'react';
 import {
   StyleSheet,
   View,
@@ -7,11 +8,10 @@ import {
   Text,
   TouchableOpacity,
 } from 'react-native';
-import React from 'react';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import Icons from 'react-native-vector-icons/Ionicons';
-import {Colors} from '../constants';
 import {SafeAreaView} from 'react-native-safe-area-context';
+import {Colors} from '@constants';
 
 export default function Search() {
   const History = [
@@ -72,17 +72,19 @@ export default function Search() {
               </TouchableOpacity>
             ))}
           </View>
-          <View>
-            <Text
-              style={{
-                fontSize: 18,
-                marginLeft: 100,
-                marginTop: 25,
-                color: Colors.DEFAULT_GREEN,
-              }}>
-              Hiển thị nhiều hơn
-            </Text>
-          </View>
+          <TouchableOpacity>
+            <View>
+              <Text
+                style={{
+                  fontSize: 18,
+                  marginLeft: 100,
+                  marginTop: 25,
+                  color: Colors.DEFAULT_GREEN,
+                }}>
+                Hiển thị nhiều hơn
+              </Text>
+            </View>
+          </TouchableOpacity>
         </View>
       </View>
     </SafeAreaView>

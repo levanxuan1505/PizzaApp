@@ -1,4 +1,5 @@
 /* eslint-disable react-native/no-inline-styles */
+import React from 'react';
 import {
   SafeAreaView,
   StyleSheet,
@@ -11,8 +12,7 @@ import {
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import Icons from 'react-native-vector-icons/MaterialCommunityIcons';
 import IconBadge from 'react-native-icon-badge';
-import {Colors} from '../constants';
-import React from 'react';
+import {Colors} from '@constants';
 
 export default function ProfileScreen({navigation}: any) {
   return (
@@ -208,7 +208,8 @@ export default function ProfileScreen({navigation}: any) {
             height: 60,
             backgroundColor: Colors.DEFAULT_GREEN,
             borderRadius: 50,
-            marginTop: 85,
+            // marginTop: 85,
+            marginBottom: 10,
           }}>
           <View style={styles.logOut}>
             <Icons
@@ -265,7 +266,7 @@ const styles = StyleSheet.create({
   },
   bell: {
     color: Colors.DEFAULT_GREEN,
-    right: -245,
+    left: 220,
   },
   icon: {
     color: Colors.DEFAULT_GREEN,
