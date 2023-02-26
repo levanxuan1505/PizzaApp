@@ -6,8 +6,9 @@ import {
   Text,
   View,
   Image,
-  TouchableOpacity,
+  Alert,
   Platform,
+  TouchableOpacity,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import Icons from 'react-native-vector-icons/MaterialCommunityIcons';
@@ -107,15 +108,15 @@ export default function ProfileScreen({navigation}: any) {
         <View style={styles.wallet}>
           <View style={{}}>
             <Text style={{fontSize: 25, color: Colors.DEFAULT_GREEN}}>
-              $99.999
+              99.999K
             </Text>
             <Text
               style={{
                 fontSize: 16,
                 color: Colors.DEFAULT_GREEN,
-                paddingLeft: 25,
+                paddingLeft: 40,
               }}>
-              Wallet
+              Ví
             </Text>
           </View>
 
@@ -132,9 +133,9 @@ export default function ProfileScreen({navigation}: any) {
               style={{
                 fontSize: 16,
                 color: Colors.DEFAULT_GREEN,
-                paddingRight: 30,
+                paddingRight: 20,
               }}>
-              Orders
+              Đơn hàng
             </Text>
           </View>
         </View>
@@ -149,7 +150,7 @@ export default function ProfileScreen({navigation}: any) {
                 fontSize: 18,
                 color: Colors.DEFAULT_GREEN,
               }}>
-              Your Favorites
+              Bookmark
             </Text>
           </View>
           <View style={styles.options}>
@@ -160,7 +161,7 @@ export default function ProfileScreen({navigation}: any) {
                 fontSize: 18,
                 color: Colors.DEFAULT_GREEN,
               }}>
-              Payment
+              Thanh toán
             </Text>
           </View>
           <View style={styles.options}>
@@ -171,7 +172,7 @@ export default function ProfileScreen({navigation}: any) {
                 fontSize: 18,
                 color: Colors.DEFAULT_GREEN,
               }}>
-              Tell Your Friend
+              People
             </Text>
           </View>
           <View style={styles.options}>
@@ -186,7 +187,7 @@ export default function ProfileScreen({navigation}: any) {
                 fontSize: 18,
                 color: Colors.DEFAULT_GREEN,
               }}>
-              Promotions
+              Khuyến mãi
             </Text>
           </View>
           <View style={styles.options}>
@@ -197,12 +198,18 @@ export default function ProfileScreen({navigation}: any) {
                 fontSize: 18,
                 color: Colors.DEFAULT_GREEN,
               }}>
-              Settings
+              Cài đặt
             </Text>
           </View>
         </View>
         <TouchableOpacity
-          onPress={() => navigation.navigate('Options')}
+          onPress={() =>
+            Alert.alert('Xác nhận', 'Bạn muốn đăng xuất', [
+              {text: 'Xác nhận', onPress: () => navigation.navigate('Options')},
+              {text: 'Huỷ bỏ', onPress: () => {}},
+            ])
+          }
+          // onPress={() => navigation.navigate('Options')}
           style={{
             width: '100%',
             height: 60,
@@ -224,7 +231,7 @@ export default function ProfileScreen({navigation}: any) {
                 marginLeft: 5,
                 color: Colors.DEFAULT_WHITE,
               }}>
-              Log out
+              Đăng xuất
             </Text>
           </View>
         </TouchableOpacity>

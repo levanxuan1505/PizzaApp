@@ -36,7 +36,7 @@ const CartScreen = ({navigation}: any) => {
               {item.ingredients}
             </Text>
             <Text style={{fontSize: 17, fontWeight: 'bold'}}>
-              ${item.price}
+              {item.price}K
             </Text>
           </View>
           <View style={{marginRight: 20, alignItems: 'center'}}>
@@ -67,7 +67,7 @@ const CartScreen = ({navigation}: any) => {
             fontWeight: 'bold',
             color: Colors.DEFAULT_GREEN,
           }}>
-          Cart
+          Giỏ hàng
         </Text>
         <View style={{position: 'absolute', right: 50}}>
           <IconBadge
@@ -145,7 +145,7 @@ const CartScreen = ({navigation}: any) => {
         <View style={{marginHorizontal: 30}}>
           <PrimaryButton
             title="THANH TOÁN"
-            onPress={() => navigation.navigate('Checkout')}
+            onPress={() => navigation.navigate('Checkout', foods)}
           />
         </View>
       </View>

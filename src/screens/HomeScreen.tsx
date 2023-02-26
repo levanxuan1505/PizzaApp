@@ -85,11 +85,11 @@ export default function HomeScreen({navigation}: any) {
             <Image source={food.image} style={{height: 120, width: 120}} />
           </View>
           <View style={{marginHorizontal: 20}}>
-            <Text style={{fontSize: 17.2, fontWeight: 'bold'}}>
+            <Text style={{fontSize: 17.4, fontWeight: 'bold'}}>
               {food.name}
             </Text>
             <Text
-              style={{fontSize: 14, color: Colors.DEFAULT_GREY, marginTop: 2}}>
+              style={{fontSize: 15, color: Colors.DEFAULT_GREY, marginTop: 2}}>
               {food.ingredients}
             </Text>
           </View>
@@ -138,7 +138,7 @@ export default function HomeScreen({navigation}: any) {
                 marginLeft: 5,
                 color: Colors.DEFAULT_GREEN,
               }}>
-              Xuân
+              Xuân Lê
             </Text>
           </View>
           <Text

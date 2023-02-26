@@ -10,7 +10,7 @@ import {
   Alert,
   TouchableOpacity,
 } from 'react-native';
-import {ScrollView} from 'react-native-gesture-handler';
+// import {ScrollView} from 'react-native-gesture-handler';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import Icons from 'react-native-vector-icons/Ionicons';
 import {Colors} from '@constants';
@@ -37,57 +37,57 @@ const DetailsCardScreen = ({navigation, route}: any) => {
           Details
         </Text>
       </View>
-      <ScrollView showsVerticalScrollIndicator={false}>
+      {/* <ScrollView showsVerticalScrollIndicator={false}> */}
+      <View
+        style={{
+          justifyContent: 'center',
+          alignItems: 'center',
+          height: 280,
+        }}>
+        <Image source={item.image} style={{height: 220, width: 220}} />
+      </View>
+      <View style={style.details}>
         <View
           style={{
-            justifyContent: 'center',
+            flexDirection: 'row',
+            justifyContent: 'space-between',
             alignItems: 'center',
-            height: 280,
           }}>
-          <Image source={item.image} style={{height: 220, width: 220}} />
-        </View>
-        <View style={style.details}>
-          <View
+          <Text
             style={{
-              flexDirection: 'row',
-              justifyContent: 'space-between',
-              alignItems: 'center',
+              fontSize: 25,
+              fontWeight: 'bold',
+              color: Colors.DEFAULT_WHITE,
             }}>
-            <Text
-              style={{
-                fontSize: 25,
-                fontWeight: 'bold',
-                color: Colors.DEFAULT_WHITE,
-              }}>
-              {item.name}
-            </Text>
-            <TouchableOpacity
-              onPress={() => {
-                setHeart(!heart);
-              }}>
-              <View style={style.iconContainer}>
-                <Icons
-                  name={heart ? 'heart' : 'heart-dislike-sharp'}
-                  color={Colors.DEFAULT_GREEN}
-                  size={25}
-                />
-              </View>
-            </TouchableOpacity>
-          </View>
-          <Text style={style.detailsText}>{item.title}</Text>
-          <View style={{paddingTop: 20}}>
-            <SecondaryButton
-              title="Add To Cart"
-              onPress={() =>
-                Alert.alert('Xác nhận', 'Thêm món ăn vào giỏ hàng', [
-                  {text: 'Xác nhận', onPress: () => {}},
-                  {text: 'Huỷ bỏ', onPress: () => {}},
-                ])
-              }
-            />
-          </View>
+            {item.name}
+          </Text>
+          <TouchableOpacity
+            onPress={() => {
+              setHeart(!heart);
+            }}>
+            <View style={style.iconContainer}>
+              <Icons
+                name={heart ? 'heart' : 'heart-dislike-sharp'}
+                color={Colors.DEFAULT_GREEN}
+                size={25}
+              />
+            </View>
+          </TouchableOpacity>
         </View>
-      </ScrollView>
+        <Text style={style.detailsText}>{item.title}</Text>
+        <View style={{paddingTop: 20}}>
+          <SecondaryButton
+            title="Add To Cart"
+            onPress={() =>
+              Alert.alert('Xác nhận', 'Thêm món ăn vào giỏ hàng', [
+                {text: 'Xác nhận', onPress: () => {}},
+                {text: 'Huỷ bỏ', onPress: () => {}},
+              ])
+            }
+          />
+        </View>
+      </View>
+      {/* </ScrollView> */}
     </SafeAreaView>
   );
 };

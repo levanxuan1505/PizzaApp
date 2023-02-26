@@ -21,10 +21,10 @@ import {Colors} from '@constants';
 import {notification} from '@constants';
 
 export default function NotificationScreen({navigation}) {
-  const showAlert = () =>
+  const showAlertDelete = () =>
     Alert.alert('Thông báo', 'Bạn chắc chắn muốn xoá thông báo này', [
-      {text: 'Yes', onPress: () => {}},
-      {text: 'No', onPress: () => {}},
+      {text: 'Xoá', onPress: () => {}},
+      {text: 'Huỷ', onPress: () => {}},
     ]);
   const CartCard = ({item}: any) => {
     return (
@@ -54,7 +54,7 @@ export default function NotificationScreen({navigation}) {
               {item.title}
             </Text>
           </View>
-          <TouchableOpacity onPress={showAlert}>
+          <TouchableOpacity onPress={showAlertDelete}>
             <View style={{marginRight: 16, alignItems: 'center'}}>
               <Iconss name="trash" size={28} color={Colors.DEFAULT_GREEN} />
             </View>
