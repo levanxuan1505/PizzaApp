@@ -7,6 +7,7 @@ import {
   Text,
   Image,
   Platform,
+  Alert,
   TouchableOpacity,
 } from 'react-native';
 import {ScrollView} from 'react-native-gesture-handler';
@@ -73,15 +74,17 @@ const DetailsCardScreen = ({navigation, route}: any) => {
               </View>
             </TouchableOpacity>
           </View>
-          <Text style={style.detailsText}>
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem Ipsum has been the industry's standard dummy text
-            ever since the 1500s, when an unknown printer took a galley of type
-            and scrambled it to make a type specimen book. It has survived not
-            only five centuries.
-          </Text>
-          <View style={{marginTop: 40, marginBottom: 40}}>
-            <SecondaryButton title="Add To Cart" />
+          <Text style={style.detailsText}>{item.title}</Text>
+          <View style={{paddingTop: 20}}>
+            <SecondaryButton
+              title="Add To Cart"
+              onPress={() =>
+                Alert.alert('Xác nhận', 'Thêm món ăn vào giỏ hàng', [
+                  {text: 'Xác nhận', onPress: () => {}},
+                  {text: 'Huỷ bỏ', onPress: () => {}},
+                ])
+              }
+            />
           </View>
         </View>
       </ScrollView>
@@ -100,7 +103,7 @@ const style = StyleSheet.create({
   details: {
     paddingHorizontal: 20,
     paddingTop: 40,
-    paddingBottom: 60,
+    paddingBottom: 100,
     backgroundColor: Colors.DEFAULT_GREEN,
     borderTopRightRadius: 40,
     borderTopLeftRadius: 40,

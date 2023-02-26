@@ -131,7 +131,7 @@ const CartScreen = ({navigation}: any) => {
               fontWeight: 'bold',
               color: Colors.DEFAULT_GREEN,
             }}>
-            Total Price
+            Tổng đơn hàng
           </Text>
           <Text
             style={{
@@ -144,7 +144,7 @@ const CartScreen = ({navigation}: any) => {
         </View>
         <View style={{marginHorizontal: 30}}>
           <PrimaryButton
-            title="CHECK OUT"
+            title="THANH TOÁN"
             onPress={() => navigation.navigate('Checkout')}
           />
         </View>

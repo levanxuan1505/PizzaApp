@@ -266,7 +266,7 @@ const styles = StyleSheet.create({
   },
   bell: {
     color: Colors.DEFAULT_GREEN,
-    left: 220,
+    left: 225,
   },
   icon: {
     color: Colors.DEFAULT_GREEN,

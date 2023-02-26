@@ -13,6 +13,7 @@ import {
   TouchableOpacity,
   TouchableHighlight,
   Platform,
+  Alert,
 } from 'react-native';
 import React, {useState} from 'react';
 import Icon from 'react-native-vector-icons/MaterialIcons';
@@ -84,7 +85,9 @@ export default function HomeScreen({navigation}: any) {
             <Image source={food.image} style={{height: 120, width: 120}} />
           </View>
           <View style={{marginHorizontal: 20}}>
-            <Text style={{fontSize: 18, fontWeight: 'bold'}}>{food.name}</Text>
+            <Text style={{fontSize: 17.2, fontWeight: 'bold'}}>
+              {food.name}
+            </Text>
             <Text
               style={{fontSize: 14, color: Colors.DEFAULT_GREY, marginTop: 2}}>
               {food.ingredients}
@@ -98,10 +101,21 @@ export default function HomeScreen({navigation}: any) {
               justifyContent: 'space-between',
             }}>
             <Text style={{fontSize: 18, fontWeight: 'bold'}}>
-              ${food.price}
+              {food.price}k
             </Text>
+
             <View style={styles.addToCartBtn}>
-              <Icon name="add" size={20} color={Colors.DEFAULT_WHITE} />
+              <Icon
+                onPress={() =>
+                  Alert.alert('Xác nhận', 'Bạn muốn thêm món ăn vào giỏ hàng', [
+                    {text: 'Xác nhận', onPress: () => {}},
+                    {text: 'Huỷ bỏ', onPress: () => {}},
+                  ])
+                }
+                name="add"
+                size={20}
+                color={Colors.DEFAULT_WHITE}
+              />
             </View>
           </View>
         </View>
