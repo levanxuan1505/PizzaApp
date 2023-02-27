@@ -1,14 +1,19 @@
 import React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
-import {WelcomeScreen, Options, SignInScreen} from '../screens';
-import BottomHomeScreen from '../screens/BottomHomeScreen';
-import DetailCardScreen from '../screens/DetailCardScreen';
-import RegisterScreen from '../screens/RegisterScreen';
 import {getFocusedRouteNameFromRoute} from '@react-navigation/native';
-import EditProfileScreen from '../screens/EditProfileScreen';
-import NotificationScreen from '../screens/NotificationScreen';
-import CheckoutScreen from '../screens/CheckoutScreen';
+import {
+  BottomHomeScreen,
+  DetailsCardScreen,
+  RegisterScreen,
+  EditProfileScreen,
+  NotificationScreen,
+  CheckoutScreen,
+  WelcomeScreen,
+  Options,
+  SignInScreen,
+  LocationScreen,
+} from '@screens';
 
 const Stack = createStackNavigator();
 
@@ -49,9 +54,10 @@ const Navigators = () => {
         <Stack.Screen name="Register" component={RegisterScreen} />
         <Stack.Screen name="Notification" component={NotificationScreen} />
         <Stack.Screen name="Checkout" component={CheckoutScreen} />
+        <Stack.Screen name="Local" component={LocationScreen} />
         {/* <Stack.Screen name="Search" component={Search} /> */}
         <Stack.Screen name="Edit" component={EditProfileScreen} />
-        <Stack.Screen name="DetailCard" component={DetailCardScreen} />
+        <Stack.Screen name="DetailCard" component={DetailsCardScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );

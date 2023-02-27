@@ -41,7 +41,7 @@ const CartScreen = ({navigation}: any) => {
           </View>
           <View style={{marginRight: 20, alignItems: 'center'}}>
             <Text style={{fontWeight: 'bold', fontSize: 18, marginVertical: 5}}>
-              3
+              {Math.floor(Math.random() * 5) + 1}
             </Text>
             <View style={style.actionBtn}>
               <Icon name="remove" size={25} color={Colors.DEFAULT_WHITE} />

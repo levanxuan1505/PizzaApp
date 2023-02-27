@@ -1,27 +1,27 @@
 /* eslint-disable react/no-unstable-nested-components */
 /* eslint-disable react-native/no-inline-styles */
+import React from 'react';
 import {
   SafeAreaView,
   Text,
   View,
   StyleSheet,
   Platform,
-  ScrollView,
   Image,
   TouchableOpacity,
 } from 'react-native';
-import React from 'react';
+import {ScrollView} from 'react-native-virtualized-view';
 import {FlatList} from 'react-native-gesture-handler';
-import {Colors} from '@constants';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import Icons from 'react-native-vector-icons/Fontisto';
 import IconBadge from 'react-native-icon-badge';
 import {foods} from '@constants';
+import {Colors} from '@constants';
 
 export default function ({navigation}) {
   const CartCard = ({item}: any) => {
     return (
-      <TouchableOpacity onPress={() => navigation.navigate('DetailCard', item)}>
+      <TouchableOpacity onPress={() => navigation.navigate('Local')}>
         <View style={styles.cartCard}>
           <Image source={item.image} style={{height: 80, width: 80}} />
           <View
@@ -97,36 +97,39 @@ export default function ({navigation}) {
       </View>
       {/* body */}
       <View style={{position: 'relative'}}>
-        <ScrollView showsVerticalScrollIndicator={false}>
-          <View style={styles.location}>
-            <View
-              style={{
-                flexDirection: 'row',
-                alignItems: 'center',
-                paddingLeft: 9,
-              }}>
-              <Icon
-                name="location-pin"
-                size={28}
-                color={Colors.DEFAULT_GREEN}
-              />
-              <Text>Địa chỉ nhận hàng</Text>
-            </View>
-            <View style={{flexDirection: 'row'}}>
-              <View style={{paddingLeft: 15}}>
-                <Text>Lê Văn Xuân| (+84) 97 517 95 46</Text>
-                <Text>Số 17 ngõ 75 Hồ Tùng Mậu</Text>
-                <Text>Phường Mai Dịch, Quận Cầu Giấy, Hà Nội</Text>
+        <ScrollView
+          showsVerticalScrollIndicator={false}
+          nestedScrollEnabled={true}>
+          <TouchableOpacity onPress={() => navigation.navigate('Local')}>
+            <View style={styles.location}>
+              <View
+                style={{
+                  flexDirection: 'row',
+                  alignItems: 'center',
+                  paddingLeft: 9,
+                }}>
+                <Icon
+                  name="location-pin"
+                  size={28}
+                  color={Colors.DEFAULT_GREEN}
+                />
+                <Text>Địa chỉ nhận hàng</Text>
               </View>
-              <Icon
-                name="arrow-forward-ios"
-                size={20}
-                color={Colors.DEFAULT_GREEN}
-                style={{paddingLeft: 40}}
-              />
+              <View style={{flexDirection: 'row'}}>
+                <View style={{paddingLeft: 15}}>
+                  <Text>Lê Văn Xuân | (+84) 97 517 95 46</Text>
+                  <Text>Số 17 ngõ 75 Hồ Tùng Mậu,</Text>
+                  <Text>Phường Mai Dịch, Quận Cầu Giấy, Hà Nội</Text>
+                </View>
+                <Icon
+                  name="arrow-forward-ios"
+                  size={20}
+                  color={Colors.DEFAULT_GREEN}
+                  style={{paddingLeft: 40}}
+                />
+              </View>
             </View>
-          </View>
-
+          </TouchableOpacity>
           <FlatList
             showsVerticalScrollIndicator={false}
             contentContainerStyle={{paddingBottom: 15}}
@@ -134,6 +137,7 @@ export default function ({navigation}) {
             renderItem={({item}) => <CartCard item={item} />}
             ListFooterComponentStyle={{paddingHorizontal: 20, marginTop: 20}}
           />
+
           {/* Thanh toán */}
           <View style={styles.payment}>
             <View>
@@ -231,7 +235,7 @@ export default function ({navigation}) {
               }}>
               <Icon
                 name="library-books"
-                size={24}
+                size={26}
                 color={Colors.DEFAULT_GREEN}
               />
               <Text
@@ -241,14 +245,20 @@ export default function ({navigation}) {
                   paddingRight: 7,
                   fontSize: 16,
                 }}>
-                Nhấn "Đặt hàng" đồng nghĩa với việc bạn đồng ý tuân theo Điều
-                khoản Pizza.
+                Nhấn "Đặt hàng" đồng nghĩa với việc bạn đồng ý tuân theo "Điều
+                khoản Pizza App"
               </Text>
             </View>
           </View>
         </ScrollView>
-        {/*  */}
+        {/* fixed total */}
         <View style={styles.total}>
+          <Icons
+            name="opencart"
+            size={40}
+            color={Colors.DEFAULT_GREEN}
+            style={{paddingRight: 40}}
+          />
           <View>
             <Text
               style={{
@@ -267,7 +277,7 @@ export default function ({navigation}) {
               fontSize: 22,
               backgroundColor: Colors.DEFAULT_YELLOW,
               padding: 18,
-              color: Colors.DEFAULT_GREEN,
+              color: Colors.DEFAULT_WHITE,
             }}>
             Đặt hàng
           </Text>

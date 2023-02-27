@@ -13,7 +13,7 @@ import {
 import {Colors} from '@constants';
 import {Button, Loader, Input} from '@components';
 
-const RegistrationScreen = ({navigation}: any) => {
+const RegisterScreen = ({navigation}: any) => {
   const [inputs, setInputs] = React.useState({
     email: '',
     fullname: '',
@@ -152,4 +152,4 @@ const RegistrationScreen = ({navigation}: any) => {
   );
 };
 
-export default RegistrationScreen;
+export default RegisterScreen;

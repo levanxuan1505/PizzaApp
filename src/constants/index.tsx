@@ -4,4 +4,5 @@ import General from './General';
 import Categories from './Categories';
 import foods from './foods';
 import notification from './Notification';
-export {Colors, Images, General, notification, foods, Categories};
+import locations from './Locations';
+export {locations, Colors, Images, General, notification, foods, Categories};
