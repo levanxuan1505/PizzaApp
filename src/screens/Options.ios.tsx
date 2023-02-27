@@ -1,3 +1,4 @@
+/* eslint-disable react-native/no-inline-styles */
 import {
   ImageBackground,
   StyleSheet,
@@ -5,6 +6,7 @@ import {
   View,
   TouchableOpacity,
   StatusBar,
+  Image,
 } from 'react-native';
 import React from 'react';
 import {SafeAreaView} from 'react-native-safe-area-context';
@@ -19,6 +21,14 @@ export default function Options({navigation}: any) {
       style={styles.backgroundImage}>
       <StatusBar barStyle="light-content" hidden={false} translucent={true} />
       <SafeAreaView style={styles.container}>
+        <View
+          style={{
+            flexDirection: 'row',
+            justifyContent: 'center',
+            alignItems: 'center',
+          }}>
+          <Image source={Images.SPLASH} style={styles.image} />
+        </View>
         <View>
           <TouchableOpacity
             style={styles.buttonHome}
@@ -55,12 +65,17 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
   },
+  image: {
+    marginTop: 300,
+    height: 240,
+    width: 376,
+  },
   buttonHome: {
     alignItems: 'center',
     backgroundColor: '#037E3F',
-    margin: 40,
+    marginHorizontal: 40,
+    marginVertical: 20,
     height: 70,
-    top: 450,
     borderRadius: 50,
     flexDirection: 'row',
     justifyContent: 'center',
@@ -70,9 +85,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: '#FBA83C',
-    margin: 40,
+    marginHorizontal: 40,
     height: 70,
-    top: 420,
     borderRadius: 50,
   },
   buttonText: {

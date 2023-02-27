@@ -13,6 +13,7 @@ import Search from './Search';
 import ProfileScreen from './ProfileScreen.ios';
 import SignInScreen from './SignInScreen';
 import WelcomeScreen from './WelcomeScreen';
+import EditLocationScreen from './EditLocationScreen';
 
 export {
   BookmarkScreen,
@@ -20,6 +21,7 @@ export {
   CartScreen,
   CheckoutScreen,
   DetailsCardScreen,
+  EditLocationScreen,
   EditProfileScreen,
   HomeScreen,
   LocationScreen,

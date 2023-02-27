@@ -5,4 +5,5 @@ export default {
   FAVORITE: require('../assets/images/favorite.jpeg'),
   BACKGROUND: require('../assets/images/background.jpeg'),
   AVATAR: require('../assets/images/avatar.webp'),
+  SPLASH: require('../assets/images/splash.png'),
 };

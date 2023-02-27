@@ -21,7 +21,7 @@ import {Colors} from '@constants';
 export default function ({navigation}) {
   const CartCard = ({item}: any) => {
     return (
-      <TouchableOpacity onPress={() => navigation.navigate('Local')}>
+      <TouchableOpacity onPress={() => navigation.navigate('DetailCard', item)}>
         <View style={styles.cartCard}>
           <Image source={item.image} style={{height: 80, width: 80}} />
           <View
@@ -36,7 +36,7 @@ export default function ({navigation}) {
               {item.ingredients}
             </Text>
             <Text style={{fontSize: 17, fontWeight: 'bold'}}>
-              {item.price}K
+              {item.price}k
             </Text>
           </View>
           <View
@@ -125,7 +125,7 @@ export default function ({navigation}) {
                   name="arrow-forward-ios"
                   size={20}
                   color={Colors.DEFAULT_GREEN}
-                  style={{paddingLeft: 40}}
+                  style={{right: 0, paddingHorizontal: 50}}
                 />
               </View>
             </View>
@@ -150,18 +150,18 @@ export default function ({navigation}) {
                 }}>
                 <Icons
                   name="dollar"
-                  size={18}
+                  size={20}
                   color={Colors.DEFAULT_GREEN}
                   style={{paddingLeft: 15, paddingRight: 5}}
                 />
-                <Text style={{fontSize: 20, color: Colors.DEFAULT_GREEN}}>
+                <Text style={{fontSize: 23, color: Colors.DEFAULT_GREEN}}>
                   Chọn phương thức thanh toán
                 </Text>
                 <Icon
                   name="arrow-forward-ios"
                   size={20}
                   color={Colors.DEFAULT_GREEN}
-                  style={{paddingLeft: 10}}
+                  style={{paddingLeft: 5}}
                 />
               </View>
               <Text
@@ -257,7 +257,7 @@ export default function ({navigation}) {
             name="opencart"
             size={40}
             color={Colors.DEFAULT_GREEN}
-            style={{paddingRight: 40}}
+            style={{paddingRight: 55}}
           />
           <View>
             <Text
@@ -302,6 +302,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     marginTop: 10,
     marginHorizontal: 8,
+    paddingLeft: 10,
     backgroundColor: Colors.DEFAULT_WHITE,
     shadowColor: '#000',
     shadowOffset: {

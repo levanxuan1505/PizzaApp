@@ -36,7 +36,7 @@ const CartScreen = ({navigation}: any) => {
               {item.ingredients}
             </Text>
             <Text style={{fontSize: 17, fontWeight: 'bold'}}>
-              {item.price}K
+              {item.price}k
             </Text>
           </View>
           <View style={{marginRight: 20, alignItems: 'center'}}>
@@ -139,7 +139,7 @@ const CartScreen = ({navigation}: any) => {
               fontWeight: 'bold',
               color: Colors.DEFAULT_GREEN,
             }}>
-            $50
+            đ192.742
           </Text>
         </View>
         <View style={{marginHorizontal: 30}}>

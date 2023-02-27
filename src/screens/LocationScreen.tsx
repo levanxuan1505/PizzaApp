@@ -16,7 +16,8 @@ import {Colors, locations} from '@constants';
 export default function LocationScreen({navigation}) {
   const CartCard = ({item}: any) => {
     return (
-      <TouchableOpacity onPress={() => navigation.navigate('DetailCard', item)}>
+      <TouchableOpacity
+        onPress={() => navigation.navigate('EditLocation', item)}>
         <View style={styles.cartCard}>
           <View
             style={{
@@ -46,6 +47,13 @@ export default function LocationScreen({navigation}) {
                 style={{fontWeight: '400', fontSize: 13, marginVertical: 5}}>
                 {item.title}
               </Text>
+              <Text
+                style={{
+                  color: Colors.DEFAULT_YELLOW,
+                  fontSize: 12,
+                }}>
+                {item.id === '1' ? 'Mặc định' : ''}
+              </Text>
             </View>
           </View>
         </View>
@@ -66,7 +74,7 @@ export default function LocationScreen({navigation}) {
             fontSize: 20,
             fontWeight: 'bold',
             color: Colors.DEFAULT_GREEN,
-            paddingHorizontal: 82,
+            paddingHorizontal: 100,
           }}>
           Địa chỉ của Tôi
         </Text>
@@ -91,29 +99,31 @@ export default function LocationScreen({navigation}) {
             renderItem={({item}) => <CartCard item={item} />}
             ListFooterComponentStyle={{paddingHorizontal: 20, marginTop: 20}}
           />
-          <View style={styles.addBtn}>
-            <View
-              style={{
-                flexDirection: 'row',
-                alignItems: 'center',
-                paddingLeft: 9,
-              }}>
-              <Icon
-                name="add-circle-outline"
-                size={32}
-                color={Colors.DEFAULT_GREEN}
-              />
-              <Text
+          <TouchableOpacity>
+            <View style={styles.addBtn}>
+              <View
                 style={{
-                  fontSize: 18,
-                  fontWeight: '500',
-                  color: Colors.DEFAULT_GREEN,
-                  paddingHorizontal: 5,
+                  flexDirection: 'row',
+                  alignItems: 'center',
+                  paddingLeft: 9,
                 }}>
-                Thêm địa chỉ mới
-              </Text>
+                <Icon
+                  name="add-circle-outline"
+                  size={32}
+                  color={Colors.DEFAULT_GREEN}
+                />
+                <Text
+                  style={{
+                    fontSize: 18,
+                    fontWeight: '500',
+                    color: Colors.DEFAULT_GREEN,
+                    paddingHorizontal: 5,
+                  }}>
+                  Thêm địa chỉ mới
+                </Text>
+              </View>
             </View>
-          </View>
+          </TouchableOpacity>
         </ScrollView>
       </View>
     </SafeAreaView>
@@ -129,7 +139,7 @@ const styles = StyleSheet.create({
     marginHorizontal: 20,
   },
   cartCard: {
-    height: 100,
+    height: 105,
     borderRadius: 10,
     backgroundColor: Colors.DEFAULT_WHITE,
     marginVertical: 10,
@@ -150,7 +160,7 @@ const styles = StyleSheet.create({
   addBtn: {
     borderRadius: 10,
     height: 60,
-    marginBottom: 30,
+    marginBottom: 90,
     justifyContent: 'center',
     alignItems: 'center',
     marginTop: 10,

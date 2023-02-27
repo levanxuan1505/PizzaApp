@@ -13,6 +13,7 @@ import {
   Options,
   SignInScreen,
   LocationScreen,
+  EditLocationScreen,
 } from '@screens';
 
 const Stack = createStackNavigator();
@@ -55,6 +56,7 @@ const Navigators = () => {
         <Stack.Screen name="Notification" component={NotificationScreen} />
         <Stack.Screen name="Checkout" component={CheckoutScreen} />
         <Stack.Screen name="Local" component={LocationScreen} />
+        <Stack.Screen name="EditLocation" component={EditLocationScreen} />
         {/* <Stack.Screen name="Search" component={Search} /> */}
         <Stack.Screen name="Edit" component={EditProfileScreen} />
         <Stack.Screen name="DetailCard" component={DetailsCardScreen} />

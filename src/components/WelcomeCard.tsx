@@ -23,7 +23,7 @@ const styles = StyleSheet.create({
   image: {
     height: Display.setHeight(30),
     width: Display.setWidth(60),
-    borderWidth: 5,
+    // borderWidth: 5,
     borderBottomLeftRadius: 50,
     borderTopRightRadius: 50,
   },
