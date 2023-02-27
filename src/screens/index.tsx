@@ -14,12 +14,13 @@ import ProfileScreen from './ProfileScreen.ios';
 import SignInScreen from './SignInScreen';
 import WelcomeScreen from './WelcomeScreen';
 import EditLocationScreen from './EditLocationScreen';
-
+import CreateAddressScreen from './CreateAddressScreen';
 export {
   BookmarkScreen,
   BottomHomeScreen,
   CartScreen,
   CheckoutScreen,
+  CreateAddressScreen,
   DetailsCardScreen,
   EditLocationScreen,
   EditProfileScreen,

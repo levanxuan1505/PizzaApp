@@ -15,15 +15,12 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 import {Colors} from '@constants';
 import {TextInput} from 'react-native-gesture-handler';
 
-const EditLocation = ({navigation, route}: any) => {
-  const item = route.params;
-  const [text, onChangeText] = useState(item.name);
-  const [number, onChangeNumber] = useState(item.phone);
-  const [address, setAddDress] = useState(item.title);
-  const [addressNumber, setAddDressNumber] = useState(item.dress);
-
+const CreateAddressScreen = ({navigation}: any) => {
   const [colection, setColection] = useState(false);
-
+  const [text, onChangeText] = useState('');
+  const [number, onChangeNumber] = useState('');
+  const [address, setAddDress] = useState('');
+  const [addressNumber, setAddDressNumber] = useState('');
   const [isEnabled1, setIsEnabled1] = useState(false);
   const [isEnabled2, setIsEnabled2] = useState(false);
   const [isEnabled3, setIsEnabled3] = useState(false);
@@ -46,7 +43,7 @@ const EditLocation = ({navigation, route}: any) => {
             fontWeight: 'bold',
             color: Colors.DEFAULT_GREEN,
           }}>
-          Sửa Địa chỉ
+          Địa chỉ mới
         </Text>
       </View>
       {/*  */}
@@ -63,8 +60,8 @@ const EditLocation = ({navigation, route}: any) => {
           />
           <TextInput
             style={styles.input}
-            onChangeText={onChangeNumber}
             value={number}
+            onChangeText={onChangeNumber}
             placeholder="Số diện thoại"
             keyboardType="numeric"
           />
@@ -80,8 +77,8 @@ const EditLocation = ({navigation, route}: any) => {
           />
           <TextInput
             style={styles.input}
-            onChangeText={setAddDressNumber}
             value={addressNumber}
+            onChangeText={setAddDressNumber}
             placeholder="Số địa chỉ nhà"
           />
           {/* box */}
@@ -177,28 +174,7 @@ const EditLocation = ({navigation, route}: any) => {
 
           {/*  */}
         </View>
-        <TouchableOpacity
-          onPress={() =>
-            Alert.alert('Xác nhận', 'Hành động này sẽ xoá địa chỉ của bạn', [
-              {text: 'Xác nhận', onPress: () => {}},
-              {text: 'Huỷ bỏ', onPress: () => {}},
-            ])
-          }>
-          <View
-            style={[
-              styles.input,
-              {marginHorizontal: 10, justifyContent: 'center'},
-            ]}>
-            <Text
-              style={{
-                fontSize: 20,
-                fontWeight: '500',
-                color: Colors.DEFAULT_RED,
-              }}>
-              Xoá địa chỉ
-            </Text>
-          </View>
-        </TouchableOpacity>
+
         <TouchableOpacity
           onPress={() =>
             Alert.alert('Hoàn tất', 'Xác nhận thay đổi của bạn', [
@@ -317,4 +293,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default EditLocation;
+export default CreateAddressScreen;

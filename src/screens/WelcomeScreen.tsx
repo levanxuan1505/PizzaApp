@@ -143,9 +143,12 @@ const styles = StyleSheet.create({
     elevation: 2,
   },
   gettingStartedButtonText: {
-    fontSize: 20,
+    fontSize: 25,
+    fontWeight: '500',
     color: Colors.DEFAULT_WHITE,
     lineHeight: 20 * 1.4,
+    paddingVertical: 10,
+    paddingHorizontal: 10,
   },
 });
 

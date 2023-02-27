@@ -8,6 +8,7 @@ import {
   Text,
   Image,
   Platform,
+  TouchableOpacity,
 } from 'react-native';
 import {FlatList} from 'react-native-gesture-handler';
 import Icon from 'react-native-vector-icons/MaterialIcons';
@@ -20,31 +21,36 @@ const BookmarkScreen = ({navigation}: any) => {
   const [heart, setHeart] = useState(true);
   const CartCard = ({item, heartValue}: any) => {
     return (
-      <View style={styles.cartCard}>
-        <Image source={item.image} style={{height: 80, width: 80}} />
-        <View
-          style={{
-            height: 100,
-            marginLeft: 10,
-            paddingVertical: 20,
-            flex: 1,
-          }}>
-          <Text style={{fontWeight: 'bold', fontSize: 16}}>{item.name}</Text>
-          <Text style={{fontSize: 13, color: Colors.DEFAULT_GREY}}>
-            {item.ingredients}
-          </Text>
-          <Text style={{fontSize: 17, fontWeight: 'bold'}}>${item.price}</Text>
-        </View>
-        <View style={{marginRight: 25, alignItems: 'center'}}>
-          <View>
-            <Icons
-              name={heartValue ? 'heart-dislike-sharp' : 'heart'}
-              size={32}
-              color={Colors.DEFAULT_GREEN}
-            />
+      <TouchableOpacity
+        onPress={() => navigation.navigate('DetailCard', item, heartValue)}>
+        <View style={styles.cartCard}>
+          <Image source={item.image} style={{height: 80, width: 80}} />
+          <View
+            style={{
+              height: 100,
+              marginLeft: 10,
+              paddingVertical: 20,
+              flex: 1,
+            }}>
+            <Text style={{fontWeight: 'bold', fontSize: 16}}>{item.name}</Text>
+            <Text style={{fontSize: 13, color: Colors.DEFAULT_GREY}}>
+              {item.ingredients}
+            </Text>
+            <Text style={{fontSize: 17, fontWeight: 'bold'}}>
+              ${item.price}
+            </Text>
+          </View>
+          <View style={{marginRight: 25, alignItems: 'center'}}>
+            <View>
+              <Icons
+                name={heartValue ? 'heart-dislike-sharp' : 'heart'}
+                size={32}
+                color={Colors.DEFAULT_GREEN}
+              />
+            </View>
           </View>
         </View>
-      </View>
+      </TouchableOpacity>
     );
   };
   return (

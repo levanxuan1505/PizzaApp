@@ -16,9 +16,9 @@ import Icons from 'react-native-vector-icons/Ionicons';
 import {Colors} from '@constants';
 import {SecondaryButton} from '@components';
 
-const DetailsCardScreen = ({navigation, route}: any) => {
+const DetailsCardScreen = ({navigation, route, heartValue}: any) => {
   const item = route.params;
-  const [heart, setHeart] = useState(true);
+  const [heart, setHeart] = useState(!heartValue);
   return (
     <SafeAreaView style={{backgroundColor: Colors.DEFAULT_WHITE}}>
       <View style={style.header}>
@@ -67,7 +67,7 @@ const DetailsCardScreen = ({navigation, route}: any) => {
             }}>
             <View style={style.iconContainer}>
               <Icons
-                name={heart ? 'heart' : 'heart-dislike-sharp'}
+                name={heartValue ? 'heart' : 'heart-dislike-sharp'}
                 color={Colors.DEFAULT_GREEN}
                 size={25}
               />

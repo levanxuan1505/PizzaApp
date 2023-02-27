@@ -255,9 +255,13 @@ export default function ({navigation}) {
         <View style={styles.total}>
           <Icons
             name="opencart"
-            size={40}
+            size={42}
             color={Colors.DEFAULT_GREEN}
-            style={{paddingRight: 55}}
+            style={{
+              position: 'absolute',
+              left: 40,
+              top: 10,
+            }}
           />
           <View>
             <Text
@@ -399,6 +403,7 @@ const styles = StyleSheet.create({
   total: {
     backgroundColor: Colors.DEFAULT_WHITE,
     // paddingHorizontal: 30,
+
     flexDirection: 'row',
     paddingBottom: 55,
     position: 'absolute',

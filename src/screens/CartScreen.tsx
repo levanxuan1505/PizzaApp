@@ -94,10 +94,10 @@ const CartScreen = ({navigation}: any) => {
       </View>
       <FlatList
         showsVerticalScrollIndicator={false}
-        contentContainerStyle={{paddingBottom: 80}}
+        contentContainerStyle={{paddingBottom: 10}}
         data={foods}
         renderItem={({item}) => <CartCard item={item} />}
-        ListFooterComponentStyle={{paddingHorizontal: 20, marginTop: 20}}
+        // ListFooterComponentStyle={{paddingHorizontal: 20, marginTop: 20}}
         // ListFooterComponent={() => (
         //   <View>
         //     <View

@@ -1,40 +1,25 @@
 /* eslint-disable react-native/no-inline-styles */
 import React from 'react';
 import {
-  StyleSheet,
   View,
-  TextInput,
-  Keyboard,
   Text,
+  Alert,
+  Keyboard,
+  TextInput,
+  StyleSheet,
   TouchableOpacity,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import Icons from 'react-native-vector-icons/Ionicons';
 import {SafeAreaView} from 'react-native-safe-area-context';
-import {Colors} from '@constants';
+import {Colors, history} from '@constants';
 
 export default function Search() {
-  const History = [
-    {id: 1, title: 'Pizza hải sản'},
-    {
-      id: 2,
-      title: 'Pizza bắp phô mai',
-    },
-    {
-      id: 3,
-      title: 'Pizza mì tôm',
-    },
-    {id: 4, title: 'Pizza khoai tây'},
-    {
-      id: 5,
-      title: 'Pizza bơ tỏi kem phô mai',
-    },
-    {
-      id: 6,
-      title: 'Pizza Hawaii',
-    },
-  ];
-
+  const showAlertDelete = () =>
+    Alert.alert('Cảnh báo', 'Xác nhận xoá lịch sử này', [
+      {text: 'Xoá', onPress: () => {}},
+      {text: 'Huỷ', onPress: () => {}},
+    ]);
   return (
     <SafeAreaView style={{marginHorizontal: 20}}>
       <View>
@@ -65,19 +50,25 @@ export default function Search() {
         </View>
         <View style={styles.History}>
           <View>
-            {History.map((history, index) => (
+            {history.map((history, index) => (
               <TouchableOpacity style={styles.history} key={index}>
                 <Icon name="history" color={Colors.DEFAULT_GREEN} size={32} />
                 <Text style={styles.text}>{history.title}</Text>
+                <Icons
+                  name="trash"
+                  size={27}
+                  onPress={showAlertDelete}
+                  color={Colors.DEFAULT_GREEN}
+                  style={{position: 'absolute', right: -4}}
+                />
               </TouchableOpacity>
             ))}
           </View>
           <TouchableOpacity>
-            <View>
+            <View style={{justifyContent: 'center', alignItems: 'center'}}>
               <Text
                 style={{
                   fontSize: 18,
-                  marginLeft: 100,
                   marginTop: 25,
                   color: Colors.DEFAULT_GREEN,
                 }}>
@@ -116,6 +107,7 @@ const styles = StyleSheet.create({
   },
 
   history: {
+    position: 'relative',
     flexDirection: 'row',
     marginVertical: 5,
     marginHorizontal: 15,
@@ -123,7 +115,7 @@ const styles = StyleSheet.create({
     borderBottomWidth: 0.2,
   },
   text: {
-    marginLeft: 5,
+    marginLeft: 8,
     marginVertical: 7,
     paddingBottom: 5,
     fontSize: 16,

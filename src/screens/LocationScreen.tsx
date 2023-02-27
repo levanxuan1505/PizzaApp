@@ -39,7 +39,7 @@ export default function LocationScreen({navigation}) {
                 {item.phone}
               </Text>
             </View>
-            <View style={{}}>
+            <View style={{position: 'relative'}}>
               <Text style={{fontSize: 13, fontWeight: '400'}}>
                 {item.dress}
               </Text>
@@ -50,7 +50,10 @@ export default function LocationScreen({navigation}) {
               <Text
                 style={{
                   color: Colors.DEFAULT_YELLOW,
-                  fontSize: 12,
+                  fontSize: 13,
+                  fontWeight: '500',
+                  bottom: -11,
+                  position: 'absolute',
                 }}>
                 {item.id === '1' ? 'Mặc định' : ''}
               </Text>
@@ -68,6 +71,7 @@ export default function LocationScreen({navigation}) {
           size={28}
           onPress={navigation.goBack}
           color={Colors.DEFAULT_GREEN}
+          style={{position: 'absolute', left: 2, padding: 2}}
         />
         <Text
           style={{
@@ -99,7 +103,9 @@ export default function LocationScreen({navigation}) {
             renderItem={({item}) => <CartCard item={item} />}
             ListFooterComponentStyle={{paddingHorizontal: 20, marginTop: 20}}
           />
-          <TouchableOpacity>
+          <TouchableOpacity
+            style={{marginBottom: 100}}
+            onPress={() => navigation.navigate('CreateAddress')}>
             <View style={styles.addBtn}>
               <View
                 style={{
@@ -133,13 +139,15 @@ export default function LocationScreen({navigation}) {
 const styles = StyleSheet.create({
   header: {
     marginTop: Platform.OS === 'ios' ? 0 : 20,
+    position: 'relative',
     paddingVertical: 20,
     flexDirection: 'row',
     alignItems: 'center',
+    justifyContent: 'center',
     marginHorizontal: 20,
   },
   cartCard: {
-    height: 105,
+    height: 102,
     borderRadius: 10,
     backgroundColor: Colors.DEFAULT_WHITE,
     marginVertical: 10,
@@ -160,10 +168,10 @@ const styles = StyleSheet.create({
   addBtn: {
     borderRadius: 10,
     height: 60,
-    marginBottom: 90,
     justifyContent: 'center',
     alignItems: 'center',
-    marginTop: 10,
+    // marginTop: 10,
+    marginVertical: 10,
     marginHorizontal: 20,
     backgroundColor: Colors.DEFAULT_WHITE,
     shadowColor: '#000',
