@@ -63,6 +63,7 @@ export default function ({navigation}) {
           size={28}
           onPress={navigation.goBack}
           color={Colors.DEFAULT_GREEN}
+          style={{position: 'absolute', left: 5}}
         />
         <Text
           style={{
@@ -72,7 +73,8 @@ export default function ({navigation}) {
           }}>
           Thanh toán
         </Text>
-        <View style={{position: 'absolute', right: 50}}>
+
+        <View style={{position: 'absolute', right: 10}}>
           <IconBadge
             MainElement={
               <View>
@@ -297,7 +299,9 @@ const styles = StyleSheet.create({
     paddingVertical: 20,
     flexDirection: 'row',
     alignItems: 'center',
+    justifyContent: 'center',
     marginHorizontal: 20,
+    position: 'relative',
   },
   location: {
     borderRadius: 10,

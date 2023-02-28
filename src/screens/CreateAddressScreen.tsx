@@ -177,9 +177,9 @@ const CreateAddressScreen = ({navigation}: any) => {
 
         <TouchableOpacity
           onPress={() =>
-            Alert.alert('Hoàn tất', 'Xác nhận thay đổi của bạn', [
+            Alert.alert('Hoàn tất', 'Xác nhận đăng ký địa chỉ mới', [
               {text: 'Xác nhận', onPress: () => {}},
-              {text: 'Huỷ bỏ', onPress: () => {}},
+              {text: 'Huỷ bỏ', onPress: navigation.goBack},
             ])
           }>
           <View

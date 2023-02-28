@@ -60,6 +60,7 @@ const CartScreen = ({navigation}: any) => {
           size={28}
           onPress={navigation.goBack}
           color={Colors.DEFAULT_GREEN}
+          style={{position: 'absolute', left: 2}}
         />
         <Text
           style={{
@@ -69,7 +70,7 @@ const CartScreen = ({navigation}: any) => {
           }}>
           Giỏ hàng
         </Text>
-        <View style={{position: 'absolute', right: 50}}>
+        <View style={{position: 'absolute', right: 10}}>
           <IconBadge
             MainElement={
               <View>
@@ -158,6 +159,8 @@ const style = StyleSheet.create({
     paddingVertical: 20,
     flexDirection: 'row',
     alignItems: 'center',
+    position: 'relative',
+    justifyContent: 'center',
     marginHorizontal: 20,
   },
   cartCard: {

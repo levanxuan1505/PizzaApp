@@ -25,6 +25,7 @@ export default function ProfileScreen({navigation}: any) {
             size={20}
             style={styles.icon}
             onPress={navigation.goBack}
+            style={{position: 'absolute', left: 2}}
           />
           <Text
             style={{
@@ -245,6 +246,8 @@ const styles = StyleSheet.create({
     marginTop: Platform.OS === 'ios' ? 0 : 20,
     paddingVertical: 20,
     flexDirection: 'row',
+    position: 'relative',
+    justifyContent: 'center',
     alignItems: 'center',
   },
   contact: {
@@ -273,7 +276,8 @@ const styles = StyleSheet.create({
   },
   bell: {
     color: Colors.DEFAULT_GREEN,
-    left: 225,
+    position: 'absolute',
+    right: 10,
   },
   icon: {
     color: Colors.DEFAULT_GREEN,

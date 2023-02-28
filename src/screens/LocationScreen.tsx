@@ -71,7 +71,7 @@ export default function LocationScreen({navigation}) {
           size={28}
           onPress={navigation.goBack}
           color={Colors.DEFAULT_GREEN}
-          style={{position: 'absolute', left: 2, padding: 2}}
+          style={{position: 'absolute', left: 1, padding: 7}}
         />
         <Text
           style={{
