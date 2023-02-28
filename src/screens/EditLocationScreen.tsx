@@ -144,7 +144,7 @@ const EditLocation = ({navigation, route}: any) => {
               <Text style={styles.addressText}>Đặt làm địa chỉ mặc định</Text>
               <View style={{}}>
                 <Switch
-                  trackColor={{false: '#767577', true: '#0A8791'}}
+                  trackColor={{false: '#767577', true: Colors.DEFAULT_GREEN}}
                   thumbColor={isEnabled1 ? '#FFFFFF' : '#f4f3f4'}
                   ios_backgroundColor="#3e3e3e"
                   onValueChange={toggleSwitch1}
@@ -156,7 +156,7 @@ const EditLocation = ({navigation, route}: any) => {
               <Text style={styles.addressText}>Đặt làm địa chỉ lấy hàng</Text>
               <View style={{}}>
                 <Switch
-                  trackColor={{false: '#767577', true: '#0A8791'}}
+                  trackColor={{false: '#767577', true: Colors.DEFAULT_GREEN}}
                   thumbColor={isEnabled2 ? '#FFFFFF' : '#f4f3f4'}
                   ios_backgroundColor="#3e3e3e"
                   onValueChange={toggleSwitch2}
@@ -168,7 +168,7 @@ const EditLocation = ({navigation, route}: any) => {
               <Text style={styles.addressText}>Đặt làm địa chỉ trả hàng</Text>
               <View style={{}}>
                 <Switch
-                  trackColor={{false: '#767577', true: '#0A8791'}}
+                  trackColor={{false: '#767577', true: Colors.DEFAULT_GREEN}}
                   thumbColor={isEnabled3 ? '#FFFFFF' : '#f4f3f4'}
                   ios_backgroundColor="#3e3e3e"
                   onValueChange={toggleSwitch3}

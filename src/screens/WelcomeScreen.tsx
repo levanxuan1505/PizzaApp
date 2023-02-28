@@ -82,7 +82,7 @@ const WelcomeScreen = ({navigation}: any) => {
         <View style={styles.buttonContainer}>
           <TouchableOpacity
             activeOpacity={0.8}
-            style={{marginLeft: 10}}
+            style={styles.button}
             onPress={() => welcomeList.current.scrollToEnd()}>
             <Text style={styles.buttonText}>SKIP</Text>
           </TouchableOpacity>
@@ -124,14 +124,17 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   buttonText: {
-    fontSize: 16,
+    fontSize: 20,
     lineHeight: 16 * 1.4,
+    color: Colors.DEFAULT_WHITE,
   },
   button: {
-    backgroundColor: Colors.LIGHT_GREEN,
-    paddingVertical: 20,
-    paddingHorizontal: 11,
-    borderRadius: 32,
+    width: 80,
+    height: 80,
+    borderRadius: 50,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: Colors.DEFAULT_GREEN,
   },
   gettingStartedButton: {
     backgroundColor: Colors.DEFAULT_GREEN,

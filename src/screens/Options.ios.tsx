@@ -72,7 +72,7 @@ const styles = StyleSheet.create({
   },
   buttonHome: {
     alignItems: 'center',
-    backgroundColor: '#037E3F',
+    backgroundColor: Colors.DEFAULT_GREEN,
     marginHorizontal: 40,
     marginVertical: 20,
     height: 70,
@@ -84,7 +84,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: '#FBA83C',
+    backgroundColor: Colors.DEFAULT_YELLOW,
     marginHorizontal: 40,
     height: 70,
     borderRadius: 50,
