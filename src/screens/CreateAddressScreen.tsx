@@ -57,13 +57,15 @@ const CreateAddressScreen = ({navigation}: any) => {
             style={styles.input}
             onChangeText={onChangeText}
             placeholder="Họ và tên"
+            placeholderTextColor={Colors.LIGHT_GREEN}
           />
           <TextInput
             style={styles.input}
             value={number}
             onChangeText={onChangeNumber}
-            placeholder="Số diện thoại"
+            placeholder="Số điện thoại"
             keyboardType="numeric"
+            placeholderTextColor={Colors.LIGHT_GREEN}
           />
           <Text
             style={{fontSize: 18, color: Colors.DEFAULT_GREEN, marginTop: 10}}>
@@ -74,12 +76,14 @@ const CreateAddressScreen = ({navigation}: any) => {
             style={styles.input}
             onChangeText={setAddDress}
             placeholder="thôn, xã, huyện, thành phố"
+            placeholderTextColor={Colors.LIGHT_GREEN}
           />
           <TextInput
             style={styles.input}
             value={addressNumber}
             onChangeText={setAddDressNumber}
             placeholder="Số địa chỉ nhà"
+            placeholderTextColor={Colors.LIGHT_GREEN}
           />
           {/* box */}
           <View style={styles.addRess}>
@@ -237,6 +241,7 @@ const styles = StyleSheet.create({
 
     elevation: 21,
   },
+
   //   input: {
   //     height: 40,
   //     marginVertical: 8,

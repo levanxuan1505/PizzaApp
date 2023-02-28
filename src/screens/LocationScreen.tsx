@@ -36,7 +36,7 @@ export default function LocationScreen({navigation}) {
                 {item.name}
               </Text>
               <Text style={{fontSize: 13, color: Colors.DARK_FOUR}}>
-                {item.phone}
+                | {item.phone}
               </Text>
             </View>
             <View style={{position: 'relative'}}>

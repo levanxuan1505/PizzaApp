@@ -22,10 +22,9 @@ export default function ProfileScreen({navigation}: any) {
         <View style={styles.header}>
           <Icon
             name="arrow-back-ios"
-            size={20}
-            style={styles.icon}
+            size={28}
             onPress={navigation.goBack}
-            style={{position: 'absolute', left: 2}}
+            style={{position: 'absolute', left: 2, color: Colors.DEFAULT_GREEN}}
           />
           <Text
             style={{

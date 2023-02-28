@@ -60,6 +60,7 @@ const EditLocation = ({navigation, route}: any) => {
             style={styles.input}
             onChangeText={onChangeText}
             placeholder="Họ và tên"
+            placeholderTextColor={Colors.LIGHT_GREEN}
           />
           <TextInput
             style={styles.input}
@@ -67,6 +68,7 @@ const EditLocation = ({navigation, route}: any) => {
             value={number}
             placeholder="Số diện thoại"
             keyboardType="numeric"
+            placeholderTextColor={Colors.LIGHT_GREEN}
           />
           <Text
             style={{fontSize: 18, color: Colors.DEFAULT_GREEN, marginTop: 10}}>
@@ -77,12 +79,14 @@ const EditLocation = ({navigation, route}: any) => {
             style={styles.input}
             onChangeText={setAddDress}
             placeholder="thôn, xã, huyện, thành phố"
+            placeholderTextColor={Colors.LIGHT_GREEN}
           />
           <TextInput
             style={styles.input}
             onChangeText={setAddDressNumber}
             value={addressNumber}
             placeholder="Số địa chỉ nhà"
+            placeholderTextColor={Colors.LIGHT_GREEN}
           />
           {/* box */}
           <View style={styles.addRess}>

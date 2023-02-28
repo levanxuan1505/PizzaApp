@@ -72,6 +72,7 @@ export default function NotificationScreen({navigation}) {
           size={28}
           onPress={navigation.goBack}
           color={Colors.DEFAULT_GREEN}
+          style={{position: 'absolute', left: 2}}
         />
         <Text
           style={{
@@ -120,6 +121,8 @@ const styles = StyleSheet.create({
     marginTop: Platform.OS === 'ios' ? 0 : 20,
     paddingVertical: 20,
     flexDirection: 'row',
+    position: 'relative',
+    justifyContent: 'center',
     alignItems: 'center',
     marginHorizontal: 20,
   },

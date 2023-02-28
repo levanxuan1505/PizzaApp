@@ -27,6 +27,7 @@ const DetailsCardScreen = ({navigation, route, heartValue}: any) => {
           size={28}
           onPress={navigation.goBack}
           color={Colors.DEFAULT_GREEN}
+          style={{position: 'absolute', left: 2}}
         />
         <Text
           style={{
@@ -75,7 +76,7 @@ const DetailsCardScreen = ({navigation, route, heartValue}: any) => {
           </TouchableOpacity>
         </View>
         <Text style={style.detailsText}>{item.title}</Text>
-        <View style={{paddingTop: 20}}>
+        <View style={{position: 'relative', bottom: -30, paddingBottom: 150}}>
           <SecondaryButton
             title="Add To Cart"
             onPress={() =>
@@ -96,11 +97,14 @@ const style = StyleSheet.create({
   header: {
     paddingVertical: Platform.OS === 'ios' ? 20 : 0,
     flexDirection: 'row',
+    position: 'relative',
     alignItems: 'center',
+    justifyContent: 'center',
     marginHorizontal: 20,
     marginTop: Platform.OS === 'ios' ? 0 : 30,
   },
   details: {
+    position: 'relative',
     paddingHorizontal: 20,
     paddingTop: 40,
     paddingBottom: 100,
