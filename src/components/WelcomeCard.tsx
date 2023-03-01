@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, Text, StyleSheet, Image} from 'react-native';
+import {View, Text, StyleSheet, Image, Platform} from 'react-native';
 import {Display} from '../utils';
 import {Images} from '../constants';
 
@@ -21,8 +21,8 @@ const styles = StyleSheet.create({
     width: Display.setWidth(100),
   },
   image: {
-    height: Display.setHeight(30),
-    width: Display.setWidth(60),
+    height: Display.setHeight(41),
+    width: Platform.OS === 'ios' ? Display.setWidth(78) : Display.setWidth(68),
     // borderWidth: 5,
     borderBottomLeftRadius: 50,
     borderTopRightRadius: 50,

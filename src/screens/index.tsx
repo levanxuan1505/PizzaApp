@@ -6,7 +6,7 @@ import DetailsCardScreen from './DetailsCardScreen';
 import EditProfileScreen from './EditProfileScreen';
 import HomeScreen from './HomeScreen';
 import LocationScreen from './LocationScreen';
-import Options from './Options.ios';
+import Options from './Options';
 import NotificationScreen from './NotificationScreen';
 import RegisterScreen from './RegisterScreen';
 import Search from './Search';

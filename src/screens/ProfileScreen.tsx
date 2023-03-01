@@ -370,7 +370,7 @@ export default function ProfileScreen({navigation}: any) {
                 position: 'relative',
                 width: '100%',
                 paddingVertical: 12,
-                borderBottomWidth: 0.17,
+                borderBottomWidth: Platform.OS === 'ios' ? 0.17 : 0.2,
                 paddingBottom: 8,
                 borderBottomColor: Colors.GOOGLE_BLUE,
               }}>
@@ -412,7 +412,7 @@ export default function ProfileScreen({navigation}: any) {
               alignItems: 'center',
               position: 'relative',
               paddingVertical: 5,
-              borderBottomWidth: 0.17,
+              borderBottomWidth: Platform.OS === 'ios' ? 0.17 : 0.2,
               paddingBottom: 6,
               borderBottomColor: Colors.DEFAULT_YELLOW,
             }}>
@@ -450,7 +450,7 @@ export default function ProfileScreen({navigation}: any) {
               justifyContent: 'space-between',
               alignItems: 'center',
               paddingVertical: 10,
-              borderBottomWidth: 0.17,
+              borderBottomWidth: Platform.OS === 'ios' ? 0.17 : 0.2,
               paddingBottom: 8,
               borderBottomColor: Colors.GOOGLE_BLUE,
             }}>
@@ -500,7 +500,7 @@ export default function ProfileScreen({navigation}: any) {
               justifyContent: 'space-between',
               alignItems: 'center',
               paddingVertical: 10,
-              borderBottomWidth: 0.17,
+              borderBottomWidth: Platform.OS === 'ios' ? 0.17 : 0.2,
               paddingBottom: 8,
               borderBottomColor: Colors.DEFAULT_GREEN,
             }}>
@@ -538,7 +538,7 @@ export default function ProfileScreen({navigation}: any) {
               justifyContent: 'space-between',
               alignItems: 'center',
               paddingVertical: 10,
-              borderBottomWidth: 0.17,
+              borderBottomWidth: Platform.OS === 'ios' ? 0.17 : 0.2,
               paddingBottom: 8,
               borderBottomColor: Colors.DEFAULT_RED,
             }}>
@@ -576,7 +576,7 @@ export default function ProfileScreen({navigation}: any) {
               justifyContent: 'space-between',
               alignItems: 'center',
               paddingVertical: 10,
-              borderBottomWidth: 0.17,
+              borderBottomWidth: Platform.OS === 'ios' ? 0.17 : 0.2,
               paddingBottom: 8,
               borderBottomColor: Colors.FACEBOOK_BLUE,
             }}>
@@ -624,7 +624,7 @@ export default function ProfileScreen({navigation}: any) {
               justifyContent: 'space-between',
               alignItems: 'center',
               paddingVertical: 10,
-              borderBottomWidth: 0.17,
+              borderBottomWidth: Platform.OS === 'ios' ? 0.17 : 0.2,
               paddingBottom: 8,
               borderBottomColor: Colors.DEFAULT_GREEN,
             }}>
@@ -663,7 +663,7 @@ export default function ProfileScreen({navigation}: any) {
               position: 'relative',
               alignItems: 'center',
               paddingVertical: 10,
-              borderBottomWidth: 0.17,
+              borderBottomWidth: Platform.OS === 'ios' ? 0.17 : 0.2,
               paddingBottom: 8,
               borderBottomColor: Colors.DEFAULT_YELLOW,
             }}>
@@ -711,7 +711,7 @@ export default function ProfileScreen({navigation}: any) {
               justifyContent: 'space-between',
               alignItems: 'center',
               paddingVertical: 10,
-              borderBottomWidth: 0.17,
+              borderBottomWidth: Platform.OS === 'ios' ? 0.17 : 0.2,
               paddingBottom: 8,
               borderBottomColor: Colors.DEFAULT_GREEN,
             }}>
@@ -749,7 +749,7 @@ export default function ProfileScreen({navigation}: any) {
               justifyContent: 'space-between',
               alignItems: 'center',
               paddingVertical: 10,
-              borderBottomWidth: 0.17,
+              borderBottomWidth: Platform.OS === 'ios' ? 0.17 : 0.2,
               paddingBottom: 8,
               borderBottomColor: Colors.DEFAULT_RED,
             }}>

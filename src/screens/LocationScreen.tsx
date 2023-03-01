@@ -22,10 +22,10 @@ export default function LocationScreen({navigation}) {
         <View style={styles.cartCard}>
           <View
             style={{
-              height: 100,
+              height: Platform.OS === 'ios' ? 100 : 120,
               marginLeft: 10,
               paddingVertical: 20,
-              // flex: 1,
+              justifyContent: 'center',
             }}>
             <View style={{flexDirection: 'row', paddingBottom: 5}}>
               <Text

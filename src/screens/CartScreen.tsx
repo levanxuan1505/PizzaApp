@@ -40,7 +40,7 @@ const CartScreen = ({navigation}: any) => {
             </Text>
           </View>
           <View style={{marginRight: 20, alignItems: 'center'}}>
-            <Text style={{fontWeight: 'bold', fontSize: 18, marginVertical: 5}}>
+            <Text style={{fontWeight: 'bold', fontSize: 20, marginVertical: 5}}>
               x{Math.floor(Math.random() * 5) + 1}
             </Text>
             <View style={style.actionBtn}>
@@ -202,12 +202,12 @@ const style = StyleSheet.create({
   },
   actionBtn: {
     width: 80,
-    height: 30,
+    height: 34,
     backgroundColor: Colors.DEFAULT_GREEN,
     borderRadius: 30,
-    paddingVertical: 2,
+    paddingVertical: 3,
     flexDirection: 'row',
-    justifyContent: 'center',
+    justifyContent: 'space-evenly',
     alignContent: 'center',
   },
 });

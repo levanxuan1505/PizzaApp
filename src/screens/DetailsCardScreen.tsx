@@ -8,21 +8,23 @@ import {
   Image,
   Platform,
   Alert,
+  Button,
   TouchableOpacity,
 } from 'react-native';
 // import {ScrollView} from 'react-native-gesture-handler';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import Icons from 'react-native-vector-icons/Ionicons';
 import {Colors} from '@constants';
-import {SecondaryButton} from '@components';
+// import {PrimaryButton} from '@components';
+
 import {ScrollView} from 'react-native-gesture-handler';
 
 const DetailsCardScreen = ({navigation, route, heartValue}: any) => {
   const item = route.params;
   const [heart, setHeart] = useState(!heartValue);
   return (
-    <SafeAreaView style={{backgroundColor: Colors.DEFAULT_WHITE}}>
-      <View style={style.header}>
+    <SafeAreaView style={{backgroundColor: Colors.DEFAULT_WHITE, flex: 1}}>
+      <View style={styles.header}>
         <Icon
           name="arrow-back-ios"
           size={28}
@@ -49,7 +51,7 @@ const DetailsCardScreen = ({navigation, route, heartValue}: any) => {
           }}>
           <Image source={item.image} style={{height: 220, width: 220}} />
         </View>
-        <View style={style.details}>
+        <View style={styles.details}>
           <View
             style={{
               flexDirection: 'row',
@@ -68,7 +70,7 @@ const DetailsCardScreen = ({navigation, route, heartValue}: any) => {
               onPress={() => {
                 setHeart(!heart);
               }}>
-              <View style={style.iconContainer}>
+              <View style={styles.iconContainer}>
                 <Icons
                   name={heartValue ? 'heart' : 'heart-dislike-sharp'}
                   color={Colors.DEFAULT_GREEN}
@@ -77,27 +79,41 @@ const DetailsCardScreen = ({navigation, route, heartValue}: any) => {
               </View>
             </TouchableOpacity>
           </View>
-          <Text style={style.detailsText}>{item.title}</Text>
-          <View style={{bottom: -20, marginHorizontal: 20}}>
-            <SecondaryButton
-              title="Add To Cart"
-              onPress={() =>
-                Alert.alert('Xác nhận', 'Thêm món ăn vào giỏ hàng', [
-                  {text: 'Xác nhận', onPress: () => {}},
-                  {text: 'Huỷ bỏ', onPress: () => {}},
-                ])
-              }
-            />
-          </View>
+          <Text style={styles.detailsText}>{item.title}</Text>
         </View>
       </ScrollView>
-
+      <View style={styles.total}>
+        <TouchableOpacity
+          onPress={() =>
+            Alert.alert('Xác nhận', 'Bạn muốn thêm món ăn vào giỏ hàng', [
+              {text: 'Xác nhận', onPress: () => {}},
+              {text: 'Huỷ bỏ', onPress: () => {}},
+            ])
+          }
+          style={{
+            marginHorizontal: 70,
+            paddingVertical: 15,
+            justifyContent: 'center',
+            alignItems: 'center',
+            backgroundColor: Colors.DEFAULT_YELLOW,
+            borderRadius: 40,
+          }}>
+          <Text
+            style={{
+              fontSize: 21,
+              fontWeight: '500',
+              color: Colors.DEFAULT_WHITE,
+            }}>
+            Thêm vào giỏ hàng
+          </Text>
+        </TouchableOpacity>
+      </View>
       {/* </ScrollView> */}
     </SafeAreaView>
   );
 };
 
-const style = StyleSheet.create({
+const styles = StyleSheet.create({
   header: {
     paddingVertical: Platform.OS === 'ios' ? 20 : 0,
     flexDirection: 'row',
@@ -110,9 +126,11 @@ const style = StyleSheet.create({
   details: {
     paddingHorizontal: 20,
     paddingTop: 40,
-    paddingBottom: 250,
+    paddingBottom: Platform.OS === 'ios' ? 50 : 80,
     backgroundColor: Colors.DEFAULT_GREEN,
-    borderRadius: 40,
+    // borderRadius: 40,
+    borderTopLeftRadius: 40,
+    borderTopRightRadius: 40,
   },
   iconContainer: {
     backgroundColor: Colors.DEFAULT_WHITE,
@@ -127,6 +145,16 @@ const style = StyleSheet.create({
     lineHeight: 22,
     fontSize: 16,
     color: Colors.DEFAULT_WHITE,
+  },
+  total: {
+    backgroundColor: Colors.DEFAULT_GREEN,
+    marginBottom: Platform.OS === 'ios' ? -38 : 0,
+    paddingHorizontal: 20,
+    paddingVertical: Platform.OS === 'ios' ? 40 : 15,
+  },
+  button: {
+    paddingVertical: 10,
+    marginHorizontal: 20,
   },
 });
 
