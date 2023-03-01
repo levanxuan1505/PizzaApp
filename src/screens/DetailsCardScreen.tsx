@@ -8,14 +8,13 @@ import {
   Image,
   Platform,
   Alert,
-  Button,
   TouchableOpacity,
 } from 'react-native';
 // import {ScrollView} from 'react-native-gesture-handler';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import Icons from 'react-native-vector-icons/Ionicons';
 import {Colors} from '@constants';
-// import {PrimaryButton} from '@components';
+import {SecondaryButton} from '@components';
 
 import {ScrollView} from 'react-native-gesture-handler';
 
@@ -83,30 +82,18 @@ const DetailsCardScreen = ({navigation, route, heartValue}: any) => {
         </View>
       </ScrollView>
       <View style={styles.total}>
-        <TouchableOpacity
+        <SecondaryButton
+          title="Thêm vào giỏ hàng"
           onPress={() =>
-            Alert.alert('Xác nhận', 'Bạn muốn thêm món ăn vào giỏ hàng', [
-              {text: 'Xác nhận', onPress: () => {}},
+            Alert.alert('Xác nhận', 'Thêm món ăn vào giỏ hàng', [
+              {
+                text: 'Thêm',
+                onPress: () => {},
+              },
               {text: 'Huỷ bỏ', onPress: () => {}},
             ])
           }
-          style={{
-            marginHorizontal: 70,
-            paddingVertical: 15,
-            justifyContent: 'center',
-            alignItems: 'center',
-            backgroundColor: Colors.DEFAULT_YELLOW,
-            borderRadius: 40,
-          }}>
-          <Text
-            style={{
-              fontSize: 21,
-              fontWeight: '500',
-              color: Colors.DEFAULT_WHITE,
-            }}>
-            Thêm vào giỏ hàng
-          </Text>
-        </TouchableOpacity>
+        />
       </View>
       {/* </ScrollView> */}
     </SafeAreaView>
@@ -126,7 +113,7 @@ const styles = StyleSheet.create({
   details: {
     paddingHorizontal: 20,
     paddingTop: 40,
-    paddingBottom: Platform.OS === 'ios' ? 50 : 80,
+    paddingBottom: Platform.OS === 'ios' ? 100 : 80,
     backgroundColor: Colors.DEFAULT_GREEN,
     // borderRadius: 40,
     borderTopLeftRadius: 40,

@@ -108,7 +108,7 @@ export default function HomeScreen({navigation}: any) {
               <Icon
                 onPress={() =>
                   Alert.alert('Xác nhận', 'Bạn muốn thêm món ăn vào giỏ hàng', [
-                    {text: 'Xác nhận', onPress: () => {}},
+                    {text: 'Thêm', onPress: () => {}},
                     {text: 'Huỷ bỏ', onPress: () => {}},
                   ])
                 }
