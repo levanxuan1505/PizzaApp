@@ -10,11 +10,12 @@ import Options from './Options.ios';
 import NotificationScreen from './NotificationScreen';
 import RegisterScreen from './RegisterScreen';
 import Search from './Search';
-import ProfileScreen from './ProfileScreen.ios';
+import ProfileScreen from './ProfileScreen';
 import SignInScreen from './SignInScreen';
 import WelcomeScreen from './WelcomeScreen';
 import EditLocationScreen from './EditLocationScreen';
 import CreateAddressScreen from './CreateAddressScreen';
+import SettingScreen from './SettingScreen';
 export {
   BookmarkScreen,
   BottomHomeScreen,
@@ -31,6 +32,7 @@ export {
   RegisterScreen,
   Search,
   ProfileScreen,
+  SettingScreen,
   SignInScreen,
   WelcomeScreen,
 };

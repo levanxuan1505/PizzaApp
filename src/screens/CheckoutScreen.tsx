@@ -13,6 +13,7 @@ import {
 import {ScrollView} from 'react-native-virtualized-view';
 import {FlatList} from 'react-native-gesture-handler';
 import Icon from 'react-native-vector-icons/MaterialIcons';
+import Iconss from 'react-native-vector-icons/MaterialCommunityIcons';
 import Icons from 'react-native-vector-icons/Fontisto';
 import IconBadge from 'react-native-icon-badge';
 import {foods} from '@constants';
@@ -23,11 +24,17 @@ export default function ({navigation}) {
     return (
       <TouchableOpacity onPress={() => navigation.navigate('DetailCard', item)}>
         <View style={styles.cartCard}>
-          <Image source={item.image} style={{height: 80, width: 80}} />
+          <Image
+            source={item.image}
+            style={{
+              height: Platform.OS === 'ios' ? 80 : 70,
+              width: Platform.OS === 'ios' ? 80 : 70,
+            }}
+          />
           <View
             style={{
               height: 100,
-              marginLeft: 10,
+              marginLeft: Platform.OS === 'ios' ? 10 : 15,
               paddingVertical: 20,
               flex: 1,
             }}>
@@ -150,27 +157,32 @@ export default function ({navigation}) {
                   paddingLeft: 9,
                   marginTop: 9,
                 }}>
-                <Icons
-                  name="dollar"
-                  size={20}
+                <Iconss
+                  name="bitcoin"
+                  size={42}
                   color={Colors.DEFAULT_GREEN}
-                  style={{paddingLeft: 15, paddingRight: 5}}
+                  style={{paddingLeft: 3, paddingRight: 5}}
                 />
-                <Text style={{fontSize: 23, color: Colors.DEFAULT_GREEN}}>
+
+                <Text
+                  style={{
+                    fontSize: 20,
+                    color: Colors.DEFAULT_GREEN,
+                  }}>
                   Chọn phương thức thanh toán
                 </Text>
                 <Icon
                   name="arrow-forward-ios"
                   size={20}
                   color={Colors.DEFAULT_GREEN}
-                  style={{paddingLeft: 5}}
+                  style={{paddingLeft: Platform.OS === 'ios' ? 5 : 10}}
                 />
               </View>
               <Text
                 style={{
                   color: Colors.DEFAULT_YELLOW,
-                  paddingLeft: 40,
-                  marginTop: 7,
+                  paddingLeft: 60,
+                  marginTop: 0,
                 }}>
                 Thanh toán dễ dàng hơn với Zalo Pay
               </Text>
@@ -244,11 +256,11 @@ export default function ({navigation}) {
                 style={{
                   color: Colors.DEFAULT_GREEN,
                   paddingLeft: 7,
-                  paddingRight: 7,
+                  paddingRight: Platform.OS === 'ios' ? 7 : 20,
                   fontSize: 16,
                 }}>
-                Nhấn "Đặt hàng" đồng nghĩa với việc bạn đồng ý tuân theo "Điều
-                khoản Pizza App"
+                {`Nhấn "Đặt hàng" đồng nghĩa với việc bạn 
+đồng ý tuân theo "Điều khoản của Pizza"`}
               </Text>
             </View>
           </View>
@@ -361,7 +373,7 @@ const styles = StyleSheet.create({
   warning: {
     borderRadius: 10,
     height: 80,
-    marginBottom: 140,
+    marginBottom: Platform.OS === 'ios' ? 140 : 180,
     justifyContent: 'center',
     marginTop: 10,
     marginHorizontal: 8,
@@ -409,7 +421,7 @@ const styles = StyleSheet.create({
     // paddingHorizontal: 30,
 
     flexDirection: 'row',
-    paddingBottom: 55,
+    paddingBottom: Platform.OS === 'ios' ? 55 : 87,
     position: 'absolute',
     justifyContent: 'flex-end',
     alignItems: 'center',

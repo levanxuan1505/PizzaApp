@@ -10,7 +10,7 @@ import {Colors} from '@constants';
 import CartScreen from './CartScreen';
 import Search from './Search';
 import BookmarkScreen from './BookmarkScreen';
-import ProfileScreen from './ProfileScreen.ios';
+import ProfileScreen from './ProfileScreen';
 
 const Tab = createBottomTabNavigator();
 

@@ -15,6 +15,7 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 import Icons from 'react-native-vector-icons/Ionicons';
 import {Colors} from '@constants';
 import {SecondaryButton} from '@components';
+import {ScrollView} from 'react-native-gesture-handler';
 
 const DetailsCardScreen = ({navigation, route, heartValue}: any) => {
   const item = route.params;
@@ -39,55 +40,58 @@ const DetailsCardScreen = ({navigation, route, heartValue}: any) => {
         </Text>
       </View>
       {/* <ScrollView showsVerticalScrollIndicator={false}> */}
-      <View
-        style={{
-          justifyContent: 'center',
-          alignItems: 'center',
-          height: 280,
-        }}>
-        <Image source={item.image} style={{height: 220, width: 220}} />
-      </View>
-      <View style={style.details}>
+      <ScrollView showsVerticalScrollIndicator={false}>
         <View
           style={{
-            flexDirection: 'row',
-            justifyContent: 'space-between',
+            justifyContent: 'center',
             alignItems: 'center',
+            height: 280,
           }}>
-          <Text
+          <Image source={item.image} style={{height: 220, width: 220}} />
+        </View>
+        <View style={style.details}>
+          <View
             style={{
-              fontSize: 25,
-              fontWeight: 'bold',
-              color: Colors.DEFAULT_WHITE,
+              flexDirection: 'row',
+              justifyContent: 'space-between',
+              alignItems: 'center',
             }}>
-            {item.name}
-          </Text>
-          <TouchableOpacity
-            onPress={() => {
-              setHeart(!heart);
-            }}>
-            <View style={style.iconContainer}>
-              <Icons
-                name={heartValue ? 'heart' : 'heart-dislike-sharp'}
-                color={Colors.DEFAULT_GREEN}
-                size={25}
-              />
-            </View>
-          </TouchableOpacity>
+            <Text
+              style={{
+                fontSize: 25,
+                fontWeight: 'bold',
+                color: Colors.DEFAULT_WHITE,
+              }}>
+              {item.name}
+            </Text>
+            <TouchableOpacity
+              onPress={() => {
+                setHeart(!heart);
+              }}>
+              <View style={style.iconContainer}>
+                <Icons
+                  name={heartValue ? 'heart' : 'heart-dislike-sharp'}
+                  color={Colors.DEFAULT_GREEN}
+                  size={25}
+                />
+              </View>
+            </TouchableOpacity>
+          </View>
+          <Text style={style.detailsText}>{item.title}</Text>
+          <View style={{bottom: -20, marginHorizontal: 20}}>
+            <SecondaryButton
+              title="Add To Cart"
+              onPress={() =>
+                Alert.alert('Xác nhận', 'Thêm món ăn vào giỏ hàng', [
+                  {text: 'Xác nhận', onPress: () => {}},
+                  {text: 'Huỷ bỏ', onPress: () => {}},
+                ])
+              }
+            />
+          </View>
         </View>
-        <Text style={style.detailsText}>{item.title}</Text>
-        <View style={{position: 'relative', bottom: -30, paddingBottom: 150}}>
-          <SecondaryButton
-            title="Add To Cart"
-            onPress={() =>
-              Alert.alert('Xác nhận', 'Thêm món ăn vào giỏ hàng', [
-                {text: 'Xác nhận', onPress: () => {}},
-                {text: 'Huỷ bỏ', onPress: () => {}},
-              ])
-            }
-          />
-        </View>
-      </View>
+      </ScrollView>
+
       {/* </ScrollView> */}
     </SafeAreaView>
   );
@@ -104,13 +108,11 @@ const style = StyleSheet.create({
     marginTop: Platform.OS === 'ios' ? 0 : 30,
   },
   details: {
-    position: 'relative',
     paddingHorizontal: 20,
     paddingTop: 40,
-    paddingBottom: 100,
+    paddingBottom: 250,
     backgroundColor: Colors.DEFAULT_GREEN,
-    borderTopRightRadius: 40,
-    borderTopLeftRadius: 40,
+    borderRadius: 40,
   },
   iconContainer: {
     backgroundColor: Colors.DEFAULT_WHITE,

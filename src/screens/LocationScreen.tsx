@@ -8,6 +8,7 @@ import {
   View,
   Platform,
   FlatList,
+  ScrollView as ScrollViewForAndroid,
   TouchableOpacity,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
@@ -94,43 +95,82 @@ export default function LocationScreen({navigation}) {
           }}>
           Địa chỉ
         </Text>
-        {/* FlashList */}
-        <ScrollView>
-          <FlatList
-            showsVerticalScrollIndicator={false}
-            contentContainerStyle={{paddingBottom: 80}}
-            data={locations}
-            renderItem={({item}) => <CartCard item={item} />}
-            ListFooterComponentStyle={{paddingHorizontal: 20, marginTop: 20}}
-          />
-          <TouchableOpacity
-            style={{marginBottom: 100}}
-            onPress={() => navigation.navigate('CreateAddress')}>
-            <View style={styles.addBtn}>
-              <View
-                style={{
-                  flexDirection: 'row',
-                  alignItems: 'center',
-                  paddingLeft: 9,
-                }}>
-                <Icon
-                  name="add-circle-outline"
-                  size={32}
-                  color={Colors.DEFAULT_GREEN}
-                />
-                <Text
+        {Platform.OS === 'ios' ? (
+          <ScrollView>
+            <FlatList
+              showsVerticalScrollIndicator={false}
+              contentContainerStyle={{paddingBottom: 80}}
+              data={locations}
+              renderItem={({item}) => <CartCard item={item} />}
+              ListFooterComponentStyle={{paddingHorizontal: 20, marginTop: 20}}
+            />
+            <TouchableOpacity
+              style={{marginBottom: 100}}
+              onPress={() => navigation.navigate('CreateAddress')}>
+              <View style={styles.addBtn}>
+                <View
                   style={{
-                    fontSize: 18,
-                    fontWeight: '500',
-                    color: Colors.DEFAULT_GREEN,
-                    paddingHorizontal: 5,
+                    flexDirection: 'row',
+                    alignItems: 'center',
+                    paddingLeft: 9,
                   }}>
-                  Thêm địa chỉ mới
-                </Text>
+                  <Icon
+                    name="add-circle-outline"
+                    size={32}
+                    color={Colors.DEFAULT_GREEN}
+                  />
+                  <Text
+                    style={{
+                      fontSize: 18,
+                      fontWeight: '500',
+                      color: Colors.DEFAULT_GREEN,
+                      paddingHorizontal: 5,
+                    }}>
+                    Thêm địa chỉ mới
+                  </Text>
+                </View>
               </View>
-            </View>
-          </TouchableOpacity>
-        </ScrollView>
+            </TouchableOpacity>
+          </ScrollView>
+        ) : (
+          <ScrollViewForAndroid showsVerticalScrollIndicator={false}>
+            <FlatList
+              scrollEnabled={false}
+              showsVerticalScrollIndicator={false}
+              contentContainerStyle={{paddingBottom: 80}}
+              data={locations}
+              renderItem={({item}) => <CartCard item={item} />}
+              ListFooterComponentStyle={{paddingHorizontal: 20, marginTop: 20}}
+            />
+            <TouchableOpacity
+              style={{marginBottom: 250, marginTop: -80}}
+              onPress={() => navigation.navigate('CreateAddress')}>
+              <View style={styles.addBtn}>
+                <View
+                  style={{
+                    flexDirection: 'row',
+                    alignItems: 'center',
+                    paddingLeft: 9,
+                  }}>
+                  <Icon
+                    name="add-circle-outline"
+                    size={32}
+                    color={Colors.DEFAULT_GREEN}
+                  />
+                  <Text
+                    style={{
+                      fontSize: 18,
+                      fontWeight: '500',
+                      color: Colors.DEFAULT_GREEN,
+                      paddingHorizontal: 5,
+                    }}>
+                    Thêm địa chỉ mới
+                  </Text>
+                </View>
+              </View>
+            </TouchableOpacity>
+          </ScrollViewForAndroid>
+        )}
       </View>
     </SafeAreaView>
   );

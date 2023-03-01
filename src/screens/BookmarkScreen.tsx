@@ -78,7 +78,7 @@ const BookmarkScreen = ({navigation}: any) => {
             size={32}
             color={Colors.DEFAULT_GREEN}
             style={{
-              marginRight: Platform.OS === 'ios' ? 20 : 165,
+              marginRight: Platform.OS === 'ios' ? 20 : 18,
               alignItems: 'center',
             }}
           />

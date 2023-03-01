@@ -15,6 +15,7 @@ import {
   LocationScreen,
   EditLocationScreen,
   CreateAddressScreen,
+  SettingScreen,
 } from '@screens';
 
 const Stack = createStackNavigator();
@@ -60,6 +61,7 @@ const Navigators = () => {
         <Stack.Screen name="EditLocation" component={EditLocationScreen} />
         {/* <Stack.Screen name="Search" component={Search} /> */}
         <Stack.Screen name="Edit" component={EditProfileScreen} />
+        <Stack.Screen name="Setting" component={SettingScreen} />
         <Stack.Screen name="CreateAddress" component={CreateAddressScreen} />
         <Stack.Screen name="DetailCard" component={DetailsCardScreen} />
       </Stack.Navigator>

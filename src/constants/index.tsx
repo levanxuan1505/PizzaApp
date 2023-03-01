@@ -6,13 +6,19 @@ import foods from './foods';
 import notification from './Notification';
 import history from './History';
 import locations from './Locations';
+import options from './options';
+import {setting1, setting2, setting3} from './settingTitle';
 export {
-  history,
-  locations,
+  foods,
   Colors,
   Images,
   General,
-  notification,
-  foods,
+  options,
+  history,
+  setting1,
+  setting2,
+  setting3,
+  locations,
   Categories,
+  notification,
 };
