@@ -217,13 +217,14 @@ const EditLocation = ({navigation, route}: any) => {
                 marginHorizontal: 10,
                 justifyContent: 'center',
                 paddingVertical: 8,
+                height: 65,
                 marginBottom: 100,
-                backgroundColor: Colors.DEFAULT_YELLOW,
+                backgroundColor: Colors.DEFAULT_WHITE,
               },
             ]}>
             <Text
               style={{
-                color: Colors.DEFAULT_WHITE,
+                color: Colors.DEFAULT_GREEN,
                 fontSize: 22,
                 fontWeight: '600',
               }}>

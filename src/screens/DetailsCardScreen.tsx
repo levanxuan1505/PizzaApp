@@ -134,11 +134,11 @@ const DetailsCardScreen = ({navigation, route, heartValue}: any) => {
         />
         <Text
           style={{
-            fontSize: 20,
+            fontSize: 22,
             fontWeight: 'bold',
             color: Colors.DEFAULT_GREEN,
           }}>
-          Details
+          Chi tiết món ăn
         </Text>
       </View>
       {/* <ScrollView showsVerticalScrollIndicator={false}> */}

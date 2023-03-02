@@ -7,7 +7,6 @@ import {
   StyleSheet,
   Text,
   View,
-  Alert,
   FlatList,
   Platform,
   Animated,
@@ -18,7 +17,7 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 import {Colors} from '@constants';
 import {SecondaryButton} from '@components';
 import {setting1, setting2, setting3} from '@constants';
-
+import {ScrollView} from 'react-native-virtualized-view';
 export default function SettingScreen({navigation}: any) {
   const [visible, setVisible] = useState(false);
 
@@ -33,7 +32,7 @@ export default function SettingScreen({navigation}: any) {
         // setShowModal(true);
         Animated.spring(scaleValue, {
           toValue: 1,
-          duration: 200,
+          // duration: 200,
           useNativeDriver: true,
         }).start();
       } else {
@@ -70,7 +69,7 @@ export default function SettingScreen({navigation}: any) {
           <Icon
             name="arrow-forward-ios"
             size={17}
-            color={Colors.SECONDARY_RED}
+            color={Colors.DEFAULT_GREEN}
             style={{position: 'absolute', right: 0}}
           />
         </View>
@@ -172,54 +171,64 @@ export default function SettingScreen({navigation}: any) {
             <Icon name="settings" size={30} style={styles.icon} />
           </View>
         </View>
-        <Text
-          style={{
-            fontSize: 19,
-            fontWeight: '500',
-            color: Colors.DEFAULT_GREEN,
-          }}>
-          Tài khoản của tôi
-        </Text>
-        <FlatList
-          showsVerticalScrollIndicator={false}
-          contentContainerStyle={{}}
-          data={setting1}
-          renderItem={({item}) => <CartCard item={item} />}
-        />
-        <Text
-          style={{
-            paddingTop: 18,
-            fontSize: 19,
-            fontWeight: '500',
-            color: Colors.DEFAULT_GREEN,
-          }}>
-          Cài đặt
-        </Text>
-        <FlatList
-          showsVerticalScrollIndicator={false}
-          contentContainerStyle={{}}
-          data={setting2}
-          renderItem={({item}) => <CartCard item={item} />}
-        />
-        <Text
-          style={{
-            paddingTop: 18,
-            fontSize: 19,
-            fontWeight: '500',
-            color: Colors.DEFAULT_GREEN,
-          }}>
-          Hỗ trợ
-        </Text>
-        <FlatList
-          showsVerticalScrollIndicator={false}
-          contentContainerStyle={{}}
-          data={setting3}
-          renderItem={({item}) => <CartCard item={item} />}
-        />
-        {/* Đăng xuất */}
-        <View style={{bottom: -20, marginHorizontal: 20}}>
-          <SecondaryButton title="ĐĂNG XUẤT" onPress={() => setVisible(true)} />
-        </View>
+        <ScrollView showsVerticalScrollIndicator={false}>
+          <Text
+            style={{
+              fontSize: 19,
+              fontWeight: '500',
+              color: Colors.DEFAULT_GREEN,
+            }}>
+            Tài khoản của tôi
+          </Text>
+          <FlatList
+            showsVerticalScrollIndicator={false}
+            contentContainerStyle={{}}
+            data={setting1}
+            renderItem={({item}) => <CartCard item={item} />}
+          />
+          <Text
+            style={{
+              paddingTop: 18,
+              fontSize: 19,
+              fontWeight: '500',
+              color: Colors.DEFAULT_GREEN,
+            }}>
+            Cài đặt
+          </Text>
+          <FlatList
+            showsVerticalScrollIndicator={false}
+            contentContainerStyle={{}}
+            data={setting2}
+            renderItem={({item}) => <CartCard item={item} />}
+          />
+          <Text
+            style={{
+              paddingTop: 18,
+              fontSize: 19,
+              fontWeight: '500',
+              color: Colors.DEFAULT_GREEN,
+            }}>
+            Hỗ trợ
+          </Text>
+          <FlatList
+            showsVerticalScrollIndicator={false}
+            contentContainerStyle={{}}
+            data={setting3}
+            renderItem={({item}) => <CartCard item={item} />}
+          />
+          {/* Đăng xuất */}
+          <View
+            style={{
+              bottom: -20,
+              marginHorizontal: 20,
+              marginBottom: Platform.OS === 'ios' ? 200 : 230,
+            }}>
+            <SecondaryButton
+              title="ĐĂNG XUẤT"
+              onPress={() => setVisible(true)}
+            />
+          </View>
+        </ScrollView>
       </View>
     </SafeAreaView>
   );

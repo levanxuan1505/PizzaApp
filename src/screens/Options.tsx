@@ -34,7 +34,7 @@ export default function Options({navigation}: any) {
           <TouchableOpacity
             style={styles.buttonHome}
             activeOpacity={0.6}
-            onPress={() => navigation.navigate('ButtonHome')}>
+            onPress={() => navigation.navigate('ButtonHome', true)}>
             <Icon name="home" size={32} color={Colors.DEFAULT_WHITE} />
             <Text style={styles.buttonText}>HOME</Text>
           </TouchableOpacity>

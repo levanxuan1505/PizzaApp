@@ -36,7 +36,7 @@ export default function NotificationScreen({navigation}) {
         // setShowModal(true);
         Animated.spring(scaleValue, {
           toValue: 1,
-          duration: 300,
+          // duration: 300,
           useNativeDriver: true,
         }).start();
       } else {

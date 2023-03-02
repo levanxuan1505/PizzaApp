@@ -1,6 +1,6 @@
 /* eslint-disable react/no-unstable-nested-components */
 /* eslint-disable react-native/no-inline-styles */
-import React from 'react';
+import React, {useState} from 'react';
 import {
   SafeAreaView,
   Text,
@@ -8,6 +8,7 @@ import {
   StyleSheet,
   Platform,
   Image,
+  Switch,
   TouchableOpacity,
 } from 'react-native';
 import {ScrollView} from 'react-native-virtualized-view';
@@ -15,11 +16,14 @@ import {FlatList} from 'react-native-gesture-handler';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import Iconss from 'react-native-vector-icons/MaterialCommunityIcons';
 import Icons from 'react-native-vector-icons/Fontisto';
+import Iconsss from 'react-native-vector-icons/Ionicons';
 import IconBadge from 'react-native-icon-badge';
 import {foods} from '@constants';
 import {Colors} from '@constants';
 
 export default function ({navigation}) {
+  const [isEnabled, setIsEnabled] = useState(false);
+  const toggleSwitch = () => setIsEnabled(previousState => !previousState);
   const CartCard = ({item}: any) => {
     return (
       <TouchableOpacity onPress={() => navigation.navigate('DetailCard', item)}>
@@ -146,7 +150,88 @@ export default function ({navigation}) {
             renderItem={({item}) => <CartCard item={item} />}
             ListFooterComponentStyle={{paddingHorizontal: 20, marginTop: 20}}
           />
+          {/* Voucher */}
+          <View style={styles.voucher}>
+            <View
+              style={{
+                flexDirection: 'row',
+                alignItems: 'center',
+                justifyContent: 'space-between',
+                paddingLeft: 9,
+              }}>
+              <View
+                style={{
+                  flexDirection: 'row',
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                }}>
+                <Icon
+                  name="payments"
+                  size={42}
+                  color={Colors.DEFAULT_GREEN}
+                  style={{paddingLeft: 4}}
+                />
 
+                <Text
+                  style={{
+                    fontSize: 20,
+                    color: Colors.DEFAULT_GREEN,
+                    paddingLeft: 5,
+                  }}>
+                  Pizza Voucher
+                </Text>
+              </View>
+              <View
+                style={{
+                  flexDirection: 'row',
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                  paddingTop: 3,
+                }}>
+                <Text style={{color: Colors.DEFAULT_GREEN, right: 10}}>
+                  Miễn phí vận chuyển
+                </Text>
+                <Icon
+                  name="arrow-forward-ios"
+                  size={20}
+                  color={Colors.DEFAULT_GREEN}
+                  style={{right: 10}}
+                />
+              </View>
+            </View>
+            <View
+              style={{
+                flexDirection: 'row',
+                justifyContent: 'space-between',
+                alignItems: 'center',
+              }}>
+              <View style={{flexDirection: 'row', alignItems: 'center'}}>
+                <Iconsss
+                  name="ios-server"
+                  size={30}
+                  style={{paddingLeft: 18, color: Colors.DEFAULT_GREEN}}
+                />
+                <Text
+                  style={{
+                    color: Colors.DEFAULT_YELLOW,
+                    paddingLeft: 13,
+                    marginTop: 0,
+                    fontSize: 18,
+                  }}>
+                  Dùng 400 xu
+                </Text>
+              </View>
+              <View style={{right: 12}}>
+                <Switch
+                  trackColor={{false: '#767577', true: Colors.DEFAULT_GREEN}}
+                  thumbColor={isEnabled ? '#FFFFFF' : '#f4f3f4'}
+                  ios_backgroundColor="#3e3e3e"
+                  onValueChange={toggleSwitch}
+                  value={isEnabled}
+                />
+              </View>
+            </View>
+          </View>
           {/* Thanh toán */}
           <View style={styles.payment}>
             <View>
@@ -155,19 +240,24 @@ export default function ({navigation}) {
                   flexDirection: 'row',
                   alignItems: 'center',
                   paddingLeft: 9,
-                  marginTop: 9,
                 }}>
                 <Iconss
                   name="bitcoin"
                   size={42}
                   color={Colors.DEFAULT_GREEN}
-                  style={{paddingLeft: 3, paddingRight: 5}}
+                  style={{
+                    position: 'absolute',
+                    paddingLeft: 12,
+                    paddingTop: 18,
+                  }}
                 />
 
                 <Text
                   style={{
                     fontSize: 20,
                     color: Colors.DEFAULT_GREEN,
+                    paddingLeft: 50,
+                    paddingBottom: 5,
                   }}>
                   Chọn phương thức thanh toán
                 </Text>
@@ -175,7 +265,11 @@ export default function ({navigation}) {
                   name="arrow-forward-ios"
                   size={20}
                   color={Colors.DEFAULT_GREEN}
-                  style={{position: 'absolute', right: 20}}
+                  style={{
+                    position: 'absolute',
+                    right: 12,
+                    paddingTop: 18,
+                  }}
                 />
               </View>
               <Text
@@ -335,10 +429,31 @@ const styles = StyleSheet.create({
     elevation: 21,
   },
   payment: {
+    paddingBottom: 3,
     position: 'relative',
     borderRadius: 10,
     height: 100,
-    marginBottom: 10,
+    marginBottom: 15,
+    justifyContent: 'center',
+    // marginTop: 10,
+    marginHorizontal: 8,
+    backgroundColor: Colors.DEFAULT_WHITE,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 10,
+    },
+    shadowOpacity: 0.53,
+    shadowRadius: 13.97,
+
+    elevation: 21,
+  },
+  voucher: {
+    paddingBottom: 3,
+    position: 'relative',
+    borderRadius: 10,
+    height: 100,
+    marginBottom: 15,
     justifyContent: 'center',
     // marginTop: 10,
     marginHorizontal: 8,
