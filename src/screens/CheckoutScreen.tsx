@@ -1,6 +1,6 @@
 /* eslint-disable react/no-unstable-nested-components */
 /* eslint-disable react-native/no-inline-styles */
-import React, {useState} from 'react';
+import React from 'react';
 import {
   SafeAreaView,
   Text,
@@ -8,7 +8,6 @@ import {
   StyleSheet,
   Platform,
   Image,
-  Switch,
   TouchableOpacity,
 } from 'react-native';
 import {ScrollView} from 'react-native-virtualized-view';
@@ -16,14 +15,12 @@ import {FlatList} from 'react-native-gesture-handler';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import Iconss from 'react-native-vector-icons/MaterialCommunityIcons';
 import Icons from 'react-native-vector-icons/Fontisto';
-import Iconsss from 'react-native-vector-icons/Ionicons';
+// import Iconsss from 'react-native-vector-icons/Ionicons';
 import IconBadge from 'react-native-icon-badge';
 import {foods} from '@constants';
 import {Colors} from '@constants';
-
-export default function ({navigation}) {
-  const [isEnabled, setIsEnabled] = useState(false);
-  const toggleSwitch = () => setIsEnabled(previousState => !previousState);
+import {Voucher} from '@components';
+const CheckoutScreen = ({navigation}) => {
   const CartCard = ({item}: any) => {
     return (
       <TouchableOpacity onPress={() => navigation.navigate('DetailCard', item)}>
@@ -66,6 +63,93 @@ export default function ({navigation}) {
       </TouchableOpacity>
     );
   };
+  // const [isEnabled, setIsEnabled] = useState(false);
+  // const toggleSwitch = () => setIsEnabled(previousState => !previousState);
+  // const Voucher = () => {
+  //   return (
+  //     <View style={styles.voucher}>
+  //       <View
+  //         style={{
+  //           flexDirection: 'row',
+  //           alignItems: 'center',
+  //           justifyContent: 'space-between',
+  //           paddingLeft: 9,
+  //         }}>
+  //         <View
+  //           style={{
+  //             flexDirection: 'row',
+  //             justifyContent: 'center',
+  //             alignItems: 'center',
+  //           }}>
+  //           <Icon
+  //             name="payments"
+  //             size={42}
+  //             color={Colors.DEFAULT_GREEN}
+  //             style={{paddingLeft: 4}}
+  //           />
+
+  //           <Text
+  //             style={{
+  //               fontSize: 20,
+  //               color: Colors.DEFAULT_GREEN,
+  //               paddingLeft: 5,
+  //             }}>
+  //             Pizza Voucher
+  //           </Text>
+  //         </View>
+  //         <View
+  //           style={{
+  //             flexDirection: 'row',
+  //             justifyContent: 'center',
+  //             alignItems: 'center',
+  //             paddingTop: 3,
+  //           }}>
+  //           <Text style={{color: Colors.DEFAULT_GREEN, right: 10}}>
+  //             Miễn phí vận chuyển
+  //           </Text>
+  //           <Icon
+  //             name="arrow-forward-ios"
+  //             size={20}
+  //             color={Colors.DEFAULT_GREEN}
+  //             style={{right: 10}}
+  //           />
+  //         </View>
+  //       </View>
+  //       <View
+  //         style={{
+  //           flexDirection: 'row',
+  //           justifyContent: 'space-between',
+  //           alignItems: 'center',
+  //         }}>
+  //         <View style={{flexDirection: 'row', alignItems: 'center'}}>
+  //           <Iconsss
+  //             name="ios-server"
+  //             size={30}
+  //             style={{paddingLeft: 18, color: Colors.DEFAULT_GREEN}}
+  //           />
+  //           <Text
+  //             style={{
+  //               color: Colors.DEFAULT_YELLOW,
+  //               paddingLeft: 13,
+  //               marginTop: 0,
+  //               fontSize: 18,
+  //             }}>
+  //             Dùng 400 xu
+  //           </Text>
+  //         </View>
+  //         <View style={{right: 12}}>
+  //           <Switch
+  //             trackColor={{false: '#767577', true: Colors.DEFAULT_GREEN}}
+  //             thumbColor={isEnabled ? '#FFFFFF' : '#f4f3f4'}
+  //             ios_backgroundColor="#3e3e3e"
+  //             onValueChange={toggleSwitch}
+  //             value={isEnabled}
+  //           />
+  //         </View>
+  //       </View>
+  //     </View>
+  //   );
+  // };
   return (
     <SafeAreaView style={{backgroundColor: Colors.DEFAULT_WHITE, flex: 1}}>
       <View style={styles.header}>
@@ -151,87 +235,7 @@ export default function ({navigation}) {
             ListFooterComponentStyle={{paddingHorizontal: 20, marginTop: 20}}
           />
           {/* Voucher */}
-          <View style={styles.voucher}>
-            <View
-              style={{
-                flexDirection: 'row',
-                alignItems: 'center',
-                justifyContent: 'space-between',
-                paddingLeft: 9,
-              }}>
-              <View
-                style={{
-                  flexDirection: 'row',
-                  justifyContent: 'center',
-                  alignItems: 'center',
-                }}>
-                <Icon
-                  name="payments"
-                  size={42}
-                  color={Colors.DEFAULT_GREEN}
-                  style={{paddingLeft: 4}}
-                />
-
-                <Text
-                  style={{
-                    fontSize: 20,
-                    color: Colors.DEFAULT_GREEN,
-                    paddingLeft: 5,
-                  }}>
-                  Pizza Voucher
-                </Text>
-              </View>
-              <View
-                style={{
-                  flexDirection: 'row',
-                  justifyContent: 'center',
-                  alignItems: 'center',
-                  paddingTop: 3,
-                }}>
-                <Text style={{color: Colors.DEFAULT_GREEN, right: 10}}>
-                  Miễn phí vận chuyển
-                </Text>
-                <Icon
-                  name="arrow-forward-ios"
-                  size={20}
-                  color={Colors.DEFAULT_GREEN}
-                  style={{right: 10}}
-                />
-              </View>
-            </View>
-            <View
-              style={{
-                flexDirection: 'row',
-                justifyContent: 'space-between',
-                alignItems: 'center',
-              }}>
-              <View style={{flexDirection: 'row', alignItems: 'center'}}>
-                <Iconsss
-                  name="ios-server"
-                  size={30}
-                  style={{paddingLeft: 18, color: Colors.DEFAULT_GREEN}}
-                />
-                <Text
-                  style={{
-                    color: Colors.DEFAULT_YELLOW,
-                    paddingLeft: 13,
-                    marginTop: 0,
-                    fontSize: 18,
-                  }}>
-                  Dùng 400 xu
-                </Text>
-              </View>
-              <View style={{right: 12}}>
-                <Switch
-                  trackColor={{false: '#767577', true: Colors.DEFAULT_GREEN}}
-                  thumbColor={isEnabled ? '#FFFFFF' : '#f4f3f4'}
-                  ios_backgroundColor="#3e3e3e"
-                  onValueChange={toggleSwitch}
-                  value={isEnabled}
-                />
-              </View>
-            </View>
-          </View>
+          <Voucher />
           {/* Thanh toán */}
           <View style={styles.payment}>
             <View>
@@ -397,7 +401,7 @@ export default function ({navigation}) {
       </View>
     </SafeAreaView>
   );
-}
+};
 
 const styles = StyleSheet.create({
   header: {
@@ -555,3 +559,4 @@ const styles = StyleSheet.create({
     elevation: 24,
   },
 });
+export default CheckoutScreen;

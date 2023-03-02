@@ -194,7 +194,7 @@ const CreateAddressScreen = ({navigation}: any) => {
                 justifyContent: 'center',
                 paddingVertical: 8,
                 height: 65,
-                marginBottom: 200,
+                marginBottom: 150,
                 backgroundColor: Colors.DEFAULT_WHITE,
               },
             ]}>
