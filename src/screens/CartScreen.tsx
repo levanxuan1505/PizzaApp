@@ -180,7 +180,7 @@ const style = StyleSheet.create({
     shadowOpacity: 0.53,
     shadowRadius: 13.97,
 
-    elevation: 21,
+    elevation: 11,
   },
   total: {
     // overflow: 'hidden',

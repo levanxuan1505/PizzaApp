@@ -1,6 +1,7 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react-native/no-inline-styles */
 /* eslint-disable react/no-unstable-nested-components */
-import React from 'react';
+import React, {useState} from 'react';
 import {
   SafeAreaView,
   StyleSheet,
@@ -9,7 +10,8 @@ import {
   Platform,
   TouchableOpacity,
   Image,
-  Alert,
+  Modal,
+  Animated,
 } from 'react-native';
 import {FlatList} from 'react-native-gesture-handler';
 import Icons from 'react-native-vector-icons/MaterialIcons';
@@ -21,11 +23,42 @@ import {Colors} from '@constants';
 import {notification} from '@constants';
 
 export default function NotificationScreen({navigation}) {
-  const showAlertDelete = () =>
-    Alert.alert('Thông báo', 'Bạn chắc chắn muốn xoá thông báo này', [
-      {text: 'Xoá', onPress: () => {}},
-      {text: 'Huỷ', onPress: () => {}},
-    ]);
+  const [visible, setVisible] = useState(false);
+
+  const ModalPoup = ({visible, children}) => {
+    const [showModal, setShowModal] = React.useState(visible);
+    const scaleValue = React.useRef(new Animated.Value(0)).current;
+    React.useEffect(() => {
+      toggleModal();
+    }, [visible]);
+    const toggleModal = () => {
+      if (visible) {
+        // setShowModal(true);
+        Animated.spring(scaleValue, {
+          toValue: 1,
+          duration: 300,
+          useNativeDriver: true,
+        }).start();
+      } else {
+        setTimeout(() => setShowModal(false), 300);
+        Animated.timing(scaleValue, {
+          toValue: 0,
+          duration: 1000,
+          useNativeDriver: true,
+        }).start();
+      }
+    };
+    return (
+      <Modal transparent visible={showModal}>
+        <View style={styles.modalBackGround}>
+          <Animated.View
+            style={[styles.modalContainer, {transform: [{scale: scaleValue}]}]}>
+            {children}
+          </Animated.View>
+        </View>
+      </Modal>
+    );
+  };
   const CartCard = ({item}: any) => {
     return (
       <TouchableOpacity>
@@ -54,7 +87,7 @@ export default function NotificationScreen({navigation}) {
               {item.title}
             </Text>
           </View>
-          <TouchableOpacity onPress={showAlertDelete}>
+          <TouchableOpacity onPress={() => setVisible(true)}>
             <View style={{marginRight: 16, alignItems: 'center'}}>
               <Iconss name="trash" size={28} color={Colors.DEFAULT_GREEN} />
             </View>
@@ -65,6 +98,78 @@ export default function NotificationScreen({navigation}) {
   };
   return (
     <SafeAreaView>
+      <ModalPoup visible={visible}>
+        <View
+          style={{
+            flex: 1,
+            flexDirection: 'column',
+            justifyContent: 'space-around',
+            alignItems: 'center',
+          }}>
+          <View
+            style={[styles.Header, {borderBottomColor: Colors.DEFAULT_WHITE}]}>
+            <Text
+              style={{
+                fontSize: 24,
+                fontWeight: '600',
+                color: Colors.DEFAULT_RED,
+                paddingTop: 10,
+              }}>
+              Cảnh báo
+            </Text>
+          </View>
+          <View
+            style={[
+              styles.Header,
+              {top: -8, paddingBottom: 5, paddingHorizontal: 10},
+            ]}>
+            <Text
+              style={{
+                fontSize: 16,
+                fontWeight: '500',
+                color: Colors.DEFAULT_GREEN,
+              }}>
+              Bạn chắc chắn muốn xoá thông
+            </Text>
+            <Text
+              style={{
+                fontSize: 16,
+                fontWeight: '500',
+                color: Colors.DEFAULT_GREEN,
+              }}>
+              báo này
+            </Text>
+          </View>
+          <View
+            style={{
+              width: '100%',
+              flexDirection: 'row',
+              justifyContent: 'space-around',
+              top: -5,
+            }}>
+            <TouchableOpacity onPress={() => setVisible(false)}>
+              <Text
+                style={{
+                  color: Colors.DEFAULT_RED,
+                  fontSize: 20,
+                  fontWeight: '600',
+                }}>
+                Xoá
+              </Text>
+            </TouchableOpacity>
+            <TouchableOpacity onPress={() => setVisible(false)}>
+              <Text
+                style={{
+                  color: Colors.DEFAULT_GREEN,
+                  fontSize: 20,
+                  fontWeight: '600',
+                }}>
+                Huỷ bỏ
+              </Text>
+            </TouchableOpacity>
+          </View>
+        </View>
+      </ModalPoup>
       {/* header */}
       <View style={styles.header}>
         <Icons
@@ -89,7 +194,7 @@ export default function NotificationScreen({navigation}) {
                 <Icon name="bell" size={32} color={Colors.DEFAULT_GREEN} />
               </View>
             }
-            BadgeElement={<Text style={{color: '#FFFFFF'}}>3</Text>}
+            BadgeElement={<Text style={{color: '#FFFFFF'}}>15</Text>}
             IconBadgeStyle={{
               marginRight: -5,
               marginTop: -6,
@@ -102,11 +207,12 @@ export default function NotificationScreen({navigation}) {
         </View>
       </View>
       {/* header */}
-
       {/* FlastList */}
       <FlatList
         showsVerticalScrollIndicator={false}
-        contentContainerStyle={{paddingBottom: 80}}
+        contentContainerStyle={
+          Platform.OS === 'ios' ? {paddingBottom: 80} : {paddingBottom: 100}
+        }
         data={notification}
         renderItem={({item}) => <CartCard item={item} />}
         ListFooterComponentStyle={{paddingHorizontal: 20, marginTop: 20}}
@@ -144,5 +250,28 @@ const styles = StyleSheet.create({
     shadowRadius: 13.97,
 
     elevation: 21,
+  },
+
+  modalBackGround: {
+    flex: 1,
+    backgroundColor: 'rgba(0,0,0,0.5)',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  modalContainer: {
+    width: '65%',
+    height: 148,
+    backgroundColor: 'white',
+    // paddingHorizontal: 20,
+    // paddingVertical: 30,
+    borderRadius: 15,
+    elevation: 20,
+  },
+  Header: {
+    width: '100%',
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderBottomWidth: 0.17,
+    borderColor: Colors.DEFAULT_GREEN,
   },
 });

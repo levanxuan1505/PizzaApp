@@ -1,30 +1,64 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/no-unstable-nested-components */
 /* eslint-disable react-native/no-inline-styles */
-import React from 'react';
+import React, {useState} from 'react';
 import {
   SafeAreaView,
   StyleSheet,
   Text,
   View,
-  Image,
   Alert,
   FlatList,
   Platform,
+  Animated,
+  Modal,
   TouchableOpacity,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
-import Icons from 'react-native-vector-icons/MaterialCommunityIcons';
-import Iconss from 'react-native-vector-icons/Ionicons';
-import IconBadge from 'react-native-icon-badge';
 import {Colors} from '@constants';
 import {SecondaryButton} from '@components';
-import {ScrollView} from 'react-native-gesture-handler';
 import {setting1, setting2, setting3} from '@constants';
 
 export default function SettingScreen({navigation}: any) {
+  const [visible, setVisible] = useState(false);
+
+  const ModalPoup = ({visible, children}) => {
+    const [showModal, setShowModal] = React.useState(visible);
+    const scaleValue = React.useRef(new Animated.Value(0)).current;
+    React.useEffect(() => {
+      toggleModal();
+    }, [visible]);
+    const toggleModal = () => {
+      if (visible) {
+        // setShowModal(true);
+        Animated.spring(scaleValue, {
+          toValue: 1,
+          duration: 200,
+          useNativeDriver: true,
+        }).start();
+      } else {
+        setTimeout(() => setShowModal(false), 200);
+        Animated.timing(scaleValue, {
+          toValue: 0,
+          duration: 200,
+          useNativeDriver: true,
+        }).start();
+      }
+    };
+    return (
+      <Modal transparent visible={showModal}>
+        <View style={styles.modalBackGround}>
+          <Animated.View
+            style={[styles.modalContainer, {transform: [{scale: scaleValue}]}]}>
+            {children}
+          </Animated.View>
+        </View>
+      </Modal>
+    );
+  };
   const CartCard = ({item}: any) => {
     return (
-      <TouchableOpacity onPress={() => navigation.navigate('DetailCard', item)}>
+      <TouchableOpacity>
         <View
           style={{
             justifyContent: 'center',
@@ -45,6 +79,78 @@ export default function SettingScreen({navigation}: any) {
   };
   return (
     <SafeAreaView style={{marginHorizontal: 20}}>
+      <ModalPoup visible={visible}>
+        <View
+          style={{
+            flex: 1,
+            flexDirection: 'column',
+            justifyContent: 'space-around',
+            alignItems: 'center',
+          }}>
+          <View
+            style={[styles.Header, {borderBottomColor: Colors.DEFAULT_WHITE}]}>
+            <Text
+              style={{
+                fontSize: 24,
+                fontWeight: '600',
+                color: Colors.DEFAULT_RED,
+                paddingTop: 10,
+              }}>
+              Cảnh Báo
+            </Text>
+          </View>
+          <View style={[styles.Header, {top: -10, paddingBottom: 10}]}>
+            <Text
+              style={{
+                fontSize: 19,
+                fontWeight: '500',
+                color: Colors.DEFAULT_GREEN,
+              }}>
+              Hành động này sẽ đăng xuất
+            </Text>
+            <Text
+              style={{
+                fontSize: 19,
+                fontWeight: '500',
+                color: Colors.DEFAULT_GREEN,
+              }}>
+              bạn khỏi hệ thống
+            </Text>
+          </View>
+          <View
+            style={{
+              width: '100%',
+              flexDirection: 'row',
+              justifyContent: 'space-around',
+              top: -10,
+            }}>
+            <TouchableOpacity
+              onPress={() => {
+                setVisible(false);
+                navigation.navigate('Options');
+              }}>
+              <Text
+                style={{
+                  color: Colors.DEFAULT_RED,
+                  fontSize: 20,
+                  fontWeight: '600',
+                }}>
+                Đăng xuất
+              </Text>
+            </TouchableOpacity>
+            <TouchableOpacity onPress={() => setVisible(false)}>
+              <Text
+                style={{
+                  color: Colors.DEFAULT_GREEN,
+                  fontSize: 20,
+                  fontWeight: '600',
+                }}>
+                Huỷ bỏ
+              </Text>
+            </TouchableOpacity>
+          </View>
+        </View>
+      </ModalPoup>
       <View>
         <View style={styles.header}>
           <Icon
@@ -112,22 +218,7 @@ export default function SettingScreen({navigation}: any) {
         />
         {/* Đăng xuất */}
         <View style={{bottom: -20, marginHorizontal: 20}}>
-          <SecondaryButton
-            title="ĐĂNG XUẤT"
-            onPress={() =>
-              Alert.alert(
-                'Xác nhận',
-                'Hành động này giúp bạn đăng xuất tài khoản khỏi hệ thống',
-                [
-                  {
-                    text: 'Đăng xuất',
-                    onPress: () => navigation.navigate('Options'),
-                  },
-                  {text: 'Huỷ bỏ', onPress: () => {}},
-                ],
-              )
-            }
-          />
+          <SecondaryButton title="ĐĂNG XUẤT" onPress={() => setVisible(true)} />
         </View>
       </View>
     </SafeAreaView>
@@ -144,5 +235,30 @@ const styles = StyleSheet.create({
   },
   icon: {
     color: Colors.DEFAULT_GREEN,
+  },
+
+  modalBackGround: {
+    flex: 1,
+    backgroundColor: 'rgba(0,0,0,0.5)',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  modalContainer: {
+    width: '72%',
+    height: 150,
+    backgroundColor: 'white',
+    paddingHorizontal: 5,
+    // paddingVertical: 30,
+    borderRadius: 15,
+    elevation: 20,
+  },
+  Header: {
+    // paddingTop: 20,
+    alignItems: 'center',
+    justifyContent: 'center',
+    // paddingVertical: 20,
+    borderBottomWidth: 0.17,
+    borderColor: Colors.DEFAULT_GREEN,
+    width: '100%',
   },
 });

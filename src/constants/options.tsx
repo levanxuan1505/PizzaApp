@@ -1,5 +1,5 @@
 const options = [
-  {id: 1, name: '', title: 'Khách hàng thân thiết', adj: 'Thành viên Bạc'},
+  {id: 1, name: '', title1: 'Khách hàng thân thiết', adj: 'Thành viên Bạc'},
   {id: 2, name: '', title: 'Pizza Live', adj: ''},
   {id: 3, name: '', title: 'Bookmark', adj: '3 Likes'},
   {id: 4, name: '', title: 'Đã xem gần đây', adj: ''},

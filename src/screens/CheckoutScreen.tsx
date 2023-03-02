@@ -81,12 +81,12 @@ export default function ({navigation}) {
           Thanh toán
         </Text>
 
-        <View style={{position: 'absolute', right: 10}}>
+        <View style={{position: 'absolute', right: 12}}>
           <IconBadge
             MainElement={
               <View>
-                <Icon
-                  name="shopping-cart"
+                <Iconss
+                  name="cart-check"
                   size={32}
                   color={Colors.DEFAULT_GREEN}
                 />
@@ -94,8 +94,8 @@ export default function ({navigation}) {
             }
             BadgeElement={<Text style={{color: '#FFFFFF'}}>3</Text>}
             IconBadgeStyle={{
-              marginRight: -5,
-              marginTop: -6,
+              marginRight: -16,
+              marginTop: -7,
               width: 17,
               height: 20,
               backgroundColor: 'red',
@@ -175,7 +175,7 @@ export default function ({navigation}) {
                   name="arrow-forward-ios"
                   size={20}
                   color={Colors.DEFAULT_GREEN}
-                  style={{paddingLeft: Platform.OS === 'ios' ? 5 : 10}}
+                  style={{position: 'absolute', right: 20}}
                 />
               </View>
               <Text
@@ -195,12 +195,12 @@ export default function ({navigation}) {
                 alignItems: 'center',
                 paddingLeft: 20,
               }}>
-              <Icons name="calendar" size={22} color={Colors.DEFAULT_GREEN} />
+              <Icons name="calendar" size={24} color={Colors.DEFAULT_GREEN} />
               <Text
                 style={{
                   color: Colors.DEFAULT_GREEN,
-                  paddingLeft: 7,
-                  fontSize: 18,
+                  paddingLeft: 15,
+                  fontSize: 20,
                 }}>
                 Chi tiết thanh toán
               </Text>
@@ -335,6 +335,7 @@ const styles = StyleSheet.create({
     elevation: 21,
   },
   payment: {
+    position: 'relative',
     borderRadius: 10,
     height: 100,
     marginBottom: 10,

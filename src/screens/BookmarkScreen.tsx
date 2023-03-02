@@ -37,7 +37,7 @@ const BookmarkScreen = ({navigation}: any) => {
               {item.ingredients}
             </Text>
             <Text style={{fontSize: 17, fontWeight: 'bold'}}>
-              ${item.price}
+              {item.price}k
             </Text>
           </View>
           <View style={{marginRight: 25, alignItems: 'center'}}>
