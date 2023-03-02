@@ -1,19 +1,22 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react-native/no-inline-styles */
 /* eslint-disable react/self-closing-comp */
 /* eslint-disable react/no-unstable-nested-components */
 import {
   Text,
   View,
-  SafeAreaView,
+  Image,
+  Alert,
+  Modal,
+  FlatList,
+  Platform,
+  Animated,
   StatusBar,
   StyleSheet,
-  FlatList,
-  Image,
   Dimensions,
+  SafeAreaView,
   TouchableOpacity,
   TouchableHighlight,
-  Platform,
-  Alert,
 } from 'react-native';
 import React, {useState} from 'react';
 import Icon from 'react-native-vector-icons/MaterialIcons';
@@ -30,7 +33,43 @@ const cardWidth = width / 2 - 20;
 
 export default function HomeScreen({navigation}: any) {
   const [selectedCategoryIndex, setSelectedCategoryIndex] = useState(0);
-
+  // modal//
+  const [visible, setVisible] = React.useState(true);
+  const ModalPoup = ({visible, children}) => {
+    const [showModal, setShowModal] = React.useState(visible);
+    const scaleValue = React.useRef(new Animated.Value(0)).current;
+    React.useEffect(() => {
+      toggleModal();
+    }, [visible]);
+    const toggleModal = () => {
+      if (visible) {
+        setShowModal(true);
+        Animated.spring(scaleValue, {
+          toValue: 1,
+          // duration: 300,
+          useNativeDriver: true,
+        }).start();
+      } else {
+        setTimeout(() => setShowModal(false), 200);
+        Animated.timing(scaleValue, {
+          toValue: 0,
+          duration: 300,
+          useNativeDriver: true,
+        }).start();
+      }
+    };
+    return (
+      <Modal transparent visible={showModal}>
+        <View style={styles.modalBackGround}>
+          <Animated.View
+            style={[styles.modalContainer, {transform: [{scale: scaleValue}]}]}>
+            {children}
+          </Animated.View>
+        </View>
+      </Modal>
+    );
+  };
+  // modal
   const ListCategories = () => {
     return (
       <ScrollView
@@ -124,6 +163,44 @@ export default function HomeScreen({navigation}: any) {
   };
   return (
     <SafeAreaView style={{flex: 1, backgroundColor: Colors.DEFAULT_WHITE}}>
+      {/* modal */}
+      <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+        <ModalPoup visible={visible}>
+          <View style={{alignItems: 'center'}}>
+            <View style={styles.Header}>
+              <TouchableOpacity onPress={() => setVisible(false)}>
+                <Icon
+                  name="cancel"
+                  size={36}
+                  style={{color: Colors.DEFAULT_GREEN}}
+                />
+              </TouchableOpacity>
+            </View>
+          </View>
+          <View style={{alignItems: 'center'}}>
+            <Image
+              source={require('../assets/images/bigsale.png')}
+              style={{height: 400, width: 460, marginVertical: 10}}
+            />
+          </View>
+          <View style={{alignItems: 'center'}}>
+            <Text
+              style={{
+                fontSize: 26,
+                color: Colors.DEFAULT_GREEN,
+                textShadowColor: 'black',
+                textShadowOffset: {width: -1, height: 0},
+                textShadowRadius: 10,
+                // fontSize: hp('2%'),
+                fontWeight: '800',
+              }}>
+              Ăn thả ga, chẳng lo về giá
+            </Text>
+          </View>
+        </ModalPoup>
+        {/* <Button title="Open Modal" onPress={() => setVisible(true)} /> */}
+      </View>
+      {/* modal */}
       <StatusBar barStyle="dark-content" hidden={false} translucent={true} />
       <View style={styles.header}>
         <View>
@@ -278,4 +355,26 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
+  // modal
+  modalBackGround: {
+    flex: 1,
+    backgroundColor: 'rgba(0,0,0,0.8)',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  modalContainer: {
+    width: '90%',
+    backgroundColor: 'transparent',
+    // paddingHorizontal: 20,
+    // paddingVertical: 30,
+    // borderRadius: 20,
+    elevation: 20,
+  },
+  Header: {
+    width: '100%',
+    height: 40,
+    alignItems: 'flex-end',
+    justifyContent: 'center',
+  },
+  // modal
 });

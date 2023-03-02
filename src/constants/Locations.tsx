@@ -29,8 +29,8 @@ const locations = [
   },
   {
     id: '5',
-    name: 'Vũ Quỳnh ',
-    phone: '(+84) 96 5147 15 28',
+    name: 'Nguyễn Tuấn ',
+    phone: '(+84) 96 5147 15 88',
     dress: 'Học viện Bưu chính Viễn thông',
     title: 'Phường Mộ Lao, Quận Hà Đông, Hà Nội',
   },
