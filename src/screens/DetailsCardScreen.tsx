@@ -26,7 +26,7 @@ const DetailsCardScreen = ({navigation, route, heartValue}: any) => {
   const [heart, setHeart] = useState(!heartValue);
   const [visible, setVisible] = useState(false);
 
-  const ModalPoup = ({visible, children}) => {
+  const ModalPoup = ({visible, children}: any) => {
     const [showModal, setShowModal] = React.useState(visible);
     const scaleValue = React.useRef(new Animated.Value(0)).current;
     React.useEffect(() => {
@@ -37,7 +37,7 @@ const DetailsCardScreen = ({navigation, route, heartValue}: any) => {
         // setShowModal(true);
         Animated.spring(scaleValue, {
           toValue: 1,
-          duration: 300,
+          // duration: 3000,
           useNativeDriver: true,
         }).start();
       } else {

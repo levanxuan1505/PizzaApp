@@ -6,14 +6,13 @@ import {
   Text,
   View,
   Image,
-  Alert,
   Modal,
-  FlatList,
   Platform,
   Animated,
+  FlatList,
   StatusBar,
-  StyleSheet,
   Dimensions,
+  StyleSheet,
   SafeAreaView,
   TouchableOpacity,
   TouchableHighlight,
@@ -220,7 +219,7 @@ export default function HomeScreen({navigation}: any) {
       {/* modal */}
       {/* modal2 */}
       <View style={{flex: 1}}>
-        <ModalPoup visible={visible1}>
+        <ModalPoup1 visible={visible1}>
           <View style={{alignItems: 'center'}}>
             <View
               style={[
@@ -262,7 +261,7 @@ export default function HomeScreen({navigation}: any) {
             </View>
           </View>
           <View style={{alignItems: 'center'}}></View>
-        </ModalPoup>
+        </ModalPoup1>
         {/* <Button title="Open Modal" onPress={() => setVisible(true)} /> */}
       </View>
 

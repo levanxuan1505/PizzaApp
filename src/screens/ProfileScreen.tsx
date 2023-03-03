@@ -71,7 +71,7 @@ export default function ProfileScreen({navigation}: any) {
             source={require('../assets/images/avatar.webp')}
             style={{height: 50, width: 50, borderRadius: 50}}
           />
-          <View style={{left: 10}}>
+          <View style={{left: 10, alignItems: 'center'}}>
             <Text
               style={{
                 fontSize: 20,
@@ -80,9 +80,17 @@ export default function ProfileScreen({navigation}: any) {
               }}>
               Lê Văn Xuân
             </Text>
-            <Text style={{fontSize: 14, color: Colors.GOOGLE_BLUE}}>
-              Thành viên Bạc
-            </Text>
+            <TouchableOpacity
+              style={{
+                backgroundColor: Colors.DEFAULT_GREY,
+                borderRadius: 10,
+                paddingHorizontal: 8,
+                paddingVertical: 1,
+              }}>
+              <Text style={{fontSize: 14, color: Colors.GOOGLE_BLUE}}>
+                Thành viên Bạc
+              </Text>
+            </TouchableOpacity>
           </View>
         </View>
         {/* Đơn mua  */}
@@ -890,6 +898,9 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'flex-start',
     alignItems: 'center',
+    paddingBottom: 10,
+    borderBottomWidth: 0.2,
+    borderBottomColor: Colors.DEFAULT_GREEN,
   },
   bell: {
     color: Colors.DEFAULT_GREEN,
