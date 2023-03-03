@@ -44,7 +44,7 @@ const DetailsCardScreen = ({navigation, route, heartValue}: any) => {
         setTimeout(() => setShowModal(false), 300);
         Animated.timing(scaleValue, {
           toValue: 0,
-          duration: 1000,
+          duration: 300,
           useNativeDriver: true,
         }).start();
       }

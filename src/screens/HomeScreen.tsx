@@ -35,6 +35,7 @@ export default function HomeScreen({navigation}: any) {
   const [selectedCategoryIndex, setSelectedCategoryIndex] = useState(0);
   // modal//
   const [visible, setVisible] = React.useState(true);
+  const [visible1, setVisible1] = useState(false);
   const ModalPoup = ({visible, children}) => {
     const [showModal, setShowModal] = React.useState(visible);
     const scaleValue = React.useRef(new Animated.Value(0)).current;
@@ -70,6 +71,41 @@ export default function HomeScreen({navigation}: any) {
     );
   };
   // modal
+  const ModalPoup1 = ({visible, children}) => {
+    const [showModal, setShowModal] = React.useState(visible);
+    const scaleValue = React.useRef(new Animated.Value(0)).current;
+    React.useEffect(() => {
+      toggleModal();
+    }, [visible]);
+    const toggleModal = () => {
+      if (visible1) {
+        setShowModal(true);
+        Animated.spring(scaleValue, {
+          toValue: 1,
+          // duration: 300,
+          useNativeDriver: true,
+        }).start();
+      } else {
+        setTimeout(() => setShowModal(false), 200);
+        Animated.timing(scaleValue, {
+          toValue: 0,
+          duration: 300,
+          useNativeDriver: true,
+        }).start();
+      }
+    };
+    return (
+      <Modal transparent visible={showModal}>
+        <View style={styles.modalBackGround}>
+          <Animated.View
+            style={[styles.modalContainer, {transform: [{scale: scaleValue}]}]}>
+            {children}
+          </Animated.View>
+        </View>
+      </Modal>
+    );
+  };
+  // modal2
   const ListCategories = () => {
     return (
       <ScrollView
@@ -145,12 +181,7 @@ export default function HomeScreen({navigation}: any) {
 
             <View style={styles.addToCartBtn}>
               <Icon
-                onPress={() =>
-                  Alert.alert('Xác nhận', 'Bạn muốn thêm món ăn vào giỏ hàng', [
-                    {text: 'Thêm', onPress: () => {}},
-                    {text: 'Huỷ bỏ', onPress: () => {}},
-                  ])
-                }
+                onPress={() => setVisible1(true)}
                 name="add"
                 size={20}
                 color={Colors.DEFAULT_WHITE}
@@ -183,24 +214,59 @@ export default function HomeScreen({navigation}: any) {
               style={{height: 400, width: 460, marginVertical: 10}}
             />
           </View>
-          <View style={{alignItems: 'center'}}>
-            <Text
-              style={{
-                fontSize: 26,
-                color: Colors.DEFAULT_GREEN,
-                textShadowColor: 'black',
-                textShadowOffset: {width: -1, height: 0},
-                textShadowRadius: 10,
-                // fontSize: hp('2%'),
-                fontWeight: '800',
-              }}>
-              Ăn thả ga, chẳng lo về giá
-            </Text>
-          </View>
         </ModalPoup>
         {/* <Button title="Open Modal" onPress={() => setVisible(true)} /> */}
       </View>
       {/* modal */}
+      {/* modal2 */}
+      <View style={{flex: 1}}>
+        <ModalPoup visible={visible1}>
+          <View style={{alignItems: 'center'}}>
+            <View
+              style={[
+                styles.Header2,
+                {
+                  // justifyContent: 'center',
+                  backgroundColor: Colors.DEFAULT_WHITE,
+                },
+              ]}>
+              <View>
+                <Text
+                  style={{fontSize: 26, color: Colors.DEFAULT_GREEN, top: 25}}>
+                  Xác nhận
+                </Text>
+              </View>
+              <View>
+                <Text style={{fontSize: 24, color: Colors.DEFAULT_YELLOW}}>
+                  Thêm món ăn vào giỏ
+                </Text>
+              </View>
+              <View
+                style={{
+                  flexDirection: 'row',
+                  width: '100%',
+                  bottom: 20,
+                  justifyContent: 'space-around',
+                }}>
+                <TouchableOpacity onPress={() => setVisible1(false)}>
+                  <Text style={{fontSize: 23, color: Colors.DEFAULT_GREEN}}>
+                    Thêm
+                  </Text>
+                </TouchableOpacity>
+                <TouchableOpacity onPress={() => setVisible1(false)}>
+                  <Text style={{fontSize: 23, color: Colors.DEFAULT_RED}}>
+                    Huỷ bỏ
+                  </Text>
+                </TouchableOpacity>
+              </View>
+            </View>
+          </View>
+          <View style={{alignItems: 'center'}}></View>
+        </ModalPoup>
+        {/* <Button title="Open Modal" onPress={() => setVisible(true)} /> */}
+      </View>
+
+      {/* modal2 */}
       <StatusBar barStyle="dark-content" hidden={false} translucent={true} />
       <View style={styles.header}>
         <View>
@@ -375,6 +441,14 @@ const styles = StyleSheet.create({
     height: 40,
     alignItems: 'flex-end',
     justifyContent: 'center',
+  },
+  Header2: {
+    flexDirection: 'column',
+    width: '85%',
+    height: 160,
+    borderRadius: 30,
+    alignItems: 'center',
+    justifyContent: 'space-between',
   },
   // modal
 });
