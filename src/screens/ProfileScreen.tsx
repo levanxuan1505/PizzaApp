@@ -87,7 +87,7 @@ export default function ProfileScreen({navigation}: any) {
                 paddingHorizontal: 8,
                 paddingVertical: 1,
               }}>
-              <Text style={{fontSize: 14, color: Colors.GOOGLE_BLUE}}>
+              <Text style={{fontSize: 14, color: Colors.FACEBOOK_BLUE}}>
                 Thành viên Bạc
               </Text>
             </TouchableOpacity>
@@ -795,7 +795,7 @@ export default function ProfileScreen({navigation}: any) {
               justifyContent: 'space-between',
               alignItems: 'center',
               paddingVertical: 10,
-              marginBottom: Platform.OS === 'ios' ? 260 : 310,
+              marginBottom: Platform.OS === 'ios' ? 280 : 330,
             }}>
             <View
               style={{

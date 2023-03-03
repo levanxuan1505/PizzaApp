@@ -11,14 +11,14 @@ const locations = [
     name: 'Lê Văn Vũ ',
     phone: '(+84) 97 517 95 46',
     dress: 'Nhà văn hoá thôn Ngọc Lâm',
-    title: 'Xã Quảng Thạch, huyện Quảng Xương, Thanh Hoá',
+    title: 'Quảng Thạch, huyện Quảng Xương, Thanh Hoá',
   },
   {
     id: '3',
     name: 'Vân Dung ',
     phone: '(+84) 366 739 660',
     dress: 'Nhà văn hoá thôn Ngọc Lâm',
-    title: 'Xã Quảng Thạch, huyện Quảng Xương, Thanh Hoá',
+    title: 'Quảng Thạch, huyện Quảng Xương, Thanh Hoá',
   },
   {
     id: '4',

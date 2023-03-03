@@ -218,13 +218,17 @@ const CheckoutScreen = ({navigation}) => {
                   <Text>Số 17 ngõ 75 Hồ Tùng Mậu,</Text>
                   <Text>Phường Mai Dịch, Quận Cầu Giấy, Hà Nội</Text>
                 </View>
-                <Icon
-                  name="arrow-forward-ios"
-                  size={20}
-                  color={Colors.DEFAULT_GREEN}
-                  style={{right: 0, paddingHorizontal: 50}}
-                />
               </View>
+              <Icon
+                name="arrow-forward-ios"
+                size={20}
+                color={Colors.DEFAULT_GREEN}
+                style={{
+                  position: 'absolute',
+                  right: 28,
+                  // paddingHorizontal: 50,
+                }}
+              />
             </View>
           </TouchableOpacity>
           <FlatList
@@ -414,6 +418,7 @@ const styles = StyleSheet.create({
     position: 'relative',
   },
   location: {
+    position: 'relative',
     borderRadius: 10,
     height: 100,
     marginBottom: 10,

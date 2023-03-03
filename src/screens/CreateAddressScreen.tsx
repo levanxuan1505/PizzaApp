@@ -1,12 +1,15 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable react/no-unstable-nested-components */
 /* eslint-disable react-native/no-inline-styles */
 import React, {useState} from 'react';
 import {
   View,
   Text,
-  Alert,
   Switch,
+  Modal,
   Platform,
   ScrollView,
+  Animated,
   StyleSheet,
   SafeAreaView,
   TouchableOpacity,
@@ -24,11 +27,114 @@ const CreateAddressScreen = ({navigation}: any) => {
   const [isEnabled1, setIsEnabled1] = useState(false);
   const [isEnabled2, setIsEnabled2] = useState(false);
   const [isEnabled3, setIsEnabled3] = useState(false);
+  // modal
+  const [visible, setVisible] = useState(false);
+  const ModalPoup = ({visible, children}) => {
+    const [showModal, setShowModal] = React.useState(visible);
+    const scaleValue = React.useRef(new Animated.Value(0)).current;
+    React.useEffect(() => {
+      toggleModal();
+    }, [visible]);
+    const toggleModal = () => {
+      if (visible) {
+        // setShowModal(true);
+        Animated.spring(scaleValue, {
+          toValue: 1,
+          // duration: 300,
+          useNativeDriver: true,
+        }).start();
+      } else {
+        setTimeout(() => setShowModal(false), 300);
+        Animated.timing(scaleValue, {
+          toValue: 0,
+          duration: 1000,
+          useNativeDriver: true,
+        }).start();
+      }
+    };
+    return (
+      <Modal transparent visible={showModal}>
+        <View style={styles.modalBackGround}>
+          <Animated.View
+            style={[styles.modalContainer, {transform: [{scale: scaleValue}]}]}>
+            {children}
+          </Animated.View>
+        </View>
+      </Modal>
+    );
+  };
+  // modal
   const toggleSwitch1 = () => setIsEnabled1(previousState => !previousState);
   const toggleSwitch2 = () => setIsEnabled2(previousState => !previousState);
   const toggleSwitch3 = () => setIsEnabled3(previousState => !previousState);
   return (
     <SafeAreaView style={{backgroundColor: Colors.DEFAULT_WHITE}}>
+      {/* modal */}
+
+      <ModalPoup visible={visible}>
+        <View
+          style={{
+            flex: 1,
+            flexDirection: 'column',
+            justifyContent: 'space-around',
+            alignItems: 'center',
+          }}>
+          <View
+            style={[styles.Header, {borderBottomColor: Colors.DEFAULT_WHITE}]}>
+            <Text
+              style={{
+                fontSize: 24,
+                fontWeight: '600',
+                color: Colors.DEFAULT_GREEN,
+                paddingTop: 10,
+              }}>
+              Xác nhận
+            </Text>
+          </View>
+          <View style={[styles.Header, {top: -10, paddingBottom: 10}]}>
+            <Text
+              style={{
+                fontSize: 19,
+                fontWeight: '500',
+                color: Colors.DEFAULT_GREEN,
+              }}>
+              Xác nhận đăng ký địa chỉ mới
+            </Text>
+          </View>
+          <View
+            style={{
+              width: '100%',
+              flexDirection: 'row',
+              justifyContent: 'space-around',
+              top: -10,
+            }}>
+            <TouchableOpacity
+              onPress={() => {
+                setVisible(false), navigation.navigate('Local');
+              }}>
+              <Text
+                style={{
+                  color: Colors.DEFAULT_GREEN,
+                  fontSize: 21,
+                  fontWeight: '700',
+                }}>
+                Xác nhận
+              </Text>
+            </TouchableOpacity>
+            <TouchableOpacity onPress={() => setVisible(false)}>
+              <Text
+                style={{
+                  color: Colors.DEFAULT_RED,
+                  fontSize: 21,
+                  fontWeight: '700',
+                }}>
+                Huỷ bỏ
+              </Text>
+            </TouchableOpacity>
+          </View>
+        </View>
+      </ModalPoup>
+      {/* modal */}
       <View style={styles.header}>
         <Icon
           name="arrow-back-ios"
@@ -180,12 +286,9 @@ const CreateAddressScreen = ({navigation}: any) => {
         </View>
 
         <TouchableOpacity
-          onPress={() =>
-            Alert.alert('Hoàn tất', 'Xác nhận đăng ký địa chỉ mới', [
-              {text: 'Xác nhận', onPress: () => {}},
-              {text: 'Huỷ bỏ', onPress: navigation.goBack},
-            ])
-          }>
+          onPress={() => {
+            setVisible(true);
+          }}>
           <View
             style={[
               styles.input,
@@ -296,6 +399,41 @@ const styles = StyleSheet.create({
   addressText: {
     fontSize: 18,
     color: Colors.DEFAULT_GREEN,
+  },
+  // modal
+
+  modalBackGround: {
+    flex: 1,
+    backgroundColor: 'rgba(0,0,0,0.5)',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  modalContainer: {
+    width: '75%',
+    height: 150,
+    backgroundColor: 'white',
+    // paddingHorizontal: 20,
+    // paddingVertical: 30,
+    borderRadius: 15,
+    // elevation: 20,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 10,
+    },
+    shadowOpacity: 0.53,
+    shadowRadius: 13.97,
+
+    elevation: 21,
+  },
+  Header: {
+    // paddingTop: 20,
+    alignItems: 'center',
+    justifyContent: 'center',
+    // paddingVertical: 20,
+    borderBottomWidth: 0.17,
+    borderColor: Colors.DEFAULT_GREEN,
+    width: '100%',
   },
 });
 

@@ -17,8 +17,7 @@ import {Colors, locations} from '@constants';
 export default function LocationScreen({navigation}) {
   const CartCard = ({item}: any) => {
     return (
-      <TouchableOpacity
-        onPress={() => navigation.navigate('EditLocation', item)}>
+      <TouchableOpacity onPress={navigation.goBack}>
         <View style={styles.cartCard}>
           <View
             style={{
@@ -60,6 +59,24 @@ export default function LocationScreen({navigation}) {
               </Text>
             </View>
           </View>
+          <TouchableOpacity
+            onPress={() => {
+              navigation.navigate('CreateAddress');
+            }}
+            style={{
+              position: 'absolute',
+              right: 15,
+              padding: 10,
+              // backgroundColor: Colors.DEFAULT_GREEN,
+            }}>
+            <Icon
+              size={16}
+              name="arrow-forward-ios"
+              style={{
+                color: Colors.DEFAULT_GREEN,
+              }}
+            />
+          </TouchableOpacity>
         </View>
       </TouchableOpacity>
     );
@@ -72,7 +89,10 @@ export default function LocationScreen({navigation}) {
           size={28}
           onPress={navigation.goBack}
           color={Colors.DEFAULT_GREEN}
-          style={{position: 'absolute', left: 2}}
+          style={{
+            position: 'absolute',
+            left: 5,
+          }}
         />
         <Text
           style={{
@@ -190,6 +210,7 @@ const styles = StyleSheet.create({
     height: 102,
     borderRadius: 10,
     backgroundColor: Colors.DEFAULT_WHITE,
+    position: 'relative',
     marginVertical: 10,
     marginHorizontal: 20,
     paddingHorizontal: 10,
