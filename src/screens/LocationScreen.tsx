@@ -14,7 +14,7 @@ import {
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import {ScrollView} from 'react-native-virtualized-view';
 import {Colors, locations} from '@constants';
-export default function LocationScreen({navigation}) {
+export default function LocationScreen({navigation}: any) {
   const CartCard = ({item}: any) => {
     return (
       <TouchableOpacity onPress={navigation.goBack}>
@@ -61,7 +61,7 @@ export default function LocationScreen({navigation}) {
           </View>
           <TouchableOpacity
             onPress={() => {
-              navigation.navigate('CreateAddress');
+              navigation.navigate('EditLocation', item);
             }}
             style={{
               position: 'absolute',
@@ -146,6 +146,7 @@ export default function LocationScreen({navigation}) {
                       color: Colors.DEFAULT_GREEN,
                       paddingHorizontal: 5,
                     }}>
+                    {/* {name.names[3]} */}
                     Thêm địa chỉ mới
                   </Text>
                 </View>

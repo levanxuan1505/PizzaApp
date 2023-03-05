@@ -86,10 +86,17 @@ export default function ProfileScreen({navigation}: any) {
                 borderRadius: 10,
                 paddingHorizontal: 8,
                 paddingVertical: 1,
+                flexDirection: 'row',
+                justifyContent: 'center',
+                alignItems: 'center',
               }}>
               <Text style={{fontSize: 14, color: Colors.FACEBOOK_BLUE}}>
                 Thành viên Bạc
               </Text>
+              <Icon
+                name="arrow-forward-ios"
+                style={{color: Colors.FACEBOOK_BLUE}}
+              />
             </TouchableOpacity>
           </View>
         </View>

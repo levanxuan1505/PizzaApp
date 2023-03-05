@@ -1,6 +1,6 @@
 /* eslint-disable react/no-unstable-nested-components */
 /* eslint-disable react-native/no-inline-styles */
-import React from 'react';
+import React, {useState} from 'react';
 import {
   SafeAreaView,
   Text,
@@ -21,6 +21,12 @@ import {foods} from '@constants';
 import {Colors} from '@constants';
 import {Voucher} from '@components';
 const CheckoutScreen = ({navigation}) => {
+  const [name, setName] = useState('Lê Văn Xuân');
+  const [phone, setPhone] = useState('(+84) 97 517 95 46');
+  const [address, setAddress] = useState('Số 17, ngõ 75 Hồ Tùng Mậu');
+  const [address1, setAddress1] = useState(
+    'Phường Mai Dịch, Quận Cầu Giấy, Hà Nội',
+  );
   const CartCard = ({item}: any) => {
     return (
       <TouchableOpacity onPress={() => navigation.navigate('DetailCard', item)}>
@@ -158,7 +164,7 @@ const CheckoutScreen = ({navigation}) => {
           size={28}
           onPress={navigation.goBack}
           color={Colors.DEFAULT_GREEN}
-          style={{position: 'absolute', left: 5}}
+          style={{position: 'absolute', left: 2}}
         />
         <Text
           style={{
@@ -169,7 +175,7 @@ const CheckoutScreen = ({navigation}) => {
           Thanh toán
         </Text>
 
-        <View style={{position: 'absolute', right: 12}}>
+        <View style={{position: 'absolute', right: 7}}>
           <IconBadge
             MainElement={
               <View>
@@ -197,7 +203,15 @@ const CheckoutScreen = ({navigation}) => {
         <ScrollView
           showsVerticalScrollIndicator={false}
           nestedScrollEnabled={true}>
-          <TouchableOpacity onPress={() => navigation.navigate('Local')}>
+          <TouchableOpacity
+            onPress={() =>
+              navigation.navigate('Local', {
+                name,
+                phone,
+                address,
+                address1,
+              })
+            }>
             <View style={styles.location}>
               <View
                 style={{
@@ -214,9 +228,11 @@ const CheckoutScreen = ({navigation}) => {
               </View>
               <View style={{flexDirection: 'row'}}>
                 <View style={{paddingLeft: 15}}>
-                  <Text>Lê Văn Xuân | (+84) 97 517 95 46</Text>
-                  <Text>Số 17 ngõ 75 Hồ Tùng Mậu,</Text>
-                  <Text>Phường Mai Dịch, Quận Cầu Giấy, Hà Nội</Text>
+                  <Text>
+                    {name} | {phone}
+                  </Text>
+                  <Text>{address},</Text>
+                  <Text>{address1}</Text>
                 </View>
               </View>
               <Icon
@@ -371,11 +387,11 @@ const CheckoutScreen = ({navigation}) => {
         <View style={styles.total}>
           <Icons
             name="opencart"
-            size={42}
+            size={44}
             color={Colors.DEFAULT_GREEN}
             style={{
               position: 'absolute',
-              left: 40,
+              left: 35,
               top: 10,
             }}
           />
@@ -395,8 +411,9 @@ const CheckoutScreen = ({navigation}) => {
           <Text
             style={{
               fontSize: 22,
-              backgroundColor: Colors.DEFAULT_YELLOW,
+              backgroundColor: Colors.DEFAULT_GREEN,
               padding: 18,
+              fontWeight: '800',
               color: Colors.DEFAULT_WHITE,
             }}>
             Đặt hàng

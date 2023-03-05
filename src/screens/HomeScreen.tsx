@@ -295,7 +295,7 @@ export default function HomeScreen({navigation}: any) {
               <View>
                 <Image
                   source={require('../assets/images/avatar.webp')}
-                  style={{height: 60, width: 60, borderRadius: 30}}
+                  style={{height: 55, width: 55, borderRadius: 30}}
                 />
               </View>
             }

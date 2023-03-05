@@ -1,6 +1,6 @@
 /* eslint-disable react-native/no-inline-styles */
 
-import React from 'react';
+import React, {useState} from 'react';
 import {
   View,
   Text,
@@ -13,11 +13,14 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import {Colors} from '@constants';
 import {Button, Input, Loader} from '@components';
-
+export interface ISignUpData {
+  email: string;
+  password: string;
+}
 const SignInScreen = ({navigation}: any) => {
-  const [inputs, setInputs] = React.useState({email: '', password: ''});
-  const [errors, setErrors] = React.useState({});
-  const [loading, setLoading] = React.useState(false);
+  const [inputs, setInputs] = useState<ISignUpData>({email: '', password: ''});
+  const [errors, setErrors] = useState({});
+  const [loading, setLoading] = useState(false);
 
   const validate = async () => {
     Keyboard.dismiss();
@@ -43,8 +46,8 @@ const SignInScreen = ({navigation}: any) => {
       if (userData) {
         userData = JSON.parse(userData);
         if (
-          inputs.email === userData.email &&
-          inputs.password === userData.password
+          inputs.email === userData?.email &&
+          inputs.password === userData?.password
         ) {
           navigation.navigate('ButtonHome');
           AsyncStorage.setItem(
@@ -111,7 +114,7 @@ const SignInScreen = ({navigation}: any) => {
             onPress={() => navigation.navigate('Register')}
             style={{
               color: Colors.SECONDARY_BLACK,
-              fontWeight: 600,
+              fontWeight: '600',
               textAlign: 'center',
               fontSize: 16,
             }}>

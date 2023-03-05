@@ -20,7 +20,10 @@ export default function BottomHomeScreen() {
       screenOptions={{
         tabBarActiveTintColor: Colors.DEFAULT_GREEN,
         tabBarShowLabel: false,
-        tabBarStyle: [{display: 'flex'}, null],
+        tabBarStyle: [
+          {display: 'flex', paddingTop: 3, borderTopWidth: 0},
+          null,
+        ],
       }}
       // bản cũ sẽ dùng tabBarOptions
       // tabBarOptions={{
@@ -34,7 +37,7 @@ export default function BottomHomeScreen() {
       // }}
     >
       <Tab.Screen
-        name="ButtonHome"
+        name="Home"
         component={HomeScreen}
         options={{
           tabBarBadge: 5,

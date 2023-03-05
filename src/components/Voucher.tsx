@@ -79,7 +79,7 @@ export default function Voucher() {
             Dùng 400 xu
           </Text>
         </View>
-        <View style={{right: 12}}>
+        <View style={{right: 15}}>
           <Switch
             trackColor={{false: '#767577', true: Colors.DEFAULT_GREEN}}
             thumbColor={isEnabled ? '#FFFFFF' : '#f4f3f4'}

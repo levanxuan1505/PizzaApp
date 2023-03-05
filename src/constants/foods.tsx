@@ -37,10 +37,10 @@ const foods = [
   },
   {
     id: '5',
-    name: 'Pizza Hawaii',
-    ingredients: 'Pizza Hawaii',
-    price: '179',
-    image: require('../assets/flashList/meatPizza.png'),
+    name: ' Kimbap Hàn Quốc',
+    ingredients: ' Korea Kimbap',
+    price: '69',
+    image: require('../assets/flashList/onboard.png'),
     title:
       'Mang hương vị của Hawaii về căn bếp nhà bạn với chiếc pizza Hawaii thơm nức mũi. Màu đỏ của sốt cà chua điểm thêm chút xanh của các loại rau nhìn cực bắt mắt. Sốt cà chua khi nướng lên có mùi hương đặc trưng, ngay lặp tức khiến bạn có cảm giác thòm thèm. Phần bánh bên ngoài giòn, bên trong mềm thơm, vị chua ngọt đậm đà của nước sốt kích thích vị giác vô cùng. Đặc biệt phần viền bánh được cuộn với phô mai Mozzarella kéo sợi, béo thơm, đúng là thơm ngon khó cưỡng.',
   },
@@ -76,7 +76,7 @@ const foods = [
     name: 'Pizza hải sản',
     ingredients: 'Seafood Pizza',
     price: '189',
-    image: require('../assets/flashList/meatPizza.png'),
+    image: require('../assets/flashList/onboard.png'),
     title:
       'Ngon mê ly với món pizza hải sản đầy ụ nhân này. Mùi phô mai nướng lên hòa lẫn với mùi thơm của hải sản, các loại rau củ sẽ khiến bạn phải phát thèm. Đế bánh mỏng, nóng giòn, kết hợp với phần sốt cà chua đậm đà, tôm và mực tươi ngon, chắc thịt. Thêm vào đó một chút giòn giòn, ngọt ngọt của ớt chuông. Tất cả hải sản và rau củ ngập trong phô mai béo ngậy, tan chảy cực thích. Bạn sẽ không cưỡng lại sức hấp dẫn của món bánh này đâu.',
   },

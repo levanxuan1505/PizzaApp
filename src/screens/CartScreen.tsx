@@ -70,7 +70,7 @@ const CartScreen = ({navigation}: any) => {
           }}>
           Giỏ hàng
         </Text>
-        <View style={{position: 'absolute', right: 10}}>
+        <View style={{position: 'absolute', right: 5}}>
           <IconBadge
             MainElement={
               <View>

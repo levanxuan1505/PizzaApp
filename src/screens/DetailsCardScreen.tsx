@@ -159,6 +159,7 @@ const DetailsCardScreen = ({navigation, route, heartValue}: any) => {
               flexDirection: 'row',
               justifyContent: 'space-between',
               alignItems: 'center',
+              position: 'relative',
             }}>
             <Text
               style={{
@@ -167,6 +168,16 @@ const DetailsCardScreen = ({navigation, route, heartValue}: any) => {
                 color: Colors.DEFAULT_WHITE,
               }}>
               {item.name}
+            </Text>
+            <Text
+              style={{
+                position: 'absolute',
+                fontSize: 25,
+                color: Colors.DEFAULT_WHITE,
+                fontWeight: '600',
+                right: 65,
+              }}>
+              {item.price}k
             </Text>
             <TouchableOpacity
               onPress={() => {
