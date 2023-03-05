@@ -17,10 +17,14 @@ import Iconss from 'react-native-vector-icons/MaterialCommunityIcons';
 import Icons from 'react-native-vector-icons/Fontisto';
 // import Iconsss from 'react-native-vector-icons/Ionicons';
 import IconBadge from 'react-native-icon-badge';
-import {foods} from '@constants';
 import {Colors} from '@constants';
 import {Voucher} from '@components';
+import {useSelector} from 'react-redux';
+
 const CheckoutScreen = ({navigation}) => {
+  const cartGoods = useSelector(state => state.cart);
+  const sum = useSelector(state => state.sum);
+  const [freeDelivery, setFreeDelivery] = useState(15);
   const [name, setName] = useState('Lê Văn Xuân');
   const [phone, setPhone] = useState('(+84) 97 517 95 46');
   const [address, setAddress] = useState('Số 17, ngõ 75 Hồ Tùng Mậu');
@@ -250,7 +254,7 @@ const CheckoutScreen = ({navigation}) => {
           <FlatList
             showsVerticalScrollIndicator={false}
             contentContainerStyle={{paddingBottom: 15}}
-            data={foods}
+            data={cartGoods}
             renderItem={({item}) => <CartCard item={item} />}
             ListFooterComponentStyle={{paddingHorizontal: 20, marginTop: 20}}
           />
@@ -331,7 +335,7 @@ const CheckoutScreen = ({navigation}) => {
                   justifyContent: 'space-between',
                 }}>
                 <Text>Tổng tiền hàng</Text>
-                <Text>đ177.000</Text>
+                <Text>đ{sum}.000</Text>
               </View>
               <View
                 style={{
@@ -340,7 +344,7 @@ const CheckoutScreen = ({navigation}) => {
                   justifyContent: 'space-between',
                 }}>
                 <Text>Tổng tiền phí vận chuyển</Text>
-                <Text>đ15.000</Text>
+                <Text>đ{freeDelivery}.000</Text>
               </View>
               <View
                 style={{
@@ -352,7 +356,7 @@ const CheckoutScreen = ({navigation}) => {
                   Tổng thanh toán
                 </Text>
                 <Text style={{fontSize: 18, color: Colors.DEFAULT_YELLOW}}>
-                  đ192.742
+                  đ{sum + freeDelivery}.000
                 </Text>
               </View>
             </View>
@@ -405,7 +409,7 @@ const CheckoutScreen = ({navigation}) => {
               Tổng thanh toán
             </Text>
             <Text style={{color: Colors.DEFAULT_GREEN, fontSize: 18}}>
-              đ192.742
+              đ{sum + freeDelivery}.000
             </Text>
           </View>
           <Text

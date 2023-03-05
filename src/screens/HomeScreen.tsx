@@ -26,11 +26,17 @@ import IconBadge from 'react-native-icon-badge';
 import {Colors} from '@constants';
 import {Categories} from '@constants';
 import {foods} from '@constants';
+// redux
+import {addToCart} from '../redux/cartSlice';
+import {addToSum} from '../redux/cartSum';
+import {useDispatch} from 'react-redux';
+//
 
 const {width} = Dimensions.get('screen');
 const cardWidth = width / 2 - 20;
 
 export default function HomeScreen({navigation, item}: any) {
+  const dispatch = useDispatch();
   const [selectedCategoryIndex, setSelectedCategoryIndex] = useState(0);
   // modal//
   const [visible, setVisible] = React.useState(true);
@@ -183,7 +189,19 @@ export default function HomeScreen({navigation, item}: any) {
 
             <View style={styles.addToCartBtn}>
               <Icon
-                onPress={() => setVisible1(true)}
+                onPress={() => {
+                  dispatch(
+                    addToCart({
+                      id: food.id,
+                      name: food.name,
+                      ingredients: food.ingredients,
+                      price: food.price,
+                      image: food.image,
+                      title: food.title,
+                    }),
+                  ),
+                    dispatch(addToSum({price: food.price}));
+                }}
                 name="add"
                 size={20}
                 color={Colors.DEFAULT_WHITE}

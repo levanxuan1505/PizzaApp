@@ -23,17 +23,17 @@ import {Colors} from '@constants';
 // import {notification} from '@constants';
 // redux
 import {useSelector, useDispatch} from 'react-redux';
-import {deleteTask} from '../redux/taskSlice';
+import {deleteNotification} from '../redux/notificationSlice';
 //
 export default function NotificationScreen({navigation}) {
   // redux
   const dispatch = useDispatch();
-  const notification = useSelector(state => state.tasks);
+  const notification = useSelector(state => state.notification);
   const a = notification.length;
   //delete item by checking if id is equal to the id of the item
   const onDelete = id => {
     dispatch(
-      deleteTask({
+      deleteNotification({
         id: id,
       }),
     );

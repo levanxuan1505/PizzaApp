@@ -1,6 +1,6 @@
 import {createSlice} from '@reduxjs/toolkit';
-export const taskSlice = createSlice({
-  name: 'tasks',
+export const notificationSlice = createSlice({
+  name: 'notification',
   initialState: [
     {
       id: '1',
@@ -59,10 +59,10 @@ export const taskSlice = createSlice({
     },
   ],
   reducers: {
-    deleteTask: (state, action) => {
+    deleteNotification: (state, action) => {
       return state.filter(item => item.id !== action.payload.id);
     },
   },
 });
-export const {deleteTask} = taskSlice.actions;
-export default taskSlice.reducer;
+export const {deleteNotification} = notificationSlice.actions;
+export default notificationSlice.reducer;

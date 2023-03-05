@@ -4,7 +4,6 @@ import React, {useState} from 'react';
 import {Colors} from '@constants';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import Iconsss from 'react-native-vector-icons/Ionicons';
-
 export default function Voucher() {
   const [isEnabled, setIsEnabled] = useState(false);
   const toggleSwitch = () => setIsEnabled(previousState => !previousState);

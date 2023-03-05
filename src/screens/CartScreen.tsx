@@ -17,8 +17,15 @@ import IconBadge from 'react-native-icon-badge';
 import {Colors} from '@constants';
 import {foods} from '@constants';
 import {PrimaryButton} from '@components';
+// redux
+import {useSelector} from 'react-redux';
+//
 
 const CartScreen = ({navigation}: any) => {
+  // redux
+  const cartGoods = useSelector(state => state.cart);
+  const sum = useSelector(state => state.sum);
+  //
   const CartCard = ({item}: any) => {
     return (
       <TouchableOpacity onPress={() => navigation.navigate('DetailCard', item)}>
@@ -96,7 +103,7 @@ const CartScreen = ({navigation}: any) => {
       <FlatList
         showsVerticalScrollIndicator={false}
         contentContainerStyle={{paddingBottom: 10}}
-        data={foods}
+        data={cartGoods}
         renderItem={({item}) => <CartCard item={item} />}
         // ListFooterComponentStyle={{paddingHorizontal: 20, marginTop: 20}}
         // ListFooterComponent={() => (
@@ -140,7 +147,7 @@ const CartScreen = ({navigation}: any) => {
               fontWeight: 'bold',
               color: Colors.DEFAULT_GREEN,
             }}>
-            đ192.742
+            đ{sum}.000
           </Text>
         </View>
         <View style={{marginHorizontal: 30}}>

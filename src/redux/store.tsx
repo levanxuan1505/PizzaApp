@@ -1,7 +1,11 @@
 import {configureStore} from '@reduxjs/toolkit';
-import taskReducer from './taskSlice';
+import notificationReducer from './notificationSlice';
+import cartReducer from './cartSlice';
+import cartSumReducer from './cartSum';
 export default configureStore({
   reducer: {
-    tasks: taskReducer,
+    notification: notificationReducer,
+    cart: cartReducer,
+    sum: cartSumReducer,
   },
 });
