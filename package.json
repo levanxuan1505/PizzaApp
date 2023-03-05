@@ -15,6 +15,7 @@
     "@react-navigation/bottom-tabs": "^6.5.6",
     "@react-navigation/native": "^6.1.5",
     "@react-navigation/stack": "^6.3.15",
+    "@reduxjs/toolkit": "^1.9.3",
     "@types/react-native": "0.63.40",
     "react": "18.2.0",
     "react-native": "0.71.3",
@@ -26,7 +27,8 @@
     "react-native-screens": "^3.20.0",
     "react-native-splash-screen": "^3.3.0",
     "react-native-vector-icons": "^9.2.0",
-    "react-native-virtualized-view": "^1.0.0"
+    "react-native-virtualized-view": "^1.0.0",
+    "react-redux": "^8.0.5"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",

@@ -80,7 +80,7 @@ const DetailsCardScreen = ({navigation, route, heartValue}: any) => {
                 color: Colors.DEFAULT_GREEN,
                 paddingTop: 10,
               }}>
-              Xác nhậnnhận
+              Xác nhận
             </Text>
           </View>
           <View style={[styles.Header, {top: -10, paddingBottom: 10}]}>

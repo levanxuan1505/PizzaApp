@@ -20,9 +20,25 @@ import Iconss from 'react-native-vector-icons/Ionicons';
 import IconBadge from 'react-native-icon-badge';
 
 import {Colors} from '@constants';
-import {notification} from '@constants';
-
+// import {notification} from '@constants';
+// redux
+import {useSelector, useDispatch} from 'react-redux';
+import {deleteTask} from '../redux/taskSlice';
+//
 export default function NotificationScreen({navigation}) {
+  // redux
+  const dispatch = useDispatch();
+  const notification = useSelector(state => state.tasks);
+  const a = notification.length;
+  //delete item by checking if id is equal to the id of the item
+  const onDelete = id => {
+    dispatch(
+      deleteTask({
+        id: id,
+      }),
+    );
+  };
+  //
   const [visible, setVisible] = useState(false);
 
   const ModalPoup = ({visible, children}) => {
@@ -87,7 +103,7 @@ export default function NotificationScreen({navigation}) {
               {item.title}
             </Text>
           </View>
-          <TouchableOpacity onPress={() => setVisible(true)}>
+          <TouchableOpacity onPress={() => onDelete(item.id)}>
             <View style={{marginRight: 16, alignItems: 'center'}}>
               <Iconss name="trash" size={28} color={Colors.DEFAULT_GREEN} />
             </View>
@@ -187,14 +203,14 @@ export default function NotificationScreen({navigation}) {
           }}>
           Notification
         </Text>
-        <View style={{position: 'absolute', right: 24}}>
+        <View style={{position: 'absolute', right: 10}}>
           <IconBadge
             MainElement={
               <View>
                 <Icon name="bell" size={32} color={Colors.DEFAULT_GREEN} />
               </View>
             }
-            BadgeElement={<Text style={{color: '#FFFFFF'}}>15</Text>}
+            BadgeElement={<Text style={{color: '#FFFFFF'}}>{a}</Text>}
             IconBadgeStyle={{
               marginRight: -5,
               marginTop: -6,
