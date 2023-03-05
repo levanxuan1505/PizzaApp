@@ -49,7 +49,7 @@ const SignInScreen = ({navigation}: any) => {
           inputs.email === userData?.email &&
           inputs.password === userData?.password
         ) {
-          navigation.navigate('ButtonHome');
+          navigation.navigate('BottomHome', userData.fullname);
           AsyncStorage.setItem(
             'userData',
             JSON.stringify({...userData, loggedIn: true}),
@@ -81,7 +81,7 @@ const SignInScreen = ({navigation}: any) => {
             fontSize: 40,
             fontWeight: 'bold',
           }}>
-          Sign In
+          Đăng nhập
         </Text>
         <Text
           style={{
@@ -89,7 +89,7 @@ const SignInScreen = ({navigation}: any) => {
             fontSize: 18,
             marginVertical: 10,
           }}>
-          Enter Your Details to Sign in
+          Nhập thông tin để đăng nhập
         </Text>
         <View style={{marginVertical: 20}}>
           <Input
@@ -97,7 +97,7 @@ const SignInScreen = ({navigation}: any) => {
             onFocus={() => handleError(null, 'email')}
             iconName="email-outline"
             label="Email"
-            placeholder="Enter your email address"
+            placeholder="Nhập email của bạn"
             error={errors.email}
           />
           <Input
@@ -105,20 +105,20 @@ const SignInScreen = ({navigation}: any) => {
             onFocus={() => handleError(null, 'password')}
             iconName="lock-outline"
             label="Password"
-            placeholder="Enter your password"
+            placeholder="Nhập mật khẩu của bạn"
             error={errors.password}
             password
           />
-          <Button title="Sign In" onPress={validate} />
+          <Button title="Đăng nhập" onPress={validate} />
           <Text
             onPress={() => navigation.navigate('Register')}
             style={{
-              color: Colors.SECONDARY_BLACK,
-              fontWeight: '600',
+              color: Colors.DEFAULT_YELLOW,
+              fontWeight: '700',
               textAlign: 'center',
-              fontSize: 16,
+              fontSize: 18,
             }}>
-            Don't have account? Register
+            Bạn chưa có tài khoản? Đăng ký ngay
           </Text>
         </View>
       </View>

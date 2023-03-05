@@ -76,7 +76,7 @@ const WelcomeScreen = ({navigation}: any) => {
           style={styles.gettingStartedButton}
           activeOpacity={0.8}
           onPress={() => navigation.navigate('Options')}>
-          <Text style={styles.gettingStartedButtonText}>Get Started</Text>
+          <Text style={styles.gettingStartedButtonText}>Bắt đầu</Text>
         </TouchableOpacity>
       ) : (
         <View style={styles.buttonContainer}>
@@ -147,12 +147,13 @@ const styles = StyleSheet.create({
     elevation: 2,
   },
   gettingStartedButtonText: {
-    fontSize: 25,
+    fontSize: 32,
     fontWeight: '500',
     color: Colors.DEFAULT_WHITE,
-    lineHeight: 20 * 1.4,
+    justifyContent: 'center',
+    alignItems: 'center',
     paddingVertical: 10,
-    paddingHorizontal: 10,
+    paddingHorizontal: 50,
   },
 });
 

@@ -6,7 +6,6 @@ import {
   Text,
   View,
   Image,
-  // Alert,
   Platform,
   TouchableOpacity,
 } from 'react-native';
@@ -69,7 +68,7 @@ export default function ProfileScreen({navigation}: any) {
         <View style={styles.information}>
           <Image
             source={require('../assets/images/avatar.webp')}
-            style={{height: 50, width: 50, borderRadius: 50}}
+            style={{height: 55, width: 55, borderRadius: 50}}
           />
           <View style={{left: 10, alignItems: 'center'}}>
             <Text
@@ -730,7 +729,8 @@ export default function ProfileScreen({navigation}: any) {
               paddingBottom: 8,
               borderBottomColor: Colors.DEFAULT_GREEN,
             }}>
-            <View
+            <TouchableOpacity
+              onPress={() => navigation.navigate('Setting')}
               style={{
                 flexDirection: 'row',
                 alignItems: 'center',
@@ -756,7 +756,7 @@ export default function ProfileScreen({navigation}: any) {
                 color={Colors.DEFAULT_GREEN}
                 style={{position: 'absolute', right: 0}}
               />
-            </View>
+            </TouchableOpacity>
           </View>
           <View
             style={{

@@ -1,12 +1,15 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable react/no-unstable-nested-components */
 /* eslint-disable react-native/no-inline-styles */
-import React from 'react';
+import React, {useState} from 'react';
 import {
   View,
   Text,
-  Alert,
+  Modal,
   Keyboard,
   TextInput,
   StyleSheet,
+  Animated,
   TouchableOpacity,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
@@ -15,13 +18,105 @@ import {SafeAreaView} from 'react-native-safe-area-context';
 import {Colors, history} from '@constants';
 
 export default function Search() {
-  const showAlertDelete = () =>
-    Alert.alert('Cảnh báo', 'Xác nhận xoá lịch sử này', [
-      {text: 'Xoá', onPress: () => {}},
-      {text: 'Huỷ', onPress: () => {}},
-    ]);
+  const [visible, setVisible] = useState(false);
+  const ModalPoup = ({visible, children}: any) => {
+    const [showModal, setShowModal] = React.useState(visible);
+    const scaleValue = React.useRef(new Animated.Value(0)).current;
+    React.useEffect(() => {
+      toggleModal();
+    }, [visible]);
+    const toggleModal = () => {
+      if (visible) {
+        // setShowModal(true);
+        Animated.spring(scaleValue, {
+          toValue: 1,
+          // duration: 3000,
+          useNativeDriver: true,
+        }).start();
+      } else {
+        setTimeout(() => setShowModal(false), 300);
+        Animated.timing(scaleValue, {
+          toValue: 0,
+          duration: 300,
+          useNativeDriver: true,
+        }).start();
+      }
+    };
+    return (
+      <Modal transparent visible={showModal}>
+        <View style={styles.modalBackGround}>
+          <Animated.View
+            style={[styles.modalContainer, {transform: [{scale: scaleValue}]}]}>
+            {children}
+          </Animated.View>
+        </View>
+      </Modal>
+    );
+  };
   return (
     <SafeAreaView style={{marginHorizontal: 20}}>
+      {/*  */}
+      <ModalPoup visible={visible}>
+        <View
+          style={{
+            flex: 1,
+            flexDirection: 'column',
+            justifyContent: 'space-around',
+            alignItems: 'center',
+          }}>
+          <View
+            style={[styles.Header, {borderBottomColor: Colors.DEFAULT_WHITE}]}>
+            <Text
+              style={{
+                fontSize: 24,
+                fontWeight: '600',
+                color: Colors.DEFAULT_RED,
+                paddingTop: 10,
+              }}>
+              Cảnh báo
+            </Text>
+          </View>
+          <View style={[styles.Header, {top: -10, paddingBottom: 10}]}>
+            <Text
+              style={{
+                fontSize: 19,
+                fontWeight: '500',
+                color: Colors.DEFAULT_GREEN,
+              }}>
+              Xác nhận xoá lịch sử này
+            </Text>
+          </View>
+          <View
+            style={{
+              width: '100%',
+              flexDirection: 'row',
+              justifyContent: 'space-around',
+              top: -10,
+            }}>
+            <TouchableOpacity onPress={() => setVisible(false)}>
+              <Text
+                style={{
+                  color: Colors.DEFAULT_RED,
+                  fontSize: 20,
+                  fontWeight: '600',
+                }}>
+                Xoá
+              </Text>
+            </TouchableOpacity>
+            <TouchableOpacity onPress={() => setVisible(false)}>
+              <Text
+                style={{
+                  color: Colors.DEFAULT_GREEN,
+                  fontSize: 20,
+                  fontWeight: '600',
+                }}>
+                Huỷ bỏ
+              </Text>
+            </TouchableOpacity>
+          </View>
+        </View>
+      </ModalPoup>
+      {/*  */}
       <View>
         <View
           style={{
@@ -57,7 +152,7 @@ export default function Search() {
                 <Icons
                   name="trash"
                   size={27}
-                  onPress={showAlertDelete}
+                  onPress={() => setVisible(true)}
                   color={Colors.DEFAULT_GREEN}
                   style={{position: 'absolute', right: -4}}
                 />
@@ -123,5 +218,30 @@ const styles = StyleSheet.create({
   status: {
     padding: 10,
     textAlign: 'center',
+  },
+  //
+  modalBackGround: {
+    flex: 1,
+    backgroundColor: 'rgba(0,0,0,0.5)',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  modalContainer: {
+    width: '70%',
+    height: 140,
+    backgroundColor: 'white',
+    // paddingHorizontal: 20,
+    // paddingVertical: 30,
+    borderRadius: 15,
+    elevation: 20,
+  },
+  Header: {
+    // paddingTop: 20,
+    alignItems: 'center',
+    justifyContent: 'center',
+    // paddingVertical: 20,
+    borderBottomWidth: 0.17,
+    borderColor: Colors.DEFAULT_GREEN,
+    width: '100%',
   },
 });

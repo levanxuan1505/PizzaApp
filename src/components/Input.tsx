@@ -40,7 +40,11 @@ const Input = ({
           }}
           onBlur={() => setIsFocused(false)}
           secureTextEntry={hidePassword}
-          style={{color: Colors.SECONDARY_BLACK, flex: 1}}
+          placeholderTextColor={Colors.DEFAULT_WHITE}
+          style={{
+            color: Colors.DEFAULT_GREEN,
+            flex: 1,
+          }}
           {...props}
         />
         {password && (
@@ -68,7 +72,7 @@ const style = StyleSheet.create({
   },
   inputContainer: {
     height: 55,
-    backgroundColor: Colors.DEFAULT_WHITE,
+    backgroundColor: Colors.DEFAULT_GREY,
     flexDirection: 'row',
     paddingHorizontal: 15,
     borderWidth: 0.5,

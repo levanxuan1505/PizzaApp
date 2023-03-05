@@ -49,7 +49,7 @@ export default function Options({navigation}: any) {
               size={32}
               color={Colors.DEFAULT_WHITE}
             />
-            <Text style={styles.buttonText}>SIGN IN</Text>
+            <Text style={styles.buttonText}>ĐĂNG NHẬP</Text>
           </TouchableOpacity>
         </View>
       </SafeAreaView>

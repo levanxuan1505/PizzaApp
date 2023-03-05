@@ -88,7 +88,7 @@ const RegisterScreen = ({navigation}: any) => {
             fontSize: 40,
             fontWeight: 'bold',
           }}>
-          Register
+          Đăng ký
         </Text>
         <Text
           style={{
@@ -96,7 +96,7 @@ const RegisterScreen = ({navigation}: any) => {
             fontSize: 18,
             marginVertical: 10,
           }}>
-          Enter Your Details to Register
+          Hãy nhập thông tin để tiến hành đăng ký
         </Text>
         <View style={{marginVertical: 20}}>
           <Input
@@ -104,7 +104,7 @@ const RegisterScreen = ({navigation}: any) => {
             onFocus={() => handleError(null, 'email')}
             iconName="email-outline"
             label="Email"
-            placeholder="Enter your email address"
+            placeholder="Nhập email của bạn"
             error={errors.email}
           />
 
@@ -113,7 +113,7 @@ const RegisterScreen = ({navigation}: any) => {
             onFocus={() => handleError(null, 'fullname')}
             iconName="account-outline"
             label="Full Name"
-            placeholder="Enter your full name"
+            placeholder="Nhập tên đầy đủ của bạn"
             error={errors.fullname}
           />
 
@@ -123,7 +123,7 @@ const RegisterScreen = ({navigation}: any) => {
             onFocus={() => handleError(null, 'phone')}
             iconName="phone-outline"
             label="Phone Number"
-            placeholder="Enter your phone no"
+            placeholder="Nhập số điện thoại của bạn"
             error={errors.phone}
           />
           <Input
@@ -131,20 +131,20 @@ const RegisterScreen = ({navigation}: any) => {
             onFocus={() => handleError(null, 'password')}
             iconName="lock-outline"
             label="Password"
-            placeholder="Enter your password"
+            placeholder="Nhập mật khẩu của bạn"
             error={errors.password}
             password
           />
-          <Button title="Register" onPress={validate} />
+          <Button title="Đăng ký" onPress={validate} />
           <Text
-            onPress={() => navigation.navigate('SignIn')}
+            onPress={navigation.goBack}
             style={{
-              color: Colors.DEFAULT_BLACK,
-              fontWeight: 600,
+              color: Colors.DEFAULT_YELLOW,
+              fontWeight: '700',
               textAlign: 'center',
-              fontSize: 16,
+              fontSize: 18,
             }}>
-            Already have account? Sign in
+            Bạn đã có tài khoản? Đăng nhập
           </Text>
         </View>
       </ScrollView>
