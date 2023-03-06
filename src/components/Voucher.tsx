@@ -4,12 +4,21 @@ import React, {useState} from 'react';
 import {Colors} from '@constants';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import Iconsss from 'react-native-vector-icons/Ionicons';
-import {useSelector} from 'react-redux';
+import {useSelector, useDispatch} from 'react-redux';
+import {changeCoin} from '../redux/coinSlice';
 export default function Voucher({navigation}) {
   const [isEnabled, setIsEnabled] = useState(false);
   const voucher = useSelector((state: any) => state.voucher);
-
-  const toggleSwitch = () => setIsEnabled(previousState => !previousState);
+  const coin = useSelector((state: any) => state.coin);
+  const dispatch = useDispatch();
+  const toggleSwitch = () => {
+    setIsEnabled(previousState => !previousState);
+    if (isEnabled) {
+      dispatch(changeCoin({price: 0}));
+    } else {
+      dispatch(changeCoin({price: 4}));
+    }
+  };
   return (
     <View style={styles.voucher}>
       <View
@@ -79,7 +88,7 @@ export default function Voucher({navigation}) {
               marginTop: 0,
               fontSize: 18,
             }}>
-            Dùng 4000 xu
+            Dùng 4.000 xu
           </Text>
         </View>
         <View style={{right: 15}}>

@@ -6,6 +6,7 @@ import bookmarkReducer from './bookmarkSlice';
 import locationReducer from './locationSlice';
 import paymentReducer from './paymentSlice';
 import voucherReducer from './voucherSlice';
+import coinReducer from './coinSlice';
 export default configureStore({
   reducer: {
     notification: notificationReducer,
@@ -15,5 +16,6 @@ export default configureStore({
     location: locationReducer,
     payment: paymentReducer,
     voucher: voucherReducer,
+    coin: coinReducer,
   },
 });

@@ -25,6 +25,7 @@ const CheckoutScreen = ({navigation}) => {
   const cartGoods = useSelector((state: any) => state.cart);
   const payment = useSelector((state: any) => state.payment);
   const voucher = useSelector((state: any) => state.voucher);
+  const coin = useSelector((state: any) => state.coin);
   function sum(cartGoods) {
     let sum = 0;
     for (let i = 0; i < cartGoods.length; i++) {
@@ -258,7 +259,9 @@ const CheckoutScreen = ({navigation}) => {
                   Tổng thanh toán
                 </Text>
                 <Text style={{fontSize: 18, color: Colors.DEFAULT_YELLOW}}>
-                  đ{sum(cartGoods) + (50 - voucher[0].price)}.000
+                  đ{sum(cartGoods) + (50 - voucher[0].price)}.000 -
+                  {coin[0].price}.000=
+                  {sum(cartGoods) + (50 - voucher[0].price - coin[0].price)}.000
                 </Text>
               </View>
             </View>
@@ -311,7 +314,7 @@ const CheckoutScreen = ({navigation}) => {
               Tổng thanh toán
             </Text>
             <Text style={{color: Colors.DEFAULT_GREEN, fontSize: 18}}>
-              đ{sum(cartGoods) + (50 - voucher[0].price)}.000
+              đ{sum(cartGoods) + (50 - voucher[0].price - coin[0].price)}.000
             </Text>
           </View>
           <Text

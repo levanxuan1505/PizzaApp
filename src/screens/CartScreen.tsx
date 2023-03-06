@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-shadow */
 /* eslint-disable react-native/no-inline-styles */
 /* eslint-disable react/no-unstable-nested-components */
 import React from 'react';
@@ -26,8 +27,8 @@ import {removeCart} from '../redux/cartSlice';
 const CartScreen = ({navigation}: any) => {
   // redux
   const dispatch = useDispatch();
-  const cartGoods = useSelector(state => state.cart);
-  const bagde = cartGoods.length;
+  const cartGoods = useSelector((state: any) => state.cart);
+  const badge = cartGoods.length;
   function sum(cartGoods) {
     let sum = 0;
     for (let i = 0; i < cartGoods.length; i++) {
@@ -101,7 +102,7 @@ const CartScreen = ({navigation}: any) => {
                 />
               </View>
             }
-            BadgeElement={<Text style={{color: '#FFFFFF'}}>{bagde}</Text>}
+            BadgeElement={<Text style={{color: '#FFFFFF'}}>{badge}</Text>}
             IconBadgeStyle={{
               marginRight: -5,
               marginTop: -6,
@@ -117,25 +118,6 @@ const CartScreen = ({navigation}: any) => {
         contentContainerStyle={{paddingBottom: 10}}
         data={cartGoods}
         renderItem={({item}) => <CartCard item={item} />}
-        // ListFooterComponentStyle={{paddingHorizontal: 20, marginTop: 20}}
-        // ListFooterComponent={() => (
-        //   <View>
-        //     <View
-        //       style={{
-        //         flexDirection: 'row',
-        //         justifyContent: 'space-between',
-        //         marginVertical: 15,
-        //       }}>
-        //       <Text style={{fontSize: 18, fontWeight: 'bold'}}>
-        //         Total Price
-        //       </Text>
-        //       <Text style={{fontSize: 18, fontWeight: 'bold'}}>$50</Text>
-        //     </View>
-        //     <View style={{marginHorizontal: 30}}>
-        //       <PrimaryButton title="CHECKOUT" />
-        //     </View>
-        //   </View>
-        // )}
       />
       <View style={style.total}>
         <View
