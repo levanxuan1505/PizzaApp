@@ -15,6 +15,8 @@ import {
   EditLocationScreen,
   CreateAddressScreen,
   SettingScreen,
+  PaymentScreen,
+  VoucherScreen,
 } from '@screens';
 
 const Stack = createStackNavigator();
@@ -34,8 +36,10 @@ const Navigators = () => {
         <Stack.Screen name="EditLocation" component={EditLocationScreen} />
         <Stack.Screen name="Edit" component={EditProfileScreen} />
         <Stack.Screen name="Setting" component={SettingScreen} />
+        <Stack.Screen name="Payment" component={PaymentScreen} />
         <Stack.Screen name="CreateAddress" component={CreateAddressScreen} />
         <Stack.Screen name="DetailCard" component={DetailsCardScreen} />
+        <Stack.Screen name="Voucher" component={VoucherScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );

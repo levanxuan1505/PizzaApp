@@ -22,7 +22,10 @@ import {Voucher} from '@components';
 import {useSelector} from 'react-redux';
 
 const CheckoutScreen = ({navigation}) => {
-  const cartGoods = useSelector(state => state.cart);
+  const cartGoods = useSelector((state: any) => state.cart);
+  const payment = useSelector((state: any) => state.payment);
+  const voucher = useSelector((state: any) => state.voucher);
+  const [freeShip, setFreeShip] = useState(50 - voucher[0].price);
   function sum(cartGoods) {
     let sum = 0;
     for (let i = 0; i < cartGoods.length; i++) {
@@ -30,15 +33,9 @@ const CheckoutScreen = ({navigation}) => {
     }
     return sum;
   }
-  const location = useSelector(state => state.location);
+  const location = useSelector((state: any) => state.location);
   const badge = cartGoods.length;
-  const [freeDelivery, setFreeDelivery] = useState(15);
-  const [name, setName] = useState('Lê Văn Xuân');
-  const [phone, setPhone] = useState('(+84) 97 517 95 46');
-  const [address, setAddress] = useState('Số 17, ngõ 75 Hồ Tùng Mậu');
-  const [address1, setAddress1] = useState(
-    'Phường Mai Dịch, Quận Cầu Giấy, Hà Nội',
-  );
+
   const CartCard = ({item}: any) => {
     return (
       <TouchableOpacity onPress={() => navigation.navigate('DetailCard', item)}>
@@ -65,18 +62,14 @@ const CheckoutScreen = ({navigation}) => {
               {item.price}k
             </Text>
           </View>
-          <View
+          {/* <View
             style={{
               marginRight: 20,
             }}>
             <Text style={{fontWeight: 'bold', fontSize: 18, marginVertical: 5}}>
               x{Math.floor(Math.random() * 5) + 1}
             </Text>
-            {/* <View style={styles.actionBtn}>
-              <Icon name="remove" size={25} color={Colors.DEFAULT_WHITE} />
-              <Icon name="add" size={25} color={Colors.DEFAULT_WHITE} />
-            </View> */}
-          </View>
+          </View> */}
         </View>
       </TouchableOpacity>
     );
@@ -215,15 +208,7 @@ const CheckoutScreen = ({navigation}) => {
         <ScrollView
           showsVerticalScrollIndicator={false}
           nestedScrollEnabled={true}>
-          <TouchableOpacity
-            onPress={() =>
-              navigation.navigate('Local', {
-                name,
-                phone,
-                address,
-                address1,
-              })
-            }>
+          <TouchableOpacity onPress={() => navigation.navigate('Local')}>
             <View style={styles.location}>
               <View
                 style={{
@@ -267,9 +252,11 @@ const CheckoutScreen = ({navigation}) => {
             ListFooterComponentStyle={{paddingHorizontal: 20, marginTop: 20}}
           />
           {/* Voucher */}
-          <Voucher />
+          <Voucher navigation={navigation} />
           {/* Thanh toán */}
-          <View style={styles.payment}>
+          <TouchableOpacity
+            onPress={() => navigation.navigate('Payment')}
+            style={styles.payment}>
             <View>
               <View
                 style={{
@@ -277,7 +264,7 @@ const CheckoutScreen = ({navigation}) => {
                   alignItems: 'center',
                   paddingLeft: 9,
                 }}>
-                <Iconss
+                {/* <Iconss
                   name="bitcoin"
                   size={42}
                   color={Colors.DEFAULT_GREEN}
@@ -286,16 +273,26 @@ const CheckoutScreen = ({navigation}) => {
                     paddingLeft: 12,
                     paddingTop: 18,
                   }}
+                /> */}
+                <Image
+                  source={payment[0].image}
+                  style={{
+                    position: 'absolute',
+                    height: 50,
+                    width: 50,
+                    borderRadius: 5,
+                    left: 12,
+                    top: -2,
+                  }}
                 />
-
                 <Text
                   style={{
                     fontSize: 20,
                     color: Colors.DEFAULT_GREEN,
-                    paddingLeft: 50,
+                    paddingLeft: 70,
                     paddingBottom: 5,
                   }}>
-                  Chọn phương thức thanh toán
+                  {payment[0].name}
                 </Text>
                 <Icon
                   name="arrow-forward-ios"
@@ -304,20 +301,20 @@ const CheckoutScreen = ({navigation}) => {
                   style={{
                     position: 'absolute',
                     right: 12,
-                    paddingTop: 18,
+                    paddingTop: 20,
                   }}
                 />
               </View>
               <Text
                 style={{
                   color: Colors.DEFAULT_YELLOW,
-                  paddingLeft: 60,
+                  paddingLeft: 78,
                   marginTop: 0,
                 }}>
                 Thanh toán dễ dàng hơn với Zalo Pay
               </Text>
             </View>
-          </View>
+          </TouchableOpacity>
           <View style={styles.totalBill}>
             <View
               style={{
@@ -352,7 +349,7 @@ const CheckoutScreen = ({navigation}) => {
                   justifyContent: 'space-between',
                 }}>
                 <Text>Tổng tiền phí vận chuyển</Text>
-                <Text>đ{freeDelivery}.000</Text>
+                <Text>{50 - voucher[0].price}.000</Text>
               </View>
               <View
                 style={{
@@ -364,7 +361,7 @@ const CheckoutScreen = ({navigation}) => {
                   Tổng thanh toán
                 </Text>
                 <Text style={{fontSize: 18, color: Colors.DEFAULT_YELLOW}}>
-                  đ{sum(cartGoods) + freeDelivery}.000
+                  đ{sum(cartGoods) + (50 - voucher[0].price)}.000
                 </Text>
               </View>
             </View>
@@ -417,7 +414,7 @@ const CheckoutScreen = ({navigation}) => {
               Tổng thanh toán
             </Text>
             <Text style={{color: Colors.DEFAULT_GREEN, fontSize: 18}}>
-              đ{sum(cartGoods) + freeDelivery}.000
+              đ{sum(cartGoods) + (50 - voucher[0].price)}.000
             </Text>
           </View>
           <Text
@@ -527,7 +524,7 @@ const styles = StyleSheet.create({
   warning: {
     borderRadius: 10,
     height: 80,
-    marginBottom: Platform.OS === 'ios' ? 140 : 180,
+    marginBottom: Platform.OS === 'ios' ? 240 : 210,
     justifyContent: 'center',
     marginTop: 10,
     marginHorizontal: 8,

@@ -8,31 +8,29 @@ import {
   View,
   Platform,
   FlatList,
+  Image,
   ScrollView as ScrollViewForAndroid,
   TouchableOpacity,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import {ScrollView} from 'react-native-virtualized-view';
-import {Colors, locations} from '@constants';
+import {Colors, voucher} from '@constants';
 import {useDispatch, useSelector} from 'react-redux';
-import {changeLocation} from '../redux/locationSlice';
-export default function LocationScreen({navigation}: any) {
+import {addVoucher} from '../redux/voucherSlice';
+export default function VoucherScreen({navigation}: any) {
   // redux
   const dispatch = useDispatch();
-  const touch = useSelector((state: any) => state.location);
-  //
+  const voucherStore = useSelector((state: any) => state.voucher);
+
   const CartCard = ({item}: any) => {
-    const local = item;
     return (
       <TouchableOpacity
         onPress={() =>
           dispatch(
-            changeLocation({
-              id: local.id,
-              name: local.name,
-              phone: local.phone,
-              dress: local.dress,
-              title: local.title,
+            addVoucher({
+              id: item.id,
+              name: item.name,
+              price: item.price,
             }),
           )
         }>
@@ -41,7 +39,7 @@ export default function LocationScreen({navigation}: any) {
             styles.cartCard,
             {
               backgroundColor:
-                touch[0].id === item.id
+                voucherStore[0].id === item.id
                   ? Colors.LIGHT_GREEN
                   : Colors.DEFAULT_WHITE,
             },
@@ -49,61 +47,30 @@ export default function LocationScreen({navigation}: any) {
           <View
             style={{
               height: Platform.OS === 'ios' ? 100 : 120,
-              marginLeft: 10,
+              marginLeft: 5,
               paddingVertical: 20,
               justifyContent: 'center',
+              flexDirection: 'row',
             }}>
-            <View style={{flexDirection: 'row', paddingBottom: 5}}>
-              <Text
-                style={{
-                  fontWeight: '500',
-                  fontSize: 15,
-                  color: Colors.DEFAULT_GREEN,
-                }}>
+            <Image
+              source={item.image}
+              style={{height: 60, width: 100, borderRadius: 5}}
+            />
+            <View style={{justifyContent: 'center'}}>
+              <Text style={{fontSize: 18, fontWeight: '600', paddingLeft: 10}}>
                 {item.name}
               </Text>
-              <Text style={{fontSize: 13, color: Colors.DARK_FOUR}}>
-                | {item.phone}
-              </Text>
-            </View>
-            <View style={{position: 'relative'}}>
-              <Text style={{fontSize: 13, fontWeight: '400'}}>
-                {item.dress}
-              </Text>
-              <Text
-                style={{fontWeight: '400', fontSize: 13, marginVertical: 5}}>
-                {item.title}
-              </Text>
               <Text
                 style={{
-                  color: Colors.DEFAULT_YELLOW,
-                  fontSize: 13,
                   fontWeight: '500',
-                  bottom: -11,
-                  position: 'absolute',
+                  fontSize: 18,
+                  marginVertical: 5,
+                  paddingLeft: 10,
                 }}>
-                {item.id === '1' ? 'Mặc định' : ''}
+                {item.price}k
               </Text>
             </View>
           </View>
-          <TouchableOpacity
-            onPress={() => {
-              navigation.navigate('EditLocation', item);
-            }}
-            style={{
-              position: 'absolute',
-              right: 15,
-              padding: 10,
-              // backgroundColor: Colors.DEFAULT_GREEN,
-            }}>
-            <Icon
-              size={16}
-              name="arrow-forward-ios"
-              style={{
-                color: Colors.DEFAULT_GREEN,
-              }}
-            />
-          </TouchableOpacity>
         </View>
       </TouchableOpacity>
     );
@@ -128,7 +95,7 @@ export default function LocationScreen({navigation}: any) {
             color: Colors.DEFAULT_GREEN,
             paddingHorizontal: 100,
           }}>
-          Địa chỉ của Tôi
+          Kho Voucher
         </Text>
       </View>
       {/* location */}
@@ -140,24 +107,24 @@ export default function LocationScreen({navigation}: any) {
             color: Colors.DEFAULT_GREEN,
             paddingBottom: 10,
           }}>
-          Địa chỉ
+          Voucher
         </Text>
         {Platform.OS === 'ios' ? (
           <ScrollView>
             <FlatList
               showsVerticalScrollIndicator={false}
               contentContainerStyle={{paddingBottom: 80}}
-              data={locations}
+              data={voucher}
               renderItem={({item}) => <CartCard item={item} />}
               ListFooterComponentStyle={{paddingHorizontal: 20, marginTop: 20}}
             />
             <TouchableOpacity
-              style={{marginBottom: 10}}
+              style={{marginBottom: 200}}
               onPress={navigation.goBack}>
               <View
                 style={[
                   styles.addBtn,
-                  {backgroundColor: Colors.DEFAULT_YELLOW},
+                  {backgroundColor: Colors.DEFAULT_GREEN},
                 ]}>
                 <View
                   style={{
@@ -172,40 +139,12 @@ export default function LocationScreen({navigation}: any) {
                       color: Colors.DEFAULT_WHITE,
                       paddingHorizontal: 5,
                     }}>
-                    Chọn Địa Chỉ
+                    Chọn Voucher
                   </Text>
                 </View>
               </View>
             </TouchableOpacity>
             {/*  */}
-            <TouchableOpacity
-              style={{marginBottom: 200}}
-              onPress={() => navigation.navigate('CreateAddress')}>
-              <View style={styles.addBtn}>
-                <View
-                  style={{
-                    flexDirection: 'row',
-                    alignItems: 'center',
-                    paddingLeft: 9,
-                  }}>
-                  <Icon
-                    name="add-circle-outline"
-                    size={32}
-                    color={Colors.DEFAULT_GREEN}
-                  />
-                  <Text
-                    style={{
-                      fontSize: 22,
-                      fontWeight: '500',
-                      color: Colors.DEFAULT_GREEN,
-                      paddingHorizontal: 5,
-                    }}>
-                    {/* {name.names[3]} */}
-                    Thêm địa chỉ mới
-                  </Text>
-                </View>
-              </View>
-            </TouchableOpacity>
           </ScrollView>
         ) : (
           <ScrollViewForAndroid showsVerticalScrollIndicator={false}>
@@ -213,7 +152,7 @@ export default function LocationScreen({navigation}: any) {
               scrollEnabled={false}
               showsVerticalScrollIndicator={false}
               contentContainerStyle={{paddingBottom: 80}}
-              data={locations}
+              data={voucher}
               renderItem={({item}) => <CartCard item={item} />}
               ListFooterComponentStyle={{paddingHorizontal: 20, marginTop: 20}}
             />

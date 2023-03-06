@@ -1,11 +1,14 @@
 /* eslint-disable react-native/no-inline-styles */
-import {StyleSheet, Text, View, Switch} from 'react-native';
+import {StyleSheet, Text, View, Switch, TouchableOpacity} from 'react-native';
 import React, {useState} from 'react';
 import {Colors} from '@constants';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import Iconsss from 'react-native-vector-icons/Ionicons';
-export default function Voucher() {
+import {useSelector} from 'react-redux';
+export default function Voucher({navigation}) {
   const [isEnabled, setIsEnabled] = useState(false);
+  const voucher = useSelector((state: any) => state.voucher);
+
   const toggleSwitch = () => setIsEnabled(previousState => !previousState);
   return (
     <View style={styles.voucher}>
@@ -38,7 +41,8 @@ export default function Voucher() {
             Pizza Voucher
           </Text>
         </View>
-        <View
+        <TouchableOpacity
+          onPress={() => navigation.navigate('Voucher')}
           style={{
             flexDirection: 'row',
             justifyContent: 'center',
@@ -46,7 +50,7 @@ export default function Voucher() {
             paddingTop: 3,
           }}>
           <Text style={{color: Colors.DEFAULT_GREEN, right: 10}}>
-            Miễn phí vận chuyển
+            -{voucher[0].price}K
           </Text>
           <Icon
             name="arrow-forward-ios"
@@ -54,7 +58,7 @@ export default function Voucher() {
             color={Colors.DEFAULT_GREEN}
             style={{right: 10}}
           />
-        </View>
+        </TouchableOpacity>
       </View>
       <View
         style={{
@@ -75,7 +79,7 @@ export default function Voucher() {
               marginTop: 0,
               fontSize: 18,
             }}>
-            Dùng 400 xu
+            Dùng 4000 xu
           </Text>
         </View>
         <View style={{right: 15}}>

@@ -22,7 +22,7 @@ import {deleteBookmark} from '../redux/bookmarkSlice';
 
 const BookmarkScreen = ({navigation}: any) => {
   //redux
-  const bookmark = useSelector(state => state.bookmark);
+  const bookmark = useSelector((state: any) => state.bookmark);
   const dispatch = useDispatch();
   //
   const [heart, setHeart] = useState(true);

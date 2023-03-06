@@ -16,6 +16,8 @@ import WelcomeScreen from './WelcomeScreen';
 import EditLocationScreen from './EditLocationScreen';
 import CreateAddressScreen from './CreateAddressScreen';
 import SettingScreen from './SettingScreen';
+import PaymentScreen from './PaymentScreen';
+import VoucherScreen from './voucherScreen';
 export {
   BookmarkScreen,
   BottomHomeScreen,
@@ -32,6 +34,8 @@ export {
   RegisterScreen,
   Search,
   ProfileScreen,
+  PaymentScreen,
+  VoucherScreen,
   SettingScreen,
   SignInScreen,
   WelcomeScreen,
