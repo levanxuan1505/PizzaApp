@@ -5,7 +5,7 @@ export const voucherSlice = createSlice({
     {
       id: '0',
       name: 'Miễn phí vận chuyển',
-      price: ' Voucher',
+      price: '0',
     },
   ],
   reducers: {

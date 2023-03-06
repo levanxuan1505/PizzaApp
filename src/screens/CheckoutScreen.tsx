@@ -1,6 +1,6 @@
 /* eslint-disable react/no-unstable-nested-components */
 /* eslint-disable react-native/no-inline-styles */
-import React, {useState} from 'react';
+import React from 'react';
 import {
   SafeAreaView,
   Text,
@@ -25,7 +25,6 @@ const CheckoutScreen = ({navigation}) => {
   const cartGoods = useSelector((state: any) => state.cart);
   const payment = useSelector((state: any) => state.payment);
   const voucher = useSelector((state: any) => state.voucher);
-  const [freeShip, setFreeShip] = useState(50 - voucher[0].price);
   function sum(cartGoods) {
     let sum = 0;
     for (let i = 0; i < cartGoods.length; i++) {
@@ -62,105 +61,11 @@ const CheckoutScreen = ({navigation}) => {
               {item.price}k
             </Text>
           </View>
-          {/* <View
-            style={{
-              marginRight: 20,
-            }}>
-            <Text style={{fontWeight: 'bold', fontSize: 18, marginVertical: 5}}>
-              x{Math.floor(Math.random() * 5) + 1}
-            </Text>
-          </View> */}
         </View>
       </TouchableOpacity>
     );
   };
-  // const [isEnabled, setIsEnabled] = useState(false);
-  // const toggleSwitch = () => setIsEnabled(previousState => !previousState);
-  // const Voucher = () => {
-  //   return (
-  //     <View style={styles.voucher}>
-  //       <View
-  //         style={{
-  //           flexDirection: 'row',
-  //           alignItems: 'center',
-  //           justifyContent: 'space-between',
-  //           paddingLeft: 9,
-  //         }}>
-  //         <View
-  //           style={{
-  //             flexDirection: 'row',
-  //             justifyContent: 'center',
-  //             alignItems: 'center',
-  //           }}>
-  //           <Icon
-  //             name="payments"
-  //             size={42}
-  //             color={Colors.DEFAULT_GREEN}
-  //             style={{paddingLeft: 4}}
-  //           />
 
-  //           <Text
-  //             style={{
-  //               fontSize: 20,
-  //               color: Colors.DEFAULT_GREEN,
-  //               paddingLeft: 5,
-  //             }}>
-  //             Pizza Voucher
-  //           </Text>
-  //         </View>
-  //         <View
-  //           style={{
-  //             flexDirection: 'row',
-  //             justifyContent: 'center',
-  //             alignItems: 'center',
-  //             paddingTop: 3,
-  //           }}>
-  //           <Text style={{color: Colors.DEFAULT_GREEN, right: 10}}>
-  //             Miễn phí vận chuyển
-  //           </Text>
-  //           <Icon
-  //             name="arrow-forward-ios"
-  //             size={20}
-  //             color={Colors.DEFAULT_GREEN}
-  //             style={{right: 10}}
-  //           />
-  //         </View>
-  //       </View>
-  //       <View
-  //         style={{
-  //           flexDirection: 'row',
-  //           justifyContent: 'space-between',
-  //           alignItems: 'center',
-  //         }}>
-  //         <View style={{flexDirection: 'row', alignItems: 'center'}}>
-  //           <Iconsss
-  //             name="ios-server"
-  //             size={30}
-  //             style={{paddingLeft: 18, color: Colors.DEFAULT_GREEN}}
-  //           />
-  //           <Text
-  //             style={{
-  //               color: Colors.DEFAULT_YELLOW,
-  //               paddingLeft: 13,
-  //               marginTop: 0,
-  //               fontSize: 18,
-  //             }}>
-  //             Dùng 400 xu
-  //           </Text>
-  //         </View>
-  //         <View style={{right: 12}}>
-  //           <Switch
-  //             trackColor={{false: '#767577', true: Colors.DEFAULT_GREEN}}
-  //             thumbColor={isEnabled ? '#FFFFFF' : '#f4f3f4'}
-  //             ios_backgroundColor="#3e3e3e"
-  //             onValueChange={toggleSwitch}
-  //             value={isEnabled}
-  //           />
-  //         </View>
-  //       </View>
-  //     </View>
-  //   );
-  // };
   return (
     <SafeAreaView style={{backgroundColor: Colors.DEFAULT_WHITE, flex: 1}}>
       <View style={styles.header}>
@@ -264,16 +169,6 @@ const CheckoutScreen = ({navigation}) => {
                   alignItems: 'center',
                   paddingLeft: 9,
                 }}>
-                {/* <Iconss
-                  name="bitcoin"
-                  size={42}
-                  color={Colors.DEFAULT_GREEN}
-                  style={{
-                    position: 'absolute',
-                    paddingLeft: 12,
-                    paddingTop: 18,
-                  }}
-                /> */}
                 <Image
                   source={payment[0].image}
                   style={{
@@ -349,7 +244,9 @@ const CheckoutScreen = ({navigation}) => {
                   justifyContent: 'space-between',
                 }}>
                 <Text>Tổng tiền phí vận chuyển</Text>
-                <Text>{50 - voucher[0].price}.000</Text>
+                <Text>
+                  50.000-{voucher[0].price}.000={50 - voucher[0].price}.000
+                </Text>
               </View>
               <View
                 style={{
@@ -490,7 +387,6 @@ const styles = StyleSheet.create({
     height: 100,
     marginBottom: 15,
     justifyContent: 'center',
-    // marginTop: 10,
     marginHorizontal: 8,
     backgroundColor: Colors.DEFAULT_WHITE,
     shadowColor: '#000',
@@ -569,8 +465,6 @@ const styles = StyleSheet.create({
   },
   total: {
     backgroundColor: Colors.DEFAULT_WHITE,
-    // paddingHorizontal: 30,
-
     flexDirection: 'row',
     paddingBottom: Platform.OS === 'ios' ? 55 : 87,
     position: 'absolute',

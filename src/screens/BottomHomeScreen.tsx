@@ -20,6 +20,8 @@ export default function BottomHomeScreen() {
   const notification = useSelector((state: any) => state.notification);
   const badgeHome = notification.length;
   const cart = useSelector((state: any) => state.cart);
+  const bookmark = useSelector((state: any) => state.bookmark);
+  const badgeBookmark = bookmark.length;
   const badgeCart = cart.length;
   return (
     <Tab.Navigator
@@ -46,7 +48,7 @@ export default function BottomHomeScreen() {
         name="Home"
         component={HomeScreen}
         options={{
-          tabBarBadge: badgeHome,
+          tabBarBadge: badgeHome ? badgeHome : null,
           headerShown: false,
           tabBarIcon: ({color}) => (
             <Icon name="home-filled" size={28} color={color} />
@@ -57,7 +59,7 @@ export default function BottomHomeScreen() {
         name="Cart"
         component={CartScreen}
         options={{
-          tabBarBadge: badgeCart,
+          tabBarBadge: badgeCart ? badgeCart : null,
           headerShown: false,
           tabBarIcon: ({color}) => (
             <Icon name="shopping-cart" size={28} color={color} />
@@ -92,7 +94,7 @@ export default function BottomHomeScreen() {
         name="Bookmark"
         component={BookmarkScreen}
         options={{
-          tabBarBadge: 10,
+          tabBarBadge: badgeBookmark ? badgeBookmark : null,
           headerShown: false,
           tabBarIcon: ({color}) => (
             <Icon name="bookmarks" size={28} color={color} />
@@ -103,7 +105,7 @@ export default function BottomHomeScreen() {
         name="Profile"
         component={ProfileScreen}
         options={{
-          tabBarBadge: 5,
+          tabBarBadge: badgeHome ? badgeHome : null,
           headerShown: false,
           tabBarIcon: ({color}) => (
             <Icon name="supervised-user-circle" size={28} color={color} />

@@ -109,7 +109,6 @@ const CartScreen = ({navigation}: any) => {
               height: 20,
               backgroundColor: 'red',
             }}
-            // Hidden={this.state.BadgeCount == 0}
           />
         </View>
       </View>

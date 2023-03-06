@@ -19,7 +19,7 @@ import {ScrollView} from 'react-native-gesture-handler';
 import {useSelector} from 'react-redux';
 //
 export default function ProfileScreen({navigation}: any) {
-  const notification = useSelector(state => state.notification);
+  const notification = useSelector((state: any) => state.notification);
   const badge = notification.length;
   return (
     <SafeAreaView style={{marginHorizontal: 20}}>
@@ -325,7 +325,8 @@ export default function ProfileScreen({navigation}: any) {
                 {`  Ví Zalo Pay  `}
               </Text>
             </View>
-            <View
+            <TouchableOpacity
+              onPress={() => navigation.navigate('Voucher')}
               style={{justifyContent: 'center', alignItems: 'center', left: 2}}>
               <Icons
                 name="wallet-giftcard"
@@ -335,7 +336,7 @@ export default function ProfileScreen({navigation}: any) {
               <Text style={{fontSize: 15, color: Colors.FACEBOOK_BLUE}}>
                 Kho Voucher
               </Text>
-            </View>
+            </TouchableOpacity>
             <View
               style={{
                 justifyContent: 'center',
@@ -685,7 +686,10 @@ export default function ProfileScreen({navigation}: any) {
               paddingBottom: 8,
               borderBottomColor: Colors.DEFAULT_YELLOW,
             }}>
-            <View
+            <TouchableOpacity
+              onPress={() => {
+                navigation.navigate('Voucher');
+              }}
               style={{
                 flexDirection: 'row',
                 alignItems: 'center',
@@ -721,7 +725,7 @@ export default function ProfileScreen({navigation}: any) {
                 color={Colors.DEFAULT_YELLOW}
                 style={{position: 'absolute', right: 0}}
               />
-            </View>
+            </TouchableOpacity>
           </View>
           <View
             style={{
