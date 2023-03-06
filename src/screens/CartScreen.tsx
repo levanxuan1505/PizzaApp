@@ -13,19 +13,35 @@ import {
 import {FlatList} from 'react-native-gesture-handler';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import IconBadge from 'react-native-icon-badge';
+import Iconss from 'react-native-vector-icons/Ionicons';
 
 import {Colors} from '@constants';
 import {foods} from '@constants';
 import {PrimaryButton} from '@components';
 // redux
-import {useSelector} from 'react-redux';
+import {useSelector, useDispatch} from 'react-redux';
+import {removeCart} from '../redux/cartSlice';
 //
 
 const CartScreen = ({navigation}: any) => {
   // redux
+  const dispatch = useDispatch();
   const cartGoods = useSelector(state => state.cart);
-  const sum = useSelector(state => state.sum);
   const bagde = cartGoods.length;
+  function sum(cartGoods) {
+    let sum = 0;
+    for (let i = 0; i < cartGoods.length; i++) {
+      sum += cartGoods[i].price;
+    }
+    return sum;
+  }
+  // const sumCart = cartGoods => {
+  //   let sum = 0;
+  //   for (let i = 0; i < cartGoods.length; i++) {
+  //     sum += cartGoods[i].price;
+  //   }
+  //   return sum;
+  // };
   //
   const CartCard = ({item}: any) => {
     return (
@@ -47,15 +63,11 @@ const CartScreen = ({navigation}: any) => {
               {item.price}k
             </Text>
           </View>
-          <View style={{marginRight: 20, alignItems: 'center'}}>
-            <Text style={{fontWeight: 'bold', fontSize: 20, marginVertical: 5}}>
-              x{Math.floor(Math.random() * 5) + 1}
-            </Text>
-            <View style={style.actionBtn}>
-              <Icon name="remove" size={25} color={Colors.DEFAULT_WHITE} />
-              <Icon name="add" size={25} color={Colors.DEFAULT_WHITE} />
-            </View>
-          </View>
+          <TouchableOpacity
+            onPress={() => dispatch(removeCart({id: item.id}))}
+            style={{marginRight: 20, alignItems: 'center'}}>
+            <Iconss name="trash" size={32} color={Colors.DEFAULT_GREEN} />
+          </TouchableOpacity>
         </View>
       </TouchableOpacity>
     );
@@ -148,7 +160,7 @@ const CartScreen = ({navigation}: any) => {
               fontWeight: 'bold',
               color: Colors.DEFAULT_GREEN,
             }}>
-            đ{sum}.000
+            đ {sum(cartGoods)}.000
           </Text>
         </View>
         <View style={{marginHorizontal: 30}}>

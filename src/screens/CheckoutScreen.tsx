@@ -23,9 +23,15 @@ import {useSelector} from 'react-redux';
 
 const CheckoutScreen = ({navigation}) => {
   const cartGoods = useSelector(state => state.cart);
+  function sum(cartGoods) {
+    let sum = 0;
+    for (let i = 0; i < cartGoods.length; i++) {
+      sum += cartGoods[i].price;
+    }
+    return sum;
+  }
   const location = useSelector(state => state.location);
   const badge = cartGoods.length;
-  const sum = useSelector(state => state.sum);
   const [freeDelivery, setFreeDelivery] = useState(15);
   const [name, setName] = useState('Lê Văn Xuân');
   const [phone, setPhone] = useState('(+84) 97 517 95 46');
@@ -337,7 +343,7 @@ const CheckoutScreen = ({navigation}) => {
                   justifyContent: 'space-between',
                 }}>
                 <Text>Tổng tiền hàng</Text>
-                <Text>đ{sum}.000</Text>
+                <Text>đ{sum(cartGoods)}.000</Text>
               </View>
               <View
                 style={{
@@ -358,7 +364,7 @@ const CheckoutScreen = ({navigation}) => {
                   Tổng thanh toán
                 </Text>
                 <Text style={{fontSize: 18, color: Colors.DEFAULT_YELLOW}}>
-                  đ{sum + freeDelivery}.000
+                  đ{sum(cartGoods) + freeDelivery}.000
                 </Text>
               </View>
             </View>
@@ -411,7 +417,7 @@ const CheckoutScreen = ({navigation}) => {
               Tổng thanh toán
             </Text>
             <Text style={{color: Colors.DEFAULT_GREEN, fontSize: 18}}>
-              đ{sum + freeDelivery}.000
+              đ{sum(cartGoods) + freeDelivery}.000
             </Text>
           </View>
           <Text
