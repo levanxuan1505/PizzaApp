@@ -37,7 +37,7 @@ const cardWidth = width / 2 - 20;
 
 export default function HomeScreen({navigation, item}: any) {
   // redux
-  const notification = useSelector(state => state.notification);
+  const notification = useSelector((state: any) => state.notification);
   const badge = notification.length;
   const dispatch = useDispatch();
   const [selectedCategoryIndex, setSelectedCategoryIndex] = useState(0);

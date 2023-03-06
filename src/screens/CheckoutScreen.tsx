@@ -317,16 +317,18 @@ const CheckoutScreen = ({navigation}) => {
               đ{sum(cartGoods) + (50 - voucher[0].price - coin[0].price)}.000
             </Text>
           </View>
-          <Text
-            style={{
-              fontSize: 22,
-              backgroundColor: Colors.DEFAULT_GREEN,
-              padding: 18,
-              fontWeight: '800',
-              color: Colors.DEFAULT_WHITE,
-            }}>
-            Đặt hàng
-          </Text>
+          <TouchableOpacity>
+            <Text
+              style={{
+                fontSize: 22,
+                backgroundColor: Colors.DEFAULT_GREEN,
+                padding: 18,
+                fontWeight: '800',
+                color: Colors.DEFAULT_WHITE,
+              }}>
+              Đặt hàng
+            </Text>
+          </TouchableOpacity>
         </View>
       </View>
     </SafeAreaView>
