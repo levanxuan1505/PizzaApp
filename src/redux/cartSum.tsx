@@ -1,6 +1,6 @@
 import {createSlice} from '@reduxjs/toolkit';
 export const cartSum = createSlice({
-  name: 'cart',
+  name: 'sum',
   initialState: 189,
   reducers: {
     addToSum: (state, action) => {

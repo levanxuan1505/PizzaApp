@@ -18,13 +18,23 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 import Icons from 'react-native-vector-icons/Ionicons';
 import {Colors} from '@constants';
 import {SecondaryButton} from '@components';
+// redux
+import {useDispatch} from 'react-redux';
+import {addToCart} from '../redux/cartSlice';
+import {addToSum} from '../redux/cartSum';
+
+//
 
 import {ScrollView} from 'react-native-gesture-handler';
+import {addToBookmark} from '../redux/bookmarkSlice';
 
-const DetailsCardScreen = ({navigation, route, heartValue}: any) => {
+const DetailsCardScreen = ({navigation, route}: any) => {
   const item = route.params;
-  const [heart, setHeart] = useState(!heartValue);
+  // const [heart, setHeart] = useState(!heartValue);
   const [visible, setVisible] = useState(false);
+  // redux
+  const dispatch = useDispatch();
+  //
 
   const ModalPoup = ({visible, children}: any) => {
     const [showModal, setShowModal] = React.useState(visible);
@@ -181,14 +191,18 @@ const DetailsCardScreen = ({navigation, route, heartValue}: any) => {
             </Text>
             <TouchableOpacity
               onPress={() => {
-                setHeart(!heart);
+                dispatch(
+                  addToBookmark({
+                    name: item.name,
+                    ingredients: item.ingredients,
+                    price: item.price,
+                    image: item.image,
+                    title: item.title,
+                  }),
+                );
               }}>
               <View style={styles.iconContainer}>
-                <Icons
-                  name={heartValue ? 'heart' : 'heart-dislike-sharp'}
-                  color={Colors.DEFAULT_GREEN}
-                  size={25}
-                />
+                <Icons name="heart" color={Colors.DEFAULT_GREEN} size={25} />
               </View>
             </TouchableOpacity>
           </View>
@@ -198,7 +212,19 @@ const DetailsCardScreen = ({navigation, route, heartValue}: any) => {
       <View style={styles.total}>
         <SecondaryButton
           title="Thêm vào giỏ hàng"
-          onPress={() => setVisible(true)}
+          onPress={() => {
+            dispatch(
+              addToCart({
+                id: item.id,
+                name: item.name,
+                ingredients: item.ingredients,
+                price: item.price,
+                image: item.image,
+                title: item.title,
+              }),
+            ),
+              dispatch(addToSum({price: item.price}));
+          }}
         />
       </View>
       {/* </ScrollView> */}

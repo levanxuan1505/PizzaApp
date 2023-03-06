@@ -15,8 +15,12 @@ import Iconss from 'react-native-vector-icons/Ionicons';
 import IconBadge from 'react-native-icon-badge';
 import {Colors} from '@constants';
 import {ScrollView} from 'react-native-gesture-handler';
-
+// redux
+import {useSelector} from 'react-redux';
+//
 export default function ProfileScreen({navigation}: any) {
+  const notification = useSelector(state => state.notification);
+  const badge = notification.length;
   return (
     <SafeAreaView style={{marginHorizontal: 20}}>
       <View>
@@ -44,7 +48,7 @@ export default function ProfileScreen({navigation}: any) {
                   <Icons name="bell" size={30} style={styles.icon} />
                 </View>
               }
-              BadgeElement={<Text style={{color: '#FFFFFF'}}>5</Text>}
+              BadgeElement={<Text style={{color: '#FFFFFF'}}>{badge}</Text>}
               IconBadgeStyle={{
                 marginRight: -7,
                 marginTop: -2,

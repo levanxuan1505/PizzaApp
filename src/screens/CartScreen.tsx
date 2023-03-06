@@ -25,6 +25,7 @@ const CartScreen = ({navigation}: any) => {
   // redux
   const cartGoods = useSelector(state => state.cart);
   const sum = useSelector(state => state.sum);
+  const bagde = cartGoods.length;
   //
   const CartCard = ({item}: any) => {
     return (
@@ -88,7 +89,7 @@ const CartScreen = ({navigation}: any) => {
                 />
               </View>
             }
-            BadgeElement={<Text style={{color: '#FFFFFF'}}>3</Text>}
+            BadgeElement={<Text style={{color: '#FFFFFF'}}>{bagde}</Text>}
             IconBadgeStyle={{
               marginRight: -5,
               marginTop: -6,

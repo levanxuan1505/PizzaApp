@@ -15,14 +15,20 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 import Icons from 'react-native-vector-icons/Ionicons';
 
 import {Colors} from '@constants';
-import {foods} from '@constants';
+// redux
+import {useDispatch, useSelector} from 'react-redux';
+import {deleteBookmark} from '../redux/bookmarkSlice';
+//
 
 const BookmarkScreen = ({navigation}: any) => {
+  //redux
+  const bookmark = useSelector(state => state.bookmark);
+  const dispatch = useDispatch();
+  //
   const [heart, setHeart] = useState(true);
-  const CartCard = ({item, heartValue}: any) => {
+  const CartCard = ({item}: any) => {
     return (
-      <TouchableOpacity
-        onPress={() => navigation.navigate('DetailCard', item, heartValue)}>
+      <TouchableOpacity onPress={() => navigation.navigate('DetailCard', item)}>
         <View style={styles.cartCard}>
           <Image source={item.image} style={{height: 80, width: 80}} />
           <View
@@ -43,7 +49,8 @@ const BookmarkScreen = ({navigation}: any) => {
           <View style={{marginRight: 25, alignItems: 'center'}}>
             <View>
               <Icons
-                name={heartValue ? 'heart-dislike-sharp' : 'heart'}
+                onPress={() => dispatch(deleteBookmark({id: item.id}))}
+                name="heart-dislike-sharp"
                 size={32}
                 color={Colors.DEFAULT_GREEN}
               />
@@ -84,10 +91,11 @@ const BookmarkScreen = ({navigation}: any) => {
           />
         </View>
       </View>
+
       <FlatList
         showsVerticalScrollIndicator={false}
         contentContainerStyle={{paddingBottom: 80}}
-        data={foods}
+        data={bookmark}
         renderItem={({item}) => <CartCard item={item} heartValue={heart} />}
         ListFooterComponentStyle={{paddingHorizontal: 20, marginTop: 20}}
       />

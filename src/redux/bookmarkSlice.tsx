@@ -14,7 +14,10 @@ export const bookmarkSlice = createSlice({
       };
       state.push(newToBookmark);
     },
+    deleteBookmark: (state, action) => {
+      return state.filter(item => item.id !== action.payload.id);
+    },
   },
 });
-export const {addToBookmark} = bookmarkSlice.actions;
+export const {addToBookmark, deleteBookmark} = bookmarkSlice.actions;
 export default bookmarkSlice.reducer;
