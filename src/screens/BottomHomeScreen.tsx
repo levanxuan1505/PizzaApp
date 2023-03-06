@@ -11,10 +11,16 @@ import CartScreen from './CartScreen';
 import Search from './Search';
 import BookmarkScreen from './BookmarkScreen';
 import ProfileScreen from './ProfileScreen';
-
+// redux
+import {useSelector} from 'react-redux';
+//
 const Tab = createBottomTabNavigator();
 
 export default function BottomHomeScreen() {
+  const notification = useSelector((state: any) => state.notification);
+  const badgeHome = notification.length;
+  const cart = useSelector((state: any) => state.cart);
+  const badgeCart = cart.length;
   return (
     <Tab.Navigator
       screenOptions={{
@@ -40,7 +46,7 @@ export default function BottomHomeScreen() {
         name="Home"
         component={HomeScreen}
         options={{
-          tabBarBadge: 5,
+          tabBarBadge: badgeHome,
           headerShown: false,
           tabBarIcon: ({color}) => (
             <Icon name="home-filled" size={28} color={color} />
@@ -51,7 +57,7 @@ export default function BottomHomeScreen() {
         name="Cart"
         component={CartScreen}
         options={{
-          tabBarBadge: 3,
+          tabBarBadge: badgeCart,
           headerShown: false,
           tabBarIcon: ({color}) => (
             <Icon name="shopping-cart" size={28} color={color} />

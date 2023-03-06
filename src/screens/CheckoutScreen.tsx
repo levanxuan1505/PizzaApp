@@ -23,6 +23,8 @@ import {useSelector} from 'react-redux';
 
 const CheckoutScreen = ({navigation}) => {
   const cartGoods = useSelector(state => state.cart);
+  const location = useSelector(state => state.location);
+  const badge = cartGoods.length;
   const sum = useSelector(state => state.sum);
   const [freeDelivery, setFreeDelivery] = useState(15);
   const [name, setName] = useState('Lê Văn Xuân');
@@ -190,7 +192,7 @@ const CheckoutScreen = ({navigation}) => {
                 />
               </View>
             }
-            BadgeElement={<Text style={{color: '#FFFFFF'}}>3</Text>}
+            BadgeElement={<Text style={{color: '#FFFFFF'}}>{badge}</Text>}
             IconBadgeStyle={{
               marginRight: -16,
               marginTop: -7,
@@ -233,10 +235,10 @@ const CheckoutScreen = ({navigation}) => {
               <View style={{flexDirection: 'row'}}>
                 <View style={{paddingLeft: 15}}>
                   <Text>
-                    {name} | {phone}
+                    {location[0].name} | {location[0].phone}
                   </Text>
-                  <Text>{address},</Text>
-                  <Text>{address1}</Text>
+                  <Text>{location[0].dress},</Text>
+                  <Text>{location[0].title}</Text>
                 </View>
               </View>
               <Icon

@@ -29,13 +29,16 @@ import {foods} from '@constants';
 // redux
 import {addToCart} from '../redux/cartSlice';
 import {addToSum} from '../redux/cartSum';
-import {useDispatch} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 //
 
 const {width} = Dimensions.get('screen');
 const cardWidth = width / 2 - 20;
 
 export default function HomeScreen({navigation, item}: any) {
+  // redux
+  const notification = useSelector(state => state.notification);
+  const badge = notification.length;
   const dispatch = useDispatch();
   const [selectedCategoryIndex, setSelectedCategoryIndex] = useState(0);
   // modal//
@@ -335,7 +338,7 @@ export default function HomeScreen({navigation, item}: any) {
                 />
               </View>
             }
-            BadgeElement={<Text style={{color: '#FFFFFF'}}>5</Text>}
+            BadgeElement={<Text style={{color: '#FFFFFF'}}>{badge}</Text>}
             IconBadgeStyle={{
               marginRight: -9,
               marginTop: -4,

@@ -14,10 +14,28 @@ import {
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import {ScrollView} from 'react-native-virtualized-view';
 import {Colors, locations} from '@constants';
+import {useDispatch} from 'react-redux';
+import {changeLocation} from '../redux/locationSlice';
 export default function LocationScreen({navigation}: any) {
+  // redux
+  const dispatch = useDispatch();
+  //
   const CartCard = ({item}: any) => {
+    const local = item;
     return (
-      <TouchableOpacity onPress={navigation.goBack}>
+      <TouchableOpacity
+        onPress={
+          (dispatch(
+            changeLocation({
+              id: local.id,
+              name: local.name,
+              phone: local.phone,
+              dress: local.dress,
+              title: local.title,
+            }),
+          ),
+          navigation.goBack)
+        }>
         <View style={styles.cartCard}>
           <View
             style={{
