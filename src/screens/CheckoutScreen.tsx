@@ -1,6 +1,8 @@
+/* eslint-disable no-sequences */
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/no-unstable-nested-components */
 /* eslint-disable react-native/no-inline-styles */
-import React from 'react';
+import React, {useState} from 'react';
 import {
   SafeAreaView,
   Text,
@@ -8,6 +10,8 @@ import {
   StyleSheet,
   Platform,
   Image,
+  Modal,
+  Animated,
   TouchableOpacity,
 } from 'react-native';
 import {ScrollView} from 'react-native-virtualized-view';
@@ -19,13 +23,52 @@ import Icons from 'react-native-vector-icons/Fontisto';
 import IconBadge from 'react-native-icon-badge';
 import {Colors} from '@constants';
 import {Voucher} from '@components';
-import {useSelector} from 'react-redux';
+import {useSelector, useDispatch} from 'react-redux';
+import {addOrder} from '../redux/orderSlice';
 
 const CheckoutScreen = ({navigation}) => {
+  // modal
+  const [visible, setVisible] = useState(false);
+  const ModalPoup = ({visible, children}: any) => {
+    const [showModal, setShowModal] = React.useState(visible);
+    const scaleValue = React.useRef(new Animated.Value(0)).current;
+    React.useEffect(() => {
+      toggleModal();
+    }, [visible]);
+    const toggleModal = () => {
+      if (visible) {
+        // setShowModal(true);
+        Animated.spring(scaleValue, {
+          toValue: 1,
+          // duration: 3000,
+          useNativeDriver: true,
+        }).start();
+      } else {
+        setTimeout(() => setShowModal(false), 300);
+        Animated.timing(scaleValue, {
+          toValue: 0,
+          duration: 300,
+          useNativeDriver: true,
+        }).start();
+      }
+    };
+    return (
+      <Modal transparent visible={showModal}>
+        <View style={styles.modalBackGround}>
+          <Animated.View
+            style={[styles.modalContainer, {transform: [{scale: scaleValue}]}]}>
+            {children}
+          </Animated.View>
+        </View>
+      </Modal>
+    );
+  };
+  //
   const cartGoods = useSelector((state: any) => state.cart);
   const payment = useSelector((state: any) => state.payment);
   const voucher = useSelector((state: any) => state.voucher);
   const coin = useSelector((state: any) => state.coin);
+  const dispatch = useDispatch();
   function sum(cartGoods) {
     let sum = 0;
     for (let i = 0; i < cartGoods.length; i++) {
@@ -69,6 +112,73 @@ const CheckoutScreen = ({navigation}) => {
 
   return (
     <SafeAreaView style={{backgroundColor: Colors.DEFAULT_WHITE, flex: 1}}>
+      {/* modal */}
+      <ModalPoup visible={visible}>
+        <View
+          style={{
+            flex: 1,
+            flexDirection: 'column',
+            justifyContent: 'space-around',
+            alignItems: 'center',
+          }}>
+          <View
+            style={[styles.Header, {borderBottomColor: Colors.DEFAULT_WHITE}]}>
+            <Text
+              style={{
+                fontSize: 24,
+                fontWeight: '600',
+                color: Colors.DEFAULT_GREEN,
+                paddingTop: 10,
+              }}>
+              Xác nhận
+            </Text>
+          </View>
+          <View style={[styles.Header, {top: -10, paddingBottom: 10}]}>
+            <Text
+              style={{
+                fontSize: 19,
+                fontWeight: '500',
+                color: Colors.DEFAULT_GREEN,
+              }}>
+              Xác nhận order những món ăn này
+            </Text>
+          </View>
+          <View
+            style={{
+              width: '100%',
+              flexDirection: 'row',
+              justifyContent: 'space-around',
+              top: -10,
+            }}>
+            <TouchableOpacity
+              onPress={() => {
+                dispatch(addOrder({order: 1})),
+                  setVisible(false),
+                  navigation.navigate('Profile');
+              }}>
+              <Text
+                style={{
+                  color: Colors.DEFAULT_GREEN,
+                  fontSize: 20,
+                  fontWeight: '600',
+                }}>
+                Xác nhận
+              </Text>
+            </TouchableOpacity>
+            <TouchableOpacity onPress={() => setVisible(false)}>
+              <Text
+                style={{
+                  color: Colors.DEFAULT_RED,
+                  fontSize: 20,
+                  fontWeight: '600',
+                }}>
+                Huỷ bỏ
+              </Text>
+            </TouchableOpacity>
+          </View>
+        </View>
+      </ModalPoup>
+      {/*  */}
       <View style={styles.header}>
         <Icon
           name="arrow-back-ios"
@@ -317,7 +427,7 @@ const CheckoutScreen = ({navigation}) => {
               đ{sum(cartGoods) + (50 - voucher[0].price - coin[0].price)}.000
             </Text>
           </View>
-          <TouchableOpacity>
+          <TouchableOpacity onPress={() => setVisible(true)}>
             <Text
               style={{
                 fontSize: 22,
@@ -487,6 +597,30 @@ const styles = StyleSheet.create({
     shadowRadius: 16.0,
 
     elevation: 24,
+  },
+  modalBackGround: {
+    flex: 1,
+    backgroundColor: 'rgba(0,0,0,0.5)',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  modalContainer: {
+    width: '80%',
+    height: 140,
+    backgroundColor: 'white',
+    // paddingHorizontal: 20,
+    // paddingVertical: 30,
+    borderRadius: 15,
+    elevation: 20,
+  },
+  Header: {
+    // paddingTop: 20,
+    alignItems: 'center',
+    justifyContent: 'center',
+    // paddingVertical: 20,
+    borderBottomWidth: 0.17,
+    borderColor: Colors.DEFAULT_GREEN,
+    width: '100%',
   },
 });
 export default CheckoutScreen;

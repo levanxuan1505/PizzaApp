@@ -20,6 +20,7 @@ import {useSelector} from 'react-redux';
 //
 export default function ProfileScreen({navigation}: any) {
   const notification = useSelector((state: any) => state.notification);
+  const order = useSelector((state: any) => state.order);
   const badge = notification.length;
   return (
     <SafeAreaView style={{marginHorizontal: 20}}>
@@ -166,10 +167,34 @@ export default function ProfileScreen({navigation}: any) {
                 justifyContent: 'center',
                 alignItems: 'center',
               }}>
-              <Icons
+              {/* <Icons
                 name="wallet-plus-outline"
                 size={32}
                 color={Colors.DEFAULT_YELLOW}
+              /> */}
+              <IconBadge
+                MainElement={
+                  <View>
+                    <Icons
+                      name="wallet-plus-outline"
+                      size={32}
+                      style={{color: Colors.DEFAULT_YELLOW}}
+                    />
+                  </View>
+                }
+                BadgeElement={
+                  <Text style={{color: '#FFFFFF', fontSize: 12}}>
+                    {order[0].order}
+                  </Text>
+                }
+                IconBadgeStyle={{
+                  marginRight: -13,
+                  marginTop: -2,
+                  width: 4,
+                  height: 20,
+                  backgroundColor: 'red',
+                }}
+                // Hidden={this.state.BadgeCount == 0}
               />
               <Text
                 style={{
@@ -191,28 +216,12 @@ export default function ProfileScreen({navigation}: any) {
                   alignItems: 'center',
                 }}
                 onPress={() => navigation.navigate('Notification')}>
-                <IconBadge
-                  MainElement={
-                    <View>
-                      <Icons
-                        name="wallet-giftcard"
-                        size={32}
-                        style={{color: Colors.DEFAULT_GREEN}}
-                      />
-                    </View>
-                  }
-                  BadgeElement={
-                    <Text style={{color: '#FFFFFF', fontSize: 12}}>3</Text>
-                  }
-                  IconBadgeStyle={{
-                    marginRight: -13,
-                    marginTop: -2,
-                    width: 4,
-                    height: 20,
-                    backgroundColor: 'red',
-                  }}
-                  // Hidden={this.state.BadgeCount == 0}
+                <Icons
+                  name="wallet-giftcard"
+                  size={32}
+                  style={{color: Colors.DEFAULT_GREEN}}
                 />
+
                 <Text
                   style={{
                     fontSize: 15,

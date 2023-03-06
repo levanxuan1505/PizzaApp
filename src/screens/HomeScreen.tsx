@@ -36,6 +36,8 @@ const {width} = Dimensions.get('screen');
 const cardWidth = width / 2 - 20;
 
 export default function HomeScreen({navigation, item}: any) {
+  // modal
+  //
   // redux
   const notification = useSelector((state: any) => state.notification);
   const badge = notification.length;
