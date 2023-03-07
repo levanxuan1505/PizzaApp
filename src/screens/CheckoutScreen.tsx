@@ -350,15 +350,16 @@ const CheckoutScreen = ({navigation}) => {
                 Chi tiết thanh toán
               </Text>
             </View>
-            <View style={{paddingTop: 7}}>
+            <View style={{paddingTop: 0}}>
               <View
                 style={{
                   paddingHorizontal: 20,
+                  marginTop: -30,
                   flexDirection: 'row',
                   justifyContent: 'space-between',
                 }}>
-                <Text>Tổng tiền hàng</Text>
-                <Text>đ{sum(cartGoods)}.000</Text>
+                <Text style={{fontSize: 18}}>Tổng tiền hàng</Text>
+                <Text style={{fontSize: 17}}>đ{sum(cartGoods)}.000</Text>
               </View>
               <View
                 style={{
@@ -366,10 +367,8 @@ const CheckoutScreen = ({navigation}) => {
                   flexDirection: 'row',
                   justifyContent: 'space-between',
                 }}>
-                <Text>Tổng tiền phí vận chuyển</Text>
-                <Text>
-                  50.000-{voucher[0].price}.000={50 - voucher[0].price}.000
-                </Text>
+                <Text style={{fontSize: 18}}>Tổng tiền phí vận chuyển</Text>
+                <Text style={{fontSize: 17}}>50.000</Text>
               </View>
               <View
                 style={{
@@ -377,12 +376,28 @@ const CheckoutScreen = ({navigation}) => {
                   flexDirection: 'row',
                   justifyContent: 'space-between',
                 }}>
-                <Text style={{fontSize: 18, color: Colors.DEFAULT_GREEN}}>
+                <Text style={{fontSize: 18}}>Voucher vận chuyển</Text>
+                <Text style={{fontSize: 17}}>-{voucher[0].price}.000</Text>
+              </View>
+              <View
+                style={{
+                  paddingHorizontal: 20,
+                  flexDirection: 'row',
+                  justifyContent: 'space-between',
+                }}>
+                <Text style={{fontSize: 18}}>Triết khấu Xu</Text>
+                <Text style={{fontSize: 17}}>-{coin[0].price}.000</Text>
+              </View>
+              <View
+                style={{
+                  paddingHorizontal: 20,
+                  flexDirection: 'row',
+                  justifyContent: 'space-between',
+                }}>
+                <Text style={{fontSize: 20, color: Colors.DEFAULT_GREEN}}>
                   Tổng thanh toán
                 </Text>
-                <Text style={{fontSize: 18, color: Colors.DEFAULT_YELLOW}}>
-                  đ{sum(cartGoods) + (50 - voucher[0].price)}.000 -
-                  {coin[0].price}.000=
+                <Text style={{fontSize: 19, color: Colors.DEFAULT_GREEN}}>
                   {sum(cartGoods) + (50 - voucher[0].price - coin[0].price)}.000
                 </Text>
               </View>
@@ -430,7 +445,7 @@ const CheckoutScreen = ({navigation}) => {
             <Text
               style={{
                 color: Colors.DEFAULT_GREEN,
-                fontSize: 18,
+                fontSize: 20,
                 paddingRight: 10,
               }}>
               Tổng thanh toán
