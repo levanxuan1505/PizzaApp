@@ -2,7 +2,6 @@
 import React from 'react';
 import {
   SafeAreaView,
-  StyleSheet,
   Text,
   View,
   Image,
@@ -14,6 +13,7 @@ import Icons from 'react-native-vector-icons/MaterialCommunityIcons';
 import Iconss from 'react-native-vector-icons/Ionicons';
 import IconBadge from 'react-native-icon-badge';
 import {Colors} from '@constants';
+import styles from '@css/ProfileScreenStyle';
 import {ScrollView} from 'react-native-gesture-handler';
 // redux
 import {useSelector} from 'react-redux';
@@ -57,10 +57,9 @@ export default function ProfileScreen({navigation}: any) {
                 height: 20,
                 backgroundColor: 'red',
               }}
-              // Hidden={this.state.BadgeCount == 0}
             />
           </TouchableOpacity>
-
+          {/* setting icon */}
           <TouchableOpacity
             style={{right: 65, position: 'absolute'}}
             onPress={() => navigation.navigate('Setting')}>
@@ -110,6 +109,7 @@ export default function ProfileScreen({navigation}: any) {
             style={{
               marginTop: 14,
             }}>
+            {/* Đơn mua */}
             <View
               style={{
                 flexDirection: 'row',
@@ -152,7 +152,6 @@ export default function ProfileScreen({navigation}: any) {
               </View>
             </View>
           </View>
-          {/* <View style={styles.wallet}> */}
           <View
             style={{
               flexDirection: 'row',
@@ -275,9 +274,8 @@ export default function ProfileScreen({navigation}: any) {
                 Đánh giá
               </Text>
             </View>
-            {/* </View> */}
           </View>
-          {/* New tab */}
+          {/* Tiện ích của tôi */}
           <View style={{marginTop: 12}}>
             <View
               style={{
@@ -378,8 +376,6 @@ export default function ProfileScreen({navigation}: any) {
                 PizzaLater
               </Text>
             </View>
-
-            {/* </View> */}
           </View>
 
           {/* Options */}
@@ -849,95 +845,8 @@ export default function ProfileScreen({navigation}: any) {
               />
             </View>
           </View>
-
-          {/* option end */}
-          {/* <TouchableOpacity
-            onPress={() =>
-              Alert.alert('Xác nhận', 'Bạn muốn đăng xuất', [
-                {
-                  text: 'Xác nhận',
-                  onPress: () => navigation.navigate('Options'),
-                },
-                {text: 'Huỷ bỏ', onPress: () => {}},
-              ])
-            }
-            // onPress={() => navigation.navigate('Options')}
-            style={{
-              width: '100%',
-              height: 60,
-              backgroundColor: Colors.DEFAULT_GREEN,
-              borderRadius: 50,
-              marginTop: 35,
-              marginBottom: 300,
-            }}>
-            <View style={styles.logOut}>
-              <Icons
-                name="account-arrow-left-outline"
-                size={32}
-                color={Colors.DEFAULT_WHITE}
-              />
-              <Text
-                style={{
-                  fontSize: 18,
-                  fontWeight: '900',
-                  marginLeft: 5,
-                  color: Colors.DEFAULT_WHITE,
-                }}>
-                Đăng xuất
-              </Text>
-            </View>
-          </TouchableOpacity> */}
         </ScrollView>
       </View>
     </SafeAreaView>
   );
 }
-
-const styles = StyleSheet.create({
-  header: {
-    marginTop: Platform.OS === 'ios' ? 0 : 20,
-    paddingVertical: 20,
-    flexDirection: 'row',
-    position: 'relative',
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  contact: {
-    flexDirection: 'row',
-    marginBottom: 4,
-  },
-  wallet: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    borderColor: Colors.DEFAULT_GREEN,
-    paddingVertical: 25,
-  },
-  options: {
-    flexDirection: 'row',
-    marginBottom: 4,
-    alignItems: 'center',
-    paddingVertical: 8,
-  },
-  information: {
-    flexDirection: 'row',
-    justifyContent: 'flex-start',
-    alignItems: 'center',
-    paddingBottom: 10,
-    borderBottomWidth: 0.2,
-    borderBottomColor: Colors.DEFAULT_GREEN,
-  },
-  bell: {
-    color: Colors.DEFAULT_GREEN,
-    position: 'absolute',
-    right: 10,
-  },
-  icon: {
-    color: Colors.DEFAULT_GREEN,
-  },
-  logOut: {
-    paddingTop: 15,
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});

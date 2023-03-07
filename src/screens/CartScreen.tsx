@@ -2,20 +2,12 @@
 /* eslint-disable react-native/no-inline-styles */
 /* eslint-disable react/no-unstable-nested-components */
 import React from 'react';
-import {
-  SafeAreaView,
-  StyleSheet,
-  View,
-  Text,
-  Image,
-  Platform,
-  TouchableOpacity,
-} from 'react-native';
 import {FlatList} from 'react-native-gesture-handler';
+import {SafeAreaView, View, Text, Image, TouchableOpacity} from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import IconBadge from 'react-native-icon-badge';
 import Iconss from 'react-native-vector-icons/Ionicons';
-
+import styles from '@css/CartScreenStyle';
 import {Colors} from '@constants';
 import {foods} from '@constants';
 import {PrimaryButton} from '@components';
@@ -23,7 +15,6 @@ import {PrimaryButton} from '@components';
 import {useSelector, useDispatch} from 'react-redux';
 import {removeCart} from '../redux/cartSlice';
 //
-
 const CartScreen = ({navigation}: any) => {
   // redux
   const dispatch = useDispatch();
@@ -36,18 +27,10 @@ const CartScreen = ({navigation}: any) => {
     }
     return sum;
   }
-  // const sumCart = cartGoods => {
-  //   let sum = 0;
-  //   for (let i = 0; i < cartGoods.length; i++) {
-  //     sum += cartGoods[i].price;
-  //   }
-  //   return sum;
-  // };
-  //
   const CartCard = ({item}: any) => {
     return (
       <TouchableOpacity onPress={() => navigation.navigate('DetailCard', item)}>
-        <View style={style.cartCard}>
+        <View style={styles.cartCard}>
           <Image source={item.image} style={{height: 80, width: 80}} />
           <View
             style={{
@@ -75,7 +58,7 @@ const CartScreen = ({navigation}: any) => {
   };
   return (
     <SafeAreaView style={{backgroundColor: Colors.DEFAULT_WHITE, flex: 1}}>
-      <View style={style.header}>
+      <View style={styles.header}>
         <Icon
           name="arrow-back-ios"
           size={28}
@@ -119,7 +102,7 @@ const CartScreen = ({navigation}: any) => {
         data={cartGoods}
         renderItem={({item}) => <CartCard item={item} />}
       />
-      <View style={style.total}>
+      <View style={styles.total}>
         <View
           style={{
             flexDirection: 'row',
@@ -154,63 +137,4 @@ const CartScreen = ({navigation}: any) => {
     </SafeAreaView>
   );
 };
-const style = StyleSheet.create({
-  header: {
-    marginTop: Platform.OS === 'ios' ? 0 : 20,
-    paddingVertical: 20,
-    flexDirection: 'row',
-    alignItems: 'center',
-    position: 'relative',
-    justifyContent: 'center',
-    marginHorizontal: 20,
-  },
-  cartCard: {
-    height: 100,
-    borderRadius: 10,
-    backgroundColor: Colors.DEFAULT_WHITE,
-    marginVertical: 10,
-    marginHorizontal: 20,
-    paddingHorizontal: 10,
-    flexDirection: 'row',
-    alignItems: 'center',
-    shadowColor: '#000',
-    shadowOffset: {
-      width: 0,
-      height: 10,
-    },
-    shadowOpacity: 0.53,
-    shadowRadius: 13.97,
-
-    elevation: 11,
-  },
-  total: {
-    // overflow: 'hidden',
-    backgroundColor: Colors.DEFAULT_WHITE,
-    // marginBottom: 30,
-    paddingTop: 2,
-    paddingBottom: 30,
-    borderTopLeftRadius: 20,
-    borderTopRightRadius: 20,
-    shadowColor: '#000',
-    shadowOffset: {
-      width: 0,
-      height: 0,
-    },
-    shadowOpacity: 0.53,
-    shadowRadius: 13.97,
-
-    elevation: 21,
-  },
-  actionBtn: {
-    width: 80,
-    height: 34,
-    backgroundColor: Colors.DEFAULT_GREEN,
-    borderRadius: 30,
-    paddingVertical: 3,
-    flexDirection: 'row',
-    justifyContent: 'space-evenly',
-    alignContent: 'center',
-  },
-});
-
 export default CartScreen;

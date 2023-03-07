@@ -3,7 +3,6 @@
 import React from 'react';
 import {
   SafeAreaView,
-  StyleSheet,
   Text,
   View,
   Platform,
@@ -15,6 +14,7 @@ import {
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import {ScrollView} from 'react-native-virtualized-view';
 import {Colors, voucher} from '@constants';
+import styles from '@css/VoucherScreenStyle';
 import {useDispatch, useSelector} from 'react-redux';
 import {addVoucher} from '../redux/voucherSlice';
 export default function VoucherScreen({navigation}: any) {
@@ -189,54 +189,3 @@ export default function VoucherScreen({navigation}: any) {
     </SafeAreaView>
   );
 }
-
-const styles = StyleSheet.create({
-  header: {
-    marginTop: Platform.OS === 'ios' ? 0 : 20,
-    position: 'relative',
-    paddingVertical: 20,
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center',
-    marginHorizontal: 20,
-  },
-  cartCard: {
-    height: 102,
-    borderRadius: 10,
-    backgroundColor: Colors.DEFAULT_WHITE,
-    position: 'relative',
-    marginVertical: 10,
-    marginHorizontal: 20,
-    paddingHorizontal: 10,
-    flexDirection: 'row',
-    alignItems: 'center',
-    shadowColor: '#000',
-    shadowOffset: {
-      width: 0,
-      height: 10,
-    },
-    shadowOpacity: 0.53,
-    shadowRadius: 13.97,
-
-    elevation: 21,
-  },
-  addBtn: {
-    borderRadius: 10,
-    height: 60,
-    justifyContent: 'center',
-    alignItems: 'center',
-    // marginTop: 10,
-    marginVertical: 10,
-    marginHorizontal: 20,
-    backgroundColor: Colors.DEFAULT_WHITE,
-    shadowColor: '#000',
-    shadowOffset: {
-      width: 0,
-      height: 10,
-    },
-    shadowOpacity: 0.53,
-    shadowRadius: 13.97,
-
-    elevation: 21,
-  },
-});

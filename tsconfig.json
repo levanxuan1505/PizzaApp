@@ -13,6 +13,7 @@
       "@navigators": ["src/navigators/index"],
       "@screens": ["src/screens/index"],
       "@utils": ["src/utils/index"],
+      "@css/*":["src/css/*"]
       
       // "@button":[".src/components/Button"],
       // "@input":[".src/components/Input"],

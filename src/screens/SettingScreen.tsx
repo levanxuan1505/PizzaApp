@@ -4,7 +4,6 @@
 import React, {useState} from 'react';
 import {
   SafeAreaView,
-  StyleSheet,
   Text,
   View,
   FlatList,
@@ -15,6 +14,7 @@ import {
 } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import {Colors} from '@constants';
+import styles from '@css/SettingScreenStyle';
 import {SecondaryButton} from '@components';
 import {setting1, setting2, setting3} from '@constants';
 import {ScrollView} from 'react-native-virtualized-view';
@@ -233,41 +233,3 @@ export default function SettingScreen({navigation}: any) {
     </SafeAreaView>
   );
 }
-const styles = StyleSheet.create({
-  header: {
-    marginTop: Platform.OS === 'ios' ? 0 : 20,
-    paddingVertical: 20,
-    flexDirection: 'row',
-    position: 'relative',
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  icon: {
-    color: Colors.DEFAULT_GREEN,
-  },
-
-  modalBackGround: {
-    flex: 1,
-    backgroundColor: 'rgba(0,0,0,0.5)',
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  modalContainer: {
-    width: '72%',
-    height: 150,
-    backgroundColor: 'white',
-    paddingHorizontal: 5,
-    // paddingVertical: 30,
-    borderRadius: 15,
-    elevation: 20,
-  },
-  Header: {
-    // paddingTop: 20,
-    alignItems: 'center',
-    justifyContent: 'center',
-    // paddingVertical: 20,
-    borderBottomWidth: 0.17,
-    borderColor: Colors.DEFAULT_GREEN,
-    width: '100%',
-  },
-});

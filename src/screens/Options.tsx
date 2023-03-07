@@ -3,9 +3,7 @@ import {
   Text,
   View,
   Image,
-  Platform,
   StatusBar,
-  StyleSheet,
   ImageBackground,
   TouchableOpacity,
 } from 'react-native';
@@ -14,6 +12,7 @@ import {SafeAreaView} from 'react-native-safe-area-context';
 import Icon from 'react-native-vector-icons/Ionicons';
 
 import {Colors, Images} from '@constants';
+import styles from '@css/OptionScreenStyle';
 export default function Options({navigation}: any) {
   return (
     <ImageBackground
@@ -56,49 +55,3 @@ export default function Options({navigation}: any) {
     </ImageBackground>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    margin: 30,
-  },
-  backgroundImage: {
-    flex: 1,
-    justifyContent: 'center',
-  },
-  image: {
-    marginTop: Platform.OS === 'ios' ? 300 : 180,
-    height: 240,
-    width: 376,
-  },
-  buttonHome: {
-    backgroundColor: Colors.DEFAULT_GREEN,
-    marginHorizontal: 40,
-    marginVertical: 25,
-    height: 70,
-    borderRadius: 50,
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  buttonSignIn: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: Colors.DEFAULT_YELLOW,
-    marginHorizontal: 40,
-    height: 70,
-    borderRadius: 50,
-  },
-  buttonText: {
-    top: 21,
-    paddingBottom: 40,
-    paddingLeft: 10,
-    fontWeight: 'bold',
-    fontSize: 25,
-    textShadowColor: 'rgba(0, 0, 0, 5)',
-    textShadowOffset: {width: -1, height: 1},
-    textShadowRadius: 7,
-    color: '#ffff',
-  },
-});

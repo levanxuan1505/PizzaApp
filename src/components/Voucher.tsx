@@ -7,17 +7,17 @@ import Iconsss from 'react-native-vector-icons/Ionicons';
 import {useSelector, useDispatch} from 'react-redux';
 import {changeCoin} from '../redux/coinSlice';
 export default function Voucher({navigation}) {
-  const [isEnabled, setIsEnabled] = useState(false);
-  const voucher = useSelector((state: any) => state.voucher);
   const coin = useSelector((state: any) => state.coin);
+  const [isEnabled, setIsEnabled] = useState(!!coin);
+  const voucher = useSelector((state: any) => state.voucher);
   const dispatch = useDispatch();
   const toggleSwitch = () => {
-    setIsEnabled(previousState => !previousState);
     if (isEnabled) {
       dispatch(changeCoin({price: 0}));
     } else {
       dispatch(changeCoin({price: 4}));
     }
+    setIsEnabled(previousState => !previousState);
   };
   return (
     <View style={styles.voucher}>
