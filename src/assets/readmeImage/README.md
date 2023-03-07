@@ -6,3 +6,4 @@
 - Thanh toán dễ dàng với các lựa chọn
 - Thêm Voucher, Mã giảm giá và Xu
 - Lựa chọn địa điểm nhận hàng linh hoạt
+  @import
