@@ -157,7 +157,7 @@ export default function LocationScreen({navigation}: any) {
               <View
                 style={[
                   styles.addBtn,
-                  {backgroundColor: Colors.DEFAULT_YELLOW},
+                  {backgroundColor: Colors.DEFAULT_WHITE},
                 ]}>
                 <View
                   style={{
@@ -169,7 +169,7 @@ export default function LocationScreen({navigation}: any) {
                     style={{
                       fontSize: 28,
                       fontWeight: '600',
-                      color: Colors.DEFAULT_WHITE,
+                      color: Colors.DEFAULT_GREEN,
                       paddingHorizontal: 5,
                     }}>
                     Chọn Địa Chỉ
@@ -210,15 +210,41 @@ export default function LocationScreen({navigation}: any) {
         ) : (
           <ScrollViewForAndroid showsVerticalScrollIndicator={false}>
             <FlatList
-              scrollEnabled={false}
               showsVerticalScrollIndicator={false}
-              contentContainerStyle={{paddingBottom: 80}}
+              contentContainerStyle={{paddingBottom: 100}}
               data={locations}
               renderItem={({item}) => <CartCard item={item} />}
               ListFooterComponentStyle={{paddingHorizontal: 20, marginTop: 20}}
             />
             <TouchableOpacity
-              style={{marginBottom: 250, marginTop: -80}}
+              style={{marginBottom: 10, marginTop: -70}}
+              onPress={navigation.goBack}>
+              <View
+                style={[
+                  styles.addBtn,
+                  {backgroundColor: Colors.DEFAULT_WHITE},
+                ]}>
+                <View
+                  style={{
+                    flexDirection: 'row',
+                    alignItems: 'center',
+                    paddingLeft: 9,
+                  }}>
+                  <Text
+                    style={{
+                      fontSize: 28,
+                      fontWeight: '600',
+                      color: Colors.DEFAULT_GREEN,
+                      paddingHorizontal: 5,
+                    }}>
+                    Chọn Địa Chỉ
+                  </Text>
+                </View>
+              </View>
+            </TouchableOpacity>
+            {/*  */}
+            <TouchableOpacity
+              style={{marginBottom: 290}}
               onPress={() => navigation.navigate('CreateAddress')}>
               <View style={styles.addBtn}>
                 <View
@@ -234,11 +260,12 @@ export default function LocationScreen({navigation}: any) {
                   />
                   <Text
                     style={{
-                      fontSize: 18,
+                      fontSize: 22,
                       fontWeight: '500',
                       color: Colors.DEFAULT_GREEN,
                       paddingHorizontal: 5,
                     }}>
+                    {/* {name.names[3]} */}
                     Thêm địa chỉ mới
                   </Text>
                 </View>

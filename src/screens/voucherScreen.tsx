@@ -100,15 +100,6 @@ export default function VoucherScreen({navigation}: any) {
       </View>
       {/* location */}
       <View>
-        <Text
-          style={{
-            paddingLeft: 22,
-            fontSize: 18,
-            color: Colors.DEFAULT_GREEN,
-            paddingBottom: 10,
-          }}>
-          Voucher
-        </Text>
         {Platform.OS === 'ios' ? (
           <ScrollView>
             <FlatList
@@ -149,7 +140,6 @@ export default function VoucherScreen({navigation}: any) {
         ) : (
           <ScrollViewForAndroid showsVerticalScrollIndicator={false}>
             <FlatList
-              scrollEnabled={false}
               showsVerticalScrollIndicator={false}
               contentContainerStyle={{paddingBottom: 80}}
               data={voucher}
@@ -157,28 +147,27 @@ export default function VoucherScreen({navigation}: any) {
               ListFooterComponentStyle={{paddingHorizontal: 20, marginTop: 20}}
             />
             <TouchableOpacity
-              style={{marginBottom: 250, marginTop: -80}}
-              onPress={() => navigation.navigate('CreateAddress')}>
-              <View style={styles.addBtn}>
+              style={{marginBottom: 200}}
+              onPress={navigation.goBack}>
+              <View
+                style={[
+                  styles.addBtn,
+                  {backgroundColor: Colors.DEFAULT_GREEN},
+                ]}>
                 <View
                   style={{
                     flexDirection: 'row',
                     alignItems: 'center',
                     paddingLeft: 9,
                   }}>
-                  <Icon
-                    name="add-circle-outline"
-                    size={32}
-                    color={Colors.DEFAULT_GREEN}
-                  />
                   <Text
                     style={{
-                      fontSize: 18,
-                      fontWeight: '500',
-                      color: Colors.DEFAULT_GREEN,
+                      fontSize: 28,
+                      fontWeight: '600',
+                      color: Colors.DEFAULT_WHITE,
                       paddingHorizontal: 5,
                     }}>
-                    Thêm địa chỉ mới
+                    Chọn Voucher
                   </Text>
                 </View>
               </View>
