@@ -1,6 +1,6 @@
 /* eslint-disable react-native/no-inline-styles */
 /* eslint-disable react/no-unstable-nested-components */
-import React, {useState} from 'react';
+import React from 'react';
 import {
   SafeAreaView,
   View,
@@ -15,17 +15,16 @@ import Icons from 'react-native-vector-icons/Ionicons';
 
 import {Colors} from '@constants';
 import styles from '@css/BookmarkScreenStyle';
-// redux
+// redux import
 import {useDispatch, useSelector} from 'react-redux';
 import {deleteBookmark} from '../redux/bookmarkSlice';
 //
 
 const BookmarkScreen = ({navigation}: any) => {
-  //redux
+  //redux Using
   const bookmark = useSelector((state: any) => state.bookmark);
   const dispatch = useDispatch();
   //
-  const [heart, setHeart] = useState(true);
   const CartCard = ({item}: any) => {
     return (
       <TouchableOpacity onPress={() => navigation.navigate('DetailCard', item)}>
@@ -80,8 +79,7 @@ const BookmarkScreen = ({navigation}: any) => {
         </Text>
         <View style={{position: 'absolute', right: 15}}>
           <Icons
-            onPress={() => setHeart(!heart)}
-            name={heart ? 'heart' : 'heart-dislike-sharp'}
+            name="heart"
             size={32}
             color={Colors.DEFAULT_GREEN}
             style={{
@@ -96,7 +94,7 @@ const BookmarkScreen = ({navigation}: any) => {
         showsVerticalScrollIndicator={false}
         contentContainerStyle={{paddingBottom: 80}}
         data={bookmark}
-        renderItem={({item}) => <CartCard item={item} heartValue={heart} />}
+        renderItem={({item}) => <CartCard item={item} />}
         ListFooterComponentStyle={{paddingHorizontal: 20, marginTop: 20}}
       />
     </SafeAreaView>

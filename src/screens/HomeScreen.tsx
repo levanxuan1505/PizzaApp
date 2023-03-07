@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-shadow */
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react-native/no-inline-styles */
 /* eslint-disable react/self-closing-comp */
@@ -7,8 +8,8 @@ import {
   View,
   Image,
   Modal,
-  Animated,
   FlatList,
+  Animated,
   StatusBar,
   SafeAreaView,
   TouchableOpacity,
@@ -24,7 +25,7 @@ import {Colors} from '@constants';
 import styles from '@css/HomeScreenStyle';
 import {Categories} from '@constants';
 import {foods} from '@constants';
-// redux
+// redux import
 import {addToCart} from '../redux/cartSlice';
 import {addToSum} from '../redux/cartSum';
 import {useDispatch, useSelector} from 'react-redux';
@@ -340,7 +341,6 @@ export default function HomeScreen({navigation, item}: any) {
               height: 20,
               backgroundColor: 'red',
             }}
-            // Hidden={this.state.BadgeCount == 0}
           />
           {/*  */}
         </TouchableOpacity>

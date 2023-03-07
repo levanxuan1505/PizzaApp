@@ -67,7 +67,7 @@ const foods = [
     name: 'Pizza khoai lang',
     ingredients: 'Potato Pizza ',
     price: 199,
-    image: require('../assets/flashList/sushiMakizushi.png'),
+    image: require('../assets/flashList/pizzakhoailang.png'),
     title:
       'Sự kết hợp độc đáo của khoai lang và phô mai đã cho ra món bánh pizza khoai lang vô cùng độc đáo, mới lạ này. Hương thơm từ khoai lang khi nướng lên quyện cùng với các loại rau củ vô cùng hấp dẫn, khiến bạn thấy thòm thèm ngay lập tức. Đế bánh được làm từ khoai lang nấu chín, nghiền nhuyễn cùng với sữa tươi nên khi ăn bạn sẽ cảm nhận được độ bùi bùi, ngọt ngọt và béo thơm. Thêm nữa phần đế bánh cũng mềm mịn hơn các loại pizza khác, rất dễ ăn.',
   },
@@ -112,7 +112,7 @@ const foods = [
     name: 'Pizza Hawaii',
     ingredients: 'Pizza Hawaii',
     price: 179,
-    image: require('../assets/flashList/meatPizza.png'),
+    image: require('../assets/flashList/pizzaHawaii.webp'),
     title:
       'Mang hương vị của Hawaii về căn bếp nhà bạn với chiếc pizza Hawaii thơm nức mũi. Màu đỏ của sốt cà chua điểm thêm chút xanh của các loại rau nhìn cực bắt mắt. Sốt cà chua khi nướng lên có mùi hương đặc trưng, ngay lặp tức khiến bạn có cảm giác thòm thèm. Phần bánh bên ngoài giòn, bên trong mềm thơm, vị chua ngọt đậm đà của nước sốt kích thích vị giác vô cùng. Đặc biệt phần viền bánh được cuộn với phô mai Mozzarella kéo sợi, béo thơm, đúng là thơm ngon khó cưỡng.',
   },
@@ -130,7 +130,7 @@ const foods = [
     name: 'Pizza sandwich',
     ingredients: 'Sandwich Pizza',
     price: 169,
-    image: require('../assets/flashList/chickenBurger.png'),
+    image: require('../assets/flashList/pizzasandwich.jpeg'),
     title:
       'Biến tấu chiếc bánh sandwich thường ngày của bạn thành chiếc pizza nóng hổi, thơm lừng, cực hấp dẫn thôi nào. Lớp vỏ bánh sandwich khi được nướng lên cực giòn tan, thêm lớp phô mai tan chảy bên trên, mới chỉ nhìn thôi là đã thấy muốn ăn rồi. Pizza sandwich sẽ là bữa sáng tuyệt vời cho bạn, bánh thơm kết hợp với phô mai béo ngậy, rau củ giòn ngọt, thêm một chút xúc xích đậm đà, giúp bạn nạp nhanh và đủ năng lượng để khởi động ngày mới.',
   },

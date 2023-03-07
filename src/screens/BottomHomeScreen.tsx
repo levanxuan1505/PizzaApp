@@ -11,7 +11,7 @@ import CartScreen from './CartScreen';
 import Search from './Search';
 import BookmarkScreen from './BookmarkScreen';
 import ProfileScreen from './ProfileScreen';
-// redux
+// redux import
 import {useSelector} from 'react-redux';
 //
 const Tab = createBottomTabNavigator();
@@ -20,9 +20,9 @@ export default function BottomHomeScreen() {
   const notification = useSelector((state: any) => state.notification);
   const badgeHome = notification.length;
   const cart = useSelector((state: any) => state.cart);
+  const badgeCart = cart.length;
   const bookmark = useSelector((state: any) => state.bookmark);
   const badgeBookmark = bookmark.length;
-  const badgeCart = cart.length;
   return (
     <Tab.Navigator
       screenOptions={{
@@ -82,7 +82,7 @@ export default function BottomHomeScreen() {
                 borderRadius: 40,
                 backgroundColor: Colors.DEFAULT_WHITE,
                 borderColor: {color} ? color : Colors.DEFAULT_WHITE,
-                top: Platform.OS === 'ios' ? -10 : -16,
+                top: Platform.OS === 'ios' ? -10 : -18,
                 elevation: 5,
               }}>
               <Icon name="search" size={28} color={color} />

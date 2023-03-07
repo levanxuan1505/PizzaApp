@@ -2,27 +2,29 @@
 /* eslint-disable react-native/no-inline-styles */
 import React from 'react';
 import {
-  SafeAreaView,
   Text,
   View,
-  Platform,
   FlatList,
-  ScrollView as ScrollViewForAndroid,
+  Platform,
+  SafeAreaView,
   TouchableOpacity,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import {ScrollView} from 'react-native-virtualized-view';
 import styles from '@css/LocationScreenStyle';
 import {Colors, locations} from '@constants';
+// redux import
 import {useDispatch, useSelector} from 'react-redux';
+//
 import {changeLocation} from '../redux/locationSlice';
+
 export default function LocationScreen({navigation}: any) {
   // redux
   const dispatch = useDispatch();
   const touch = useSelector((state: any) => state.location);
   //
   const CartCard = ({item}: any) => {
-    const local = item;
+    const local: any = item;
     return (
       <TouchableOpacity
         onPress={() =>
@@ -94,7 +96,6 @@ export default function LocationScreen({navigation}: any) {
               position: 'absolute',
               right: 15,
               padding: 10,
-              // backgroundColor: Colors.DEFAULT_GREEN,
             }}>
             <Icon
               size={16}
@@ -200,7 +201,6 @@ export default function LocationScreen({navigation}: any) {
                       color: Colors.DEFAULT_GREEN,
                       paddingHorizontal: 5,
                     }}>
-                    {/* {name.names[3]} */}
                     Thêm địa chỉ mới
                   </Text>
                 </View>
@@ -208,7 +208,8 @@ export default function LocationScreen({navigation}: any) {
             </TouchableOpacity>
           </ScrollView>
         ) : (
-          <ScrollViewForAndroid showsVerticalScrollIndicator={false}>
+          // android
+          <ScrollView showsVerticalScrollIndicator={false}>
             <FlatList
               showsVerticalScrollIndicator={false}
               contentContainerStyle={{paddingBottom: 100}}
@@ -217,7 +218,7 @@ export default function LocationScreen({navigation}: any) {
               ListFooterComponentStyle={{paddingHorizontal: 20, marginTop: 20}}
             />
             <TouchableOpacity
-              style={{marginBottom: 10, marginTop: -70}}
+              style={{marginBottom: 10, marginTop: 0}}
               onPress={navigation.goBack}>
               <View
                 style={[
@@ -271,7 +272,7 @@ export default function LocationScreen({navigation}: any) {
                 </View>
               </View>
             </TouchableOpacity>
-          </ScrollViewForAndroid>
+          </ScrollView>
         )}
       </View>
     </SafeAreaView>

@@ -7,8 +7,8 @@ import Iconsss from 'react-native-vector-icons/Ionicons';
 import {useSelector, useDispatch} from 'react-redux';
 import {changeCoin} from '../redux/coinSlice';
 export default function Voucher({navigation}) {
-  const coin = useSelector((state: any) => state.coin);
-  const [isEnabled, setIsEnabled] = useState(!!coin);
+  // const coin = useSelector((state: any) => state.coin);
+  const [isEnabled, setIsEnabled] = useState(false);
   const voucher = useSelector((state: any) => state.voucher);
   const dispatch = useDispatch();
   const toggleSwitch = () => {
@@ -104,7 +104,6 @@ export default function Voucher({navigation}) {
     </View>
   );
 }
-
 const styles = StyleSheet.create({
   voucher: {
     paddingBottom: 3,
@@ -113,7 +112,6 @@ const styles = StyleSheet.create({
     height: 100,
     marginBottom: 15,
     justifyContent: 'center',
-    // marginTop: 10,
     marginHorizontal: 8,
     backgroundColor: Colors.DEFAULT_WHITE,
     shadowColor: '#000',

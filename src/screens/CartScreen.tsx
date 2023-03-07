@@ -11,7 +11,7 @@ import styles from '@css/CartScreenStyle';
 import {Colors} from '@constants';
 import {foods} from '@constants';
 import {PrimaryButton} from '@components';
-// redux
+// redux import
 import {useSelector, useDispatch} from 'react-redux';
 import {removeCart} from '../redux/cartSlice';
 //
@@ -20,7 +20,7 @@ const CartScreen = ({navigation}: any) => {
   const dispatch = useDispatch();
   const cartGoods = useSelector((state: any) => state.cart);
   const badge = cartGoods.length;
-  function sum(cartGoods) {
+  function sum(cartGoods: any) {
     let sum = 0;
     for (let i = 0; i < cartGoods.length; i++) {
       sum += cartGoods[i].price;
@@ -49,7 +49,7 @@ const CartScreen = ({navigation}: any) => {
           </View>
           <TouchableOpacity
             onPress={() => dispatch(removeCart({id: item.id}))}
-            style={{marginRight: 20, alignItems: 'center'}}>
+            style={{marginRight: 16, alignItems: 'center'}}>
             <Iconss name="trash" size={32} color={Colors.DEFAULT_GREEN} />
           </TouchableOpacity>
         </View>
@@ -64,7 +64,7 @@ const CartScreen = ({navigation}: any) => {
           size={28}
           onPress={navigation.goBack}
           color={Colors.DEFAULT_GREEN}
-          style={{position: 'absolute', left: 2}}
+          style={{position: 'absolute', left: 8}}
         />
         <Text
           style={{
@@ -74,7 +74,7 @@ const CartScreen = ({navigation}: any) => {
           }}>
           Giỏ hàng
         </Text>
-        <View style={{position: 'absolute', right: 5}}>
+        <View style={{position: 'absolute', right: 25}}>
           <IconBadge
             MainElement={
               <View>

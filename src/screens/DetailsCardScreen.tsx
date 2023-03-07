@@ -1,26 +1,26 @@
+/* eslint-disable @typescript-eslint/no-shadow */
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/no-unstable-nested-components */
 /* eslint-disable react-native/no-inline-styles */
 import React, {useState} from 'react';
 import {
-  SafeAreaView,
   View,
   Text,
   Image,
-  TouchableOpacity,
   Modal,
   Animated,
+  SafeAreaView,
+  TouchableOpacity,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import Icons from 'react-native-vector-icons/Ionicons';
 import {Colors} from '@constants';
 import styles from '@css/DetailsCardScreenStyle';
 import {SecondaryButton} from '@components';
-// redux
+// redux import
 import {useDispatch} from 'react-redux';
 import {addToCart} from '../redux/cartSlice';
 import {addToSum} from '../redux/cartSum';
-
 //
 
 import {ScrollView} from 'react-native-gesture-handler';
@@ -28,7 +28,6 @@ import {addToBookmark} from '../redux/bookmarkSlice';
 
 const DetailsCardScreen = ({navigation, route}: any) => {
   const item = route.params;
-  // const [heart, setHeart] = useState(!heartValue);
   const [visible, setVisible] = useState(false);
   // redux
   const dispatch = useDispatch();
@@ -70,7 +69,7 @@ const DetailsCardScreen = ({navigation, route}: any) => {
   };
   return (
     <SafeAreaView style={{backgroundColor: Colors.DEFAULT_WHITE, flex: 1}}>
-      {/* <ModalConfirm visible={visible} /> */}
+      {/* Modal */}
       <ModalPoup visible={visible}>
         <View
           style={{
@@ -131,7 +130,7 @@ const DetailsCardScreen = ({navigation, route}: any) => {
           </View>
         </View>
       </ModalPoup>
-      {/*  */}
+      {/*  Modal end */}
       <View style={styles.header}>
         <Icon
           name="arrow-back-ios"
@@ -149,7 +148,6 @@ const DetailsCardScreen = ({navigation, route}: any) => {
           Chi tiết món ăn
         </Text>
       </View>
-      {/* <ScrollView showsVerticalScrollIndicator={false}> */}
       <ScrollView
         showsVerticalScrollIndicator={false}
         style={{marginBottom: -400}}>
@@ -225,7 +223,6 @@ const DetailsCardScreen = ({navigation, route}: any) => {
           }}
         />
       </View>
-      {/* </ScrollView> */}
     </SafeAreaView>
   );
 };

@@ -1,8 +1,8 @@
 /* eslint-disable react-native/no-inline-styles */
 import React, {useState} from 'react';
 import {
-  View,
   Text,
+  View,
   Alert,
   Switch,
   ScrollView,

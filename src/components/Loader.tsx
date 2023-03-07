@@ -1,11 +1,11 @@
 /* eslint-disable react-native/no-inline-styles */
 import React from 'react';
 import {
-  useWindowDimensions,
-  View,
   Text,
-  ActivityIndicator,
+  View,
   StyleSheet,
+  ActivityIndicator,
+  useWindowDimensions,
 } from 'react-native';
 import {Colors} from '../constants';
 
@@ -22,7 +22,6 @@ const Loader = ({visible = false}) => {
     )
   );
 };
-
 const style = StyleSheet.create({
   loader: {
     height: 70,

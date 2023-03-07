@@ -23,7 +23,6 @@ const styles = StyleSheet.create({
   image: {
     height: Display.setHeight(41),
     width: Platform.OS === 'ios' ? Display.setWidth(78) : Display.setWidth(68),
-    // borderWidth: 5,
     borderBottomLeftRadius: 50,
     borderTopRightRadius: 50,
   },

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-shadow */
 /* eslint-disable no-sequences */
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/no-unstable-nested-components */
@@ -18,7 +19,6 @@ import {FlatList} from 'react-native-gesture-handler';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import Iconss from 'react-native-vector-icons/MaterialCommunityIcons';
 import Icons from 'react-native-vector-icons/Fontisto';
-// import Iconsss from 'react-native-vector-icons/Ionicons';
 import IconBadge from 'react-native-icon-badge';
 import styles from '@css/CheckoutScreenStyle';
 import {Colors} from '@constants';
@@ -27,7 +27,7 @@ import {useSelector, useDispatch} from 'react-redux';
 import {addOrder} from '../redux/orderSlice';
 
 const CheckoutScreen = ({navigation}) => {
-  // modal
+  // modal Pop Validate Check out
   const [visible, setVisible] = useState(false);
   const ModalPoup = ({visible, children}: any) => {
     const [showModal, setShowModal] = React.useState(visible);
@@ -70,14 +70,14 @@ const CheckoutScreen = ({navigation}) => {
   const coin = useSelector((state: any) => state.coin);
   const dispatch = useDispatch();
   function sum(cartGoods) {
-    let sum = 0;
+    let sum: number = 0;
     for (let i = 0; i < cartGoods.length; i++) {
       sum += cartGoods[i].price;
     }
     return sum;
   }
   const location = useSelector((state: any) => state.location);
-  const badge = cartGoods.length;
+  const badge: number = cartGoods.length;
 
   const CartCard = ({item}: any) => {
     return (
@@ -97,11 +97,23 @@ const CheckoutScreen = ({navigation}) => {
               paddingVertical: 20,
               flex: 1,
             }}>
-            <Text style={{fontWeight: 'bold', fontSize: 16}}>{item.name}</Text>
-            <Text style={{fontSize: 13, color: Colors.DEFAULT_GREY}}>
+            <Text
+              style={{
+                fontWeight: '700',
+                fontSize: 17,
+                color: Colors.DEFAULT_GREEN,
+              }}>
+              {item.name}
+            </Text>
+            <Text style={{fontSize: 14, color: Colors.DARK_FOUR}}>
               {item.ingredients}
             </Text>
-            <Text style={{fontSize: 17, fontWeight: 'bold'}}>
+            <Text
+              style={{
+                fontSize: 17,
+                fontWeight: '600',
+                color: Colors.GOOGLE_BLUE,
+              }}>
               {item.price}k
             </Text>
           </View>
@@ -178,14 +190,14 @@ const CheckoutScreen = ({navigation}) => {
           </View>
         </View>
       </ModalPoup>
-      {/*  */}
+      {/* End modal */}
       <View style={styles.header}>
         <Icon
           name="arrow-back-ios"
           size={28}
           onPress={navigation.goBack}
           color={Colors.DEFAULT_GREEN}
-          style={{position: 'absolute', left: 2}}
+          style={{position: 'absolute', left: 8}}
         />
         <Text
           style={{
@@ -196,7 +208,7 @@ const CheckoutScreen = ({navigation}) => {
           Thanh toán
         </Text>
 
-        <View style={{position: 'absolute', right: 7}}>
+        <View style={{position: 'absolute', right: 10}}>
           <IconBadge
             MainElement={
               <View>
@@ -229,7 +241,7 @@ const CheckoutScreen = ({navigation}) => {
               <View
                 style={{
                   flexDirection: 'row',
-                  alignItems: 'center',
+                  alignItems: 'flex-end',
                   paddingLeft: 9,
                 }}>
                 <Icon
@@ -237,7 +249,7 @@ const CheckoutScreen = ({navigation}) => {
                   size={28}
                   color={Colors.DEFAULT_GREEN}
                 />
-                <Text>Địa chỉ nhận hàng</Text>
+                <Text style={{bottom: 2}}>Địa chỉ nhận hàng</Text>
               </View>
               <View style={{flexDirection: 'row'}}>
                 <View style={{paddingLeft: 15}}>
@@ -250,12 +262,11 @@ const CheckoutScreen = ({navigation}) => {
               </View>
               <Icon
                 name="arrow-forward-ios"
-                size={20}
+                size={22}
                 color={Colors.DEFAULT_GREEN}
                 style={{
                   position: 'absolute',
-                  right: 28,
-                  // paddingHorizontal: 50,
+                  right: 25,
                 }}
               />
             </View>
@@ -278,6 +289,7 @@ const CheckoutScreen = ({navigation}) => {
                 style={{
                   flexDirection: 'row',
                   alignItems: 'center',
+                  justifyContent: 'flex-start',
                   paddingLeft: 9,
                 }}>
                 <Image

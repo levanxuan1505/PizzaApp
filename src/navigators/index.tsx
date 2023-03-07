@@ -2,21 +2,21 @@ import React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 import {
+  Options,
+  VoucherScreen,
+  SignInScreen,
+  PaymentScreen,
+  WelcomeScreen,
+  SettingScreen,
+  LocationScreen,
+  CheckoutScreen,
+  RegisterScreen,
   BottomHomeScreen,
   DetailsCardScreen,
-  RegisterScreen,
   EditProfileScreen,
   NotificationScreen,
-  CheckoutScreen,
-  WelcomeScreen,
-  Options,
-  SignInScreen,
-  LocationScreen,
   EditLocationScreen,
   CreateAddressScreen,
-  SettingScreen,
-  PaymentScreen,
-  VoucherScreen,
 } from '@screens';
 
 const Stack = createStackNavigator();

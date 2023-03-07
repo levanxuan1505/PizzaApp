@@ -5,7 +5,6 @@ import Loader from './Loader';
 import Button from './Button';
 import Input from './Input';
 import {SecondaryButton, PrimaryButton} from './SecondaryButton';
-// import ModalConfirm from './ModalConfirm';
 import Voucher from './Voucher';
 export {
   WelcomeCard,
@@ -15,7 +14,6 @@ export {
   Button,
   Input,
   Voucher,
-  // ModalConfirm,
   SecondaryButton,
   PrimaryButton,
 };
