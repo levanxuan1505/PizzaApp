@@ -6,16 +6,6 @@ module.exports = {
       {
         // root: ['./src'],
         extensions: ['.ios.tsx', '.android.tsx', '.js', '.ts', '.tsx', '.json'],
-        // alias: {
-        //   '@button': ['.src/components/Button'],
-        //   '@input': ['.src/components/Input'],
-        //   '@Loader': ['.src/components/Loader'],
-        //   '@secondaryButton': ['.src/components/SecondaryButton'],
-        //   '@separator': ['.src/components/Separator'],
-        //   '@toggleButton': ['.src/components/ToggleButton'],
-        //   '@welcomeCard': ['.src/components/WelcomeCard'],
-        // },
-
         alias: {
           // This needs to be mirrored in tsconfig.json
           // components: './src/components',

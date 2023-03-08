@@ -15,7 +15,7 @@ export const bookmarkSlice = createSlice({
       state.push(newToBookmark);
     },
     deleteBookmark: (state, action) => {
-      return state.filter(item => item.id !== action.payload.id);
+      return state.filter((item: any) => item.id !== action.payload.id);
     },
   },
 });

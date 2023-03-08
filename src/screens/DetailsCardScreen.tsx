@@ -20,7 +20,6 @@ import {SecondaryButton} from '@components';
 // redux import
 import {useDispatch} from 'react-redux';
 import {addToCart} from '../redux/cartSlice';
-import {addToSum} from '../redux/cartSum';
 //
 
 import {ScrollView} from 'react-native-gesture-handler';
@@ -218,8 +217,7 @@ const DetailsCardScreen = ({navigation, route}: any) => {
                 image: item.image,
                 title: item.title,
               }),
-            ),
-              dispatch(addToSum({price: item.price}));
+            );
           }}
         />
       </View>

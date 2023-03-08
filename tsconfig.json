@@ -6,7 +6,6 @@
     // Path alias config
     "baseUrl": ".",
     "paths": {
-      // "components/*": ["src/components/*"],
 
       "@components": ["src/components/index"],
       "@constants": ["src/constants/index"],
@@ -15,13 +14,7 @@
       "@utils": ["src/utils/index"],
       "@css/*":["src/css/*"]
       
-      // "@button":[".src/components/Button"],
-      // "@input":[".src/components/Input"],
-      // "@Loader":[".src/components/Loader"],
-      // "@secondaryButton":[".src/components/SecondaryButton"],
-      // "@separator":[".src/components/Separator"],
-      // "@toggleButton":[".src/components/ToggleButton"],
-      // "@welcomeCard":[".src/components/WelcomeCard"],
+      
     }
   },
 }

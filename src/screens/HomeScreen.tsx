@@ -27,7 +27,6 @@ import {Categories} from '@constants';
 import {foods} from '@constants';
 // redux import
 import {addToCart} from '../redux/cartSlice';
-import {addToSum} from '../redux/cartSum';
 import {useDispatch, useSelector} from 'react-redux';
 //
 export default function HomeScreen({navigation, item}: any) {
@@ -198,8 +197,7 @@ export default function HomeScreen({navigation, item}: any) {
                       image: food.image,
                       title: food.title,
                     }),
-                  ),
-                    dispatch(addToSum({price: food.price}));
+                  );
                 }}
                 name="add"
                 size={26}

@@ -3,10 +3,10 @@ import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 import {
   Options,
-  VoucherScreen,
   SignInScreen,
   PaymentScreen,
   WelcomeScreen,
+  VoucherScreen,
   SettingScreen,
   LocationScreen,
   CheckoutScreen,
