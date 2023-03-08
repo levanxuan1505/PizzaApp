@@ -180,6 +180,7 @@ export default function HomeScreen({navigation, item}: any) {
               marginHorizontal: 20,
               flexDirection: 'row',
               justifyContent: 'space-between',
+              alignItems: 'flex-start',
             }}>
             <Text style={{fontSize: 18, fontWeight: 'bold'}}>
               {food.price}k
@@ -201,7 +202,7 @@ export default function HomeScreen({navigation, item}: any) {
                     dispatch(addToSum({price: food.price}));
                 }}
                 name="add"
-                size={20}
+                size={26}
                 color={Colors.DEFAULT_WHITE}
               />
             </View>

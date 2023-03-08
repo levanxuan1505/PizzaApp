@@ -6,7 +6,7 @@ export const locationSlice = createSlice({
       id: '1',
       name: 'Lê Văn Xuân ',
       phone: '(+84) 97 517 95 46',
-      dress: 'Số nhà 17 ngõ 75 Hồ Tùng Mậu,',
+      dress: 'Số nhà 27, ngõ 75 Hồ Tùng Mậu',
       title: 'Phường Mai Dịch, Quận Cầu Giấy, Hà Nội',
     },
   ],

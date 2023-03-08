@@ -69,9 +69,9 @@ const styles = StyleSheet.create({
     elevation: 21,
   },
   addToCartBtn: {
-    padding: 5,
-    height: 35,
-    width: 35,
+    top: -8,
+    height: 40,
+    width: 40,
     borderRadius: 20,
     backgroundColor: Colors.DEFAULT_GREEN,
     justifyContent: 'center',

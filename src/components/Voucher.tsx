@@ -1,12 +1,12 @@
 /* eslint-disable react-native/no-inline-styles */
 import {StyleSheet, Text, View, Switch, TouchableOpacity} from 'react-native';
-import React, {useState} from 'react';
+import React, {useState, memo} from 'react';
 import {Colors} from '@constants';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import Iconsss from 'react-native-vector-icons/Ionicons';
 import {useSelector, useDispatch} from 'react-redux';
 import {changeCoin} from '../redux/coinSlice';
-export default function Voucher({navigation}) {
+const Voucher = ({navigation}) => {
   // const coin = useSelector((state: any) => state.coin);
   const [isEnabled, setIsEnabled] = useState(false);
   const voucher = useSelector((state: any) => state.voucher);
@@ -103,7 +103,7 @@ export default function Voucher({navigation}) {
       </View>
     </View>
   );
-}
+};
 const styles = StyleSheet.create({
   voucher: {
     paddingBottom: 3,
@@ -125,3 +125,4 @@ const styles = StyleSheet.create({
     elevation: 21,
   },
 });
+export default memo(Voucher);
