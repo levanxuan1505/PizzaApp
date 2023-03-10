@@ -28,10 +28,10 @@ const Pagination = ({index}: any) => {
 const WelcomeScreen = ({navigation}: any) => {
   const [welcomeListIndex, setWelcomeListIndex] = useState(0);
   const welcomeList: any = useRef();
-  const onViewRef = useRef(({changed}: any) => {
+  const onViewRef: any = useRef(({changed}: any) => {
     setWelcomeListIndex(changed[0].index);
   });
-  const viewConfigRef = useRef({viewAreaCoveragePercentThreshold: 50});
+  const viewConfigRef: any = useRef({viewAreaCoveragePercentThreshold: 50});
 
   const pageScroll = () => {
     welcomeList.current.scrollToIndex({

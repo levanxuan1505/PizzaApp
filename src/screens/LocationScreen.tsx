@@ -1,14 +1,8 @@
 /* eslint-disable react/no-unstable-nested-components */
 /* eslint-disable react-native/no-inline-styles */
 import React from 'react';
-import {
-  Text,
-  View,
-  FlatList,
-  Platform,
-  SafeAreaView,
-  TouchableOpacity,
-} from 'react-native';
+import {Text, View, FlatList, Platform, TouchableOpacity} from 'react-native';
+import {SafeAreaProvider} from 'react-native-safe-area-context';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import {ScrollView} from 'react-native-virtualized-view';
 import styles from '@css/LocationScreenStyle';
@@ -110,7 +104,7 @@ export default function LocationScreen({navigation}: any) {
     );
   };
   return (
-    <SafeAreaView>
+    <SafeAreaProvider>
       <View style={styles.header}>
         <Icon
           name="arrow-back-ios"
@@ -275,6 +269,6 @@ export default function LocationScreen({navigation}: any) {
           </ScrollView>
         )}
       </View>
-    </SafeAreaView>
+    </SafeAreaProvider>
   );
 }

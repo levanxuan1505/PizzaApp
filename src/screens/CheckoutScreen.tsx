@@ -22,7 +22,7 @@ import Icons from 'react-native-vector-icons/Fontisto';
 import IconBadge from 'react-native-icon-badge';
 import styles from '@css/CheckoutScreenStyle';
 import {Colors} from '@constants';
-import {Voucher} from '@components';
+import {Voucher, Payment, Location} from '@components';
 import {useSelector, useDispatch} from 'react-redux';
 import {addOrder} from '../redux/orderSlice';
 
@@ -65,7 +65,6 @@ const CheckoutScreen = ({navigation}) => {
   };
   //
   const cartGoods = useSelector((state: any) => state.cart);
-  const payment = useSelector((state: any) => state.payment);
   const voucher = useSelector((state: any) => state.voucher);
   const coin = useSelector((state: any) => state.coin);
   const dispatch = useDispatch();
@@ -76,7 +75,6 @@ const CheckoutScreen = ({navigation}) => {
     }
     return sum;
   }
-  const location = useSelector((state: any) => state.location);
   const badge: number = cartGoods.length;
 
   const CartCard = ({item}: any) => {
@@ -236,41 +234,7 @@ const CheckoutScreen = ({navigation}) => {
         <ScrollView
           showsVerticalScrollIndicator={false}
           nestedScrollEnabled={true}>
-          <TouchableOpacity onPress={() => navigation.navigate('Local')}>
-            <View style={styles.location}>
-              <View
-                style={{
-                  flexDirection: 'row',
-                  alignItems: 'flex-end',
-                  paddingLeft: 9,
-                }}>
-                <Icon
-                  name="location-pin"
-                  size={28}
-                  color={Colors.DEFAULT_GREEN}
-                />
-                <Text style={{bottom: 2}}>Địa chỉ nhận hàng</Text>
-              </View>
-              <View style={{flexDirection: 'row'}}>
-                <View style={{paddingLeft: 15}}>
-                  <Text>
-                    {location[0].name} | {location[0].phone}
-                  </Text>
-                  <Text>{location[0].dress},</Text>
-                  <Text>{location[0].title}</Text>
-                </View>
-              </View>
-              <Icon
-                name="arrow-forward-ios"
-                size={22}
-                color={Colors.DEFAULT_GREEN}
-                style={{
-                  position: 'absolute',
-                  right: 25,
-                }}
-              />
-            </View>
-          </TouchableOpacity>
+          <Location navigation={navigation} />
           <FlatList
             showsVerticalScrollIndicator={false}
             contentContainerStyle={{paddingBottom: 15}}
@@ -281,58 +245,7 @@ const CheckoutScreen = ({navigation}) => {
           {/* Voucher */}
           <Voucher navigation={navigation} />
           {/* Thanh toán */}
-          <TouchableOpacity
-            onPress={() => navigation.navigate('Payment')}
-            style={styles.payment}>
-            <View>
-              <View
-                style={{
-                  flexDirection: 'row',
-                  alignItems: 'center',
-                  justifyContent: 'flex-start',
-                  paddingLeft: 9,
-                }}>
-                <Image
-                  source={payment[0].image}
-                  style={{
-                    position: 'absolute',
-                    height: 50,
-                    width: 50,
-                    borderRadius: 5,
-                    left: 12,
-                    top: -2,
-                  }}
-                />
-                <Text
-                  style={{
-                    fontSize: 20,
-                    color: Colors.DEFAULT_GREEN,
-                    paddingLeft: 70,
-                    paddingBottom: 5,
-                  }}>
-                  {payment[0].name}
-                </Text>
-                <Icon
-                  name="arrow-forward-ios"
-                  size={20}
-                  color={Colors.DEFAULT_GREEN}
-                  style={{
-                    position: 'absolute',
-                    right: 12,
-                    paddingTop: 20,
-                  }}
-                />
-              </View>
-              <Text
-                style={{
-                  color: Colors.DEFAULT_YELLOW,
-                  paddingLeft: 78,
-                  marginTop: 0,
-                }}>
-                Thanh toán dễ dàng hơn với Zalo Pay
-              </Text>
-            </View>
-          </TouchableOpacity>
+          <Payment navigation={navigation} />
           <View style={styles.totalBill}>
             <View
               style={{

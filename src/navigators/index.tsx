@@ -12,8 +12,8 @@ import {
   CheckoutScreen,
   RegisterScreen,
   BottomHomeScreen,
-  DetailsCardScreen,
   EditProfileScreen,
+  DetailsCardScreen,
   NotificationScreen,
   EditLocationScreen,
   CreateAddressScreen,
@@ -27,9 +27,9 @@ const Navigators = () => {
       <Stack.Navigator screenOptions={{headerShown: false}}>
         <Stack.Screen name="Welcome" component={WelcomeScreen} />
         <Stack.Screen name="Options" component={Options} />
-        <Stack.Screen name="BottomHome" component={BottomHomeScreen} />
         <Stack.Screen name="SignIn" component={SignInScreen} />
         <Stack.Screen name="Register" component={RegisterScreen} />
+        <Stack.Screen name="BottomHome" component={BottomHomeScreen} />
         <Stack.Screen name="Notification" component={NotificationScreen} />
         <Stack.Screen name="Checkout" component={CheckoutScreen} />
         <Stack.Screen name="Local" component={LocationScreen} />

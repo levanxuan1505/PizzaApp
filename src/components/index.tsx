@@ -6,6 +6,8 @@ import Button from './Button';
 import Input from './Input';
 import {SecondaryButton, PrimaryButton} from './SecondaryButton';
 import Voucher from './Voucher';
+import Payment from './Payment';
+import Location from './Location';
 export {
   WelcomeCard,
   Separator,
@@ -13,6 +15,8 @@ export {
   Loader,
   Button,
   Input,
+  Payment,
+  Location,
   Voucher,
   SecondaryButton,
   PrimaryButton,
