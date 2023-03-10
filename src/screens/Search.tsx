@@ -19,7 +19,7 @@ import styles from '@css/SearchScreenStyle';
 
 export default function Search() {
   const [visible, setVisible] = useState(false);
-  const ModalPoup = ({visible, children}: any) => {
+  const ModalPopup = ({visible, children}: any) => {
     const [showModal, setShowModal] = React.useState(visible);
     const scaleValue = React.useRef(new Animated.Value(0)).current;
     React.useEffect(() => {
@@ -56,7 +56,7 @@ export default function Search() {
   return (
     <SafeAreaView style={{marginHorizontal: 20}}>
       {/*  */}
-      <ModalPoup visible={visible}>
+      <ModalPopup visible={visible}>
         <View
           style={{
             flex: 1,
@@ -115,7 +115,7 @@ export default function Search() {
             </TouchableOpacity>
           </View>
         </View>
-      </ModalPoup>
+      </ModalPopup>
       {/*  */}
       <View>
         <View

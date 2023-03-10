@@ -17,12 +17,15 @@ import {useSelector} from 'react-redux';
 const Tab = createBottomTabNavigator();
 
 export default function BottomHomeScreen() {
+  //reduxSelector
   const notification = useSelector((state: any) => state.notification);
-  const badgeHome = notification.length;
-  const cart = useSelector((state: any) => state.cart);
-  const badgeCart = cart.length;
   const bookmark = useSelector((state: any) => state.bookmark);
+  const cart = useSelector((state: any) => state.cart);
+  //redux Using
+  const badgeHome = notification.length;
+  const badgeCart = cart.length;
   const badgeBookmark = bookmark.length;
+  //
   return (
     <Tab.Navigator
       screenOptions={{

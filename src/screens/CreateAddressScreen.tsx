@@ -18,7 +18,7 @@ import styles from '@css/CreateAddressScreenStyle';
 import {TextInput} from 'react-native-gesture-handler';
 
 const CreateAddressScreen = ({navigation}: any) => {
-  const [colection, setColection] = useState(false);
+  const [collection, setCollection] = useState(false);
   const [text, onChangeText] = useState('');
   const [number, onChangeNumber] = useState('');
   const [address, setAddDress] = useState('');
@@ -28,7 +28,7 @@ const CreateAddressScreen = ({navigation}: any) => {
   const [isEnabled3, setIsEnabled3] = useState(false);
   // modal
   const [visible, setVisible] = useState(false);
-  const ModalPoup = ({visible, children}) => {
+  const ModalPopup = ({visible, children}) => {
     const [showModal, setShowModal] = React.useState(visible);
     const scaleValue = React.useRef(new Animated.Value(0)).current;
     React.useEffect(() => {
@@ -70,7 +70,7 @@ const CreateAddressScreen = ({navigation}: any) => {
     <SafeAreaView style={{backgroundColor: Colors.DEFAULT_WHITE}}>
       {/* modal */}
 
-      <ModalPoup visible={visible}>
+      <ModalPopup visible={visible}>
         <View
           style={{
             flex: 1,
@@ -132,7 +132,7 @@ const CreateAddressScreen = ({navigation}: any) => {
             </TouchableOpacity>
           </View>
         </View>
-      </ModalPoup>
+      </ModalPopup>
       {/* modal */}
       <View style={styles.header}>
         <Icon
@@ -204,14 +204,14 @@ const CreateAddressScreen = ({navigation}: any) => {
               </Text>
               <TouchableOpacity
                 onPress={() => {
-                  setColection(!colection);
+                  setCollection(!collection);
                 }}>
                 <Text
                   style={{
                     borderRadius: 5,
-                    borderWidth: !colection ? 2 : 0,
+                    borderWidth: !collection ? 2 : 0,
                     borderColor: Colors.DEFAULT_YELLOW,
-                    backgroundColor: !colection
+                    backgroundColor: !collection
                       ? Colors.DEFAULT_WHITE
                       : Colors.DEFAULT_GREY,
                     left: 30,
@@ -224,17 +224,17 @@ const CreateAddressScreen = ({navigation}: any) => {
               </TouchableOpacity>
               <TouchableOpacity
                 onPress={() => {
-                  setColection(!colection);
+                  setCollection(!collection);
                 }}>
                 <Text
                   style={{
                     borderRadius: 5,
-                    borderWidth: colection ? 2 : 0,
+                    borderWidth: collection ? 2 : 0,
                     borderColor: Colors.DEFAULT_YELLOW,
                     color: Colors.DEFAULT_GREEN,
                     fontSize: 16,
                     padding: 5,
-                    backgroundColor: colection
+                    backgroundColor: collection
                       ? Colors.DEFAULT_WHITE
                       : Colors.DEFAULT_GREY,
                   }}>

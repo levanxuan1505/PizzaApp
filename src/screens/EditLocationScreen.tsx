@@ -21,7 +21,7 @@ const EditLocation = ({navigation, route}: any) => {
   const [address, setAddDress] = useState(item.title);
   const [addressNumber, setAddDressNumber] = useState(item.dress);
 
-  const [colection, setColection] = useState(false);
+  const [collection, setCollection] = useState(false);
 
   const [isEnabled1, setIsEnabled1] = useState(false);
   const [isEnabled2, setIsEnabled2] = useState(false);
@@ -101,14 +101,14 @@ const EditLocation = ({navigation, route}: any) => {
               </Text>
               <TouchableOpacity
                 onPress={() => {
-                  setColection(!colection);
+                  setCollection(!collection);
                 }}>
                 <Text
                   style={{
                     borderRadius: 5,
-                    borderWidth: !colection ? 2 : 0,
+                    borderWidth: !collection ? 2 : 0,
                     borderColor: Colors.DEFAULT_YELLOW,
-                    backgroundColor: !colection
+                    backgroundColor: !collection
                       ? Colors.DEFAULT_WHITE
                       : Colors.DEFAULT_GREY,
                     left: 30,
@@ -121,17 +121,17 @@ const EditLocation = ({navigation, route}: any) => {
               </TouchableOpacity>
               <TouchableOpacity
                 onPress={() => {
-                  setColection(!colection);
+                  setCollection(!collection);
                 }}>
                 <Text
                   style={{
                     borderRadius: 5,
-                    borderWidth: colection ? 2 : 0,
+                    borderWidth: collection ? 2 : 0,
                     borderColor: Colors.DEFAULT_YELLOW,
                     color: Colors.DEFAULT_GREEN,
                     fontSize: 16,
                     padding: 5,
-                    backgroundColor: colection
+                    backgroundColor: collection
                       ? Colors.DEFAULT_WHITE
                       : Colors.DEFAULT_GREY,
                   }}>

@@ -68,10 +68,10 @@ const CheckoutScreen = ({navigation}) => {
   const voucher = useSelector((state: any) => state.voucher);
   const coin = useSelector((state: any) => state.coin);
   const dispatch = useDispatch();
-  function sum(cartGoods) {
+  function sum(cartGoodsTotal: any) {
     let sum: number = 0;
-    for (let i = 0; i < cartGoods.length; i++) {
-      sum += cartGoods[i].price;
+    for (let i = 0; i < cartGoodsTotal.length; i++) {
+      sum += cartGoodsTotal[i].price;
     }
     return sum;
   }

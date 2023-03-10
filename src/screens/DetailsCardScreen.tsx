@@ -32,7 +32,7 @@ const DetailsCardScreen = ({navigation, route}: any) => {
   const dispatch = useDispatch();
   //
 
-  const ModalPoup = ({visible, children}: any) => {
+  const ModalPopup = ({visible, children}: any) => {
     const [showModal, setShowModal] = React.useState(visible);
     const scaleValue = React.useRef(new Animated.Value(0)).current;
     React.useEffect(() => {
@@ -69,7 +69,7 @@ const DetailsCardScreen = ({navigation, route}: any) => {
   return (
     <SafeAreaView style={{backgroundColor: Colors.DEFAULT_WHITE, flex: 1}}>
       {/* Modal */}
-      <ModalPoup visible={visible}>
+      <ModalPopup visible={visible}>
         <View
           style={{
             flex: 1,
@@ -128,7 +128,7 @@ const DetailsCardScreen = ({navigation, route}: any) => {
             </TouchableOpacity>
           </View>
         </View>
-      </ModalPoup>
+      </ModalPopup>
       {/*  Modal end */}
       <View style={styles.header}>
         <Icon

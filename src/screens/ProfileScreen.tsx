@@ -1,3 +1,5 @@
+/* eslint-disable quotes */
+/* eslint-disable react/no-unstable-nested-components */
 /* eslint-disable react-native/no-inline-styles */
 import React from 'react';
 import {
@@ -18,10 +20,44 @@ import {ScrollView} from 'react-native-gesture-handler';
 // redux
 import {useSelector} from 'react-redux';
 //
+
 export default function ProfileScreen({navigation}: any) {
   const notification = useSelector((state: any) => state.notification);
   const order = useSelector((state: any) => state.order);
   const badge = notification.length;
+  const Confirm = () => {
+    return !order[0].order ? (
+      <View>
+        <Icons
+          name="wallet-plus-outline"
+          size={32}
+          style={{color: Colors.DEFAULT_YELLOW}}
+        />
+      </View>
+    ) : (
+      <IconBadge
+        MainElement={
+          <View>
+            <Icons
+              name="wallet-plus-outline"
+              size={32}
+              style={{color: Colors.DEFAULT_YELLOW}}
+            />
+          </View>
+        }
+        BadgeElement={
+          <Text style={{color: '#FFFFFF', fontSize: 12}}>{order[0].order}</Text>
+        }
+        IconBadgeStyle={{
+          marginRight: -13,
+          marginTop: -2,
+          width: 4,
+          height: 20,
+          backgroundColor: 'red',
+        }}
+      />
+    );
+  };
   return (
     <SafeAreaView style={{marginHorizontal: 20}}>
       <View>
@@ -166,35 +202,12 @@ export default function ProfileScreen({navigation}: any) {
                 justifyContent: 'center',
                 alignItems: 'center',
               }}>
-              {/* <Icons
-                name="wallet-plus-outline"
-                size={32}
-                color={Colors.DEFAULT_YELLOW}
-              /> */}
-              <IconBadge
-                MainElement={
-                  <View>
-                    <Icons
-                      name="wallet-plus-outline"
-                      size={32}
-                      style={{color: Colors.DEFAULT_YELLOW}}
-                    />
-                  </View>
-                }
-                BadgeElement={
-                  <Text style={{color: '#FFFFFF', fontSize: 12}}>
-                    {order[0].order}
-                  </Text>
-                }
-                IconBadgeStyle={{
-                  marginRight: -13,
-                  marginTop: -2,
-                  width: 4,
-                  height: 20,
-                  backgroundColor: 'red',
-                }}
-                // Hidden={this.state.BadgeCount == 0}
-              />
+              <TouchableOpacity
+                onPress={() => {
+                  navigation.navigate('Order');
+                }}>
+                <Confirm />
+              </TouchableOpacity>
               <Text
                 style={{
                   fontSize: 15,
@@ -230,19 +243,6 @@ export default function ProfileScreen({navigation}: any) {
                   Chờ lấy hàng
                 </Text>
               </TouchableOpacity>
-              {/* <Icons
-                name="wallet-giftcard"
-                size={28}
-                color={Colors.DEFAULT_GREEN}
-              />
-              <Text
-                style={{
-                  fontSize: 15,
-                  color: Colors.GOOGLE_BLUE,
-                  paddingTop: 4,
-                }}>
-                Chờ lấy hàng
-              </Text> */}
             </View>
             <View style={{justifyContent: 'center', alignItems: 'center'}}>
               <Icons

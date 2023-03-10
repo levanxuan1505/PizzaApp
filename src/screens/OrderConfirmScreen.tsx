@@ -9,57 +9,105 @@ import {
   Platform,
   TouchableOpacity,
 } from 'react-native';
-import {FlatList} from 'react-native-gesture-handler';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import Icons from 'react-native-vector-icons/Ionicons';
 
 import {Colors} from '@constants';
-import styles from '@css/BookmarkScreenStyle';
+import styles from '@css/OrderConfirmStyle';
 // redux import
-import {useDispatch, useSelector} from 'react-redux';
-import {deleteBookmark} from '../redux/bookmarkSlice';
+import {useSelector} from 'react-redux';
 //
 
-const BookmarkScreen = ({navigation}: any) => {
+const OrderConfirmScreen = ({navigation}: any) => {
   //redux Using
-  const bookmark = useSelector((state: any) => state.bookmark);
-  const dispatch = useDispatch();
+  const cartGoods = useSelector((state: any) => state.cart);
+  const order = useSelector((state: any) => state.order);
+  const sum = cartGoods.length;
+  function sumTotal(cartGoodsTotal: any) {
+    let total: number = 0;
+    for (let i = 0; i < cartGoodsTotal.length; i++) {
+      total += cartGoodsTotal[i].price;
+    }
+    return total;
+  }
   //
   const CartCard = ({item}: any) => {
     return (
       <TouchableOpacity onPress={() => navigation.navigate('DetailCard', item)}>
         <View style={styles.cartCard}>
-          <Image source={item.image} style={{height: 80, width: 80}} />
+          <View style={{flexDirection: 'row', alignItems: 'center'}}>
+            <Image source={item[0].image} style={{height: 80, width: 80}} />
+            <View
+              style={{
+                height: 100,
+                marginLeft: 10,
+                paddingVertical: 20,
+                flex: 1,
+              }}>
+              <Text style={{fontWeight: 'bold', fontSize: 16}}>
+                {item.name}
+              </Text>
+              <Text style={{fontSize: 13, color: Colors.DEFAULT_GREY}}>
+                {item[0].ingredients}
+              </Text>
+              <Text style={{fontSize: 17, fontWeight: 'bold'}}>
+                {item[0].price}k
+              </Text>
+            </View>
+            <View style={{marginRight: 25, alignItems: 'center'}}>
+              <View>
+                <Text>Chờ Xác Nhận</Text>
+              </View>
+            </View>
+          </View>
           <View
             style={{
-              height: 100,
-              marginLeft: 10,
-              paddingVertical: 20,
-              flex: 1,
+              flexDirection: 'row',
+              alignItems: 'center',
+              justifyContent: 'space-between',
             }}>
-            <Text style={{fontWeight: 'bold', fontSize: 16}}>{item.name}</Text>
-            <Text style={{fontSize: 13, color: Colors.DEFAULT_GREY}}>
-              {item.ingredients}
+            <Text style={{fontSize: 18, color: Colors.DEFAULT_GREEN}}>
+              Tổng số lượng món ăn :
             </Text>
-            <Text style={{fontSize: 17, fontWeight: 'bold'}}>
-              {item.price}k
+            <Text style={{fontSize: 18, color: Colors.DEFAULT_GREEN}}>
+              {sum}
             </Text>
           </View>
-          <View style={{marginRight: 25, alignItems: 'center'}}>
-            <View>
-              <Icons
-                onPress={() => dispatch(deleteBookmark({id: item.id}))}
-                name="heart-dislike-sharp"
-                size={32}
-                color={Colors.DEFAULT_GREEN}
-              />
+          <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+            <Text style={{fontSize: 18, color: Colors.DEFAULT_GREEN}}>
+              Tổng tiền cần thanh toán :
+            </Text>
+            <Text style={{fontSize: 18, color: Colors.DEFAULT_GREEN}}>
+              đ {sumTotal(cartGoods)}.000
+            </Text>
+          </View>
+          <View
+            style={{
+              flexDirection: 'row',
+              justifyContent: 'flex-end',
+              paddingBottom: 10,
+            }}>
+            <View
+              style={{
+                borderRadius: 3,
+                padding: 15,
+                backgroundColor: Colors.DEFAULT_GREEN,
+              }}>
+              <Text
+                style={{
+                  fontSize: 18,
+                  fontWeight: '600',
+                  color: Colors.DEFAULT_WHITE,
+                }}>
+                Đang chờ xử lý
+              </Text>
             </View>
           </View>
         </View>
       </TouchableOpacity>
     );
   };
-  return !bookmark.length ? (
+  return !order[0].order ? (
     <SafeAreaView style={{backgroundColor: Colors.DEFAULT_WHITE, flex: 1}}>
       <View style={styles.header}>
         <Icon
@@ -75,7 +123,7 @@ const BookmarkScreen = ({navigation}: any) => {
             fontWeight: 'bold',
             color: Colors.DEFAULT_GREEN,
           }}>
-          Bookmark
+          Chờ xác nhận
         </Text>
         <View style={{position: 'absolute', right: 15}}>
           <Icons
@@ -101,7 +149,7 @@ const BookmarkScreen = ({navigation}: any) => {
             fontWeight: '700',
             color: Colors.DEFAULT_GREEN,
           }}>
-          Không có món ăn nào để hiện thị
+          Bạn chưa có đơn hàng nào cần xác nhận
         </Text>
       </View>
     </SafeAreaView>
@@ -121,7 +169,7 @@ const BookmarkScreen = ({navigation}: any) => {
             fontWeight: 'bold',
             color: Colors.DEFAULT_GREEN,
           }}>
-          Bookmark
+          Chờ xác nhận
         </Text>
         <View style={{position: 'absolute', right: 15}}>
           <Icons
@@ -135,16 +183,16 @@ const BookmarkScreen = ({navigation}: any) => {
           />
         </View>
       </View>
-
-      <FlatList
+      <CartCard item={cartGoods} />
+      {/* <FlatList
         showsVerticalScrollIndicator={false}
         contentContainerStyle={{paddingBottom: 80}}
-        data={bookmark}
+        data={cartGoods}
         renderItem={({item}) => <CartCard item={item} />}
         ListFooterComponentStyle={{paddingHorizontal: 20, marginTop: 20}}
-      />
+      /> */}
     </SafeAreaView>
   );
 };
 
-export default BookmarkScreen;
+export default OrderConfirmScreen;

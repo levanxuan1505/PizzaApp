@@ -9,16 +9,15 @@ import IconBadge from 'react-native-icon-badge';
 import Iconss from 'react-native-vector-icons/Ionicons';
 import styles from '@css/CartScreenStyle';
 import {Colors} from '@constants';
-import {foods} from '@constants';
 import {PrimaryButton} from '@components';
 // redux import
 import {useSelector, useDispatch} from 'react-redux';
 import {removeCart} from '../redux/cartSlice';
 //
 const CartScreen = ({navigation}: any) => {
-  // redux
-  const dispatch = useDispatch();
+  // reduxSelector
   const cartGoods = useSelector((state: any) => state.cart);
+  const dispatch = useDispatch();
   const badge = cartGoods.length;
   function sum(cartGoods: any) {
     let sum = 0;
@@ -56,7 +55,63 @@ const CartScreen = ({navigation}: any) => {
       </TouchableOpacity>
     );
   };
-  return (
+  return !cartGoods.length ? (
+    <SafeAreaView style={{backgroundColor: Colors.DEFAULT_WHITE, flex: 1}}>
+      <View style={styles.header}>
+        <Icon
+          name="arrow-back-ios"
+          size={28}
+          onPress={navigation.goBack}
+          color={Colors.DEFAULT_GREEN}
+          style={{position: 'absolute', left: 8}}
+        />
+        <Text
+          style={{
+            fontSize: 20,
+            fontWeight: 'bold',
+            color: Colors.DEFAULT_GREEN,
+          }}>
+          Giỏ hàng
+        </Text>
+        <View style={{position: 'absolute', right: 25}}>
+          <IconBadge
+            MainElement={
+              <View>
+                <Icon
+                  name="shopping-cart"
+                  size={32}
+                  color={Colors.DEFAULT_GREEN}
+                />
+              </View>
+            }
+            BadgeElement={<Text style={{color: '#FFFFFF'}}>{badge}</Text>}
+            IconBadgeStyle={{
+              marginRight: -5,
+              marginTop: -6,
+              width: 17,
+              height: 20,
+              backgroundColor: 'red',
+            }}
+          />
+        </View>
+      </View>
+      <View
+        style={{
+          justifyContent: 'center',
+          alignItems: 'center',
+          paddingTop: 10,
+        }}>
+        <Text
+          style={{
+            fontSize: 18,
+            fontWeight: '600',
+            color: Colors.DEFAULT_RED,
+          }}>
+          Không có món ăn trong giỏ hàng
+        </Text>
+      </View>
+    </SafeAreaView>
+  ) : (
     <SafeAreaView style={{backgroundColor: Colors.DEFAULT_WHITE, flex: 1}}>
       <View style={styles.header}>
         <Icon
@@ -130,7 +185,7 @@ const CartScreen = ({navigation}: any) => {
         <View style={{marginHorizontal: 30}}>
           <PrimaryButton
             title="THANH TOÁN"
-            onPress={() => navigation.navigate('Checkout', foods)}
+            onPress={() => navigation.navigate('Checkout')}
           />
         </View>
       </View>

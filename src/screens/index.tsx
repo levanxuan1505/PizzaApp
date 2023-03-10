@@ -18,6 +18,7 @@ import CreateAddressScreen from './CreateAddressScreen';
 import SettingScreen from './SettingScreen';
 import PaymentScreen from './PaymentScreen';
 import VoucherScreen from './voucherScreen';
+import OrderConfirmScreen from './OrderConfirmScreen';
 export {
   BookmarkScreen,
   BottomHomeScreen,
@@ -26,6 +27,7 @@ export {
   CreateAddressScreen,
   DetailsCardScreen,
   EditLocationScreen,
+  OrderConfirmScreen,
   EditProfileScreen,
   HomeScreen,
   LocationScreen,
