@@ -33,6 +33,7 @@ const styles = StyleSheet.create({
   cartChose: {
     height: 65,
     borderRadius: 10,
+    marginBottom: Platform.OS === 'ios' ? 0 : 100,
     backgroundColor: Colors.DEFAULT_WHITE,
     marginVertical: 10,
     marginHorizontal: 20,

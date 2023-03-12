@@ -1,14 +1,7 @@
 /* eslint-disable react-native/no-inline-styles */
 /* eslint-disable react/no-unstable-nested-components */
 import React from 'react';
-import {
-  SafeAreaView,
-  View,
-  Text,
-  Image,
-  Platform,
-  TouchableOpacity,
-} from 'react-native';
+import {SafeAreaView, View, Text, Image, Platform} from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import Icons from 'react-native-vector-icons/Ionicons';
 
@@ -22,6 +15,8 @@ const OrderConfirmScreen = ({navigation}: any) => {
   //redux Using
   const cartGoods = useSelector((state: any) => state.cart);
   const order = useSelector((state: any) => state.order);
+  const voucher = useSelector((state: any) => state.voucher);
+  const coin = useSelector((state: any) => state.coin);
   const sum = cartGoods.length;
   function sumTotal(cartGoodsTotal: any) {
     let total: number = 0;
@@ -33,7 +28,7 @@ const OrderConfirmScreen = ({navigation}: any) => {
   //
   const CartCard = ({item}: any) => {
     return (
-      <TouchableOpacity onPress={() => navigation.navigate('DetailCard', item)}>
+      <View>
         <View style={styles.cartCard}>
           <View style={{flexDirection: 'row', alignItems: 'center'}}>
             <Image source={item[0].image} style={{height: 80, width: 80}} />
@@ -44,8 +39,13 @@ const OrderConfirmScreen = ({navigation}: any) => {
                 paddingVertical: 20,
                 flex: 1,
               }}>
-              <Text style={{fontWeight: 'bold', fontSize: 16}}>
-                {item.name}
+              <Text
+                style={{
+                  fontWeight: 'bold',
+                  fontSize: 16,
+                  color: Colors.DEFAULT_GREEN,
+                }}>
+                {item[0].name}
               </Text>
               <Text style={{fontSize: 13, color: Colors.DEFAULT_GREY}}>
                 {item[0].ingredients}
@@ -54,9 +54,16 @@ const OrderConfirmScreen = ({navigation}: any) => {
                 {item[0].price}k
               </Text>
             </View>
-            <View style={{marginRight: 25, alignItems: 'center'}}>
+            <View style={{marginRight: 0, alignItems: 'center'}}>
               <View>
-                <Text>Chờ Xác Nhận</Text>
+                <Text
+                  style={{
+                    fontSize: Platform.OS === 'ios' ? 20 : 12,
+                    fontWeight: '500',
+                    color: Colors.DEFAULT_GREEN,
+                  }}>
+                  Chờ Xác Nhận
+                </Text>
               </View>
             </View>
           </View>
@@ -66,19 +73,36 @@ const OrderConfirmScreen = ({navigation}: any) => {
               alignItems: 'center',
               justifyContent: 'space-between',
             }}>
-            <Text style={{fontSize: 18, color: Colors.DEFAULT_GREEN}}>
+            <Text
+              style={{
+                fontSize: Platform.OS === 'ios' ? 18 : 12,
+                color: Colors.DEFAULT_GREEN,
+              }}>
               Tổng số lượng món ăn :
             </Text>
-            <Text style={{fontSize: 18, color: Colors.DEFAULT_GREEN}}>
+            <Text
+              style={{
+                fontSize: Platform.OS === 'ios' ? 18 : 12,
+                color: Colors.DEFAULT_GREEN,
+              }}>
               {sum}
             </Text>
           </View>
           <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
-            <Text style={{fontSize: 18, color: Colors.DEFAULT_GREEN}}>
+            <Text
+              style={{
+                fontSize: Platform.OS === 'ios' ? 18 : 12,
+                color: Colors.DEFAULT_GREEN,
+              }}>
               Tổng tiền cần thanh toán :
             </Text>
-            <Text style={{fontSize: 18, color: Colors.DEFAULT_GREEN}}>
-              đ {sumTotal(cartGoods)}.000
+            <Text
+              style={{
+                fontSize: Platform.OS === 'ios' ? 18 : 12,
+                color: Colors.DEFAULT_GREEN,
+              }}>
+              đ{sumTotal(cartGoods) + (50 - voucher[0].price - coin[0].price)}
+              .000
             </Text>
           </View>
           <View
@@ -104,7 +128,7 @@ const OrderConfirmScreen = ({navigation}: any) => {
             </View>
           </View>
         </View>
-      </TouchableOpacity>
+      </View>
     );
   };
   return !order[0].order ? (
@@ -115,7 +139,7 @@ const OrderConfirmScreen = ({navigation}: any) => {
           size={28}
           onPress={navigation.goBack}
           color={Colors.DEFAULT_GREEN}
-          style={{position: 'absolute', left: 2}}
+          style={{position: 'absolute', left: 10}}
         />
         <Text
           style={{
@@ -125,9 +149,9 @@ const OrderConfirmScreen = ({navigation}: any) => {
           }}>
           Chờ xác nhận
         </Text>
-        <View style={{position: 'absolute', right: 15}}>
+        <View style={{position: 'absolute', right: 0}}>
           <Icons
-            name="heart"
+            name="md-checkmark-done"
             size={32}
             color={Colors.DEFAULT_GREEN}
             style={{
@@ -171,9 +195,9 @@ const OrderConfirmScreen = ({navigation}: any) => {
           }}>
           Chờ xác nhận
         </Text>
-        <View style={{position: 'absolute', right: 15}}>
+        <View style={{position: 'absolute', right: 0}}>
           <Icons
-            name="heart"
+            name="md-checkmark-done"
             size={32}
             color={Colors.DEFAULT_GREEN}
             style={{

@@ -2,7 +2,7 @@ import {StyleSheet, Platform} from 'react-native';
 import {Colors} from '@constants';
 const styles = StyleSheet.create({
   header: {
-    marginTop: Platform.OS === 'ios' ? 0 : 20,
+    marginTop: Platform.OS === 'ios' ? 0 : 25,
     paddingVertical: 20,
     flexDirection: 'row',
     alignItems: 'center',

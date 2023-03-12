@@ -5,6 +5,7 @@ import {
   View,
   Alert,
   Switch,
+  Platform,
   ScrollView,
   SafeAreaView,
   TouchableOpacity,
@@ -111,7 +112,7 @@ const EditLocation = ({navigation, route}: any) => {
                     backgroundColor: !collection
                       ? Colors.DEFAULT_WHITE
                       : Colors.DEFAULT_GREY,
-                    left: 30,
+                    left: Platform.OS === 'ios' ? 30 : 0,
                     padding: 5,
                     color: Colors.DEFAULT_GREEN,
                     fontSize: 16,

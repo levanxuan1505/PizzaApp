@@ -69,17 +69,25 @@ export default function LocationScreen({navigation}: any) {
               </Text>
             </View>
             <View style={{position: 'relative'}}>
-              <Text style={{fontSize: 13, fontWeight: '400'}}>
+              <Text
+                style={{
+                  fontSize: Platform.OS === 'ios' ? 13 : 12,
+                  fontWeight: '400',
+                }}>
                 {item.dress}
               </Text>
               <Text
-                style={{fontWeight: '400', fontSize: 13, marginVertical: 5}}>
+                style={{
+                  fontWeight: '400',
+                  fontSize: Platform.OS === 'ios' ? 13 : 12,
+                  marginVertical: 5,
+                }}>
                 {item.title}
               </Text>
               <Text
                 style={{
                   color: Colors.DEFAULT_YELLOW,
-                  fontSize: 13,
+                  fontSize: Platform.OS === 'ios' ? 13 : 11,
                   fontWeight: '500',
                   bottom: -11,
                   position: 'absolute',
@@ -124,7 +132,7 @@ export default function LocationScreen({navigation}: any) {
         />
         <Text
           style={{
-            fontSize: 20,
+            fontSize: Platform.OS === 'ios' ? 20 : 18,
             fontWeight: 'bold',
             color: Colors.DEFAULT_GREEN,
             paddingHorizontal: 100,
@@ -233,7 +241,7 @@ export default function LocationScreen({navigation}: any) {
                   }}>
                   <Text
                     style={{
-                      fontSize: 28,
+                      fontSize: 20,
                       fontWeight: '600',
                       color: Colors.DEFAULT_GREEN,
                       paddingHorizontal: 5,
@@ -245,7 +253,7 @@ export default function LocationScreen({navigation}: any) {
             </TouchableOpacity>
             {/*  */}
             <TouchableOpacity
-              style={{marginBottom: 290}}
+              style={{marginBottom: 350}}
               onPress={() => navigation.navigate('CreateAddress')}>
               <View style={styles.addBtn}>
                 <View

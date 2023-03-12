@@ -3,7 +3,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/no-unstable-nested-components */
 /* eslint-disable react-native/no-inline-styles */
-import React, {useState} from 'react';
+import React, {useState, memo} from 'react';
 import {
   SafeAreaView,
   Text,
@@ -22,14 +22,21 @@ import Icons from 'react-native-vector-icons/Fontisto';
 import IconBadge from 'react-native-icon-badge';
 import styles from '@css/CheckoutScreenStyle';
 import {Colors} from '@constants';
-import {Voucher, Payment, Location} from '@components';
+import {ua} from '../components/TotalCheckout';
+import {
+  Voucher,
+  Payment,
+  Location,
+  DetailTotal,
+  TotalCheckout,
+} from '@components';
 import {useSelector, useDispatch} from 'react-redux';
 import {addOrder} from '../redux/orderSlice';
 
 const CheckoutScreen = ({navigation}) => {
   // modal Pop Validate Check out
-  const [visible, setVisible] = useState(false);
-  const ModalPoup = ({visible, children}: any) => {
+  const [visible, setVisible] = useState(ua);
+  const ModalPopup = ({visible, children}: any) => {
     const [showModal, setShowModal] = React.useState(visible);
     const scaleValue = React.useRef(new Animated.Value(0)).current;
     React.useEffect(() => {
@@ -65,16 +72,8 @@ const CheckoutScreen = ({navigation}) => {
   };
   //
   const cartGoods = useSelector((state: any) => state.cart);
-  const voucher = useSelector((state: any) => state.voucher);
-  const coin = useSelector((state: any) => state.coin);
   const dispatch = useDispatch();
-  function sum(cartGoodsTotal: any) {
-    let sum: number = 0;
-    for (let i = 0; i < cartGoodsTotal.length; i++) {
-      sum += cartGoodsTotal[i].price;
-    }
-    return sum;
-  }
+
   const badge: number = cartGoods.length;
 
   const CartCard = ({item}: any) => {
@@ -123,7 +122,7 @@ const CheckoutScreen = ({navigation}) => {
   return (
     <SafeAreaView style={{backgroundColor: Colors.DEFAULT_WHITE, flex: 1}}>
       {/* modal */}
-      <ModalPoup visible={visible}>
+      <ModalPopup visible={visible}>
         <View
           style={{
             flex: 1,
@@ -139,6 +138,7 @@ const CheckoutScreen = ({navigation}) => {
                 fontWeight: '600',
                 color: Colors.DEFAULT_GREEN,
                 paddingTop: 10,
+                paddingBottom: Platform.OS === 'ios' ? 0 : 15,
               }}>
               Xác nhận
             </Text>
@@ -146,8 +146,8 @@ const CheckoutScreen = ({navigation}) => {
           <View style={[styles.Header, {top: -10, paddingBottom: 10}]}>
             <Text
               style={{
-                fontSize: 19,
-                fontWeight: '500',
+                fontSize: Platform.OS === 'ios' ? 19 : 16,
+                fontWeight: Platform.OS === 'ios' ? '500' : '600',
                 color: Colors.DEFAULT_GREEN,
               }}>
               Xác nhận order những món ăn này
@@ -187,7 +187,7 @@ const CheckoutScreen = ({navigation}) => {
             </TouchableOpacity>
           </View>
         </View>
-      </ModalPoup>
+      </ModalPopup>
       {/* End modal */}
       <View style={styles.header}>
         <Icon
@@ -246,76 +246,7 @@ const CheckoutScreen = ({navigation}) => {
           <Voucher navigation={navigation} />
           {/* Thanh toán */}
           <Payment navigation={navigation} />
-          <View style={styles.totalBill}>
-            <View
-              style={{
-                flexDirection: 'row',
-                alignItems: 'center',
-                paddingLeft: 20,
-              }}>
-              <Icons name="calendar" size={24} color={Colors.DEFAULT_GREEN} />
-              <Text
-                style={{
-                  color: Colors.DEFAULT_GREEN,
-                  paddingLeft: 15,
-                  fontSize: 20,
-                }}>
-                Chi tiết thanh toán
-              </Text>
-            </View>
-            <View style={{paddingTop: 0}}>
-              <View
-                style={{
-                  paddingHorizontal: 20,
-                  marginTop: -30,
-                  flexDirection: 'row',
-                  justifyContent: 'space-between',
-                }}>
-                <Text style={{fontSize: 18}}>Tổng tiền hàng</Text>
-                <Text style={{fontSize: 17}}>đ{sum(cartGoods)}.000</Text>
-              </View>
-              <View
-                style={{
-                  paddingHorizontal: 20,
-                  flexDirection: 'row',
-                  justifyContent: 'space-between',
-                }}>
-                <Text style={{fontSize: 18}}>Tổng tiền phí vận chuyển</Text>
-                <Text style={{fontSize: 17}}>50.000</Text>
-              </View>
-              <View
-                style={{
-                  paddingHorizontal: 20,
-                  flexDirection: 'row',
-                  justifyContent: 'space-between',
-                }}>
-                <Text style={{fontSize: 18}}>Voucher vận chuyển</Text>
-                <Text style={{fontSize: 17}}>-{voucher[0].price}.000</Text>
-              </View>
-              <View
-                style={{
-                  paddingHorizontal: 20,
-                  flexDirection: 'row',
-                  justifyContent: 'space-between',
-                }}>
-                <Text style={{fontSize: 18}}>Triết khấu Xu</Text>
-                <Text style={{fontSize: 17}}>-{coin[0].price}.000</Text>
-              </View>
-              <View
-                style={{
-                  paddingHorizontal: 20,
-                  flexDirection: 'row',
-                  justifyContent: 'space-between',
-                }}>
-                <Text style={{fontSize: 20, color: Colors.DEFAULT_GREEN}}>
-                  Tổng thanh toán
-                </Text>
-                <Text style={{fontSize: 19, color: Colors.DEFAULT_GREEN}}>
-                  {sum(cartGoods) + (50 - voucher[0].price - coin[0].price)}.000
-                </Text>
-              </View>
-            </View>
-          </View>
+          <DetailTotal />
 
           <View style={styles.warning}>
             <View
@@ -334,7 +265,7 @@ const CheckoutScreen = ({navigation}) => {
                   color: Colors.DEFAULT_GREEN,
                   paddingLeft: 7,
                   paddingRight: Platform.OS === 'ios' ? 7 : 20,
-                  fontSize: 16,
+                  fontSize: Platform.OS === 'ios' ? 16 : 13,
                 }}>
                 {`Nhấn "Đặt hàng" đồng nghĩa với việc bạn 
 đồng ý tuân theo "Điều khoản của Pizza"`}
@@ -342,8 +273,9 @@ const CheckoutScreen = ({navigation}) => {
             </View>
           </View>
         </ScrollView>
+        <TotalCheckout />
         {/* fixed total */}
-        <View style={styles.total}>
+        {/* <View style={styles.total}>
           <Icons
             name="opencart"
             size={44}
@@ -358,7 +290,7 @@ const CheckoutScreen = ({navigation}) => {
             <Text
               style={{
                 color: Colors.DEFAULT_GREEN,
-                fontSize: 20,
+                fontSize: Platform.OS === 'ios' ? 20 : 14,
                 paddingRight: 10,
               }}>
               Tổng thanh toán
@@ -379,10 +311,10 @@ const CheckoutScreen = ({navigation}) => {
               Đặt hàng
             </Text>
           </TouchableOpacity>
-        </View>
+        </View> */}
       </View>
     </SafeAreaView>
   );
 };
 
-export default CheckoutScreen;
+export default memo(CheckoutScreen);

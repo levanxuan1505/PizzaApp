@@ -8,6 +8,8 @@ import {SecondaryButton, PrimaryButton} from './SecondaryButton';
 import Voucher from './Voucher';
 import Payment from './Payment';
 import Location from './Location';
+import DetailTotal from './DetailTotal';
+import TotalCheckout from './TotalCheckout';
 export {
   WelcomeCard,
   Separator,
@@ -20,4 +22,6 @@ export {
   Voucher,
   SecondaryButton,
   PrimaryButton,
+  DetailTotal,
+  TotalCheckout,
 };

@@ -9,6 +9,7 @@ import {
   Image,
   Modal,
   Animated,
+  Platform,
   SafeAreaView,
   TouchableOpacity,
 } from 'react-native';
@@ -168,7 +169,7 @@ const DetailsCardScreen = ({navigation, route}: any) => {
             }}>
             <Text
               style={{
-                fontSize: 25,
+                fontSize: Platform.OS === 'ios' ? 25 : 18,
                 fontWeight: 'bold',
                 color: Colors.DEFAULT_WHITE,
               }}>
@@ -177,7 +178,7 @@ const DetailsCardScreen = ({navigation, route}: any) => {
             <Text
               style={{
                 position: 'absolute',
-                fontSize: 25,
+                fontSize: Platform.OS === 'ios' ? 25 : 18,
                 color: Colors.DEFAULT_WHITE,
                 fontWeight: '600',
                 right: 65,

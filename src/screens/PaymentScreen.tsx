@@ -42,7 +42,7 @@ const PaymentScreen = ({navigation}: any) => {
         />
         <Text
           style={{
-            fontSize: 20,
+            fontSize: Platform.OS === 'ios' ? 20 : 18,
             fontWeight: 'bold',
             color: Colors.DEFAULT_GREEN,
           }}>

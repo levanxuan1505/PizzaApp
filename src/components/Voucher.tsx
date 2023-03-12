@@ -1,5 +1,12 @@
 /* eslint-disable react-native/no-inline-styles */
-import {StyleSheet, Text, View, Switch, TouchableOpacity} from 'react-native';
+import {
+  StyleSheet,
+  Text,
+  View,
+  Switch,
+  Platform,
+  TouchableOpacity,
+} from 'react-native';
 import React, {useState, memo} from 'react';
 import {Colors} from '@constants';
 import Icon from 'react-native-vector-icons/MaterialIcons';
@@ -11,6 +18,7 @@ const Voucher = ({navigation}) => {
   const [isEnabled, setIsEnabled] = useState(false);
   const voucher = useSelector((state: any) => state.voucher);
   const dispatch = useDispatch();
+
   const toggleSwitch = () => {
     if (isEnabled) {
       dispatch(changeCoin({price: 0}));
@@ -19,6 +27,7 @@ const Voucher = ({navigation}) => {
     }
     setIsEnabled(previousState => !previousState);
   };
+
   return (
     <View style={styles.voucher}>
       <View
@@ -43,7 +52,7 @@ const Voucher = ({navigation}) => {
 
           <Text
             style={{
-              fontSize: 20,
+              fontSize: Platform.OS === 'ios' ? 20 : 17,
               color: Colors.DEFAULT_GREEN,
               paddingLeft: 5,
             }}>
@@ -86,7 +95,7 @@ const Voucher = ({navigation}) => {
               color: Colors.DEFAULT_YELLOW,
               paddingLeft: 13,
               marginTop: 0,
-              fontSize: 18,
+              fontSize: Platform.OS === 'ios' ? 18 : 16,
             }}>
             Dùng 4.000 xu
           </Text>

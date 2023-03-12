@@ -13,7 +13,7 @@ const styles = StyleSheet.create({
   },
   input: {
     height: 52,
-    fontSize: 16,
+    fontSize: Platform.OS === 'ios' ? 16 : 12,
     borderRadius: 10,
     backgroundColor: Colors.DEFAULT_WHITE,
     marginVertical: 12,

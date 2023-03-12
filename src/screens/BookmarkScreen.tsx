@@ -99,7 +99,7 @@ const BookmarkScreen = ({navigation}: any) => {
           style={{
             fontSize: 19,
             fontWeight: '700',
-            color: Colors.DEFAULT_GREEN,
+            color: Colors.DEFAULT_RED,
           }}>
           Không có món ăn nào để hiện thị
         </Text>

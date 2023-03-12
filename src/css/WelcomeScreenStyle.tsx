@@ -1,4 +1,4 @@
-import {StyleSheet} from 'react-native';
+import {StyleSheet, Platform} from 'react-native';
 import {Colors} from '@constants';
 import {Display} from '../utils';
 
@@ -56,7 +56,7 @@ const styles = StyleSheet.create({
     color: Colors.DEFAULT_WHITE,
     justifyContent: 'center',
     alignItems: 'center',
-    paddingVertical: 10,
+    paddingVertical: Platform.OS === 'ios' ? 10 : 3,
     paddingHorizontal: 50,
   },
 });

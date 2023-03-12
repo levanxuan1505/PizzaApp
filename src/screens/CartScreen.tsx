@@ -3,7 +3,14 @@
 /* eslint-disable react/no-unstable-nested-components */
 import React from 'react';
 import {FlatList} from 'react-native-gesture-handler';
-import {SafeAreaView, View, Text, Image, TouchableOpacity} from 'react-native';
+import {
+  SafeAreaView,
+  View,
+  Text,
+  Image,
+  TouchableOpacity,
+  Platform,
+} from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import IconBadge from 'react-native-icon-badge';
 import Iconss from 'react-native-vector-icons/Ionicons';
@@ -28,7 +35,9 @@ const CartScreen = ({navigation}: any) => {
   }
   const CartCard = ({item}: any) => {
     return (
-      <TouchableOpacity onPress={() => navigation.navigate('DetailCard', item)}>
+      <TouchableOpacity
+        activeOpacity={Platform.OS === 'ios' ? 0.2 : 0.8}
+        onPress={() => navigation.navigate('DetailCard', item)}>
         <View style={styles.cartCard}>
           <Image source={item.image} style={{height: 80, width: 80}} />
           <View

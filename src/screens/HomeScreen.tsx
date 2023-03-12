@@ -14,6 +14,7 @@ import {
   SafeAreaView,
   TouchableOpacity,
   TouchableHighlight,
+  Platform,
 } from 'react-native';
 import React, {useState} from 'react';
 import Icon from 'react-native-vector-icons/MaterialIcons';
@@ -165,7 +166,12 @@ export default function HomeScreen({navigation, item}: any) {
             <Image source={food.image} style={{height: 120, width: 120}} />
           </View>
           <View style={{marginHorizontal: 20}}>
-            <Text style={{fontSize: 17.4, fontWeight: 'bold'}}>
+            <Text
+              style={{
+                fontSize: Platform.OS === 'ios' ? 17.4 : 13,
+                fontWeight: Platform.OS === 'ios' ? 'bold' : '800',
+                color: Colors.DEFAULT_GREEN,
+              }}>
               {food.name}
             </Text>
             <Text
@@ -321,14 +327,20 @@ export default function HomeScreen({navigation, item}: any) {
             Bạn muốn ăn gì hôm nay?
           </Text>
         </View>
-        <TouchableOpacity onPress={() => navigation.navigate('Profile')}>
+        <TouchableOpacity
+          onPress={() => navigation.navigate('Profile')}
+          style={{right: Platform.OS === 'ios' ? 0 : 10}}>
           {/*  */}
           <IconBadge
             MainElement={
               <View>
                 <Image
                   source={require('../assets/images/avatar.webp')}
-                  style={{height: 55, width: 55, borderRadius: 30}}
+                  style={{
+                    height: Platform.OS === 'ios' ? 55 : 45,
+                    width: Platform.OS === 'ios' ? 55 : 45,
+                    borderRadius: 30,
+                  }}
                 />
               </View>
             }

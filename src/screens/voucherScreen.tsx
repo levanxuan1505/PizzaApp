@@ -8,7 +8,6 @@ import {
   Platform,
   FlatList,
   Image,
-  ScrollView as ScrollViewForAndroid,
   TouchableOpacity,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
@@ -25,6 +24,7 @@ export default function VoucherScreen({navigation}: any) {
   const CartCard = ({item}: any) => {
     return (
       <TouchableOpacity
+        activeOpacity={Platform.OS === 'ios' ? 0.2 : 0.8}
         onPress={() =>
           dispatch(
             addVoucher({
@@ -50,6 +50,7 @@ export default function VoucherScreen({navigation}: any) {
               marginLeft: 5,
               paddingVertical: 20,
               justifyContent: 'center',
+              alignItems: 'center',
               flexDirection: 'row',
             }}>
             <Image
@@ -57,13 +58,18 @@ export default function VoucherScreen({navigation}: any) {
               style={{height: 60, width: 100, borderRadius: 5}}
             />
             <View style={{justifyContent: 'center'}}>
-              <Text style={{fontSize: 18, fontWeight: '600', paddingLeft: 10}}>
+              <Text
+                style={{
+                  fontSize: Platform.OS === 'ios' ? 18 : 14,
+                  fontWeight: '600',
+                  paddingLeft: 10,
+                }}>
                 {item.name}
               </Text>
               <Text
                 style={{
                   fontWeight: '500',
-                  fontSize: 18,
+                  fontSize: Platform.OS === 'ios' ? 18 : 14,
                   marginVertical: 5,
                   paddingLeft: 10,
                 }}>
@@ -138,7 +144,7 @@ export default function VoucherScreen({navigation}: any) {
             {/*  */}
           </ScrollView>
         ) : (
-          <ScrollViewForAndroid showsVerticalScrollIndicator={false}>
+          <ScrollView showsVerticalScrollIndicator={false}>
             <FlatList
               showsVerticalScrollIndicator={false}
               contentContainerStyle={{paddingBottom: 80}}
@@ -172,7 +178,7 @@ export default function VoucherScreen({navigation}: any) {
                 </View>
               </View>
             </TouchableOpacity>
-          </ScrollViewForAndroid>
+          </ScrollView>
         )}
       </View>
     </SafeAreaView>

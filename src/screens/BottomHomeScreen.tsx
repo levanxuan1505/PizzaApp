@@ -32,7 +32,13 @@ export default function BottomHomeScreen() {
         tabBarActiveTintColor: Colors.DEFAULT_GREEN,
         tabBarShowLabel: false,
         tabBarStyle: [
-          {display: 'flex', paddingTop: 3, borderTopWidth: 0},
+          {
+            display: 'flex',
+            paddingTop: 3,
+            paddingBottom: 20,
+            borderTopWidth: 0,
+            height: Platform.OS === 'ios' ? 70 : 65,
+          },
           null,
         ],
       }}
@@ -85,7 +91,7 @@ export default function BottomHomeScreen() {
                 borderRadius: 40,
                 backgroundColor: Colors.DEFAULT_WHITE,
                 borderColor: {color} ? color : Colors.DEFAULT_WHITE,
-                top: Platform.OS === 'ios' ? -10 : -18,
+                top: Platform.OS === 'ios' ? -10 : -13,
                 elevation: 5,
               }}>
               <Icon name="search" size={28} color={color} />

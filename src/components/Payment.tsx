@@ -1,5 +1,12 @@
 /* eslint-disable react-native/no-inline-styles */
-import {StyleSheet, Text, View, Image, TouchableOpacity} from 'react-native';
+import {
+  StyleSheet,
+  Text,
+  View,
+  Image,
+  Platform,
+  TouchableOpacity,
+} from 'react-native';
 import React, {memo} from 'react';
 import {Colors} from '@constants';
 import Icon from 'react-native-vector-icons/MaterialIcons';
@@ -27,12 +34,12 @@ const Payment = ({navigation}) => {
               width: 50,
               borderRadius: 5,
               left: 12,
-              top: -2,
+              top: Platform.OS === 'ios' ? -2 : 1,
             }}
           />
           <Text
             style={{
-              fontSize: 20,
+              fontSize: Platform.OS === 'ios' ? 20 : 15,
               color: Colors.DEFAULT_GREEN,
               paddingLeft: 70,
               paddingBottom: 5,
@@ -55,6 +62,7 @@ const Payment = ({navigation}) => {
             color: Colors.DEFAULT_YELLOW,
             paddingLeft: 78,
             marginTop: 0,
+            fontSize: Platform.OS === 'ios' ? 16 : 12,
           }}>
           Thanh toán dễ dàng hơn với Zalo Pay
         </Text>

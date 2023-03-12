@@ -1,5 +1,5 @@
 /* eslint-disable react-native/no-inline-styles */
-import {StyleSheet, Text, View, TouchableOpacity} from 'react-native';
+import {StyleSheet, Text, View, Platform, TouchableOpacity} from 'react-native';
 import React, {memo} from 'react';
 import {Colors} from '@constants';
 import Icon from 'react-native-vector-icons/MaterialIcons';
@@ -8,7 +8,9 @@ const Location = ({navigation}) => {
   const location = useSelector((state: any) => state.location);
 
   return (
-    <TouchableOpacity onPress={() => navigation.navigate('Local')}>
+    <TouchableOpacity
+      activeOpacity={Platform.OS === 'ios' ? 0.2 : 0.8}
+      onPress={() => navigation.navigate('Local')}>
       <View style={styles.location}>
         <View
           style={{
@@ -17,15 +19,21 @@ const Location = ({navigation}) => {
             paddingLeft: 9,
           }}>
           <Icon name="location-pin" size={28} color={Colors.DEFAULT_GREEN} />
-          <Text style={{bottom: 2}}>Địa chỉ nhận hàng</Text>
+          <Text style={{bottom: 2, fontSize: Platform.OS === 'ios' ? 16 : 12}}>
+            Địa chỉ nhận hàng
+          </Text>
         </View>
         <View style={{flexDirection: 'row'}}>
           <View style={{paddingLeft: 15}}>
-            <Text>
+            <Text style={{fontSize: Platform.OS === 'ios' ? 16 : 12}}>
               {location[0].name} | {location[0].phone}
             </Text>
-            <Text>{location[0].dress},</Text>
-            <Text>{location[0].title}</Text>
+            <Text style={{fontSize: Platform.OS === 'ios' ? 16 : 12}}>
+              {location[0].dress},
+            </Text>
+            <Text style={{fontSize: Platform.OS === 'ios' ? 16 : 12}}>
+              {location[0].title}
+            </Text>
           </View>
         </View>
         <Icon

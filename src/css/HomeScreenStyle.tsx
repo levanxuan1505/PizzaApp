@@ -5,7 +5,7 @@ const cardWidth = width / 2 - 20;
 
 const styles = StyleSheet.create({
   header: {
-    marginTop: Platform.OS === 'ios' ? 20 : 35,
+    marginTop: Platform.OS === 'ios' ? 20 : 45,
     flexDirection: 'row',
     justifyContent: 'space-between',
     paddingHorizontal: 20,

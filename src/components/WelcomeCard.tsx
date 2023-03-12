@@ -21,7 +21,8 @@ const styles = StyleSheet.create({
     width: Display.setWidth(100),
   },
   image: {
-    height: Display.setHeight(41),
+    height:
+      Platform.OS === 'ios' ? Display.setHeight(41) : Display.setHeight(37),
     width: Platform.OS === 'ios' ? Display.setWidth(78) : Display.setWidth(68),
     borderBottomLeftRadius: 50,
     borderTopRightRadius: 50,
@@ -36,7 +37,7 @@ const styles = StyleSheet.create({
   },
   contentText: {
     marginTop: 10,
-    fontSize: 22,
+    fontSize: Platform.OS === 'ios' ? 22 : 20,
     textAlign: 'center',
     marginHorizontal: 20,
     color: '#037E3F',
