@@ -1,22 +1,27 @@
-# Ứng dụng Pizza_Food
+# ---App Pizza_Food---
 
-- Nó giúp chúng ta chọn đồ ăn ưa thích
-- Lưu lại những món ăn ưa thích
-- Tìm kiếm món ăn
-- Thanh toán dễ dàng với các lựa chọn
-- Thêm Voucher, Mã giảm giá và Xu
-- Lựa chọn địa điểm nhận hàng linh hoạt
+- App giúp user đăng ký và đăng nhập thông qua Validate Form and AsyncStorage
+- App giúp chúng ta chọn đồ ăn ưa thích, lưu vào bookmark tiện xem lại
+- Lưu lại những món ăn ưa thích, cho vào giỏ hàng
+- Tìm kiếm món ăn, có lịch sử tìm kiếm giúp xem lại dễ dàng
+- Thanh toán dễ dàng với các lựa chọn thanh toán phổ biết như MoMo, Zalo Pay
+- Thêm Voucher, Mã giảm giá và Xu khi tiến hành thanh toán
+- Lựa chọn địa điểm nhận hàng linh hoạt, thay đổi vị trí nhận hàng đã tạo trước đó
+- App chạy đồng thời trên cả thiết bị IOS và Android, được tối ưu dựa vào Platform
 
-# Các công nghệ mình dùng trong project này:
+# Các công nghệ mình dùng trong project:
 
-- ReactNavigation
-- Redux
-- TypeScript
-- Figma
 - Modal
+- Redux
+- Figma
+- Platform
+- TypeScript
 - Custom Alias
+- AsyncStorage
+- ReactNavigation
+- React Native Vector Icons
 
-# Các thư viện mình dùng trong dự án
+# Các thư viện mình dùng trong project:
 
     "@react-native-async-storage/async-storage": "^1.1711",
     "@react-native-community/masked-view": "^0.1.11",

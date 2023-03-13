@@ -24,7 +24,7 @@ export default function VoucherScreen({navigation}: any) {
   const CartCard = ({item}: any) => {
     return (
       <TouchableOpacity
-        activeOpacity={Platform.OS === 'ios' ? 0.2 : 0.8}
+        activeOpacity={Platform.OS === 'ios' ? 0.5 : 0.8}
         onPress={() =>
           dispatch(
             addVoucher({

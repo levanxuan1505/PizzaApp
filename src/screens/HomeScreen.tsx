@@ -10,11 +10,11 @@ import {
   Modal,
   FlatList,
   Animated,
+  Platform,
   StatusBar,
   SafeAreaView,
   TouchableOpacity,
   TouchableHighlight,
-  Platform,
 } from 'react-native';
 
 import React, {useState} from 'react';
@@ -311,17 +311,15 @@ export default function HomeScreen({navigation}: any) {
       <View style={styles.header}>
         <View>
           <View style={{flexDirection: 'row'}}>
-            <Text style={{fontSize: 28, color: Colors.DEFAULT_GREEN}}>
-              Xin chào,
-            </Text>
             <Text
               style={{
-                fontSize: 28,
-                fontWeight: 'bold',
-                marginLeft: 5,
+                fontSize: 32,
                 color: Colors.DEFAULT_GREEN,
+                fontWeight: '600',
               }}>
-              {userName[0].userName ? userName[0].userName : `Quý khách`}
+              {userName[0].userName
+                ? 'Xin chào, ' + userName[0].userName
+                : `Chào mừng trở lại`}
             </Text>
           </View>
           <Text
@@ -331,7 +329,7 @@ export default function HomeScreen({navigation}: any) {
         </View>
         <TouchableOpacity
           onPress={() => navigation.navigate('Profile')}
-          style={{right: Platform.OS === 'ios' ? 0 : 10}}>
+          style={{right: Platform.OS === 'ios' ? 0 : 5}}>
           {/*  */}
           <IconBadge
             MainElement={
