@@ -16,6 +16,7 @@ import {
   TouchableHighlight,
   Platform,
 } from 'react-native';
+
 import React, {useState} from 'react';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import {ScrollView, TextInput} from 'react-native-gesture-handler';
@@ -30,9 +31,10 @@ import {foods} from '@constants';
 import {addToCart} from '../redux/cartSlice';
 import {useDispatch, useSelector} from 'react-redux';
 //
-export default function HomeScreen({navigation, item}: any) {
+export default function HomeScreen({navigation}: any) {
   // redux
   const notification = useSelector((state: any) => state.notification);
+  const userName = useSelector((state: any) => state.user);
   const badge = notification.length;
   const dispatch = useDispatch();
   const [selectedCategoryIndex, setSelectedCategoryIndex] = useState(0);
@@ -319,7 +321,7 @@ export default function HomeScreen({navigation, item}: any) {
                 marginLeft: 5,
                 color: Colors.DEFAULT_GREEN,
               }}>
-              {item ? item : `Xuân Lê`}
+              {userName[0].userName ? userName[0].userName : `Quý khách`}
             </Text>
           </View>
           <Text

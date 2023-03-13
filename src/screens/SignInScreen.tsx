@@ -10,9 +10,10 @@ import {
   StatusBar,
 } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-
+import {useDispatch} from 'react-redux';
 import {Colors} from '@constants';
 import {Button, Input, Loader} from '@components';
+import {changeName} from '../redux/userSlice';
 export interface ISignUpData {
   email: string;
   password: string;
@@ -21,7 +22,7 @@ const SignInScreen = ({navigation}: any) => {
   const [inputs, setInputs] = useState<ISignUpData>({email: '', password: ''});
   const [errors, setErrors] = useState({});
   const [loading, setLoading] = useState(false);
-
+  const dispatch = useDispatch();
   const validate = async () => {
     Keyboard.dismiss();
     let isValid = true;
@@ -49,7 +50,8 @@ const SignInScreen = ({navigation}: any) => {
           inputs.email === userData?.email &&
           inputs.password === userData?.password
         ) {
-          navigation.navigate('BottomHome', userData.fullname);
+          dispatch(changeName({userName: userData.fullname}));
+          navigation.navigate('BottomHome');
           AsyncStorage.setItem(
             'userData',
             JSON.stringify({...userData, loggedIn: true}),

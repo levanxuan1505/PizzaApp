@@ -7,6 +7,7 @@ import paymentReducer from './paymentSlice';
 import voucherReducer from './voucherSlice';
 import coinReducer from './coinSlice';
 import orderReducer from './orderSlice';
+import userReducer from './userSlice';
 export default configureStore({
   reducer: {
     notification: notificationReducer,
@@ -17,5 +18,6 @@ export default configureStore({
     voucher: voucherReducer,
     coin: coinReducer,
     order: orderReducer,
+    user: userReducer,
   },
 });

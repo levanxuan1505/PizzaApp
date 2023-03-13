@@ -3,26 +3,22 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/no-unstable-nested-components */
 /* eslint-disable react-native/no-inline-styles */
-import React, {useState, memo} from 'react';
+import React, {memo} from 'react';
 import {
   SafeAreaView,
   Text,
   View,
   Platform,
   Image,
-  Modal,
-  Animated,
   TouchableOpacity,
 } from 'react-native';
 import {ScrollView} from 'react-native-virtualized-view';
 import {FlatList} from 'react-native-gesture-handler';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import Iconss from 'react-native-vector-icons/MaterialCommunityIcons';
-import Icons from 'react-native-vector-icons/Fontisto';
 import IconBadge from 'react-native-icon-badge';
 import styles from '@css/CheckoutScreenStyle';
 import {Colors} from '@constants';
-import {ua} from '../components/TotalCheckout';
 import {
   Voucher,
   Payment,
@@ -30,50 +26,10 @@ import {
   DetailTotal,
   TotalCheckout,
 } from '@components';
-import {useSelector, useDispatch} from 'react-redux';
-import {addOrder} from '../redux/orderSlice';
+import {useSelector} from 'react-redux';
 
 const CheckoutScreen = ({navigation}) => {
-  // modal Pop Validate Check out
-  const [visible, setVisible] = useState(ua);
-  const ModalPopup = ({visible, children}: any) => {
-    const [showModal, setShowModal] = React.useState(visible);
-    const scaleValue = React.useRef(new Animated.Value(0)).current;
-    React.useEffect(() => {
-      toggleModal();
-    }, [visible]);
-    const toggleModal = () => {
-      if (visible) {
-        // setShowModal(true);
-        Animated.spring(scaleValue, {
-          toValue: 1,
-          // duration: 3000,
-          useNativeDriver: true,
-        }).start();
-      } else {
-        setTimeout(() => setShowModal(false), 300);
-        Animated.timing(scaleValue, {
-          toValue: 0,
-          duration: 300,
-          useNativeDriver: true,
-        }).start();
-      }
-    };
-    return (
-      <Modal transparent visible={showModal}>
-        <View style={styles.modalBackGround}>
-          <Animated.View
-            style={[styles.modalContainer, {transform: [{scale: scaleValue}]}]}>
-            {children}
-          </Animated.View>
-        </View>
-      </Modal>
-    );
-  };
-  //
   const cartGoods = useSelector((state: any) => state.cart);
-  const dispatch = useDispatch();
-
   const badge: number = cartGoods.length;
 
   const CartCard = ({item}: any) => {
@@ -118,77 +74,8 @@ const CheckoutScreen = ({navigation}) => {
       </TouchableOpacity>
     );
   };
-
   return (
     <SafeAreaView style={{backgroundColor: Colors.DEFAULT_WHITE, flex: 1}}>
-      {/* modal */}
-      <ModalPopup visible={visible}>
-        <View
-          style={{
-            flex: 1,
-            flexDirection: 'column',
-            justifyContent: 'space-around',
-            alignItems: 'center',
-          }}>
-          <View
-            style={[styles.Header, {borderBottomColor: Colors.DEFAULT_WHITE}]}>
-            <Text
-              style={{
-                fontSize: 24,
-                fontWeight: '600',
-                color: Colors.DEFAULT_GREEN,
-                paddingTop: 10,
-                paddingBottom: Platform.OS === 'ios' ? 0 : 15,
-              }}>
-              Xác nhận
-            </Text>
-          </View>
-          <View style={[styles.Header, {top: -10, paddingBottom: 10}]}>
-            <Text
-              style={{
-                fontSize: Platform.OS === 'ios' ? 19 : 16,
-                fontWeight: Platform.OS === 'ios' ? '500' : '600',
-                color: Colors.DEFAULT_GREEN,
-              }}>
-              Xác nhận order những món ăn này
-            </Text>
-          </View>
-          <View
-            style={{
-              width: '100%',
-              flexDirection: 'row',
-              justifyContent: 'space-around',
-              top: -10,
-            }}>
-            <TouchableOpacity
-              onPress={() => {
-                dispatch(addOrder({order: 1})),
-                  setVisible(false),
-                  navigation.navigate('Profile');
-              }}>
-              <Text
-                style={{
-                  color: Colors.DEFAULT_GREEN,
-                  fontSize: 20,
-                  fontWeight: '600',
-                }}>
-                Xác nhận
-              </Text>
-            </TouchableOpacity>
-            <TouchableOpacity onPress={() => setVisible(false)}>
-              <Text
-                style={{
-                  color: Colors.DEFAULT_RED,
-                  fontSize: 20,
-                  fontWeight: '600',
-                }}>
-                Huỷ bỏ
-              </Text>
-            </TouchableOpacity>
-          </View>
-        </View>
-      </ModalPopup>
-      {/* End modal */}
       <View style={styles.header}>
         <Icon
           name="arrow-back-ios"
@@ -246,6 +133,7 @@ const CheckoutScreen = ({navigation}) => {
           <Voucher navigation={navigation} />
           {/* Thanh toán */}
           <Payment navigation={navigation} />
+          {/* Detail */}
           <DetailTotal />
 
           <View style={styles.warning}>
@@ -273,45 +161,7 @@ const CheckoutScreen = ({navigation}) => {
             </View>
           </View>
         </ScrollView>
-        <TotalCheckout />
-        {/* fixed total */}
-        {/* <View style={styles.total}>
-          <Icons
-            name="opencart"
-            size={44}
-            color={Colors.DEFAULT_GREEN}
-            style={{
-              position: 'absolute',
-              left: 35,
-              top: 10,
-            }}
-          />
-          <View>
-            <Text
-              style={{
-                color: Colors.DEFAULT_GREEN,
-                fontSize: Platform.OS === 'ios' ? 20 : 14,
-                paddingRight: 10,
-              }}>
-              Tổng thanh toán
-            </Text>
-            <Text style={{color: Colors.DEFAULT_GREEN, fontSize: 18}}>
-              đ{sum(cartGoods) + (50 - voucher[0].price - coin[0].price)}.000
-            </Text>
-          </View>
-          <TouchableOpacity onPress={() => setVisible(true)}>
-            <Text
-              style={{
-                fontSize: 22,
-                backgroundColor: Colors.DEFAULT_GREEN,
-                padding: 18,
-                fontWeight: '800',
-                color: Colors.DEFAULT_WHITE,
-              }}>
-              Đặt hàng
-            </Text>
-          </TouchableOpacity>
-        </View> */}
+        <TotalCheckout navigation={navigation} />
       </View>
     </SafeAreaView>
   );

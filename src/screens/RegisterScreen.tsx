@@ -38,10 +38,21 @@ const RegisterScreen = ({navigation}: any) => {
     if (!inputs.fullname) {
       handleError('Please input fullname', 'fullname');
       isValid = false;
+    } else if (
+      !inputs.fullname.match(
+        /^[A-ZÀÁẠẢÃÂẦẤẬẨẪĂẰẮẶẲẴÈÉẸẺẼÊỀẾỆỂỄÌÍỊỈĨÒÓỌỎÕÔỒỐỘỔỖƠỜỚỢỞỠÙÚỤỦŨƯỪỨỰỬỮỲÝỴỶỸĐ][a-zàáạảãâầấậẩẫăằắặẳẵèéẹẻẽêềếệểễìíịỉĩòóọỏõôồốộổỗơờớợởỡùúụủũưừứựửữỳýỵỷỹđ]*(?:[ ][A-ZÀÁẠẢÃÂẦẤẬẨẪĂẰẮẶẲẴÈÉẸẺẼÊỀẾỆỂỄÌÍỊỈĨÒÓỌỎÕÔỒỐỘỔỖƠỜỚỢỞỠÙÚỤỦŨƯỪỨỰỬỮỲÝỴỶỸĐ][a-zàáạảãâầấậẩẫăằắặẳẵèéẹẻẽêềếệểễìíịỉĩòóọỏõôồốộổỗơờớợởỡùúụủũưừứựửữỳýỵỷỹđ]*)*$/,
+      )
+    ) {
+      handleError('Please input right format fullname', 'fullname');
+      isValid = false;
     }
-
     if (!inputs.phone) {
       handleError('Please input phone number', 'phone');
+      isValid = false;
+    } else if (
+      !inputs.phone.match(/^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$/)
+    ) {
+      handleError('Please input right phone', 'fullname');
       isValid = false;
     }
 
@@ -49,7 +60,7 @@ const RegisterScreen = ({navigation}: any) => {
       handleError('Please input password', 'password');
       isValid = false;
     } else if (inputs.password.length < 5) {
-      handleError('Min password length of 5', 'password');
+      handleError('Min password must be larger 5', 'password');
       isValid = false;
     }
 
