@@ -10,6 +10,7 @@ import Payment from './Payment';
 import Location from './Location';
 import DetailTotal from './DetailTotal';
 import TotalCheckout from './TotalCheckout';
+import ListCategories from './ListCategories';
 export {
   WelcomeCard,
   Separator,
@@ -24,4 +25,5 @@ export {
   PrimaryButton,
   DetailTotal,
   TotalCheckout,
+  ListCategories,
 };

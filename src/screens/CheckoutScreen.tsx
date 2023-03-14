@@ -41,6 +41,7 @@ const CheckoutScreen = ({navigation}) => {
             style={{
               height: Platform.OS === 'ios' ? 80 : 70,
               width: Platform.OS === 'ios' ? 80 : 70,
+              borderRadius: 40,
             }}
           />
           <View

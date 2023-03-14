@@ -7,18 +7,19 @@
 - Thanh toán dễ dàng với các lựa chọn thanh toán phổ biết như MoMo, Zalo Pay
 - Thêm Voucher, Mã giảm giá và Xu khi tiến hành thanh toán
 - Lựa chọn địa điểm nhận hàng linh hoạt, thay đổi vị trí nhận hàng đã tạo trước đó
-- App chạy đồng thời trên cả thiết bị IOS và Android, được tối ưu dựa vào Platform
+- App chạy đồng thời trên cả thiết bị IOS và Android, được tối ưu dựa vào Platform(avaliable React Native)
 
 # Các công nghệ mình dùng trong project:
 
+- Git
 - Modal
-- Redux
 - Figma
 - Platform
 - TypeScript
 - Custom Alias
+- Redux Toolkit
 - AsyncStorage
-- ReactNavigation
+- React Navigation
 - React Native Vector Icons
 
 # Các thư viện mình dùng trong project:

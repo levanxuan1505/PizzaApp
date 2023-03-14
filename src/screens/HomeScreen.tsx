@@ -6,8 +6,8 @@
 import {
   Text,
   View,
-  Image,
   Modal,
+  Image,
   FlatList,
   Animated,
   Platform,
@@ -19,14 +19,14 @@ import {
 
 import React, {useState} from 'react';
 import Icon from 'react-native-vector-icons/MaterialIcons';
-import {ScrollView, TextInput} from 'react-native-gesture-handler';
+import {TextInput} from 'react-native-gesture-handler';
 import Icons from 'react-native-vector-icons/Ionicons';
 import IconBadge from 'react-native-icon-badge';
 
 import {Colors} from '@constants';
 import styles from '@css/HomeScreenStyle';
-import {Categories} from '@constants';
-import {foods} from '@constants';
+import {foodList} from '@constants';
+import {ListCategories} from '@components';
 // redux import
 import {addToCart} from '../redux/cartSlice';
 import {useDispatch, useSelector} from 'react-redux';
@@ -34,14 +34,14 @@ import {useDispatch, useSelector} from 'react-redux';
 export default function HomeScreen({navigation}: any) {
   // redux
   const notification = useSelector((state: any) => state.notification);
+  const food = useSelector((state: any) => state.food);
   const userName = useSelector((state: any) => state.user);
   const badge = notification.length;
   const dispatch = useDispatch();
-  const [selectedCategoryIndex, setSelectedCategoryIndex] = useState(0);
   // modal//
   const [visible, setVisible] = React.useState(true);
   const [visible1, setVisible1] = useState(false);
-  const ModalPoup = ({visible, children}) => {
+  const ModalPopup = ({visible, children}) => {
     const [showModal, setShowModal] = React.useState(visible);
     const scaleValue = React.useRef(new Animated.Value(0)).current;
     React.useEffect(() => {
@@ -114,49 +114,7 @@ export default function HomeScreen({navigation}: any) {
     );
   };
   // modal2
-  const ListCategories = () => {
-    return (
-      <ScrollView
-        horizontal
-        showsHorizontalScrollIndicator={false}
-        contentContainerStyle={styles.categoriesListContainer}>
-        {Categories.map((category, index) => (
-          <TouchableOpacity
-            key={index}
-            activeOpacity={0.8}
-            onPress={() => setSelectedCategoryIndex(index)}>
-            <View
-              style={{
-                backgroundColor:
-                  selectedCategoryIndex === index
-                    ? Colors.DEFAULT_GREEN
-                    : Colors.DEFAULT_WHITE,
-                ...styles.categoryBtn,
-              }}>
-              <View style={styles.categoryBtnImgCon}>
-                <Image
-                  source={category.image}
-                  style={{height: 35, width: 35, resizeMode: 'cover'}}
-                />
-              </View>
-              <Text
-                style={{
-                  fontSize: 15,
-                  fontWeight: 'bold',
-                  marginLeft: 10,
-                  color:
-                    selectedCategoryIndex === index
-                      ? Colors.DEFAULT_WHITE
-                      : Colors.DEFAULT_YELLOW,
-                }}>
-                {category.name}
-              </Text>
-            </View>
-          </TouchableOpacity>
-        ))}
-      </ScrollView>
-    );
-  };
+
   const Card = ({food}: any) => {
     return (
       <TouchableHighlight
@@ -164,10 +122,13 @@ export default function HomeScreen({navigation}: any) {
         activeOpacity={0.9}
         onPress={() => navigation.navigate('DetailCard', food)}>
         <View style={styles.card}>
-          <View style={{alignItems: 'center', top: -25}}>
-            <Image source={food.image} style={{height: 120, width: 120}} />
+          <View style={{alignItems: 'center', top: -30}}>
+            <Image
+              source={food.image}
+              style={{height: 130, width: 130, borderRadius: 70}}
+            />
           </View>
-          <View style={{marginHorizontal: 20}}>
+          <View style={{marginHorizontal: 15, top: -10}}>
             <Text
               style={{
                 fontSize: Platform.OS === 'ios' ? 17.4 : 13,
@@ -221,7 +182,7 @@ export default function HomeScreen({navigation}: any) {
     <SafeAreaView style={{flex: 1, backgroundColor: Colors.DEFAULT_WHITE}}>
       {/* modal */}
       <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-        <ModalPoup visible={visible}>
+        <ModalPopup visible={visible}>
           <View style={{alignItems: 'center'}}>
             <View style={styles.Header}>
               <TouchableOpacity onPress={() => setVisible(false)}>
@@ -239,7 +200,7 @@ export default function HomeScreen({navigation}: any) {
               style={{height: 400, width: 460, marginVertical: 10}}
             />
           </View>
-        </ModalPoup>
+        </ModalPopup>
         {/* <Button title="Open Modal" onPress={() => setVisible(true)} /> */}
       </View>
       {/* modal */}
@@ -385,7 +346,8 @@ export default function HomeScreen({navigation}: any) {
       <FlatList
         showsVerticalScrollIndicator={false}
         numColumns={2}
-        data={foods}
+        style={{paddingTop: 10, marginBottom: 20}}
+        data={foodList[food[0].id]}
         renderItem={({item}) => <Card food={item} />}
       />
     </SafeAreaView>

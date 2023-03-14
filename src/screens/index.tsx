@@ -19,6 +19,7 @@ import SettingScreen from './SettingScreen';
 import PaymentScreen from './PaymentScreen';
 import VoucherScreen from './voucherScreen';
 import OrderConfirmScreen from './OrderConfirmScreen';
+import OrderConfirmDetailScreen from './OrderConfirmDetailScreen';
 export {
   BookmarkScreen,
   BottomHomeScreen,
@@ -32,6 +33,7 @@ export {
   HomeScreen,
   LocationScreen,
   Options,
+  OrderConfirmDetailScreen,
   NotificationScreen,
   RegisterScreen,
   Search,

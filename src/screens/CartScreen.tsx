@@ -39,7 +39,10 @@ const CartScreen = ({navigation}: any) => {
         activeOpacity={Platform.OS === 'ios' ? 0.2 : 0.8}
         onPress={() => navigation.navigate('DetailCard', item)}>
         <View style={styles.cartCard}>
-          <Image source={item.image} style={{height: 80, width: 80}} />
+          <Image
+            source={item.image}
+            style={{height: 80, width: 80, borderRadius: 40}}
+          />
           <View
             style={{
               height: 100,

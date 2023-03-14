@@ -1,7 +1,14 @@
 /* eslint-disable react-native/no-inline-styles */
 /* eslint-disable react/no-unstable-nested-components */
 import React from 'react';
-import {SafeAreaView, View, Text, Image, Platform} from 'react-native';
+import {
+  SafeAreaView,
+  View,
+  Text,
+  Image,
+  Platform,
+  TouchableOpacity,
+} from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import Icons from 'react-native-vector-icons/Ionicons';
 
@@ -25,10 +32,13 @@ const OrderConfirmScreen = ({navigation}: any) => {
     }
     return total;
   }
+  const SumMustPay =
+    sumTotal(cartGoods) + (50 - voucher[0].price - coin[0].price);
   //
   const CartCard = ({item}: any) => {
     return (
-      <View>
+      <TouchableOpacity
+        onPress={() => navigation.navigate('OrderDetail', {item: SumMustPay})}>
         <View style={styles.cartCard}>
           <View style={{flexDirection: 'row', alignItems: 'center'}}>
             <Image source={item[0].image} style={{height: 80, width: 80}} />
@@ -58,7 +68,7 @@ const OrderConfirmScreen = ({navigation}: any) => {
               <View>
                 <Text
                   style={{
-                    fontSize: Platform.OS === 'ios' ? 20 : 12,
+                    fontSize: Platform.OS === 'ios' ? 20 : 15,
                     fontWeight: '500',
                     color: Colors.DEFAULT_GREEN,
                   }}>
@@ -75,14 +85,14 @@ const OrderConfirmScreen = ({navigation}: any) => {
             }}>
             <Text
               style={{
-                fontSize: Platform.OS === 'ios' ? 18 : 12,
+                fontSize: Platform.OS === 'ios' ? 18 : 14,
                 color: Colors.DEFAULT_GREEN,
               }}>
               Tổng số lượng món ăn :
             </Text>
             <Text
               style={{
-                fontSize: Platform.OS === 'ios' ? 18 : 12,
+                fontSize: Platform.OS === 'ios' ? 18 : 14,
                 color: Colors.DEFAULT_GREEN,
               }}>
               {sum}
@@ -91,18 +101,17 @@ const OrderConfirmScreen = ({navigation}: any) => {
           <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
             <Text
               style={{
-                fontSize: Platform.OS === 'ios' ? 18 : 12,
+                fontSize: Platform.OS === 'ios' ? 18 : 14,
                 color: Colors.DEFAULT_GREEN,
               }}>
               Tổng tiền cần thanh toán :
             </Text>
             <Text
               style={{
-                fontSize: Platform.OS === 'ios' ? 18 : 12,
+                fontSize: Platform.OS === 'ios' ? 18 : 14,
                 color: Colors.DEFAULT_GREEN,
               }}>
-              đ{sumTotal(cartGoods) + (50 - voucher[0].price - coin[0].price)}
-              .000
+              đ {SumMustPay}.000 VND
             </Text>
           </View>
           <View
@@ -128,7 +137,7 @@ const OrderConfirmScreen = ({navigation}: any) => {
             </View>
           </View>
         </View>
-      </View>
+      </TouchableOpacity>
     );
   };
   return !order[0].order ? (

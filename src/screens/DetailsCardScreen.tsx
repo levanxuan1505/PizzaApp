@@ -157,7 +157,10 @@ const DetailsCardScreen = ({navigation, route}: any) => {
             alignItems: 'center',
             height: 280,
           }}>
-          <Image source={item.image} style={{height: 220, width: 220}} />
+          <Image
+            source={item.image}
+            style={{height: 250, width: 350, borderRadius: 20}}
+          />
         </View>
         <View style={styles.details}>
           <View

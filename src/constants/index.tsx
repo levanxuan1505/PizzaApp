@@ -9,6 +9,7 @@ import locations from './Locations';
 import options from './options';
 import payment from './payment';
 import voucher from './voucher';
+import foodList from './foodList';
 import {setting1, setting2, setting3} from './settingTitle';
 export {
   foods,
@@ -22,6 +23,7 @@ export {
   setting1,
   setting2,
   setting3,
+  foodList,
   locations,
   Categories,
   notification,
