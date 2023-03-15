@@ -75,7 +75,7 @@ const styles = StyleSheet.create({
   warning: {
     borderRadius: 10,
     height: 80,
-    marginBottom: Platform.OS === 'ios' ? 240 : 210,
+    marginBottom: Platform.OS === 'ios' ? 145 : 210,
     justifyContent: 'center',
     marginTop: 10,
     marginHorizontal: 8,

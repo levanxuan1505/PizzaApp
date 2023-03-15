@@ -23,13 +23,18 @@ import {deleteBookmark} from '../redux/bookmarkSlice';
 const BookmarkScreen = ({navigation}: any) => {
   //redux Using
   const bookmark = useSelector((state: any) => state.bookmark);
+  const user = useSelector((state: any) => state.user);
+  const condition = user[0].userName && bookmark.length;
   const dispatch = useDispatch();
   //
   const CartCard = ({item}: any) => {
     return (
       <TouchableOpacity onPress={() => navigation.navigate('DetailCard', item)}>
         <View style={styles.cartCard}>
-          <Image source={item.image} style={{height: 80, width: 80}} />
+          <Image
+            source={item.image}
+            style={{height: 80, width: 80, borderRadius: 50}}
+          />
           <View
             style={{
               height: 100,
@@ -59,7 +64,7 @@ const BookmarkScreen = ({navigation}: any) => {
       </TouchableOpacity>
     );
   };
-  return !bookmark.length ? (
+  return !condition ? (
     <SafeAreaView style={{backgroundColor: Colors.DEFAULT_WHITE, flex: 1}}>
       <View style={styles.header}>
         <Icon

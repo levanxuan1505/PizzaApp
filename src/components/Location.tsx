@@ -31,7 +31,11 @@ const Location = ({navigation}) => {
             <Text style={{fontSize: Platform.OS === 'ios' ? 16 : 12}}>
               {location[0].dress},
             </Text>
-            <Text style={{fontSize: Platform.OS === 'ios' ? 16 : 12}}>
+            <Text
+              style={{
+                fontSize: Platform.OS === 'ios' ? 16 : 12,
+                paddingBottom: 5,
+              }}>
               {location[0].title}
             </Text>
           </View>

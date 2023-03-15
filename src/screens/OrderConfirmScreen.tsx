@@ -41,7 +41,10 @@ const OrderConfirmScreen = ({navigation}: any) => {
         onPress={() => navigation.navigate('OrderDetail', {item: SumMustPay})}>
         <View style={styles.cartCard}>
           <View style={{flexDirection: 'row', alignItems: 'center'}}>
-            <Image source={item[0].image} style={{height: 80, width: 80}} />
+            <Image
+              source={item[0].image}
+              style={{height: 80, width: 80, borderRadius: 40}}
+            />
             <View
               style={{
                 height: 100,

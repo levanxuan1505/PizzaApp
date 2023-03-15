@@ -1,3 +1,4 @@
+/* eslint-disable no-sequences */
 /* eslint-disable @typescript-eslint/no-shadow */
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react-native/no-inline-styles */
@@ -76,7 +77,7 @@ export default function HomeScreen({navigation}: any) {
     );
   };
   // modal
-  const ModalPoup1 = ({visible, children}) => {
+  const ModalPopup1 = ({visible, children}) => {
     const [showModal, setShowModal] = React.useState(visible);
     const scaleValue = React.useRef(new Animated.Value(0)).current;
     React.useEffect(() => {
@@ -155,27 +156,94 @@ export default function HomeScreen({navigation}: any) {
             </Text>
 
             <View style={styles.addToCartBtn}>
-              <Icon
-                onPress={() => {
-                  dispatch(
-                    addToCart({
-                      id: food.id,
-                      name: food.name,
-                      ingredients: food.ingredients,
-                      price: food.price,
-                      image: food.image,
-                      title: food.title,
-                    }),
-                  );
-                }}
-                name="add"
-                size={26}
-                color={Colors.DEFAULT_WHITE}
-              />
+              <Authentication food={food} />
             </View>
           </View>
         </View>
       </TouchableHighlight>
+    );
+  };
+  const Authentication = ({food}) => {
+    return userName[0].userName ? (
+      <Icon
+        onPress={() => {
+          dispatch(
+            addToCart({
+              id: food.id,
+              name: food.name,
+              ingredients: food.ingredients,
+              price: food.price,
+              image: food.image,
+              title: food.title,
+            }),
+          );
+        }}
+        name="add"
+        size={32}
+        color={Colors.DEFAULT_WHITE}
+      />
+    ) : (
+      <Icon
+        onPress={() => setVisible1(true)}
+        name="add"
+        size={32}
+        color={Colors.DEFAULT_WHITE}
+      />
+    );
+  };
+
+  const Avatar = () => {
+    return userName[0].userName ? (
+      <TouchableOpacity
+        onPress={() => navigation.navigate('Profile')}
+        style={{right: Platform.OS === 'ios' ? 0 : 5}}>
+        {/*  */}
+        <IconBadge
+          MainElement={
+            <View>
+              <Image
+                source={require('../assets/images/avatar.webp')}
+                style={{
+                  height: Platform.OS === 'ios' ? 55 : 45,
+                  width: Platform.OS === 'ios' ? 55 : 45,
+                  borderRadius: 30,
+                }}
+              />
+            </View>
+          }
+          BadgeElement={<Text style={{color: '#FFFFFF'}}>{badge}</Text>}
+          IconBadgeStyle={{
+            marginRight: -9,
+            marginTop: -4,
+            width: 19,
+            height: 20,
+            backgroundColor: 'red',
+          }}
+        />
+        {/*  */}
+      </TouchableOpacity>
+    ) : (
+      <TouchableOpacity
+        onPress={() => navigation.navigate('Profile')}
+        style={{
+          right: Platform.OS === 'ios' ? 0 : 2,
+          top: Platform.OS === 'ios' ? -5 : 0,
+        }}>
+        {/*  */}
+
+        <View>
+          <Image
+            source={require('../assets/images/nouser.jpeg')}
+            style={{
+              height: Platform.OS === 'ios' ? 50 : 45,
+              width: Platform.OS === 'ios' ? 50 : 45,
+              borderRadius: 30,
+            }}
+          />
+        </View>
+
+        {/*  */}
+      </TouchableOpacity>
     );
   };
   return (
@@ -205,7 +273,7 @@ export default function HomeScreen({navigation}: any) {
       </View>
       {/* modal */}
       {/* modal2 */}
-      <ModalPoup1 visible={visible1}>
+      <ModalPopup1 visible={visible1}>
         <View
           style={{
             flex: 1,
@@ -219,10 +287,10 @@ export default function HomeScreen({navigation}: any) {
               style={{
                 fontSize: 24,
                 fontWeight: '600',
-                color: Colors.DEFAULT_GREEN,
-                paddingTop: 10,
+                color: Colors.DEFAULT_RED,
+                paddingTop: 5,
               }}>
-              Xác nhận
+              Cảnh báo
             </Text>
           </View>
           <View style={[styles.Header2, {top: -10, paddingBottom: 10}]}>
@@ -232,7 +300,7 @@ export default function HomeScreen({navigation}: any) {
                 fontWeight: '500',
                 color: Colors.DEFAULT_GREEN,
               }}>
-              Thêm món ăn vào giỏ hàng
+              Bạn cần đăng nhập để thêm món ăn
             </Text>
           </View>
           <View
@@ -242,14 +310,17 @@ export default function HomeScreen({navigation}: any) {
               justifyContent: 'space-around',
               top: -10,
             }}>
-            <TouchableOpacity onPress={() => setVisible1(false)}>
+            <TouchableOpacity
+              onPress={() => (
+                setVisible1(false), navigation.navigate('SignIn')
+              )}>
               <Text
                 style={{
                   color: Colors.DEFAULT_GREEN,
                   fontSize: 20,
                   fontWeight: '600',
                 }}>
-                Thêm vào
+                Đăng nhập
               </Text>
             </TouchableOpacity>
             <TouchableOpacity onPress={() => setVisible1(false)}>
@@ -264,7 +335,7 @@ export default function HomeScreen({navigation}: any) {
             </TouchableOpacity>
           </View>
         </View>
-      </ModalPoup1>
+      </ModalPopup1>
       {/*  */}
 
       {/* modal2 */}
@@ -274,7 +345,7 @@ export default function HomeScreen({navigation}: any) {
           <View style={{flexDirection: 'row'}}>
             <Text
               style={{
-                fontSize: 32,
+                fontSize: Platform.OS === 'ios' ? 30 : 24,
                 color: Colors.DEFAULT_GREEN,
                 fontWeight: '600',
               }}>
@@ -288,34 +359,7 @@ export default function HomeScreen({navigation}: any) {
             Bạn muốn ăn gì hôm nay?
           </Text>
         </View>
-        <TouchableOpacity
-          onPress={() => navigation.navigate('Profile')}
-          style={{right: Platform.OS === 'ios' ? 0 : 5}}>
-          {/*  */}
-          <IconBadge
-            MainElement={
-              <View>
-                <Image
-                  source={require('../assets/images/avatar.webp')}
-                  style={{
-                    height: Platform.OS === 'ios' ? 55 : 45,
-                    width: Platform.OS === 'ios' ? 55 : 45,
-                    borderRadius: 30,
-                  }}
-                />
-              </View>
-            }
-            BadgeElement={<Text style={{color: '#FFFFFF'}}>{badge}</Text>}
-            IconBadgeStyle={{
-              marginRight: -9,
-              marginTop: -4,
-              width: 19,
-              height: 20,
-              backgroundColor: 'red',
-            }}
-          />
-          {/*  */}
-        </TouchableOpacity>
+        <Avatar />
       </View>
       <View
         style={{

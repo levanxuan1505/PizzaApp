@@ -79,10 +79,7 @@ export default function NotificationScreen({navigation}) {
     return (
       <TouchableOpacity>
         <View style={styles.cartCard}>
-          <Image
-            source={item.image}
-            style={{height: 50, width: 50, borderRadius: 50}}
-          />
+          <Image source={item.image} style={{height: 50, width: 50}} />
           <View
             style={{
               flex: 1,

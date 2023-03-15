@@ -23,6 +23,7 @@ import {useSelector} from 'react-redux';
 
 export default function ProfileScreen({navigation}: any) {
   const notification = useSelector((state: any) => state.notification);
+  const userName = useSelector((state: any) => state.user);
   const order = useSelector((state: any) => state.order);
   const badge = notification.length;
   const Confirm = () => {
@@ -56,6 +57,61 @@ export default function ProfileScreen({navigation}: any) {
           backgroundColor: 'red',
         }}
       />
+    );
+  };
+  const Avatar = () => {
+    return userName[0].userName ? (
+      <Image
+        source={require('../assets/images/avatar.webp')}
+        style={{height: 55, width: 55, borderRadius: 50}}
+      />
+    ) : (
+      <Image
+        source={require('../assets/images/nouser.jpeg')}
+        style={{height: 55, width: 55, borderRadius: 50}}
+      />
+    );
+  };
+  const Name = () => {
+    return userName[0].userName ? (
+      <Text
+        style={{
+          fontSize: Platform.OS === 'ios' ? 20 : 16,
+          fontWeight: '600',
+          color: Colors.DEFAULT_GREEN,
+        }}>
+        {userName[0].userName}
+      </Text>
+    ) : (
+      <Text
+        style={{
+          fontSize: Platform.OS === 'ios' ? 20 : 16,
+          fontWeight: '600',
+          color: Colors.DEFAULT_GREEN,
+        }}>
+        Bạn chưa đăng nhập
+      </Text>
+    );
+  };
+  const Authentication = () => {
+    return userName[0].userName ? (
+      <Text
+        style={{
+          fontSize: Platform.OS === 'ios' ? 14 : 11,
+          color: Colors.FACEBOOK_BLUE,
+        }}>
+        Thành viên Bạc
+      </Text>
+    ) : (
+      <TouchableOpacity onPress={() => navigation.navigate('SignIn')}>
+        <Text
+          style={{
+            fontSize: Platform.OS === 'ios' ? 14 : 11,
+            color: Colors.FACEBOOK_BLUE,
+          }}>
+          Vui lòng đăng nhập
+        </Text>
+      </TouchableOpacity>
     );
   };
   return (
@@ -106,41 +162,29 @@ export default function ProfileScreen({navigation}: any) {
         </View>
         {/* information */}
         <View style={styles.information}>
-          <Image
-            source={require('../assets/images/avatar.webp')}
-            style={{height: 55, width: 55, borderRadius: 50}}
-          />
-          <View style={{left: 10, alignItems: 'center'}}>
-            <Text
-              style={{
-                fontSize: Platform.OS === 'ios' ? 20 : 16,
-                fontWeight: '600',
-                color: Colors.DEFAULT_GREEN,
-              }}>
-              Lê Văn Xuân
-            </Text>
-            <TouchableOpacity
+          <Avatar />
+          <View
+            style={{
+              left: 10,
+              alignItems: 'center',
+            }}>
+            <Name />
+            <View
               style={{
                 backgroundColor: Colors.DEFAULT_GREY,
                 borderRadius: 10,
                 paddingHorizontal: 8,
-                paddingVertical: 1,
+                paddingVertical: 2,
                 flexDirection: 'row',
                 justifyContent: 'center',
                 alignItems: 'center',
               }}>
-              <Text
-                style={{
-                  fontSize: Platform.OS === 'ios' ? 14 : 11,
-                  color: Colors.FACEBOOK_BLUE,
-                }}>
-                Thành viên Bạc
-              </Text>
+              <Authentication />
               <Icon
                 name="arrow-forward-ios"
                 style={{color: Colors.FACEBOOK_BLUE}}
               />
-            </TouchableOpacity>
+            </View>
           </View>
         </View>
         {/* Đơn mua  */}
@@ -175,7 +219,8 @@ export default function ProfileScreen({navigation}: any) {
                   Đơn mua
                 </Text>
               </View>
-              <View
+              <TouchableOpacity
+                onPress={() => navigation.navigate('Order')}
                 style={{
                   flexDirection: 'row',
                   alignItems: 'center',
@@ -193,7 +238,7 @@ export default function ProfileScreen({navigation}: any) {
                   size={12}
                   color={Colors.SECONDARY_RED}
                 />
-              </View>
+              </TouchableOpacity>
             </View>
           </View>
           <View
@@ -644,7 +689,7 @@ export default function ProfileScreen({navigation}: any) {
                   right: 20,
                   color: Colors.FACEBOOK_BLUE,
                 }}>
-                399 Xu
+                4.000 Xu
               </Text>
               <Icon
                 name="arrow-forward-ios"

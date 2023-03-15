@@ -13,7 +13,8 @@ export const cartSlice = createSlice({
         image: action.payload.image,
         title: action.payload.title,
       };
-      state.push(newToCart);
+
+      state.unshift(newToCart);
     },
     removeCart: (state, action) => {
       return state.filter((item: any) => item.id !== action.payload.id);

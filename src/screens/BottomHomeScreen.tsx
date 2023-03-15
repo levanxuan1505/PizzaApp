@@ -20,10 +20,13 @@ export default function BottomHomeScreen() {
   //reduxSelector
   const notification = useSelector((state: any) => state.notification);
   const bookmark = useSelector((state: any) => state.bookmark);
+  const userName = useSelector((state: any) => state.user);
   const cart = useSelector((state: any) => state.cart);
+  const enoughCondition = userName[0].userName && cart.length;
+  const enoughBookmark = userName[0].userName && bookmark.length;
   //redux Using
-  const badgeHome = notification.length;
-  const badgeCart = cart.length;
+  const badgeHome = userName[0].userName && notification.length;
+  const badgeCart = enoughCondition;
   const badgeBookmark = bookmark.length;
   //
   return (
@@ -103,7 +106,7 @@ export default function BottomHomeScreen() {
         name="Bookmark"
         component={BookmarkScreen}
         options={{
-          tabBarBadge: badgeBookmark ? badgeBookmark : null,
+          tabBarBadge: enoughBookmark ? badgeBookmark : null,
           headerShown: false,
           tabBarIcon: ({color}) => (
             <Icon name="bookmarks" size={28} color={color} />

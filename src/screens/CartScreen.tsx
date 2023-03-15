@@ -24,6 +24,8 @@ import {removeCart} from '../redux/cartSlice';
 const CartScreen = ({navigation}: any) => {
   // reduxSelector
   const cartGoods = useSelector((state: any) => state.cart);
+  const userName = useSelector((state: any) => state.user);
+  const enoughCondition = userName[0].userName && cartGoods.length;
   const dispatch = useDispatch();
   const badge = cartGoods.length;
   function sum(cartGoods: any) {
@@ -67,7 +69,7 @@ const CartScreen = ({navigation}: any) => {
       </TouchableOpacity>
     );
   };
-  return !cartGoods.length ? (
+  return !enoughCondition ? (
     <SafeAreaView style={{backgroundColor: Colors.DEFAULT_WHITE, flex: 1}}>
       <View style={styles.header}>
         <Icon
@@ -86,25 +88,9 @@ const CartScreen = ({navigation}: any) => {
           Giỏ hàng
         </Text>
         <View style={{position: 'absolute', right: 25}}>
-          <IconBadge
-            MainElement={
-              <View>
-                <Icon
-                  name="shopping-cart"
-                  size={32}
-                  color={Colors.DEFAULT_GREEN}
-                />
-              </View>
-            }
-            BadgeElement={<Text style={{color: '#FFFFFF'}}>{badge}</Text>}
-            IconBadgeStyle={{
-              marginRight: -5,
-              marginTop: -6,
-              width: 17,
-              height: 20,
-              backgroundColor: 'red',
-            }}
-          />
+          <View>
+            <Icon name="shopping-cart" size={32} color={Colors.DEFAULT_GREEN} />
+          </View>
         </View>
       </View>
       <View

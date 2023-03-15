@@ -18,9 +18,13 @@ import styles from '@css/SettingScreenStyle';
 import {SecondaryButton} from '@components';
 import {setting1, setting2, setting3} from '@constants';
 import {ScrollView} from 'react-native-virtualized-view';
+import {useSelector, useDispatch} from 'react-redux';
+import {changeName} from '../redux/userSlice';
+
 export default function SettingScreen({navigation}: any) {
   const [visible, setVisible] = useState(false);
-
+  const userName = useSelector((state: any) => state.user);
+  const dispatch = useDispatch();
   const ModalPoup = ({visible, children}) => {
     const [showModal, setShowModal] = React.useState(visible);
     const scaleValue = React.useRef(new Animated.Value(0)).current;
@@ -76,6 +80,22 @@ export default function SettingScreen({navigation}: any) {
       </TouchableOpacity>
     );
   };
+
+  const Option = () => {
+    return userName[0].userName ? (
+      <SecondaryButton title="ĐĂNG XUẤT" onPress={() => setVisible(true)} />
+    ) : (
+      <SecondaryButton
+        title="ĐĂNG NHẬP"
+        onPress={() => navigation.navigate('SignIn')}
+      />
+    );
+  };
+  const handleAction = () => {
+    setVisible(false);
+    navigation.navigate('Options');
+    dispatch(changeName({userName: ''}));
+  };
   return (
     <SafeAreaView style={{marginHorizontal: 20}}>
       <ModalPoup visible={visible}>
@@ -125,8 +145,7 @@ export default function SettingScreen({navigation}: any) {
             }}>
             <TouchableOpacity
               onPress={() => {
-                setVisible(false);
-                navigation.navigate('Options');
+                handleAction();
               }}>
               <Text
                 style={{
@@ -223,10 +242,7 @@ export default function SettingScreen({navigation}: any) {
               marginHorizontal: 20,
               marginBottom: Platform.OS === 'ios' ? 200 : 230,
             }}>
-            <SecondaryButton
-              title="ĐĂNG XUẤT"
-              onPress={() => setVisible(true)}
-            />
+            <Option />
           </View>
         </ScrollView>
       </View>

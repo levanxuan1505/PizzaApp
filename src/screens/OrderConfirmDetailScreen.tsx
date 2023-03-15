@@ -28,7 +28,10 @@ const OrderConfirmDetailScreen = ({navigation, route}: any) => {
       <View>
         <View style={styles.cartCardDetail}>
           <View style={{flexDirection: 'row', alignItems: 'center'}}>
-            <Image source={item.image} style={{height: 80, width: 80}} />
+            <Image
+              source={item.image}
+              style={{height: 80, width: 80, borderRadius: 40}}
+            />
             <View
               style={{
                 height: 100,
@@ -109,6 +112,20 @@ const OrderConfirmDetailScreen = ({navigation, route}: any) => {
         </Text>
         <Text style={{fontSize: 20, color: Colors.DEFAULT_RED}}>
           đ {SumMustPay}.000 VND
+        </Text>
+      </View>
+      <View
+        style={{
+          flexDirection: 'row',
+          justifyContent: 'space-between',
+          paddingBottom: 10,
+          paddingHorizontal: 28,
+        }}>
+        <Text style={{fontSize: 20, color: Colors.DEFAULT_GREEN}}>
+          Tổng số món ăn:
+        </Text>
+        <Text style={{fontSize: 20, color: Colors.DEFAULT_RED}}>
+          {cartGoods.length}
         </Text>
       </View>
       <FlatList

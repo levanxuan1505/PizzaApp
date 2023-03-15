@@ -138,6 +138,16 @@ const foodList = [
       title:
         'Món pizza chay thơm ngon, chất lượng thượng hạng, không thua kém bất kỳ loại pizza nào ở nhà hàng, bạn đã thử chưa? Hương thơm từ phô mai và các loại nguyên liệu khác sẽ đánh thức mọi giác quan của bạn. Vỏ bánh được nướng vàng thơm, giòn rụm. Kết hợp ăn kèm cùng với phần nhân bánh chua chua, ngọt ngọt, ngập tràn phô mai béo ngậy. Bạn chắc chắn sẽ bị nghiện món ăn này ngay từ lần đầu tiên nếm thử đó.',
     },
+    {
+      id: '16',
+      name: 'Pizza bò băm',
+      ingredients: 'Beef Pizza',
+      price: 189,
+      image: require('../assets/foodList/pizza/16.jpeg'),
+
+      title:
+        'Món pizza chay thơm ngon, chất lượng thượng hạng, không thua kém bất kỳ loại pizza nào ở nhà hàng, bạn đã thử chưa? Hương thơm từ phô mai và các loại nguyên liệu khác sẽ đánh thức mọi giác quan của bạn. Vỏ bánh được nướng vàng thơm, giòn rụm. Kết hợp ăn kèm cùng với phần nhân bánh chua chua, ngọt ngọt, ngập tràn phô mai béo ngậy. Bạn chắc chắn sẽ bị nghiện món ăn này ngay từ lần đầu tiên nếm thử đó.',
+    },
   ],
 
   //   burger
@@ -202,6 +212,15 @@ const foodList = [
       ingredients: 'Potato burger',
       price: 147,
       image: require('../assets/foodList/burger/7.jpeg'),
+      title:
+        'Biến tấu chiếc bánh sandwich thường ngày của bạn thành chiếc pizza nóng hổi, thơm lừng, cực hấp dẫn thôi nào. Lớp vỏ bánh sandwich khi được nướng lên cực giòn tan, thêm lớp phô mai tan chảy bên trên, mới chỉ nhìn thôi là đã thấy muốn ăn rồi. Pizza sandwich sẽ là bữa sáng tuyệt vời cho bạn, bánh thơm kết hợp với phô mai béo ngậy, rau củ giòn ngọt, thêm một chút xúc xích đậm đà, giúp bạn nạp nhanh và đủ năng lượng để khởi động ngày mới.',
+    },
+    {
+      id: '8',
+      name: 'Burger 2 Miếng Bò',
+      ingredients: 'Two Beef burger',
+      price: 169,
+      image: require('../assets/foodList/burger/8.jpeg'),
       title:
         'Biến tấu chiếc bánh sandwich thường ngày của bạn thành chiếc pizza nóng hổi, thơm lừng, cực hấp dẫn thôi nào. Lớp vỏ bánh sandwich khi được nướng lên cực giòn tan, thêm lớp phô mai tan chảy bên trên, mới chỉ nhìn thôi là đã thấy muốn ăn rồi. Pizza sandwich sẽ là bữa sáng tuyệt vời cho bạn, bánh thơm kết hợp với phô mai béo ngậy, rau củ giòn ngọt, thêm một chút xúc xích đậm đà, giúp bạn nạp nhanh và đủ năng lượng để khởi động ngày mới.',
     },
@@ -550,6 +569,51 @@ const foodList = [
       ingredients: 'Coke Light drink',
       price: 25,
       image: require('../assets/foodList/drink/cokelight.jpeg'),
+      title:
+        'Coca Light là một dòng sản phẩm nước uống có ga, không đường, dành cho người ăn kiêng, ra đời năm 1982. Với vị ngọt tạo từ Aspartame, đây là loại chất tạo ngọt chứa cực kì ít calo giúp bạn có thể dễ dàng kiểm soát được lượng đường và calo mình hấp thụ vào cơ thể. Nhưng bù lại, chất này có thể gây cảm giác thèm đường cho người uống và một số phản ứng cho cơ thể như mất ngủ, tâm trạng thay đổi. Vị của Coca Light được đánh giá là ít ngọt hơn so với bản gốc, và vị ngọt cũng khác với vị ngọt đường thông thường.',
+    },
+    {
+      id: '10',
+      name: 'Mojito',
+      ingredients: 'Mojito',
+      price: 25,
+      image: require('../assets/foodList/drink/1.jpeg'),
+      title:
+        'Coca Light là một dòng sản phẩm nước uống có ga, không đường, dành cho người ăn kiêng, ra đời năm 1982. Với vị ngọt tạo từ Aspartame, đây là loại chất tạo ngọt chứa cực kì ít calo giúp bạn có thể dễ dàng kiểm soát được lượng đường và calo mình hấp thụ vào cơ thể. Nhưng bù lại, chất này có thể gây cảm giác thèm đường cho người uống và một số phản ứng cho cơ thể như mất ngủ, tâm trạng thay đổi. Vị của Coca Light được đánh giá là ít ngọt hơn so với bản gốc, và vị ngọt cũng khác với vị ngọt đường thông thường.',
+    },
+    {
+      id: '11',
+      name: 'Cafe đá bào',
+      ingredients: 'Grinded ice coffee',
+      price: 32,
+      image: require('../assets/foodList/drink/2.jpeg'),
+      title:
+        'Coca Light là một dòng sản phẩm nước uống có ga, không đường, dành cho người ăn kiêng, ra đời năm 1982. Với vị ngọt tạo từ Aspartame, đây là loại chất tạo ngọt chứa cực kì ít calo giúp bạn có thể dễ dàng kiểm soát được lượng đường và calo mình hấp thụ vào cơ thể. Nhưng bù lại, chất này có thể gây cảm giác thèm đường cho người uống và một số phản ứng cho cơ thể như mất ngủ, tâm trạng thay đổi. Vị của Coca Light được đánh giá là ít ngọt hơn so với bản gốc, và vị ngọt cũng khác với vị ngọt đường thông thường.',
+    },
+    {
+      id: '12',
+      name: 'Cafe nghệ thuật',
+      ingredients: 'Art coffee',
+      price: 45,
+      image: require('../assets/foodList/drink/3.jpeg'),
+      title:
+        'Coca Light là một dòng sản phẩm nước uống có ga, không đường, dành cho người ăn kiêng, ra đời năm 1982. Với vị ngọt tạo từ Aspartame, đây là loại chất tạo ngọt chứa cực kì ít calo giúp bạn có thể dễ dàng kiểm soát được lượng đường và calo mình hấp thụ vào cơ thể. Nhưng bù lại, chất này có thể gây cảm giác thèm đường cho người uống và một số phản ứng cho cơ thể như mất ngủ, tâm trạng thay đổi. Vị của Coca Light được đánh giá là ít ngọt hơn so với bản gốc, và vị ngọt cũng khác với vị ngọt đường thông thường.',
+    },
+    {
+      id: '13',
+      name: 'Cafe nóng',
+      ingredients: 'Hot coffee',
+      price: 35,
+      image: require('../assets/foodList/drink/4.jpeg'),
+      title:
+        'Coca Light là một dòng sản phẩm nước uống có ga, không đường, dành cho người ăn kiêng, ra đời năm 1982. Với vị ngọt tạo từ Aspartame, đây là loại chất tạo ngọt chứa cực kì ít calo giúp bạn có thể dễ dàng kiểm soát được lượng đường và calo mình hấp thụ vào cơ thể. Nhưng bù lại, chất này có thể gây cảm giác thèm đường cho người uống và một số phản ứng cho cơ thể như mất ngủ, tâm trạng thay đổi. Vị của Coca Light được đánh giá là ít ngọt hơn so với bản gốc, và vị ngọt cũng khác với vị ngọt đường thông thường.',
+    },
+    {
+      id: '14',
+      name: 'Nước dâu',
+      ingredients: 'Strawberry water',
+      price: 29,
+      image: require('../assets/foodList/drink/5.jpeg'),
       title:
         'Coca Light là một dòng sản phẩm nước uống có ga, không đường, dành cho người ăn kiêng, ra đời năm 1982. Với vị ngọt tạo từ Aspartame, đây là loại chất tạo ngọt chứa cực kì ít calo giúp bạn có thể dễ dàng kiểm soát được lượng đường và calo mình hấp thụ vào cơ thể. Nhưng bù lại, chất này có thể gây cảm giác thèm đường cho người uống và một số phản ứng cho cơ thể như mất ngủ, tâm trạng thay đổi. Vị của Coca Light được đánh giá là ít ngọt hơn so với bản gốc, và vị ngọt cũng khác với vị ngọt đường thông thường.',
     },
