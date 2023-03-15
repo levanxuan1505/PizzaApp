@@ -11,19 +11,23 @@ import Location from './Location';
 import DetailTotal from './DetailTotal';
 import TotalCheckout from './TotalCheckout';
 import ListCategories from './ListCategories';
+import ConditionToAdd from './ConditionToAdd';
+import Header from './Header';
 export {
-  WelcomeCard,
-  Separator,
-  ToggleButton,
+  Input,
+  Header,
   Loader,
   Button,
-  Input,
+  Voucher,
   Payment,
   Location,
-  Voucher,
-  SecondaryButton,
-  PrimaryButton,
+  Separator,
   DetailTotal,
+  WelcomeCard,
+  ToggleButton,
   TotalCheckout,
+  PrimaryButton,
   ListCategories,
+  ConditionToAdd,
+  SecondaryButton,
 };

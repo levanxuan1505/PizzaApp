@@ -10,7 +10,7 @@ import {
   View,
   Platform,
   Image,
-  TouchableOpacity,
+  TouchableHighlight,
 } from 'react-native';
 import {ScrollView} from 'react-native-virtualized-view';
 import {FlatList} from 'react-native-gesture-handler';
@@ -34,7 +34,9 @@ const CheckoutScreen = ({navigation}) => {
 
   const CartCard = ({item}: any) => {
     return (
-      <TouchableOpacity onPress={() => navigation.navigate('DetailCard', item)}>
+      <TouchableHighlight
+        underlayColor="transparent"
+        onPress={() => navigation.navigate('DetailCard', item)}>
         <View style={styles.cartCard}>
           <Image
             source={item.image}
@@ -72,7 +74,7 @@ const CheckoutScreen = ({navigation}) => {
             </Text>
           </View>
         </View>
-      </TouchableOpacity>
+      </TouchableHighlight>
     );
   };
   return (

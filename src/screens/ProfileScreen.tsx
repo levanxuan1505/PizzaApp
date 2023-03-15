@@ -79,6 +79,7 @@ export default function ProfileScreen({navigation}: any) {
           fontSize: Platform.OS === 'ios' ? 20 : 16,
           fontWeight: '600',
           color: Colors.DEFAULT_GREEN,
+          paddingBottom: 3,
         }}>
         {userName[0].userName}
       </Text>
@@ -88,6 +89,7 @@ export default function ProfileScreen({navigation}: any) {
           fontSize: Platform.OS === 'ios' ? 20 : 16,
           fontWeight: '600',
           color: Colors.DEFAULT_GREEN,
+          paddingBottom: 3,
         }}>
         Bạn chưa đăng nhập
       </Text>

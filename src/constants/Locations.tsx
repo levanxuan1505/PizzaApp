@@ -3,7 +3,7 @@ const locations = [
     id: '1',
     name: 'Lê Văn Xuân ',
     phone: '(+84) 97 517 95 88',
-    dress: 'Số nhà 25 ngõ 55 Hồ Tùng Mậu,',
+    dress: 'Số nhà 25 ngõ 55 Hồ Tùng Mậu',
     title: 'Phường Mai Dịch, Quận Cầu Giấy, Hà Nội',
   },
   {
@@ -24,7 +24,7 @@ const locations = [
     id: '4',
     name: 'Lê Quốc Kiệt ',
     phone: '(+84) 97 517 99 55',
-    dress: 'Số nhà 77 ngõ 15 Hồ Tùng Mậu,',
+    dress: 'Số nhà 77 ngõ 15 Hồ Tùng Mậu',
     title: 'Phường Mai Dịch, Quận Cầu Giấy, Hà Nội',
   },
   {

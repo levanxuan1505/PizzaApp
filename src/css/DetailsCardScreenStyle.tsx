@@ -16,7 +16,6 @@ const styles = StyleSheet.create({
     paddingTop: 40,
     paddingBottom: Platform.OS === 'ios' ? 100 : 80,
     backgroundColor: Colors.DEFAULT_GREEN,
-    // borderRadius: 40,
     borderTopLeftRadius: 40,
     borderTopRightRadius: 40,
   },
@@ -41,11 +40,6 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
     paddingVertical: Platform.OS === 'ios' ? 40 : 15,
   },
-  // button: {
-  //   paddingVertical: 10,
-  //   marginHorizontal: 20,
-  // },
-  //
   modalBackGround: {
     flex: 1,
     backgroundColor: 'rgba(0,0,0,0.5)',
@@ -53,19 +47,15 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   modalContainer: {
-    width: '70%',
+    width: '85%',
     height: 140,
     backgroundColor: 'white',
-    // paddingHorizontal: 20,
-    // paddingVertical: 30,
     borderRadius: 15,
     elevation: 20,
   },
   Header: {
-    // paddingTop: 20,
     alignItems: 'center',
     justifyContent: 'center',
-    // paddingVertical: 20,
     borderBottomWidth: 0.17,
     borderColor: Colors.DEFAULT_GREEN,
     width: '100%',

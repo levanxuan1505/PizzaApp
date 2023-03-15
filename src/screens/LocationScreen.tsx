@@ -6,7 +6,7 @@ import {
   View,
   FlatList,
   Platform,
-  TouchableOpacity,
+  TouchableHighlight,
   SafeAreaView,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
@@ -26,7 +26,8 @@ export default function LocationScreen({navigation}: any) {
   const CartCard = ({item}: any) => {
     const local: any = item;
     return (
-      <TouchableOpacity
+      <TouchableHighlight
+        underlayColor="transparent"
         onPress={() =>
           dispatch(
             changeLocation({
@@ -96,7 +97,7 @@ export default function LocationScreen({navigation}: any) {
               </Text>
             </View>
           </View>
-          <TouchableOpacity
+          <TouchableHighlight
             onPress={() => {
               navigation.navigate('EditLocation', item);
             }}
@@ -112,9 +113,9 @@ export default function LocationScreen({navigation}: any) {
                 color: Colors.DEFAULT_GREEN,
               }}
             />
-          </TouchableOpacity>
+          </TouchableHighlight>
         </View>
-      </TouchableOpacity>
+      </TouchableHighlight>
     );
   };
   return (
@@ -160,7 +161,8 @@ export default function LocationScreen({navigation}: any) {
               renderItem={({item}) => <CartCard item={item} />}
               ListFooterComponentStyle={{paddingHorizontal: 20, marginTop: 20}}
             />
-            <TouchableOpacity
+            <TouchableHighlight
+              underlayColor="transparent"
               style={{marginBottom: 10}}
               onPress={navigation.goBack}>
               <View
@@ -185,9 +187,10 @@ export default function LocationScreen({navigation}: any) {
                   </Text>
                 </View>
               </View>
-            </TouchableOpacity>
+            </TouchableHighlight>
             {/*  */}
-            <TouchableOpacity
+            <TouchableHighlight
+              underlayColor="transparent"
               style={{marginBottom: 200}}
               onPress={() => navigation.navigate('CreateAddress')}>
               <View style={styles.addBtn}>
@@ -213,7 +216,7 @@ export default function LocationScreen({navigation}: any) {
                   </Text>
                 </View>
               </View>
-            </TouchableOpacity>
+            </TouchableHighlight>
           </ScrollView>
         ) : (
           // android
@@ -225,7 +228,7 @@ export default function LocationScreen({navigation}: any) {
               renderItem={({item}) => <CartCard item={item} />}
               ListFooterComponentStyle={{paddingHorizontal: 20, marginTop: 20}}
             />
-            <TouchableOpacity
+            <TouchableHighlight
               style={{marginBottom: 10, marginTop: 0}}
               onPress={navigation.goBack}>
               <View
@@ -250,9 +253,9 @@ export default function LocationScreen({navigation}: any) {
                   </Text>
                 </View>
               </View>
-            </TouchableOpacity>
+            </TouchableHighlight>
             {/*  */}
-            <TouchableOpacity
+            <TouchableHighlight
               style={{marginBottom: 350}}
               onPress={() => navigation.navigate('CreateAddress')}>
               <View style={styles.addBtn}>
@@ -279,7 +282,7 @@ export default function LocationScreen({navigation}: any) {
                   </Text>
                 </View>
               </View>
-            </TouchableOpacity>
+            </TouchableHighlight>
           </ScrollView>
         )}
       </View>

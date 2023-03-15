@@ -8,7 +8,7 @@ import {
   View,
   Text,
   Image,
-  TouchableOpacity,
+  TouchableHighlight,
   Platform,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
@@ -37,7 +37,8 @@ const CartScreen = ({navigation}: any) => {
   }
   const CartCard = ({item}: any) => {
     return (
-      <TouchableOpacity
+      <TouchableHighlight
+        underlayColor="transparent"
         activeOpacity={Platform.OS === 'ios' ? 0.2 : 0.8}
         onPress={() => navigation.navigate('DetailCard', item)}>
         <View style={styles.cartCard}>
@@ -60,13 +61,14 @@ const CartScreen = ({navigation}: any) => {
               {item.price}k
             </Text>
           </View>
-          <TouchableOpacity
+          <TouchableHighlight
+            underlayColor="transparent"
             onPress={() => dispatch(removeCart({id: item.id}))}
             style={{marginRight: 16, alignItems: 'center'}}>
             <Iconss name="trash" size={32} color={Colors.DEFAULT_GREEN} />
-          </TouchableOpacity>
+          </TouchableHighlight>
         </View>
-      </TouchableOpacity>
+      </TouchableHighlight>
     );
   };
   return !enoughCondition ? (

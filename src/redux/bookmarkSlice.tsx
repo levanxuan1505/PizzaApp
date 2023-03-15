@@ -12,7 +12,7 @@ export const bookmarkSlice = createSlice({
         image: action.payload.image,
         title: action.payload.title,
       };
-      state.push(newToBookmark);
+      state.unshift(newToBookmark);
     },
     deleteBookmark: (state, action) => {
       return state.filter((item: any) => item.id !== action.payload.id);

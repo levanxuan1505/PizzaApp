@@ -19,7 +19,7 @@ import {Colors} from '@constants';
 import styles from '@css/DetailsCardScreenStyle';
 import {SecondaryButton} from '@components';
 // redux import
-import {useDispatch} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import {addToCart} from '../redux/cartSlice';
 //
 
@@ -29,6 +29,8 @@ import {addToBookmark} from '../redux/bookmarkSlice';
 const DetailsCardScreen = ({navigation, route}: any) => {
   const item = route.params;
   const [visible, setVisible] = useState(false);
+  const [visible1, setVisible1] = useState(false);
+  const user = useSelector((state: any) => state.user);
   // redux
   const dispatch = useDispatch();
   //
@@ -67,6 +69,94 @@ const DetailsCardScreen = ({navigation, route}: any) => {
       </Modal>
     );
   };
+  // modal 2
+  const ModalPopup1 = ({visible, children}: any) => {
+    const [showModal, setShowModal] = React.useState(visible);
+    const scaleValue = React.useRef(new Animated.Value(0)).current;
+    React.useEffect(() => {
+      toggleModal();
+    }, [visible]);
+    const toggleModal = () => {
+      if (visible) {
+        // setShowModal(true);
+        Animated.spring(scaleValue, {
+          toValue: 1,
+          // duration: 3000,
+          useNativeDriver: true,
+        }).start();
+      } else {
+        setTimeout(() => setShowModal(false), 300);
+        Animated.timing(scaleValue, {
+          toValue: 0,
+          duration: 300,
+          useNativeDriver: true,
+        }).start();
+      }
+    };
+    return (
+      <Modal transparent visible={showModal}>
+        <View style={styles.modalBackGround}>
+          <Animated.View
+            style={[styles.modalContainer, {transform: [{scale: scaleValue}]}]}>
+            {children}
+          </Animated.View>
+        </View>
+      </Modal>
+    );
+  };
+  const HandleAction = () => {
+    return user[0].userName ? (
+      <TouchableOpacity
+        onPress={() => {
+          dispatch(
+            addToBookmark({
+              name: item.name,
+              ingredients: item.ingredients,
+              price: item.price,
+              image: item.image,
+              title: item.title,
+            }),
+          );
+        }}>
+        <View style={styles.iconContainer}>
+          <Icons name="heart" color={Colors.DEFAULT_GREEN} size={25} />
+        </View>
+      </TouchableOpacity>
+    ) : (
+      <TouchableOpacity
+        onPress={() => {
+          setVisible(true);
+        }}>
+        <View style={styles.iconContainer}>
+          <Icons name="heart" color={Colors.DEFAULT_GREEN} size={25} />
+        </View>
+      </TouchableOpacity>
+    );
+  };
+  const HandleAction1 = () => {
+    return user[0].userName ? (
+      <SecondaryButton
+        title="Thêm vào giỏ hàng"
+        onPress={() => {
+          dispatch(
+            addToCart({
+              id: item.id,
+              name: item.name,
+              ingredients: item.ingredients,
+              price: item.price,
+              image: item.image,
+              title: item.title,
+            }),
+          );
+        }}
+      />
+    ) : (
+      <SecondaryButton
+        title="Thêm vào giỏ hàng"
+        onPress={() => setVisible1(true)}
+      />
+    );
+  };
   return (
     <SafeAreaView style={{backgroundColor: Colors.DEFAULT_WHITE, flex: 1}}>
       {/* Modal */}
@@ -84,10 +174,10 @@ const DetailsCardScreen = ({navigation, route}: any) => {
               style={{
                 fontSize: 24,
                 fontWeight: '600',
-                color: Colors.DEFAULT_GREEN,
+                color: Colors.DEFAULT_RED,
                 paddingTop: 10,
               }}>
-              Xác nhận
+              Cảnh báo
             </Text>
           </View>
           <View style={[styles.Header, {top: -10, paddingBottom: 10}]}>
@@ -97,7 +187,7 @@ const DetailsCardScreen = ({navigation, route}: any) => {
                 fontWeight: '500',
                 color: Colors.DEFAULT_GREEN,
               }}>
-              Thêm món ăn vào giỏ hàng
+              Bạn cần đăng nhập để bookmark
             </Text>
           </View>
           <View
@@ -107,14 +197,17 @@ const DetailsCardScreen = ({navigation, route}: any) => {
               justifyContent: 'space-around',
               top: -10,
             }}>
-            <TouchableOpacity onPress={() => setVisible(false)}>
+            <TouchableOpacity
+              onPress={() => {
+                setVisible(false), navigation.navigate('SignIn');
+              }}>
               <Text
                 style={{
                   color: Colors.DEFAULT_GREEN,
                   fontSize: 20,
                   fontWeight: '600',
                 }}>
-                Thêm vào
+                Đăng nhập
               </Text>
             </TouchableOpacity>
             <TouchableOpacity onPress={() => setVisible(false)}>
@@ -130,6 +223,71 @@ const DetailsCardScreen = ({navigation, route}: any) => {
           </View>
         </View>
       </ModalPopup>
+      {/*  Modal end */}
+      {/* Modal */}
+      <ModalPopup1 visible={visible1}>
+        <View
+          style={{
+            flex: 1,
+            flexDirection: 'column',
+            justifyContent: 'space-around',
+            alignItems: 'center',
+          }}>
+          <View
+            style={[styles.Header, {borderBottomColor: Colors.DEFAULT_WHITE}]}>
+            <Text
+              style={{
+                fontSize: 24,
+                fontWeight: '600',
+                color: Colors.DEFAULT_RED,
+                paddingTop: 10,
+              }}>
+              Cảnh báo
+            </Text>
+          </View>
+          <View style={[styles.Header, {top: -10, paddingBottom: 10}]}>
+            <Text
+              style={{
+                fontSize: 19,
+                fontWeight: '500',
+                color: Colors.DEFAULT_GREEN,
+              }}>
+              Bạn cần đăng nhập để thêm món ăn
+            </Text>
+          </View>
+          <View
+            style={{
+              width: '100%',
+              flexDirection: 'row',
+              justifyContent: 'space-around',
+              top: -10,
+            }}>
+            <TouchableOpacity
+              onPress={() => {
+                setVisible1(false), navigation.navigate('SignIn');
+              }}>
+              <Text
+                style={{
+                  color: Colors.DEFAULT_GREEN,
+                  fontSize: 20,
+                  fontWeight: '600',
+                }}>
+                Đăng nhập
+              </Text>
+            </TouchableOpacity>
+            <TouchableOpacity onPress={() => setVisible1(false)}>
+              <Text
+                style={{
+                  color: Colors.DEFAULT_RED,
+                  fontSize: 20,
+                  fontWeight: '600',
+                }}>
+                Huỷ bỏ
+              </Text>
+            </TouchableOpacity>
+          </View>
+        </View>
+      </ModalPopup1>
       {/*  Modal end */}
       <View style={styles.header}>
         <Icon
@@ -188,42 +346,13 @@ const DetailsCardScreen = ({navigation, route}: any) => {
               }}>
               {item.price}k
             </Text>
-            <TouchableOpacity
-              onPress={() => {
-                dispatch(
-                  addToBookmark({
-                    name: item.name,
-                    ingredients: item.ingredients,
-                    price: item.price,
-                    image: item.image,
-                    title: item.title,
-                  }),
-                );
-              }}>
-              <View style={styles.iconContainer}>
-                <Icons name="heart" color={Colors.DEFAULT_GREEN} size={25} />
-              </View>
-            </TouchableOpacity>
+            <HandleAction />
           </View>
           <Text style={styles.detailsText}>{item.title}</Text>
         </View>
       </ScrollView>
       <View style={styles.total}>
-        <SecondaryButton
-          title="Thêm vào giỏ hàng"
-          onPress={() => {
-            dispatch(
-              addToCart({
-                id: item.id,
-                name: item.name,
-                ingredients: item.ingredients,
-                price: item.price,
-                image: item.image,
-                title: item.title,
-              }),
-            );
-          }}
-        />
+        <HandleAction1 />
       </View>
     </SafeAreaView>
   );

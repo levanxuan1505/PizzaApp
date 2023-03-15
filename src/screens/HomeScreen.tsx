@@ -9,12 +9,11 @@ import {
   View,
   Modal,
   Image,
-  FlatList,
-  Animated,
   Platform,
+  Animated,
+  FlatList,
   StatusBar,
   SafeAreaView,
-  TouchableOpacity,
   TouchableHighlight,
 } from 'react-native';
 
@@ -22,26 +21,19 @@ import React, {useState} from 'react';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import {TextInput} from 'react-native-gesture-handler';
 import Icons from 'react-native-vector-icons/Ionicons';
-import IconBadge from 'react-native-icon-badge';
 
 import {Colors} from '@constants';
 import styles from '@css/HomeScreenStyle';
 import {foodList} from '@constants';
-import {ListCategories} from '@components';
+import {ListCategories, ConditionToAdd, Header} from '@components';
 // redux import
-import {addToCart} from '../redux/cartSlice';
-import {useDispatch, useSelector} from 'react-redux';
+import {useSelector} from 'react-redux';
 //
 export default function HomeScreen({navigation}: any) {
   // redux
-  const notification = useSelector((state: any) => state.notification);
   const food = useSelector((state: any) => state.food);
-  const userName = useSelector((state: any) => state.user);
-  const badge = notification.length;
-  const dispatch = useDispatch();
   // modal//
-  const [visible, setVisible] = React.useState(true);
-  const [visible1, setVisible1] = useState(false);
+  const [visible, setVisible] = useState(true);
   const ModalPopup = ({visible, children}) => {
     const [showModal, setShowModal] = React.useState(visible);
     const scaleValue = React.useRef(new Animated.Value(0)).current;
@@ -76,50 +68,10 @@ export default function HomeScreen({navigation}: any) {
       </Modal>
     );
   };
-  // modal
-  const ModalPopup1 = ({visible, children}) => {
-    const [showModal, setShowModal] = React.useState(visible);
-    const scaleValue = React.useRef(new Animated.Value(0)).current;
-    React.useEffect(() => {
-      toggleModal();
-    }, [visible]);
-    const toggleModal = () => {
-      if (visible) {
-        setShowModal(true);
-        Animated.spring(scaleValue, {
-          toValue: 1,
-          // duration: 300,
-          useNativeDriver: true,
-        }).start();
-      } else {
-        setTimeout(() => setShowModal(false), 200);
-        Animated.timing(scaleValue, {
-          toValue: 0,
-          duration: 300,
-          useNativeDriver: true,
-        }).start();
-      }
-    };
-    return (
-      <Modal transparent visible={showModal}>
-        <View style={styles.modalBackGround}>
-          <Animated.View
-            style={[
-              styles.modalContainer1,
-              {transform: [{scale: scaleValue}]},
-            ]}>
-            {children}
-          </Animated.View>
-        </View>
-      </Modal>
-    );
-  };
-  // modal2
-
   const Card = ({food}: any) => {
     return (
       <TouchableHighlight
-        underlayColor={Colors.DEFAULT_WHITE}
+        underlayColor="transparent"
         activeOpacity={0.9}
         onPress={() => navigation.navigate('DetailCard', food)}>
         <View style={styles.card}>
@@ -156,96 +108,14 @@ export default function HomeScreen({navigation}: any) {
             </Text>
 
             <View style={styles.addToCartBtn}>
-              <Authentication food={food} />
+              <ConditionToAdd navigation={navigation} food={food} />
             </View>
           </View>
         </View>
       </TouchableHighlight>
     );
   };
-  const Authentication = ({food}) => {
-    return userName[0].userName ? (
-      <Icon
-        onPress={() => {
-          dispatch(
-            addToCart({
-              id: food.id,
-              name: food.name,
-              ingredients: food.ingredients,
-              price: food.price,
-              image: food.image,
-              title: food.title,
-            }),
-          );
-        }}
-        name="add"
-        size={32}
-        color={Colors.DEFAULT_WHITE}
-      />
-    ) : (
-      <Icon
-        onPress={() => setVisible1(true)}
-        name="add"
-        size={32}
-        color={Colors.DEFAULT_WHITE}
-      />
-    );
-  };
 
-  const Avatar = () => {
-    return userName[0].userName ? (
-      <TouchableOpacity
-        onPress={() => navigation.navigate('Profile')}
-        style={{right: Platform.OS === 'ios' ? 0 : 5}}>
-        {/*  */}
-        <IconBadge
-          MainElement={
-            <View>
-              <Image
-                source={require('../assets/images/avatar.webp')}
-                style={{
-                  height: Platform.OS === 'ios' ? 55 : 45,
-                  width: Platform.OS === 'ios' ? 55 : 45,
-                  borderRadius: 30,
-                }}
-              />
-            </View>
-          }
-          BadgeElement={<Text style={{color: '#FFFFFF'}}>{badge}</Text>}
-          IconBadgeStyle={{
-            marginRight: -9,
-            marginTop: -4,
-            width: 19,
-            height: 20,
-            backgroundColor: 'red',
-          }}
-        />
-        {/*  */}
-      </TouchableOpacity>
-    ) : (
-      <TouchableOpacity
-        onPress={() => navigation.navigate('Profile')}
-        style={{
-          right: Platform.OS === 'ios' ? 0 : 2,
-          top: Platform.OS === 'ios' ? -5 : 0,
-        }}>
-        {/*  */}
-
-        <View>
-          <Image
-            source={require('../assets/images/nouser.jpeg')}
-            style={{
-              height: Platform.OS === 'ios' ? 50 : 45,
-              width: Platform.OS === 'ios' ? 50 : 45,
-              borderRadius: 30,
-            }}
-          />
-        </View>
-
-        {/*  */}
-      </TouchableOpacity>
-    );
-  };
   return (
     <SafeAreaView style={{flex: 1, backgroundColor: Colors.DEFAULT_WHITE}}>
       {/* modal */}
@@ -253,13 +123,15 @@ export default function HomeScreen({navigation}: any) {
         <ModalPopup visible={visible}>
           <View style={{alignItems: 'center'}}>
             <View style={styles.Header}>
-              <TouchableOpacity onPress={() => setVisible(false)}>
+              <TouchableHighlight
+                underlayColor="transparent"
+                onPress={() => setVisible(false)}>
                 <Icon
                   name="cancel"
                   size={36}
                   style={{color: Colors.DEFAULT_GREEN}}
                 />
-              </TouchableOpacity>
+              </TouchableHighlight>
             </View>
           </View>
           <View style={{alignItems: 'center'}}>
@@ -269,98 +141,10 @@ export default function HomeScreen({navigation}: any) {
             />
           </View>
         </ModalPopup>
-        {/* <Button title="Open Modal" onPress={() => setVisible(true)} /> */}
       </View>
-      {/* modal */}
-      {/* modal2 */}
-      <ModalPopup1 visible={visible1}>
-        <View
-          style={{
-            flex: 1,
-            flexDirection: 'column',
-            justifyContent: 'space-around',
-            alignItems: 'center',
-          }}>
-          <View
-            style={[styles.Header2, {borderBottomColor: Colors.DEFAULT_WHITE}]}>
-            <Text
-              style={{
-                fontSize: 24,
-                fontWeight: '600',
-                color: Colors.DEFAULT_RED,
-                paddingTop: 5,
-              }}>
-              Cảnh báo
-            </Text>
-          </View>
-          <View style={[styles.Header2, {top: -10, paddingBottom: 10}]}>
-            <Text
-              style={{
-                fontSize: 19,
-                fontWeight: '500',
-                color: Colors.DEFAULT_GREEN,
-              }}>
-              Bạn cần đăng nhập để thêm món ăn
-            </Text>
-          </View>
-          <View
-            style={{
-              width: '100%',
-              flexDirection: 'row',
-              justifyContent: 'space-around',
-              top: -10,
-            }}>
-            <TouchableOpacity
-              onPress={() => (
-                setVisible1(false), navigation.navigate('SignIn')
-              )}>
-              <Text
-                style={{
-                  color: Colors.DEFAULT_GREEN,
-                  fontSize: 20,
-                  fontWeight: '600',
-                }}>
-                Đăng nhập
-              </Text>
-            </TouchableOpacity>
-            <TouchableOpacity onPress={() => setVisible1(false)}>
-              <Text
-                style={{
-                  color: Colors.DEFAULT_RED,
-                  fontSize: 20,
-                  fontWeight: '600',
-                }}>
-                Huỷ bỏ
-              </Text>
-            </TouchableOpacity>
-          </View>
-        </View>
-      </ModalPopup1>
-      {/*  */}
 
-      {/* modal2 */}
       <StatusBar barStyle="dark-content" hidden={false} translucent={true} />
-      <View style={styles.header}>
-        <View>
-          <View style={{flexDirection: 'row'}}>
-            <Text
-              style={{
-                fontSize: Platform.OS === 'ios' ? 30 : 24,
-                color: Colors.DEFAULT_GREEN,
-                fontWeight: '600',
-              }}>
-              {userName[0].userName
-                ? 'Xin chào, ' + userName[0].userName
-                : `Chào mừng trở lại`}
-            </Text>
-          </View>
-          <Text
-            style={{marginTop: 5, fontSize: 22, color: Colors.DEFAULT_GREY}}>
-            Bạn muốn ăn gì hôm nay?
-          </Text>
-        </View>
-        <Avatar />
-      </View>
+      <Header navigation={navigation} />
       <View
         style={{
           marginTop: 30,
@@ -372,13 +156,13 @@ export default function HomeScreen({navigation}: any) {
           <TextInput
             style={{flex: 1, fontSize: 18, marginLeft: 5}}
             placeholder="Tìm kiếm"></TextInput>
-          <TouchableOpacity>
+          <TouchableHighlight underlayColor="transparent">
             <Icons
               name="camera-outline"
               size={30}
               color={Colors.DEFAULT_GREEN}
             />
-          </TouchableOpacity>
+          </TouchableHighlight>
         </View>
         <View style={styles.sortBtn}>
           <Icon name="tune" size={30} color={Colors.DEFAULT_WHITE} />
@@ -390,7 +174,7 @@ export default function HomeScreen({navigation}: any) {
       <FlatList
         showsVerticalScrollIndicator={false}
         numColumns={2}
-        style={{paddingTop: 10, marginBottom: 20}}
+        style={{paddingTop: 10}}
         data={foodList[food[0].id]}
         renderItem={({item}) => <Card food={item} />}
       />
