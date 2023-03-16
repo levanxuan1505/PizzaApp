@@ -6,10 +6,10 @@ import {
   SafeAreaView,
   Text,
   View,
-  FlatList,
+  Modal,
   Platform,
   Animated,
-  Modal,
+  FlatList,
   TouchableOpacity,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';

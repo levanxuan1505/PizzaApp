@@ -1,15 +1,15 @@
+import foods from './foods';
 import Colors from './Colors';
 import Images from './Images';
-import General from './General';
-import Categories from './Categories';
-import foods from './foods';
-import notification from './Notification';
 import history from './History';
-import locations from './Locations';
 import options from './options';
 import payment from './payment';
 import voucher from './voucher';
+import General from './General';
 import foodList from './foodList';
+import locations from './Locations';
+import Categories from './Categories';
+import notification from './Notification';
 import {setting1, setting2, setting3} from './settingTitle';
 export {
   foods,

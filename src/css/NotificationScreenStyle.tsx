@@ -41,8 +41,6 @@ const styles = StyleSheet.create({
     width: '65%',
     height: 148,
     backgroundColor: 'white',
-    // paddingHorizontal: 20,
-    // paddingVertical: 30,
     borderRadius: 15,
     elevation: 20,
   },

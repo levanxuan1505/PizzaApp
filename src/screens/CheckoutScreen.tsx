@@ -3,15 +3,15 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/no-unstable-nested-components */
 /* eslint-disable react-native/no-inline-styles */
-import React, {memo} from 'react';
 import {
-  SafeAreaView,
   Text,
   View,
-  Platform,
   Image,
+  Platform,
+  SafeAreaView,
   TouchableHighlight,
 } from 'react-native';
+import React, {memo} from 'react';
 import {ScrollView} from 'react-native-virtualized-view';
 import {FlatList} from 'react-native-gesture-handler';
 import Icon from 'react-native-vector-icons/MaterialIcons';

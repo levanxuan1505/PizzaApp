@@ -36,7 +36,6 @@ const styles = StyleSheet.create({
     height: 60,
     justifyContent: 'center',
     alignItems: 'center',
-    // marginTop: 10,
     marginVertical: 10,
     marginHorizontal: 20,
     backgroundColor: Colors.DEFAULT_WHITE,

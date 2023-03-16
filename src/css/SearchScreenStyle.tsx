@@ -21,7 +21,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   History: {
-    // marginHorizontal: 20,
     marginVertical: 10,
   },
 
@@ -54,16 +53,12 @@ const styles = StyleSheet.create({
     width: '70%',
     height: 140,
     backgroundColor: 'white',
-    // paddingHorizontal: 20,
-    // paddingVertical: 30,
     borderRadius: 15,
     elevation: 20,
   },
   Header: {
-    // paddingTop: 20,
     alignItems: 'center',
     justifyContent: 'center',
-    // paddingVertical: 20,
     borderBottomWidth: 0.17,
     borderColor: Colors.DEFAULT_GREEN,
     width: '100%',

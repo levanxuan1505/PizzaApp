@@ -12,7 +12,6 @@ const WelcomeCard = ({title, content, image}) => {
     </View>
   );
 };
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,

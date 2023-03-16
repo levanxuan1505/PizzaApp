@@ -2,11 +2,11 @@
 /* eslint-disable react/no-unstable-nested-components */
 import React from 'react';
 import {
-  SafeAreaView,
   View,
   Text,
   Image,
   Platform,
+  SafeAreaView,
   TouchableOpacity,
 } from 'react-native';
 import {FlatList} from 'react-native-gesture-handler';
@@ -151,5 +151,4 @@ const BookmarkScreen = ({navigation}: any) => {
     </SafeAreaView>
   );
 };
-
 export default BookmarkScreen;

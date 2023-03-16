@@ -1,18 +1,18 @@
-import WelcomeCard from './WelcomeCard';
-import Separator from './Separator';
-import ToggleButton from './ToggleButton';
+import Input from './Input';
+import Header from './Header';
 import Loader from './Loader';
 import Button from './Button';
-import Input from './Input';
-import {SecondaryButton, PrimaryButton} from './SecondaryButton';
 import Voucher from './Voucher';
 import Payment from './Payment';
 import Location from './Location';
+import Separator from './Separator';
 import DetailTotal from './DetailTotal';
+import WelcomeCard from './WelcomeCard';
+import ToggleButton from './ToggleButton';
 import TotalCheckout from './TotalCheckout';
 import ListCategories from './ListCategories';
 import ConditionToAdd from './ConditionToAdd';
-import Header from './Header';
+import {SecondaryButton, PrimaryButton} from './SecondaryButton';
 export {
   Input,
   Header,

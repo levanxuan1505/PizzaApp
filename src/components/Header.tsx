@@ -1,3 +1,4 @@
+/* eslint-disable quotes */
 /* eslint-disable react-native/no-inline-styles */
 /* eslint-disable react/no-unstable-nested-components */
 import React, {memo} from 'react';
@@ -46,7 +47,6 @@ const Header = ({navigation}) => {
             backgroundColor: 'red',
           }}
         />
-        {/*  */}
       </TouchableHighlight>
     ) : (
       <TouchableHighlight
@@ -56,8 +56,6 @@ const Header = ({navigation}) => {
           right: Platform.OS === 'ios' ? 0 : 2,
           top: Platform.OS === 'ios' ? -5 : 0,
         }}>
-        {/*  */}
-
         <View>
           <Image
             source={require('../assets/images/nouser.jpeg')}
@@ -68,8 +66,6 @@ const Header = ({navigation}) => {
             }}
           />
         </View>
-
-        {/*  */}
       </TouchableHighlight>
     );
   };

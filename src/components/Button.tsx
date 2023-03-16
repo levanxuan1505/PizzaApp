@@ -22,5 +22,4 @@ const Button = ({title, onPress = () => {}}) => {
     </TouchableOpacity>
   );
 };
-
 export default Button;

@@ -1,9 +1,9 @@
 /* eslint-disable react-native/no-inline-styles */
 import {
-  StyleSheet,
   Text,
   Image,
   View,
+  StyleSheet,
   ScrollView,
   TouchableOpacity,
 } from 'react-native';

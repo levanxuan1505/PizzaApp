@@ -2,12 +2,12 @@
 /* eslint-disable react-native/no-inline-styles */
 import React from 'react';
 import {
-  SafeAreaView,
   Text,
   View,
+  Image,
   Platform,
   FlatList,
-  Image,
+  SafeAreaView,
   TouchableOpacity,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';

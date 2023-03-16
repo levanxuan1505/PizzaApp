@@ -1,13 +1,14 @@
+/* eslint-disable @typescript-eslint/no-shadow */
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/no-unstable-nested-components */
 /* eslint-disable react-native/no-inline-styles */
 import {
-  StyleSheet,
   Text,
   View,
-  Platform,
   Modal,
   Animated,
+  Platform,
+  StyleSheet,
   TouchableOpacity,
 } from 'react-native';
 import React, {memo, useState} from 'react';
@@ -202,16 +203,12 @@ const styles = StyleSheet.create({
     width: Platform.OS === 'ios' ? '80%' : '90%',
     height: 140,
     backgroundColor: 'white',
-    // paddingHorizontal: 20,
-    // paddingVertical: 30,
     borderRadius: 15,
     elevation: 20,
   },
   Header: {
-    // paddingTop: 20,
     alignItems: 'center',
     justifyContent: 'center',
-    // paddingVertical: 20,
     borderBottomWidth: 0.17,
     borderColor: Colors.DEFAULT_GREEN,
     width: '100%',

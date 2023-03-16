@@ -4,10 +4,10 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import {
   View,
   Text,
-  SafeAreaView,
+  Alert,
   Keyboard,
   ScrollView,
-  Alert,
+  SafeAreaView,
 } from 'react-native';
 
 import {Colors} from '@constants';

@@ -2,15 +2,15 @@
 /* eslint-disable react-native/no-inline-styles */
 /* eslint-disable react/no-unstable-nested-components */
 import React from 'react';
-import {FlatList} from 'react-native-gesture-handler';
 import {
-  SafeAreaView,
   View,
   Text,
   Image,
-  TouchableHighlight,
   Platform,
+  SafeAreaView,
+  TouchableHighlight,
 } from 'react-native';
+import {FlatList} from 'react-native-gesture-handler';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import IconBadge from 'react-native-icon-badge';
 import Iconss from 'react-native-vector-icons/Ionicons';

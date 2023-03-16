@@ -1,10 +1,10 @@
 /* eslint-disable react-native/no-inline-styles */
 import {
-  StyleSheet,
   Text,
   View,
   Switch,
   Platform,
+  StyleSheet,
   TouchableOpacity,
 } from 'react-native';
 import React, {useState, memo} from 'react';

@@ -1,3 +1,4 @@
+/* eslint-disable no-sequences */
 import {createSlice} from '@reduxjs/toolkit';
 export const locationSlice = createSlice({
   name: 'location',
@@ -20,6 +21,5 @@ export const locationSlice = createSlice({
     },
   },
 });
-
 export const {changeLocation} = locationSlice.actions;
 export default locationSlice.reducer;

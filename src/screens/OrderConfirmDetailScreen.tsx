@@ -2,12 +2,12 @@
 /* eslint-disable react/no-unstable-nested-components */
 import React from 'react';
 import {
-  SafeAreaView,
   View,
   Text,
   Image,
-  Platform,
   FlatList,
+  Platform,
+  SafeAreaView,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import Icons from 'react-native-vector-icons/Ionicons';

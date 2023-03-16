@@ -4,7 +4,7 @@ export const bookmarkSlice = createSlice({
   initialState: [],
   reducers: {
     addToBookmark: (state, action) => {
-      const newToBookmark = {
+      const newToBookmark: never = {
         id: nanoid(),
         name: action.payload.name,
         ingredients: action.payload.ingredients,

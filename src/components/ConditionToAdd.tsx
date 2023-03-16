@@ -3,12 +3,12 @@
 /* eslint-disable react/no-unstable-nested-components */
 /* eslint-disable react-native/no-inline-styles */
 import {
-  StyleSheet,
   Text,
   View,
-  Platform,
   Modal,
   Animated,
+  Platform,
+  StyleSheet,
   TouchableHighlight,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';

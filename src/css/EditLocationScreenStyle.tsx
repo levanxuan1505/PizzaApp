@@ -30,12 +30,7 @@ const styles = StyleSheet.create({
 
     elevation: 21,
   },
-  //   input: {
-  //     height: 40,
-  //     marginVertical: 8,
-  //     borderBottomWidth: 0.2,
-  //     // padding: 10,
-  // },
+
   details: {
     paddingHorizontal: 20,
     paddingTop: 40,
@@ -44,14 +39,6 @@ const styles = StyleSheet.create({
     borderTopRightRadius: 40,
     borderTopLeftRadius: 40,
   },
-  //   iconContainer: {
-  //     backgroundColor: Colors.DEFAULT_WHITE,
-  //     height: 50,
-  //     width: 50,
-  //     justifyContent: 'center',
-  //     alignItems: 'center',
-  //     borderRadius: 30,
-  //   },
   detailsText: {
     marginTop: 10,
     lineHeight: 22,

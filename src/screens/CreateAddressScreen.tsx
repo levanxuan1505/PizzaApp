@@ -7,8 +7,8 @@ import {
   Text,
   Switch,
   Modal,
-  ScrollView,
   Animated,
+  ScrollView,
   SafeAreaView,
   TouchableOpacity,
 } from 'react-native';

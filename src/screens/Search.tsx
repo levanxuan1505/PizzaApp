@@ -6,9 +6,9 @@ import {
   View,
   Text,
   Modal,
+  Animated,
   Keyboard,
   TextInput,
-  Animated,
   TouchableOpacity,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';

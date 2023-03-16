@@ -8,8 +8,8 @@ import {
   Text,
   Image,
   Modal,
-  Animated,
   Platform,
+  Animated,
   SafeAreaView,
   TouchableOpacity,
 } from 'react-native';

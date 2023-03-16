@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-shadow */
 /* eslint-disable react-native/no-inline-styles */
 import {StyleSheet, Text, View, Platform} from 'react-native';
 import React, {memo} from 'react';

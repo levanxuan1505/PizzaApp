@@ -4,10 +4,10 @@ import React from 'react';
 import {
   Text,
   View,
-  FlatList,
   Platform,
-  TouchableHighlight,
+  FlatList,
   SafeAreaView,
+  TouchableHighlight,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import {ScrollView} from 'react-native-virtualized-view';
@@ -229,6 +229,7 @@ export default function LocationScreen({navigation}: any) {
               ListFooterComponentStyle={{paddingHorizontal: 20, marginTop: 20}}
             />
             <TouchableHighlight
+              underlayColor="transparent"
               style={{marginBottom: 10, marginTop: 0}}
               onPress={navigation.goBack}>
               <View
@@ -256,6 +257,7 @@ export default function LocationScreen({navigation}: any) {
             </TouchableHighlight>
             {/*  */}
             <TouchableHighlight
+              underlayColor="transparent"
               style={{marginBottom: 350}}
               onPress={() => navigation.navigate('CreateAddress')}>
               <View style={styles.addBtn}>

@@ -1,8 +1,7 @@
 /* eslint-disable react-native/no-inline-styles */
 /* eslint-disable react/no-unstable-nested-components */
-import {View, Platform} from 'react-native';
 import React from 'react';
-import 'react-native-gesture-handler';
+import {View, Platform} from 'react-native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import HomeScreen from './HomeScreen';

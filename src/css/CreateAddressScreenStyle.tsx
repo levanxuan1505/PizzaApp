@@ -31,12 +31,6 @@ const styles = StyleSheet.create({
     elevation: 21,
   },
 
-  //   input: {
-  //     height: 40,
-  //     marginVertical: 8,
-  //     borderBottomWidth: 0.2,
-  //     // padding: 10,
-  // },
   details: {
     paddingHorizontal: 20,
     paddingTop: 40,
@@ -45,14 +39,6 @@ const styles = StyleSheet.create({
     borderTopRightRadius: 40,
     borderTopLeftRadius: 40,
   },
-  //   iconContainer: {
-  //     backgroundColor: Colors.DEFAULT_WHITE,
-  //     height: 50,
-  //     width: 50,
-  //     justifyContent: 'center',
-  //     alignItems: 'center',
-  //     borderRadius: 30,
-  //   },
   detailsText: {
     marginTop: 10,
     lineHeight: 22,
@@ -97,10 +83,7 @@ const styles = StyleSheet.create({
     width: '75%',
     height: 150,
     backgroundColor: 'white',
-    // paddingHorizontal: 20,
-    // paddingVertical: 30,
     borderRadius: 15,
-    // elevation: 20,
     shadowColor: '#000',
     shadowOffset: {
       width: 0,
@@ -112,10 +95,8 @@ const styles = StyleSheet.create({
     elevation: 21,
   },
   Header: {
-    // paddingTop: 20,
     alignItems: 'center',
     justifyContent: 'center',
-    // paddingVertical: 20,
     borderBottomWidth: 0.17,
     borderColor: Colors.DEFAULT_GREEN,
     width: '100%',

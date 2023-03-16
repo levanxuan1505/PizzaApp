@@ -1,5 +1,5 @@
 /* eslint-disable react-native/no-inline-styles */
-import React from 'react';
+import React, {useState} from 'react';
 import {View, Text, TextInput, StyleSheet} from 'react-native';
 import {Colors} from '../constants';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
@@ -11,8 +11,8 @@ const Input = ({
   onFocus = () => {},
   ...props
 }) => {
-  const [hidePassword, setHidePassword] = React.useState(password);
-  const [isFocused, setIsFocused] = React.useState(false);
+  const [hidePassword, setHidePassword] = useState(password);
+  const [isFocused, setIsFocused] = useState(false);
   return (
     <View style={{marginBottom: 20}}>
       <Text style={style.label}>{label}</Text>
@@ -78,5 +78,4 @@ const style = StyleSheet.create({
     borderWidth: 0.5,
   },
 });
-
 export default Input;

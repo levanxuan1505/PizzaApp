@@ -1,10 +1,10 @@
 /* eslint-disable react-native/no-inline-styles */
 import {
-  StyleSheet,
   Text,
   View,
   Image,
   Platform,
+  StyleSheet,
   TouchableOpacity,
 } from 'react-native';
 import React, {memo} from 'react';
@@ -13,7 +13,6 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 import {useSelector} from 'react-redux';
 const Payment = ({navigation}) => {
   const payment = useSelector((state: any) => state.payment);
-
   return (
     <TouchableOpacity
       onPress={() => navigation.navigate('Payment')}
@@ -79,7 +78,6 @@ const styles = StyleSheet.create({
     marginBottom: 15,
     marginTop: 5,
     justifyContent: 'center',
-    // marginTop: 10,
     marginHorizontal: 8,
     backgroundColor: Colors.DEFAULT_WHITE,
     shadowColor: '#000',

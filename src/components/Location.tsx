@@ -1,6 +1,6 @@
 /* eslint-disable react-native/no-inline-styles */
-import {StyleSheet, Text, View, Platform, TouchableOpacity} from 'react-native';
 import React, {memo} from 'react';
+import {StyleSheet, Text, View, Platform, TouchableOpacity} from 'react-native';
 import {Colors} from '@constants';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import {useSelector} from 'react-redux';

@@ -4,10 +4,10 @@ import React, {useState} from 'react';
 import {
   View,
   Text,
-  SafeAreaView,
-  Keyboard,
   Alert,
+  Keyboard,
   StatusBar,
+  SafeAreaView,
 } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {useDispatch} from 'react-redux';

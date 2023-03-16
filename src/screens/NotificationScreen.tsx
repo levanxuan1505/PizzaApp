@@ -3,14 +3,14 @@
 /* eslint-disable react/no-unstable-nested-components */
 import React, {useState} from 'react';
 import {
-  SafeAreaView,
   Text,
   View,
-  Platform,
-  TouchableOpacity,
-  Image,
   Modal,
+  Image,
+  Platform,
   Animated,
+  SafeAreaView,
+  TouchableOpacity,
 } from 'react-native';
 import {FlatList} from 'react-native-gesture-handler';
 import Icons from 'react-native-vector-icons/MaterialIcons';
