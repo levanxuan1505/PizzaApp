@@ -1,6 +1,12 @@
 /* eslint-disable react-native/no-inline-styles */
 import React, {memo} from 'react';
-import {StyleSheet, Text, View, Platform, TouchableOpacity} from 'react-native';
+import {
+  StyleSheet,
+  Text,
+  View,
+  Platform,
+  TouchableHighlight,
+} from 'react-native';
 import {Colors} from '@constants';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import {useSelector} from 'react-redux';
@@ -8,7 +14,8 @@ const Location = ({navigation}) => {
   const location = useSelector((state: any) => state.location);
 
   return (
-    <TouchableOpacity
+    <TouchableHighlight
+      underlayColor="transparent"
       activeOpacity={Platform.OS === 'ios' ? 0.2 : 0.8}
       onPress={() => navigation.navigate('Local')}>
       <View style={styles.location}>
@@ -50,7 +57,7 @@ const Location = ({navigation}) => {
           }}
         />
       </View>
-    </TouchableOpacity>
+    </TouchableHighlight>
   );
 };
 const styles = StyleSheet.create({
