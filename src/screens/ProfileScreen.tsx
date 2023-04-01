@@ -80,6 +80,7 @@ export default function ProfileScreen({navigation}: any) {
           fontWeight: '600',
           color: Colors.DEFAULT_GREEN,
           paddingBottom: 3,
+          paddingLeft: 10,
         }}>
         {userName[0].userName}
       </Text>
@@ -143,7 +144,11 @@ export default function ProfileScreen({navigation}: any) {
                   <Icons name="bell" size={30} style={styles.icon} />
                 </View>
               }
-              BadgeElement={<Text style={{color: '#FFFFFF'}}>{badge}</Text>}
+              BadgeElement={
+                <Text style={{color: '#FFFFFF'}}>
+                  {userName[0].userName ? `${badge}` : 0}
+                </Text>
+              }
               IconBadgeStyle={{
                 marginRight: -7,
                 marginTop: -2,
@@ -153,7 +158,6 @@ export default function ProfileScreen({navigation}: any) {
               }}
             />
           </TouchableOpacity>
-          {/* setting icon */}
           <TouchableOpacity
             style={{right: 65, position: 'absolute'}}
             onPress={() => navigation.navigate('Setting')}>
@@ -161,6 +165,7 @@ export default function ProfileScreen({navigation}: any) {
               <Icon name="settings" size={30} style={styles.icon} />
             </View>
           </TouchableOpacity>
+          {/* setting icon */}
         </View>
         {/* information */}
         <View style={styles.information}>
@@ -168,7 +173,6 @@ export default function ProfileScreen({navigation}: any) {
           <View
             style={{
               left: 10,
-              alignItems: 'center',
             }}>
             <Name />
             <View

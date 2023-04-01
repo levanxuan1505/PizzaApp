@@ -1,3 +1,4 @@
+/* eslint-disable react/self-closing-comp */
 /* eslint-disable react-native/no-inline-styles */
 /* eslint-disable react/no-unstable-nested-components */
 import React from 'react';
@@ -119,7 +120,7 @@ const OrderConfirmDetailScreen = ({navigation, route}: any) => {
           flexDirection: 'row',
           justifyContent: 'space-between',
           paddingBottom: 10,
-          paddingHorizontal: 28,
+          paddingHorizontal: 35,
         }}>
         <Text style={{fontSize: 20, color: Colors.DEFAULT_GREEN}}>
           Tổng số món ăn:
@@ -130,11 +131,10 @@ const OrderConfirmDetailScreen = ({navigation, route}: any) => {
       </View>
       <FlatList
         showsVerticalScrollIndicator={false}
-        contentContainerStyle={{paddingBottom: 80}}
         data={cartGoods}
         renderItem={({item}) => <CartCard item={item} />}
-        ListFooterComponentStyle={{paddingHorizontal: 20, marginTop: 20}}
       />
+      <View style={{marginBottom: -40}}></View>
     </SafeAreaView>
   );
 };

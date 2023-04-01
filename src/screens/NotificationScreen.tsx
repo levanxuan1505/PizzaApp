@@ -29,6 +29,7 @@ export default function NotificationScreen({navigation}) {
   // redux
   const dispatch = useDispatch();
   const notification = useSelector((state: any) => state.notification);
+  const userName = useSelector((state: any) => state.user);
   const a = notification.length;
   //delete item by checking if id is equal to the id of the item
   const onDelete = id => {
@@ -107,6 +108,25 @@ export default function NotificationScreen({navigation}) {
           </TouchableOpacity>
         </View>
       </TouchableOpacity>
+    );
+  };
+  const Notification = () => {
+    return !userName[0].userName ? (
+      <View style={{alignItems: 'center'}}>
+        <Text style={{fontSize: 18, color: 'red', fontWeight: '700'}}>
+          Đăng nhập để xem thông báo
+        </Text>
+      </View>
+    ) : (
+      <FlatList
+        showsVerticalScrollIndicator={false}
+        contentContainerStyle={
+          Platform.OS === 'ios' ? {paddingBottom: 80} : {paddingBottom: 100}
+        }
+        data={notification}
+        renderItem={({item}) => <CartCard item={item} />}
+        ListFooterComponentStyle={{paddingHorizontal: 20, marginTop: 20}}
+      />
     );
   };
   return (
@@ -207,7 +227,11 @@ export default function NotificationScreen({navigation}) {
                 <Icon name="bell" size={32} color={Colors.DEFAULT_GREEN} />
               </View>
             }
-            BadgeElement={<Text style={{color: '#FFFFFF'}}>{a}</Text>}
+            BadgeElement={
+              <Text style={{color: '#FFFFFF'}}>
+                {userName[0].userName ? `${a}` : 0}
+              </Text>
+            }
             IconBadgeStyle={{
               marginRight: -5,
               marginTop: -6,
@@ -215,22 +239,10 @@ export default function NotificationScreen({navigation}) {
               height: 20,
               backgroundColor: 'red',
             }}
-            // Hidden={this.state.BadgeCount == 0}
           />
         </View>
       </View>
-      {/* header */}
-      {/* FlastList */}
-      <FlatList
-        showsVerticalScrollIndicator={false}
-        contentContainerStyle={
-          Platform.OS === 'ios' ? {paddingBottom: 80} : {paddingBottom: 100}
-        }
-        data={notification}
-        renderItem={({item}) => <CartCard item={item} />}
-        ListFooterComponentStyle={{paddingHorizontal: 20, marginTop: 20}}
-      />
-      {/* FlastList */}
+      <Notification />
     </SafeAreaView>
   );
 }

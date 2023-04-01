@@ -11,6 +11,15 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     paddingHorizontal: 20,
   },
+  header: {
+    marginTop: Platform.OS === 'ios' ? 0 : 20,
+    paddingVertical: 20,
+    flexDirection: 'row',
+    position: 'relative',
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginHorizontal: 20,
+  },
   sortBtn: {
     width: 50,
     height: 50,

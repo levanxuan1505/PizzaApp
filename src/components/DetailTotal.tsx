@@ -85,7 +85,7 @@ const DetailTotal = () => {
             Triết khấu Xu
           </Text>
           <Text style={{fontSize: Platform.OS === 'ios' ? 17 : 16}}>
-            -{coin[0].price}.000
+            {coin[0].price === 4 ? `-${coin[0].price}.000` : 0}
           </Text>
         </View>
         <View

@@ -9,6 +9,7 @@ import {
   Animated,
   Keyboard,
   TextInput,
+  Platform,
   TouchableOpacity,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
@@ -16,9 +17,11 @@ import Icons from 'react-native-vector-icons/Ionicons';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import {Colors, history} from '@constants';
 import styles from '@css/SearchScreenStyle';
+import {useSelector} from 'react-redux';
 
-export default function Search() {
+export default function Search({navigation}) {
   const [visible, setVisible] = useState(false);
+  const userName = useSelector((state: any) => state.user);
   const ModalPopup = ({visible, children}: any) => {
     const [showModal, setShowModal] = React.useState(visible);
     const scaleValue = React.useRef(new Animated.Value(0)).current;
@@ -53,7 +56,53 @@ export default function Search() {
       </Modal>
     );
   };
-  return (
+  return !userName[0].name ? (
+    <SafeAreaView style={{backgroundColor: Colors.DEFAULT_WHITE, flex: 1}}>
+      <View style={styles.header}>
+        <Icon
+          name="arrow-back-ios"
+          size={28}
+          onPress={navigation.goBack}
+          color={Colors.DEFAULT_GREEN}
+          style={{position: 'absolute', left: 2}}
+        />
+        <Text
+          style={{
+            fontSize: 20,
+            fontWeight: 'bold',
+            color: Colors.DEFAULT_GREEN,
+          }}>
+          Tìm Kiếm
+        </Text>
+        <View style={{position: 'absolute', right: 15}}>
+          <Icons
+            name="heart"
+            size={32}
+            color={Colors.DEFAULT_GREEN}
+            style={{
+              marginRight: Platform.OS === 'ios' ? 20 : 18,
+              alignItems: 'center',
+            }}
+          />
+        </View>
+      </View>
+      <View
+        style={{
+          justifyContent: 'center',
+          alignItems: 'center',
+          paddingTop: 10,
+        }}>
+        <Text
+          style={{
+            fontSize: 19,
+            fontWeight: '700',
+            color: Colors.DEFAULT_RED,
+          }}>
+          Không có kết quả tìm kiếm
+        </Text>
+      </View>
+    </SafeAreaView>
+  ) : (
     <SafeAreaView style={{marginHorizontal: 20}}>
       {/*  */}
       <ModalPopup visible={visible}>
@@ -122,7 +171,6 @@ export default function Search() {
           style={{
             marginTop: 10,
             flexDirection: 'row',
-            // paddingHorizontal: 20,
           }}>
           <View style={styles.inputContainer}>
             <Icon name="search" size={28} color={Colors.DEFAULT_GREEN} />
