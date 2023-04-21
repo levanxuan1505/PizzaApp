@@ -11,6 +11,7 @@ import {
   Image,
   Animated,
   Platform,
+  RefreshControl,
   FlatList,
   StatusBar,
   SafeAreaView,
@@ -30,6 +31,13 @@ import {ListCategories, ConditionToAdd, Header} from '@components';
 import {useSelector} from 'react-redux';
 //
 export default function HomeScreen({navigation}: any) {
+  const [refreshing, setRefreshing] = React.useState(false);
+  const onRefresh = React.useCallback(() => {
+    setRefreshing(true);
+    setTimeout(() => {
+      setRefreshing(false);
+    }, 1500);
+  }, []);
   // redux
   const food = useSelector((state: any) => state.food);
   // modal//
@@ -172,6 +180,9 @@ export default function HomeScreen({navigation}: any) {
         <ListCategories />
       </View>
       <FlatList
+        refreshControl={
+          <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
+        }
         showsVerticalScrollIndicator={false}
         numColumns={2}
         style={{paddingTop: 10}}

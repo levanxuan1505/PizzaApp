@@ -872,7 +872,8 @@ export default function ProfileScreen({navigation}: any) {
               />
             </View>
           </View>
-          <View
+          <TouchableOpacity
+            onPress={() => navigation.navigate('Chat')}
             style={{
               flexDirection: 'row',
               justifyContent: 'space-between',
@@ -907,7 +908,7 @@ export default function ProfileScreen({navigation}: any) {
                 style={{position: 'absolute', right: 0}}
               />
             </View>
-          </View>
+          </TouchableOpacity>
         </ScrollView>
       </View>
     </SafeAreaView>

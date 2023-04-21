@@ -2,6 +2,7 @@ import Search from './Search';
 import Options from './Options';
 import CartScreen from './CartScreen';
 import HomeScreen from './HomeScreen';
+import ChatScreen from './ChatScreen';
 import SignInScreen from './SignInScreen';
 import ProfileScreen from './ProfileScreen';
 import WelcomeScreen from './WelcomeScreen';
@@ -23,6 +24,7 @@ import OrderConfirmDetailScreen from './OrderConfirmDetailScreen';
 export {
   Options,
   Search,
+  ChatScreen,
   CartScreen,
   HomeScreen,
   SignInScreen,
