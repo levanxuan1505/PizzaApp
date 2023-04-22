@@ -56,7 +56,7 @@ export default function Search({navigation}) {
       </Modal>
     );
   };
-  return !userName[0].name ? (
+  return !userName[0].userName ? (
     <SafeAreaView style={{backgroundColor: Colors.DEFAULT_WHITE, flex: 1}}>
       <View style={styles.header}>
         <Icon
@@ -76,7 +76,7 @@ export default function Search({navigation}) {
         </Text>
         <View style={{position: 'absolute', right: 15}}>
           <Icons
-            name="heart"
+            name="search"
             size={32}
             color={Colors.DEFAULT_GREEN}
             style={{

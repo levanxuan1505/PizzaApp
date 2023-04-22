@@ -1,11 +1,14 @@
 /* eslint-disable react-native/no-inline-styles */
 import React, {useState, useEffect, useCallback} from 'react';
-import {View} from 'react-native';
+import {View, Text} from 'react-native';
 import {Bubble, GiftedChat, Send} from 'react-native-gifted-chat';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import Icon from 'react-native-vector-icons/MaterialIcons';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
-
-const ChatScreen = () => {
+import styles from '@css/ProfileScreenStyle';
+import {Colors} from '@constants';
+import {SafeAreaView} from 'react-native-safe-area-context';
+const ChatScreen = ({navigation}: any) => {
   const [messages, setMessages] = useState([]);
 
   useEffect(() => {
@@ -45,8 +48,8 @@ const ChatScreen = () => {
         <View>
           <MaterialCommunityIcons
             name="send-circle"
-            style={{marginBottom: 5, marginRight: 10}}
-            size={40}
+            style={{marginBottom: 0, marginRight: 10}}
+            size={45}
             color="#00AA13"
           />
         </View>
@@ -73,22 +76,56 @@ const ChatScreen = () => {
   };
 
   const scrollToBottomComponent = () => {
-    return <FontAwesome name="angle-double-down" size={22} color="#333" />;
+    return <FontAwesome name="angle-double-down" size={32} color="#333" />;
   };
 
   return (
-    <GiftedChat
-      messages={messages}
-      onSend={messages => onSend(messages)}
-      user={{
-        _id: 1,
-      }}
-      renderBubble={renderBubble}
-      alwaysShowSend
-      renderSend={renderSend}
-      scrollToBottom
-      scrollToBottomComponent={scrollToBottomComponent}
-    />
+    <SafeAreaView>
+      <View style={{width: '100%', height: '100%'}}>
+        <View style={styles.header}>
+          <Icon
+            name="arrow-back-ios"
+            size={28}
+            onPress={navigation.goBack}
+            style={{
+              position: 'absolute',
+              left: 25,
+              color: Colors.DEFAULT_GREEN,
+            }}
+          />
+          <Text
+            style={{
+              fontSize: 22,
+              fontWeight: 'bold',
+              color: Colors.DEFAULT_GREEN,
+            }}>
+            Message
+          </Text>
+          <Icon
+            name="message"
+            size={28}
+            onPress={navigation.goBack}
+            style={{
+              position: 'absolute',
+              right: 25,
+              color: Colors.DEFAULT_GREEN,
+            }}
+          />
+        </View>
+        <GiftedChat
+          messages={messages}
+          onSend={messages => onSend(messages)}
+          user={{
+            _id: 1,
+          }}
+          renderBubble={renderBubble}
+          alwaysShowSend
+          renderSend={renderSend}
+          scrollToBottom
+          scrollToBottomComponent={scrollToBottomComponent}
+        />
+      </View>
+    </SafeAreaView>
   );
 };
 
