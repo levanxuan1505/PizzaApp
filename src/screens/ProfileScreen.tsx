@@ -705,7 +705,8 @@ export default function ProfileScreen({navigation}: any) {
               />
             </View>
           </View>
-          <View
+          <TouchableOpacity
+            onPress={() => navigation.navigate('Review')}
             style={{
               flexDirection: 'row',
               justifyContent: 'space-between',
@@ -733,7 +734,7 @@ export default function ProfileScreen({navigation}: any) {
                   paddingLeft: 8,
                   color: Colors.SECONDARY_GREEN,
                 }}>
-                Đánh giá của tôi
+                Review Pizza Video
               </Text>
               <Icon
                 name="arrow-forward-ios"
@@ -742,7 +743,7 @@ export default function ProfileScreen({navigation}: any) {
                 style={{position: 'absolute', right: 0}}
               />
             </View>
-          </View>
+          </TouchableOpacity>
           <View
             style={{
               flexDirection: 'row',

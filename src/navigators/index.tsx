@@ -13,6 +13,7 @@ import {
   RegisterScreen,
   BottomHomeScreen,
   EditProfileScreen,
+  ReviewScreen,
   DetailsCardScreen,
   NotificationScreen,
   EditLocationScreen,
@@ -38,6 +39,7 @@ const Navigators = () => {
         <Stack.Screen name="Local" component={LocationScreen} />
         <Stack.Screen name="EditLocation" component={EditLocationScreen} />
         <Stack.Screen name="Edit" component={EditProfileScreen} />
+        <Stack.Screen name="Review" component={ReviewScreen} />
         <Stack.Screen name="Setting" component={SettingScreen} />
         <Stack.Screen name="Payment" component={PaymentScreen} />
         <Stack.Screen name="Order" component={OrderConfirmScreen} />

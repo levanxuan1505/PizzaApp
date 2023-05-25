@@ -8,6 +8,7 @@ import voucher from './voucher';
 import General from './General';
 import foodList from './foodList';
 import listTotal from './listTotal';
+import videoReview from './videoReview';
 import locations from './Locations';
 import Categories from './Categories';
 import notification from './Notification';
@@ -28,5 +29,6 @@ export {
   locations,
   listTotal,
   Categories,
+  videoReview,
   notification,
 };

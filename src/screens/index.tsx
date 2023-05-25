@@ -12,6 +12,7 @@ import VoucherScreen from './voucherScreen';
 import CheckoutScreen from './CheckoutScreen';
 import BookmarkScreen from './BookmarkScreen';
 import LocationScreen from './LocationScreen';
+import ReviewScreen from './ReviewScreen';
 import RegisterScreen from './RegisterScreen';
 import BottomHomeScreen from './BottomHomeScreen';
 import DetailsCardScreen from './DetailsCardScreen';
@@ -36,6 +37,7 @@ export {
   PaymentScreen,
   CheckoutScreen,
   LocationScreen,
+  ReviewScreen,
   RegisterScreen,
   BottomHomeScreen,
   DetailsCardScreen,
