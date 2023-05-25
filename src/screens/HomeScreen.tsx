@@ -155,7 +155,7 @@ export default function HomeScreen({navigation}: any) {
       <Header navigation={navigation} />
       <View
         style={{
-          marginTop: 30,
+          marginTop: 10,
           flexDirection: 'row',
           paddingHorizontal: 20,
         }}>

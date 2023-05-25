@@ -84,7 +84,7 @@ const Header = ({navigation}) => {
               : `Chào mừng trở lại`}
           </Text>
         </View>
-        <Text style={{marginTop: 5, fontSize: 22, color: Colors.DEFAULT_GREY}}>
+        <Text style={{marginTop: 1, fontSize: 22, color: Colors.DEFAULT_GREY}}>
           Bạn muốn ăn gì hôm nay?
         </Text>
       </View>
@@ -94,7 +94,7 @@ const Header = ({navigation}) => {
 };
 const styles = StyleSheet.create({
   header: {
-    marginTop: Platform.OS === 'ios' ? 20 : 45,
+    marginTop: Platform.OS === 'ios' ? 5 : 45,
     flexDirection: 'row',
     justifyContent: 'space-between',
     paddingHorizontal: 20,
