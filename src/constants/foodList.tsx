@@ -485,6 +485,24 @@ const foodList = [
       title:
         'Tuy nhiên, có một điều làm người Huế mãi day dứt: Hương vị của món ăn Huế đang nhạt dần theo thời gian. Đặc biệt, chỉ cần khoảng vài chục USD/suất, thực khách đã có thể thưởng thức cái gọi là “cơm cùng đình” nhan nhản ở các nhà hàng, khách sạn dù cũng là nem công, chả phượng, màu sắc và hình thức bắt mắt. Khách được mặc áo hoàng bào, được đóng vai ông hoàng bà chúa trong cung cấm, đóng các vương tôn công tử hay sứ thần các nước để “ngự thiện” như các ông vua thời xưa. Nhưng nói như ông Hồ Tấn Phan, một nhà nghiên cứu văn hóa Huế: “Cơm cung đình bây giờ chỉ là sự “phỉnh phờ”. Họ khéo léo tỉa tót đấy nhưng sao tôi thấy món ăn không có hồn gì của Huế? Với lại, người người đều nấu cơm cung đình thế này mang tiếng quá bởi cơm cung đình xưa đâu có như vậy.',
     },
+    {
+      id: '5',
+      name: 'Cơm Vua BBQ',
+      ingredients: ' King rice BBQ',
+      price: 49,
+      image: require('../assets/foodList/riceking/2.jpeg'),
+      title:
+        'Dĩa cơm gà đầy ụ, miếng gà bắt ngang dĩa to chà bá, gà bóng dầu cánh gián vô cùng bắt mắt. Miếng gà giòn da, thơm thịt bên ngoài, ngọt đậm bên trong làm tất cả các giác quan dường như được đánh thức. Gà tại quán là gà ta còn tươi sống, được mua về và chế biến kỹ càng. Từ công đoạn sơ chế đến nấu nướng vô cùng kỹ lưỡng, đảm bảo phục vụ cho thực khách món ăn vừa ngon vừa đảm bảo.',
+    },
+    {
+      id: '6',
+      name: 'Combo Gà nướng',
+      ingredients: 'Commbo chicken rice',
+      price: 61,
+      image: require('../assets/foodList/riceking/1.jpeg'),
+      title:
+        'Tại Festival nghề năm 2011, lần đầu tiên nữ nghệ nhân Hoàng Anh đã áp dụng kỹ thuật nấu nướng tuyệt xảo trong cung đình do ông mình truyền lại để tái hiện nguyên bản buổi yến tiệc cung đình xưa với những sơn hào hải vị quý hiếm. Bữa tiệc thịnh soạn này chỉ đủ chiêu đãi cho 26 thực khách may mắn. Giá cả ước tính của bữa cơm cung đình “thứ thiệt” này khoảng 6 triệu đồng/suất. Nhiều người đánh giá, từ trước đến nay, bữa tiệc này mới là cơm cung đình đúng nguyên bản nhất, không như những bữa cơm cung đình phục vụ du khách ở các nhà hàng, khách sạn bây giờ.',
+    },
   ],
   // drink
   [

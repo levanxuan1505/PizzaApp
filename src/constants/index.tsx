@@ -7,6 +7,7 @@ import payment from './payment';
 import voucher from './voucher';
 import General from './General';
 import foodList from './foodList';
+import listTotal from './listTotal';
 import locations from './Locations';
 import Categories from './Categories';
 import notification from './Notification';
@@ -25,6 +26,7 @@ export {
   setting3,
   foodList,
   locations,
+  listTotal,
   Categories,
   notification,
 };

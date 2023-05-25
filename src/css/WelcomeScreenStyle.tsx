@@ -9,7 +9,7 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.DEFAULT_WHITE,
   },
   welcomeListContainer: {
-    height: Display.setHeight(60),
+    height: Display.setHeight(70),
   },
   pageContainer: {
     flexDirection: 'row',

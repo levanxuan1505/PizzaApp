@@ -68,7 +68,7 @@ const ListCategories = () => {
 };
 const styles = StyleSheet.create({
   categoriesListContainer: {
-    paddingVertical: 25,
+    paddingVertical: 15,
     alignItems: 'center',
     paddingHorizontal: 20,
   },

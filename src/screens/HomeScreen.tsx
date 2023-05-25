@@ -11,18 +11,19 @@ import {
   Image,
   Animated,
   Platform,
-  RefreshControl,
+  LogBox,
   FlatList,
   StatusBar,
   SafeAreaView,
+  RefreshControl,
   TouchableHighlight,
 } from 'react-native';
 
+LogBox.ignoreLogs(['Sending...']);
 import React, {useState} from 'react';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import {TextInput} from 'react-native-gesture-handler';
 import Icons from 'react-native-vector-icons/Ionicons';
-
 import {Colors} from '@constants';
 import styles from '@css/HomeScreenStyle';
 import {foodList} from '@constants';

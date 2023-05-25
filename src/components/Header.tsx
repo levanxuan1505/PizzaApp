@@ -27,12 +27,12 @@ const Header = ({navigation}) => {
         {/*  */}
         <IconBadge
           MainElement={
-            <View>
+            <View style={{top: 5}}>
               <Image
                 source={require('../assets/images/avatar.webp')}
                 style={{
-                  height: Platform.OS === 'ios' ? 55 : 45,
-                  width: Platform.OS === 'ios' ? 55 : 45,
+                  height: Platform.OS === 'ios' ? 50 : 45,
+                  width: Platform.OS === 'ios' ? 50 : 45,
                   borderRadius: 30,
                 }}
               />
@@ -94,7 +94,7 @@ const Header = ({navigation}) => {
 };
 const styles = StyleSheet.create({
   header: {
-    marginTop: Platform.OS === 'ios' ? 5 : 45,
+    marginTop: Platform.OS === 'ios' ? 2 : 45,
     flexDirection: 'row',
     justifyContent: 'space-between',
     paddingHorizontal: 20,

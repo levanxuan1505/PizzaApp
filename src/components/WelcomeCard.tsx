@@ -18,8 +18,10 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     width: Display.setWidth(100),
+    // backgroundColor: 'red',
   },
   image: {
+    marginTop: Display.setWidth(10),
     height:
       Platform.OS === 'ios' ? Display.setHeight(41) : Display.setHeight(37),
     width: Platform.OS === 'ios' ? Display.setWidth(78) : Display.setWidth(68),
@@ -29,6 +31,7 @@ const styles = StyleSheet.create({
   titleText: {
     marginTop: 30,
     fontSize: 28,
+    fontWeight: '600',
     color: '#037E3F',
     textShadowColor: 'rgba(0, 0, 0, 0.5)',
     textShadowOffset: {width: -1, height: 1},

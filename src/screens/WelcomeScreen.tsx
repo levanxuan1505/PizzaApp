@@ -46,8 +46,8 @@ const WelcomeScreen = ({navigation}: any) => {
         backgroundColor={Colors.DEFAULT_WHITE}
         translucent
       />
-      <Separator height={StatusBar.currentHeight} width={undefined} />
-      <Separator height={Display.setHeight(8)} width={undefined} />
+      {/* <Separator height={StatusBar.currentHeight} width={undefined} /> */}
+      {/* <Separator height={Display.setHeight(8)} width={undefined} /> */}
       <View style={styles.welcomeListContainer}>
         <FlatList
           ref={welcomeList}
