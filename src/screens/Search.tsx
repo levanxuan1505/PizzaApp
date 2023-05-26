@@ -337,7 +337,7 @@ export default function Search({navigation}) {
     );
   };
   const filterFood = () =>
-    listTotal.filter(food =>
+    listTotal.filter((food, index): any =>
       food.name.toLowerCase().includes(searchText.toLowerCase()),
     );
   const Condition = () =>
@@ -345,7 +345,7 @@ export default function Search({navigation}) {
       <FlatList
         showsVerticalScrollIndicator={false}
         contentContainerStyle={{paddingBottom: 100}}
-        data={listTotal.filter(food =>
+        data={listTotal.filter((food, index) =>
           food.name.toLowerCase().includes(searchText.toLowerCase()),
         )}
         renderItem={({item}) => <CartCard item={item} />}

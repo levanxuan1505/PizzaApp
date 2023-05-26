@@ -22,6 +22,7 @@ import OrderConfirmScreen from './OrderConfirmScreen';
 import EditLocationScreen from './EditLocationScreen';
 import CreateAddressScreen from './CreateAddressScreen';
 import OrderConfirmDetailScreen from './OrderConfirmDetailScreen';
+import DetailsOptionScreen from './DetailsOptionScreen';
 export {
   Options,
   Search,
@@ -36,6 +37,7 @@ export {
   SettingScreen,
   PaymentScreen,
   CheckoutScreen,
+  DetailsOptionScreen,
   LocationScreen,
   ReviewScreen,
   RegisterScreen,

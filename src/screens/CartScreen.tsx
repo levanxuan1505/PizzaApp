@@ -40,7 +40,7 @@ const CartScreen = ({navigation}: any) => {
       <TouchableHighlight
         underlayColor="transparent"
         activeOpacity={Platform.OS === 'ios' ? 0.2 : 0.8}
-        onPress={() => navigation.navigate('DetailCard', item)}>
+        onPress={() => navigation.navigate('DetailOption', item)}>
         <View style={styles.cartCard}>
           <Image
             source={item.image}
@@ -57,9 +57,14 @@ const CartScreen = ({navigation}: any) => {
             <Text style={{fontSize: 13, color: Colors.DEFAULT_GREY}}>
               {item.ingredients}
             </Text>
-            <Text style={{fontSize: 17, fontWeight: 'bold'}}>
-              {item.price}k
-            </Text>
+            <View style={{flexDirection: 'row'}}>
+              <Text style={{fontSize: 17, fontWeight: 'bold'}}>
+                {item.price}k
+              </Text>
+              <Text style={{fontSize: 17, fontWeight: 'bold', paddingLeft: 15}}>
+                Size: {item.size === 0 ? 'S' : item.size === 5 ? 'M' : 'L'}
+              </Text>
+            </View>
           </View>
           <TouchableHighlight
             underlayColor="transparent"

@@ -1,13 +1,9 @@
-/* eslint-disable @typescript-eslint/no-shadow */
-/* eslint-disable react-hooks/exhaustive-deps */
-/* eslint-disable react/no-unstable-nested-components */
 /* eslint-disable react-native/no-inline-styles */
+/* eslint-disable react/no-unstable-nested-components */
 import {
   Text,
   View,
-  Modal,
   Image,
-  Animated,
   Platform,
   StyleSheet,
   TouchableHighlight,
@@ -18,116 +14,38 @@ import React, {memo, useState} from 'react';
 import {Colors} from '@constants';
 import {useSelector, useDispatch} from 'react-redux';
 import {changePopUp} from '../redux/popUpOptionSlice';
-import ToppingAndSize from './ToppingAndSize';
-const ConditionToAdd = ({navigation, food}) => {
-  // const [option, setOption] = useState(0);
+import {chooseSize} from '../redux/optionSizeSlice';
+import {addToCart} from '../redux/cartSlice';
+import {chooseMoreOption} from '../redux/moreOptionSlice';
+const ToppingAndSize = ({navigation, food, setVisible}) => {
+  //   const [visible, setVisible] = useState(false);
+  const isPopUp = useSelector((state: any) => state.popUp);
+  const size = useSelector((state: any) => state.size[0].size);
+  const moneyOption = useSelector((state: any) => state.moreOption[0].option);
+  const [option, setOption] = useState(0);
   const [collection, setCollection] = useState(0);
   const [isEnabled1, setIsEnabled1] = useState(false);
   const [isEnabled2, setIsEnabled2] = useState(false);
   const [isEnabled3, setIsEnabled3] = useState(false);
-
+  const dispatch = useDispatch();
+  const option1 = isEnabled1 ? food.value1 : 0;
+  const option2 = isEnabled2 ? food.value2 : 0;
+  const option3 = isEnabled3 ? food.value3 : 0;
+  const totalOption = option1 + option2 + option3;
   const toggleSwitch1 = () => setIsEnabled1(previousState => !previousState);
   const toggleSwitch2 = () => setIsEnabled2(previousState => !previousState);
   const toggleSwitch3 = () => setIsEnabled3(previousState => !previousState);
-  const foods = food;
-  const userName = useSelector((state: any) => state.user);
-  const dispatch = useDispatch();
-
-  // Poup nếu như chưa đăng nhâpj
-  const [visible, setVisible] = useState(false);
-  const ModalPopup = ({visible, children}: any) => {
-    const [showModal, setShowModal] = React.useState(visible);
-    const scaleValue = React.useRef(new Animated.Value(0)).current;
-    React.useEffect(() => {
-      toggleModal();
-    }, [visible]);
-    const toggleModal = () => {
-      if (visible) {
-        // setShowModal(true);
-        Animated.spring(scaleValue, {
-          toValue: 1,
-          // duration: 3000,
-          useNativeDriver: true,
-        }).start();
-      } else {
-        setTimeout(() => setShowModal(false), 300);
-        Animated.timing(scaleValue, {
-          toValue: 0,
-          duration: 300,
-          useNativeDriver: true,
-        }).start();
-      }
-    };
-    return (
-      <Modal transparent visible={showModal}>
-        <View style={styles.modalBackGround}>
-          <Animated.View
-            style={[styles.modalContainer, {transform: [{scale: scaleValue}]}]}>
-            {children}
-          </Animated.View>
-        </View>
-      </Modal>
-    );
-  };
-  // Popup1 nếu đã đăng nhập có thể thêm toping
-  // Poup nếu như chưa đăng nhâp
-  const [visible1, setVisible1] = useState(false);
-  const ModalPopup1 = ({visible, children}: any) => {
-    const [showModal, setShowModal] = React.useState(visible);
-    const scaleValue = React.useRef(new Animated.Value(0)).current;
-    React.useEffect(() => {
-      toggleModal();
-    }, [visible]);
-    const toggleModal = () => {
-      if (visible) {
-        // setShowModal(true);
-        Animated.spring(scaleValue, {
-          toValue: 1,
-          // duration: 3000,
-          useNativeDriver: true,
-        }).start();
-      } else {
-        setTimeout(() => setShowModal(false), 300);
-        Animated.timing(scaleValue, {
-          toValue: 0,
-          duration: 300,
-          useNativeDriver: true,
-        }).start();
-      }
-    };
-    return (
-      <Modal transparent visible={showModal}>
-        <View style={styles.modalBackGround1}>
-          <View style={{position: 'absolute', top: 230, right: 10}}>
-            <TouchableHighlight
-              underlayColor="transparent"
-              onPress={() => setVisible1(false)}>
-              <Icon
-                name="cancel"
-                size={45}
-                style={{color: Colors.DEFAULT_GREEN}}
-              />
-            </TouchableHighlight>
-          </View>
-          <Animated.View
-            style={[
-              styles.modalContainer2,
-              {transform: [{scale: scaleValue}]},
-            ]}>
-            {children}
-          </Animated.View>
-        </View>
-      </Modal>
-    );
-  };
-  //  Card
-
+  dispatch(
+    chooseMoreOption({
+      option: totalOption,
+    }),
+  );
   const CartCard = ({item}: any) => {
     return (
       <TouchableHighlight
         underlayColor="transparent"
         onPress={() => {
-          navigation.navigate('DetailCard', food), setVisible1(false);
+          navigation.navigate('DetailCard', food), setVisible(false);
         }}>
         <View style={styles.cartCard}>
           <Image
@@ -154,7 +72,7 @@ const ConditionToAdd = ({navigation, food}) => {
               {item.name}
             </Text>
             <Text style={{fontSize: 14, color: Colors.DARK_FOUR}}>
-              {foods.ingredients}
+              {item.ingredients}
             </Text>
             <Text
               style={{
@@ -162,7 +80,7 @@ const ConditionToAdd = ({navigation, food}) => {
                 fontWeight: '600',
                 color: Colors.GOOGLE_BLUE,
               }}>
-              {item.price}k
+              {item.price + size + moneyOption}k
             </Text>
           </View>
         </View>
@@ -173,17 +91,6 @@ const ConditionToAdd = ({navigation, food}) => {
   const CartCard1 = ({item}: any) => {
     return (
       <View style={{position: 'relative'}}>
-        <View style={{position: 'absolute', top: -190, right: -10}}>
-          <TouchableHighlight
-            underlayColor="transparent"
-            onPress={() => setVisible1(false)}>
-            <Icon
-              name="cancel"
-              size={45}
-              style={{color: Colors.DEFAULT_GREEN}}
-            />
-          </TouchableHighlight>
-        </View>
         <View style={styles.cartCard1}>
           <View style={{flexDirection: 'column'}}>
             <View
@@ -229,7 +136,12 @@ const ConditionToAdd = ({navigation, food}) => {
                   elevation: 21,
                 }}
                 onPress={() => {
-                  setCollection(0);
+                  setCollection(0),
+                    dispatch(
+                      chooseSize({
+                        size: 0,
+                      }),
+                    );
                 }}>
                 <Text style={styles.textOption}>S +0k</Text>
               </TouchableOpacity>
@@ -259,7 +171,12 @@ const ConditionToAdd = ({navigation, food}) => {
                   elevation: 21,
                 }}
                 onPress={() => {
-                  setCollection(1);
+                  setCollection(1),
+                    dispatch(
+                      chooseSize({
+                        size: 5,
+                      }),
+                    );
                 }}>
                 <Text style={styles.textOption}>M +5k</Text>
               </TouchableOpacity>
@@ -288,7 +205,12 @@ const ConditionToAdd = ({navigation, food}) => {
                   elevation: 21,
                 }}
                 onPress={() => {
-                  setCollection(2);
+                  setCollection(2),
+                    dispatch(
+                      chooseSize({
+                        size: 10,
+                      }),
+                    );
                 }}>
                 <Text style={styles.textOption}>L +10k</Text>
               </TouchableOpacity>
@@ -310,6 +232,7 @@ const ConditionToAdd = ({navigation, food}) => {
                 More Option
               </Text>
             </View>
+
             <View style={{flexDirection: 'column', alignItems: 'center'}}>
               {item.toping1 ? (
                 <TouchableOpacity
@@ -340,7 +263,9 @@ const ConditionToAdd = ({navigation, food}) => {
 
                     elevation: 21,
                   }}>
-                  <Text style={styles.textOption}>{item.toping1}</Text>
+                  <Text style={styles.textOption}>
+                    {item.toping1} +{item.value1}k
+                  </Text>
                 </TouchableOpacity>
               ) : (
                 <View>{/* <Text style={styles.textOption}>5</Text> */}</View>
@@ -374,7 +299,10 @@ const ConditionToAdd = ({navigation, food}) => {
 
                     elevation: 21,
                   }}>
-                  <Text style={styles.textOption}>{item.toping2}</Text>
+                  <Text style={styles.textOption}>
+                    {' '}
+                    {item.toping2} +{item.value2}k
+                  </Text>
                 </TouchableOpacity>
               ) : (
                 <View>{/* <Text style={styles.textOption}>5</Text> */}</View>
@@ -408,13 +336,32 @@ const ConditionToAdd = ({navigation, food}) => {
 
                     elevation: 21,
                   }}>
-                  <Text style={styles.textOption}>{item.toping3}</Text>
+                  <Text style={styles.textOption}>
+                    {item.toping3} +{item.value3}k
+                  </Text>
                 </TouchableOpacity>
               ) : (
                 <View>{/* <Text style={styles.textOption}>5</Text> */}</View>
               )}
             </View>
-            <View
+            <TouchableOpacity
+              onPress={() => {
+                dispatch(
+                  addToCart({
+                    id: food.id,
+                    name: food.name,
+                    ingredients: food.ingredients,
+                    price: food.price + size + moneyOption,
+                    image: food.image,
+                    title: food.title,
+                    size: size,
+                    value1: isEnabled1 ? item.toping1 : '',
+                    value2: isEnabled2 ? item.toping2 : '',
+                    value3: isEnabled3 ? item.toping3 : '',
+                  }),
+                ),
+                  setVisible(false);
+              }}
               style={{
                 position: 'absolute',
                 // bottom: 10,
@@ -423,145 +370,32 @@ const ConditionToAdd = ({navigation, food}) => {
                 alignItems: 'center',
                 width: '98%',
                 height: 60,
-                borderColor: 'red',
-                borderWidth: 2,
                 borderRadius: 10,
-                // marginTop: 30,
+                backgroundColor: Colors.DEFAULT_GREEN,
               }}>
-              <Text style={{fontSize: 24, fontWeight: '600', color: 'green'}}>
+              <Text
+                style={{
+                  fontSize: 24,
+                  fontWeight: '600',
+                  color: Colors.DEFAULT_WHITE,
+                }}>
                 Thêm vào giỏ
               </Text>
-            </View>
+            </TouchableOpacity>
           </View>
         </View>
       </View>
     );
   };
-  //
-  return userName[0].userName ? (
-    // <TouchableHighlight
-    //   underlayColor="transparent"
-    //   onPress={() => {
-    //     // dispatch(
-    //     //   addToCart({
-    //     //     id: food.id,
-    //     //     name: food.name,
-    //     //     ingredients: food.ingredients,
-    //     //     price: food.price,
-    //     //     image: food.image,
-    //     //     title: food.title,
-    //     //   }),
-    //     // );
-    //   }}>
-    //   <Icon name="add" size={32} color={Colors.DEFAULT_WHITE} />
-    // </TouchableHighlight>
+
+  return (
     <View>
-      <ModalPopup1 visible={visible1}>
-        <View
-          style={{
-            flex: 1,
-            flexDirection: 'column',
-            alignItems: 'center',
-          }}>
-          {/* <CartCard item={food} />
-          <CartCard1 item={food} /> */}
-          <ToppingAndSize
-            navigation={navigation}
-            food={food}
-            setVisible={setVisible1}
-          />
-        </View>
-      </ModalPopup1>
-      <TouchableHighlight
-        underlayColor="transparent"
-        onPress={() => setVisible1(true)}>
-        {/* onPress={() => {
-          dispatch(
-            changePopUp({
-              isPopUp: true,
-            }),
-          );
-        }}> */}
-        <Icon name="add" size={32} color={Colors.DEFAULT_WHITE} />
-      </TouchableHighlight>
-      {/* <ToppingAndSize food={food} /> */}
-    </View>
-  ) : (
-    <View>
-      <ModalPopup visible={visible}>
-        <View
-          style={{
-            flex: 1,
-            flexDirection: 'column',
-            justifyContent: 'space-around',
-            alignItems: 'center',
-          }}>
-          <View
-            style={[styles.Header2, {borderBottomColor: Colors.DEFAULT_WHITE}]}>
-            <Text
-              style={{
-                fontSize: 24,
-                fontWeight: '600',
-                color: Colors.DEFAULT_RED,
-                paddingTop: 5,
-              }}>
-              Cảnh báo
-            </Text>
-          </View>
-          <View style={[styles.Header2, {top: -10, paddingBottom: 10}]}>
-            <Text
-              style={{
-                fontSize: 19,
-                fontWeight: '500',
-                color: Colors.DEFAULT_GREEN,
-              }}>
-              Bạn cần đăng nhập để thêm món ăn
-            </Text>
-          </View>
-          <View
-            style={{
-              width: '100%',
-              flexDirection: 'row',
-              justifyContent: 'space-around',
-              top: -10,
-            }}>
-            <TouchableHighlight
-              underlayColor="transparent"
-              onPress={() => {
-                setVisible(false), navigation.navigate('SignIn');
-              }}>
-              <Text
-                style={{
-                  color: Colors.DEFAULT_GREEN,
-                  fontSize: 20,
-                  fontWeight: '600',
-                }}>
-                Đăng nhập
-              </Text>
-            </TouchableHighlight>
-            <TouchableHighlight
-              underlayColor="transparent"
-              onPress={() => setVisible(false)}>
-              <Text
-                style={{
-                  color: Colors.DEFAULT_RED,
-                  fontSize: 20,
-                  fontWeight: '600',
-                }}>
-                Huỷ bỏ
-              </Text>
-            </TouchableHighlight>
-          </View>
-        </View>
-      </ModalPopup>
-      <TouchableHighlight
-        underlayColor="transparent"
-        onPress={() => setVisible(true)}>
-        <Icon name="add" size={32} color={Colors.DEFAULT_WHITE} />
-      </TouchableHighlight>
+      <CartCard item={food} />
+      <CartCard1 item={food} />
     </View>
   );
 };
+
 const styles = StyleSheet.create({
   modalBackGround: {
     flex: 1,
@@ -570,7 +404,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   modalBackGround1: {
-    position: 'relative',
     flex: 1,
     backgroundColor: 'rgba(0,0,0,0.5)',
     paddingBottom: 25,
@@ -713,4 +546,4 @@ const styles = StyleSheet.create({
     width: '100%',
   },
 });
-export default memo(ConditionToAdd);
+export default ToppingAndSize;

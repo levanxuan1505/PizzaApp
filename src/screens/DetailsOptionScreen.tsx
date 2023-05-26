@@ -17,16 +17,17 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 import Icons from 'react-native-vector-icons/Ionicons';
 import {Colors} from '@constants';
 import styles from '@css/DetailsCardScreenStyle';
-import {SecondaryButton, ConditionToAdd} from '@components';
+import {SecondaryButton} from '@components';
 // redux import
 import {useDispatch, useSelector} from 'react-redux';
-import {addToCart} from '../redux/cartSlice';
+import {removeCart} from '../redux/cartSlice';
+
 //
 
 import {ScrollView} from 'react-native-gesture-handler';
 import {addToBookmark} from '../redux/bookmarkSlice';
 
-const DetailsCardScreen = ({navigation, route}: any) => {
+const DetailsOptionScreen = ({navigation, route}: any) => {
   const item = route.params;
   const [visible, setVisible] = useState(false);
   const [visible1, setVisible1] = useState(false);
@@ -137,36 +138,12 @@ const DetailsCardScreen = ({navigation, route}: any) => {
     return user[0].userName ? (
       <View style={{position: 'relative'}}>
         <SecondaryButton
-          title="Thêm vào giỏ hàng"
-          onPress={() => {
-            dispatch(
-              addToCart({
-                id: item.id,
-                name: item.name,
-                ingredients: item.ingredients,
-                price: item.price,
-                image: item.image,
-                title: item.title,
-              }),
-            );
-          }}
+          title="Xoá bỏ món ăn"
+          onPress={() => setVisible1(true)}
         />
-        <View
-          style={{
-            position: 'absolute',
-            backgroundColor: Colors.DEFAULT_GREEN,
-            bottom: 14,
-            right: 280,
-            borderRadius: 50,
-          }}>
-          <ConditionToAdd navigation={navigation} food={item} />
-        </View>
       </View>
     ) : (
-      <SecondaryButton
-        title="Thêm vào giỏ hàng"
-        onPress={() => setVisible1(true)}
-      />
+      <SecondaryButton title="Thêm vào giỏ hàng" />
     );
   };
   return (
@@ -262,9 +239,9 @@ const DetailsCardScreen = ({navigation, route}: any) => {
               style={{
                 fontSize: 19,
                 fontWeight: '500',
-                color: Colors.DEFAULT_GREEN,
+                color: Colors.DEFAULT_RED,
               }}>
-              Bạn cần đăng nhập để thêm món ăn
+              Bạn có chắc chắn muốn xoá món ăn
             </Text>
           </View>
           <View
@@ -276,21 +253,23 @@ const DetailsCardScreen = ({navigation, route}: any) => {
             }}>
             <TouchableOpacity
               onPress={() => {
-                setVisible1(false), navigation.navigate('SignIn');
+                setVisible1(false),
+                  navigation.goBack(),
+                  dispatch(removeCart({id: item.id}));
               }}>
               <Text
                 style={{
-                  color: Colors.DEFAULT_GREEN,
+                  color: Colors.DEFAULT_RED,
                   fontSize: 20,
                   fontWeight: '600',
                 }}>
-                Đăng nhập
+                Xoá
               </Text>
             </TouchableOpacity>
             <TouchableOpacity onPress={() => setVisible1(false)}>
               <Text
                 style={{
-                  color: Colors.DEFAULT_RED,
+                  color: Colors.DEFAULT_GREEN,
                   fontSize: 20,
                   fontWeight: '600',
                 }}>
@@ -315,7 +294,7 @@ const DetailsCardScreen = ({navigation, route}: any) => {
             fontWeight: 'bold',
             color: Colors.DEFAULT_GREEN,
           }}>
-          Chi tiết món ăn
+          Chi tiết Toppings
         </Text>
       </View>
       <ScrollView
@@ -360,6 +339,37 @@ const DetailsCardScreen = ({navigation, route}: any) => {
             </Text>
             <HandleAction />
           </View>
+          <View style={{flexDirection: 'row'}}>
+            <Text style={{fontSize: 24, color: Colors.DEFAULT_WHITE}}>
+              Size:
+            </Text>
+            <Text style={{fontSize: 24, color: Colors.DEFAULT_WHITE}}>
+              {item.size === 0 ? ' S' : item.size === 5 ? ' M' : ' L'}
+            </Text>
+          </View>
+          <View style={{flexDirection: 'column', justifyContent: 'center'}}>
+            <View>
+              <Text
+                style={{
+                  fontSize: 24,
+                  color: Colors.DEFAULT_WHITE,
+                  paddingRight: 10,
+                }}>
+                Toppings:
+              </Text>
+            </View>
+            <View style={{paddingLeft: 10}}>
+              <Text style={{fontSize: 20, color: Colors.DEFAULT_WHITE}}>
+                {item.value1 ? `+ ${item.value1}` : ''}
+              </Text>
+              <Text style={{fontSize: 20, color: Colors.DEFAULT_WHITE}}>
+                {item.value2 ? `+ ${item.value2}` : ''}
+              </Text>
+              <Text style={{fontSize: 20, color: Colors.DEFAULT_WHITE}}>
+                {item.value3 ? `+ ${item.value3}` : ''}
+              </Text>
+            </View>
+          </View>
           <Text style={styles.detailsText}>{item.title}</Text>
         </View>
       </ScrollView>
@@ -369,4 +379,4 @@ const DetailsCardScreen = ({navigation, route}: any) => {
     </SafeAreaView>
   );
 };
-export default DetailsCardScreen;
+export default DetailsOptionScreen;

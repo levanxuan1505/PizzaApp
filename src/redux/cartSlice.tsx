@@ -12,6 +12,10 @@ export const cartSlice = createSlice({
         price: action.payload.price,
         image: action.payload.image,
         title: action.payload.title,
+        size: action.payload.size,
+        value1: action.payload.value1,
+        value2: action.payload.value2,
+        value3: action.payload.value3,
       };
 
       state.unshift(newToCart);

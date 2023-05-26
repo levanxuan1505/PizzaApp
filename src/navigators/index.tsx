@@ -15,6 +15,7 @@ import {
   EditProfileScreen,
   ReviewScreen,
   DetailsCardScreen,
+  DetailsOptionScreen,
   NotificationScreen,
   EditLocationScreen,
   CreateAddressScreen,
@@ -46,6 +47,7 @@ const Navigators = () => {
         <Stack.Screen name="OrderDetail" component={OrderConfirmDetailScreen} />
         <Stack.Screen name="CreateAddress" component={CreateAddressScreen} />
         <Stack.Screen name="DetailCard" component={DetailsCardScreen} />
+        <Stack.Screen name="DetailOption" component={DetailsOptionScreen} />
         <Stack.Screen name="Voucher" component={VoucherScreen} />
         <Stack.Screen name="Chat" component={ChatScreen} />
       </Stack.Navigator>

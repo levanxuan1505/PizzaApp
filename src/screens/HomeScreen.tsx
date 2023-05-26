@@ -27,7 +27,8 @@ import Icons from 'react-native-vector-icons/Ionicons';
 import {Colors} from '@constants';
 import styles from '@css/HomeScreenStyle';
 import {foodList} from '@constants';
-import {ListCategories, ConditionToAdd, Header} from '@components';
+
+import {Card, ListCategories, ConditionToAdd, Header} from '@components';
 // redux import
 import {useSelector} from 'react-redux';
 //
@@ -77,53 +78,53 @@ export default function HomeScreen({navigation}: any) {
       </Modal>
     );
   };
-  const Card = ({food}: any) => {
-    return (
-      <TouchableHighlight
-        underlayColor="transparent"
-        activeOpacity={0.9}
-        onPress={() => navigation.navigate('DetailCard', food)}>
-        <View style={styles.card}>
-          <View style={{alignItems: 'center', top: -30}}>
-            <Image
-              source={food.image}
-              style={{height: 130, width: 130, borderRadius: 70}}
-            />
-          </View>
-          <View style={{marginHorizontal: 15, top: -10}}>
-            <Text
-              style={{
-                fontSize: Platform.OS === 'ios' ? 17.4 : 13,
-                fontWeight: Platform.OS === 'ios' ? 'bold' : '800',
-                color: Colors.DEFAULT_GREEN,
-              }}>
-              {food.name}
-            </Text>
-            <Text
-              style={{fontSize: 15, color: Colors.DEFAULT_GREY, marginTop: 2}}>
-              {food.ingredients}
-            </Text>
-          </View>
-          <View
-            style={{
-              marginTop: 10,
-              marginHorizontal: 20,
-              flexDirection: 'row',
-              justifyContent: 'space-between',
-              alignItems: 'flex-start',
-            }}>
-            <Text style={{fontSize: 18, fontWeight: 'bold'}}>
-              {food.price}k
-            </Text>
+  // const Card = ({food}: any) => {
+  //   return (
+  //     <TouchableHighlight
+  //       underlayColor="transparent"
+  //       activeOpacity={0.9}
+  //       onPress={() => navigation.navigate('DetailCard', food)}>
+  //       <View style={styles.card}>
+  //         <View style={{alignItems: 'center', top: -30}}>
+  //           <Image
+  //             source={food.image}
+  //             style={{height: 130, width: 130, borderRadius: 70}}
+  //           />
+  //         </View>
+  //         <View style={{marginHorizontal: 15, top: -10}}>
+  //           <Text
+  //             style={{
+  //               fontSize: Platform.OS === 'ios' ? 17.4 : 13,
+  //               fontWeight: Platform.OS === 'ios' ? 'bold' : '800',
+  //               color: Colors.DEFAULT_GREEN,
+  //             }}>
+  //             {food.name}
+  //           </Text>
+  //           <Text
+  //             style={{fontSize: 15, color: Colors.DEFAULT_GREY, marginTop: 2}}>
+  //             {food.ingredients}
+  //           </Text>
+  //         </View>
+  //         <View
+  //           style={{
+  //             marginTop: 10,
+  //             marginHorizontal: 20,
+  //             flexDirection: 'row',
+  //             justifyContent: 'space-between',
+  //             alignItems: 'flex-start',
+  //           }}>
+  //           <Text style={{fontSize: 18, fontWeight: 'bold'}}>
+  //             {food.price}k
+  //           </Text>
 
-            <View style={styles.addToCartBtn}>
-              <ConditionToAdd navigation={navigation} food={food} />
-            </View>
-          </View>
-        </View>
-      </TouchableHighlight>
-    );
-  };
+  //           <View style={styles.addToCartBtn}>
+  //             <ConditionToAdd navigation={navigation} food={food} />
+  //           </View>
+  //         </View>
+  //       </View>
+  //     </TouchableHighlight>
+  //   );
+  // };
 
   return (
     <SafeAreaView style={{flex: 1, backgroundColor: Colors.DEFAULT_WHITE}}>
@@ -188,7 +189,7 @@ export default function HomeScreen({navigation}: any) {
         numColumns={2}
         style={{paddingTop: 10}}
         data={foodList[food[0].id]}
-        renderItem={({item}) => <Card food={item} />}
+        renderItem={({item}) => <Card navigation={navigation} food={item} />}
       />
     </SafeAreaView>
   );
