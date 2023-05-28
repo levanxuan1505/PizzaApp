@@ -18,6 +18,7 @@ import styles from '@css/PaymentScreenStyle';
 // redux
 import {useDispatch} from 'react-redux';
 import {choosePayment} from '../redux/paymentSlice';
+import {Display} from '@utils';
 //
 
 const PaymentScreen = ({navigation}: any) => {
@@ -37,13 +38,23 @@ const PaymentScreen = ({navigation}: any) => {
         underlayColor="transparent"
         activeOpacity={Platform.OS === 'ios' ? 0.2 : 0.8}
         onPress={() => {
-          dispatch(choosePayment({name: item.name, image: item.image})),
+          dispatch(
+            choosePayment({
+              name: item.name,
+              image: item.image,
+              title: item.title,
+            }),
+          ),
             navigation.goBack();
         }}>
         <View style={styles.cartCard}>
           <Image
             source={item.image}
-            style={{height: 70, width: 70, borderRadius: 10}}
+            style={{
+              height: Display.setWidth(16),
+              width: Display.setWidth(16),
+              borderRadius: 10,
+            }}
           />
           <View
             style={{
@@ -56,14 +67,14 @@ const PaymentScreen = ({navigation}: any) => {
             <Text
               style={{
                 fontWeight: 'bold',
-                fontSize: 20,
+                fontSize: Display.setWidth(5),
                 color: item.color,
               }}>
               {item.name}
             </Text>
             <Text
               style={{
-                fontSize: 16,
+                fontSize: Display.setWidth(3.5),
                 fontWeight: '700',
                 color: item.color,
               }}>

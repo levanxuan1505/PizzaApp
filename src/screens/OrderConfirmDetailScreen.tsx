@@ -17,6 +17,7 @@ import {Colors} from '@constants';
 import styles from '@css/OrderConfirmStyle';
 // redux import
 import {useSelector} from 'react-redux';
+import {Display} from '@utils';
 //
 
 const OrderConfirmDetailScreen = ({navigation, route}: any) => {
@@ -31,7 +32,11 @@ const OrderConfirmDetailScreen = ({navigation, route}: any) => {
           <View style={{flexDirection: 'row', alignItems: 'center'}}>
             <Image
               source={item.image}
-              style={{height: 80, width: 80, borderRadius: 40}}
+              style={{
+                height: Display.setWidth(17),
+                width: Display.setWidth(17),
+                borderRadius: 40,
+              }}
             />
             <View
               style={{
@@ -43,15 +48,19 @@ const OrderConfirmDetailScreen = ({navigation, route}: any) => {
               <Text
                 style={{
                   fontWeight: 'bold',
-                  fontSize: 16,
+                  fontSize: Display.setWidth(4),
                   color: Colors.DEFAULT_GREEN,
                 }}>
                 {item.name}
               </Text>
-              <Text style={{fontSize: 13, color: Colors.DEFAULT_GREY}}>
+              <Text
+                style={{
+                  fontSize: Display.setWidth(3),
+                  color: Colors.DEFAULT_GREY,
+                }}>
                 {item.ingredients}
               </Text>
-              <Text style={{fontSize: 17, fontWeight: 'bold'}}>
+              <Text style={{fontSize: Display.setWidth(4), fontWeight: 'bold'}}>
                 {item.price}k
               </Text>
             </View>
@@ -59,7 +68,7 @@ const OrderConfirmDetailScreen = ({navigation, route}: any) => {
               <View>
                 <Text
                   style={{
-                    fontSize: Platform.OS === 'ios' ? 20 : 12,
+                    fontSize: Platform.OS === 'ios' ? Display.setWidth(4) : 12,
                     fontWeight: '500',
                     color: Colors.DEFAULT_GREEN,
                   }}>
@@ -84,7 +93,7 @@ const OrderConfirmDetailScreen = ({navigation, route}: any) => {
         />
         <Text
           style={{
-            fontSize: 20,
+            fontSize: Display.setWidth(5),
             fontWeight: 'bold',
             color: Colors.DEFAULT_GREEN,
           }}>
@@ -105,27 +114,48 @@ const OrderConfirmDetailScreen = ({navigation, route}: any) => {
       <View
         style={{
           flexDirection: 'row',
-          justifyContent: 'space-around',
           paddingBottom: 10,
+          paddingHorizontal: Display.setWidth(4),
+          position: 'relative',
         }}>
-        <Text style={{fontSize: 20, color: Colors.DEFAULT_GREEN}}>
+        <Text
+          style={{
+            fontSize: Display.setWidth(5),
+            color: Colors.DEFAULT_GREEN,
+          }}>
           Tổng thanh toán:
         </Text>
-        <Text style={{fontSize: 20, color: Colors.DEFAULT_RED}}>
+        <Text
+          style={{
+            fontSize: Display.setWidth(5),
+            position: 'absolute',
+            color: Colors.DEFAULT_RED,
+            right: Display.setWidth(4),
+          }}>
           đ {SumMustPay}.000 VND
         </Text>
       </View>
       <View
         style={{
           flexDirection: 'row',
-          justifyContent: 'space-between',
+          position: 'relative',
           paddingBottom: 10,
-          paddingHorizontal: 35,
+          paddingHorizontal: Display.setWidth(4),
         }}>
-        <Text style={{fontSize: 20, color: Colors.DEFAULT_GREEN}}>
+        <Text
+          style={{
+            fontSize: Display.setWidth(5),
+            color: Colors.DEFAULT_GREEN,
+          }}>
           Tổng số món ăn:
         </Text>
-        <Text style={{fontSize: 20, color: Colors.DEFAULT_RED}}>
+        <Text
+          style={{
+            fontSize: Display.setWidth(5),
+            position: 'absolute',
+            right: Display.setWidth(4),
+            color: Colors.DEFAULT_RED,
+          }}>
           {cartGoods.length}
         </Text>
       </View>

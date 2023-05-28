@@ -217,7 +217,7 @@ const DetailsCardScreen = ({navigation, route}: any) => {
             style={[styles.Header, {borderBottomColor: Colors.DEFAULT_WHITE}]}>
             <Text
               style={{
-                fontSize: 24,
+                fontSize: Display.setWidth(6),
                 fontWeight: '600',
                 color: Colors.DEFAULT_RED,
                 paddingTop: 10,
@@ -228,7 +228,8 @@ const DetailsCardScreen = ({navigation, route}: any) => {
           <View style={[styles.Header, {top: -10, paddingBottom: 10}]}>
             <Text
               style={{
-                fontSize: 19,
+                paddingTop: 10,
+                fontSize: Display.setWidth(4.5),
                 fontWeight: '500',
                 color: Colors.DEFAULT_GREEN,
               }}>
@@ -315,7 +316,7 @@ const DetailsCardScreen = ({navigation, route}: any) => {
               <Text
                 style={{
                   color: Colors.DEFAULT_GREEN,
-                  fontSize: Display.setWidth(6),
+                  fontSize: Display.setWidth(5.5),
                   fontWeight: '600',
                 }}>
                 Đăng nhập
@@ -325,7 +326,7 @@ const DetailsCardScreen = ({navigation, route}: any) => {
               <Text
                 style={{
                   color: Colors.DEFAULT_RED,
-                  fontSize: Display.setWidth(6),
+                  fontSize: Display.setWidth(5.5),
                   fontWeight: '600',
                 }}>
                 Huỷ bỏ

@@ -39,7 +39,7 @@ const styles = StyleSheet.create({
     marginBottom: Platform.OS === 'ios' ? -10 : 0,
     paddingHorizontal: 20,
     justifyContent: 'center',
-    alignItems: 'center',
+    // alignItems: 'center',
     paddingVertical: Platform.OS === 'ios' ? 25 : 15,
   },
   modalBackGround: {
@@ -49,7 +49,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   modalContainer: {
-    width: '90%',
+    width: '95%',
     height: 135,
     backgroundColor: 'white',
     borderRadius: 15,

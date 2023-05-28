@@ -66,7 +66,7 @@ const Payment = ({navigation}) => {
               marginTop: 0,
               fontSize: Platform.OS === 'ios' ? Display.setWidth(7) - 14 : 12,
             }}>
-            Thanh toán dễ dàng hơn với Zalo Pay
+            {payment[0].title}
           </Text>
         </View>
       </View>

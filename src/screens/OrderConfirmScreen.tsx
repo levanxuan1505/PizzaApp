@@ -16,6 +16,7 @@ import {Colors} from '@constants';
 import styles from '@css/OrderConfirmStyle';
 // redux import
 import {useSelector} from 'react-redux';
+import {Display} from '@utils';
 //
 
 const OrderConfirmScreen = ({navigation}: any) => {
@@ -43,7 +44,11 @@ const OrderConfirmScreen = ({navigation}: any) => {
           <View style={{flexDirection: 'row', alignItems: 'center'}}>
             <Image
               source={item[0].image}
-              style={{height: 80, width: 80, borderRadius: 40}}
+              style={{
+                height: Display.setWidth(18),
+                width: Display.setWidth(18),
+                borderRadius: 40,
+              }}
             />
             <View
               style={{
@@ -55,7 +60,7 @@ const OrderConfirmScreen = ({navigation}: any) => {
               <Text
                 style={{
                   fontWeight: 'bold',
-                  fontSize: 16,
+                  fontSize: Display.setWidth(4),
                   color: Colors.DEFAULT_GREEN,
                 }}>
                 {item[0].name}
@@ -63,7 +68,7 @@ const OrderConfirmScreen = ({navigation}: any) => {
               <Text style={{fontSize: 13, color: Colors.DEFAULT_GREY}}>
                 {item[0].ingredients}
               </Text>
-              <Text style={{fontSize: 17, fontWeight: 'bold'}}>
+              <Text style={{fontSize: Display.setWidth(4), fontWeight: 'bold'}}>
                 {item[0].price}k
               </Text>
             </View>
@@ -71,7 +76,8 @@ const OrderConfirmScreen = ({navigation}: any) => {
               <View>
                 <Text
                   style={{
-                    fontSize: Platform.OS === 'ios' ? 20 : 15,
+                    fontSize:
+                      Platform.OS === 'ios' ? Display.setWidth(10) - 20 : 15,
                     fontWeight: '500',
                     color: Colors.DEFAULT_GREEN,
                   }}>
@@ -88,10 +94,10 @@ const OrderConfirmScreen = ({navigation}: any) => {
             }}>
             <Text
               style={{
-                fontSize: Platform.OS === 'ios' ? 18 : 14,
+                fontSize: Platform.OS === 'ios' ? Display.setWidth(4) : 14,
                 color: Colors.DEFAULT_GREEN,
               }}>
-              Tổng số lượng món ăn :
+              Tổng số món ăn :
             </Text>
             <Text
               style={{
@@ -104,14 +110,14 @@ const OrderConfirmScreen = ({navigation}: any) => {
           <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
             <Text
               style={{
-                fontSize: Platform.OS === 'ios' ? 18 : 14,
+                fontSize: Platform.OS === 'ios' ? Display.setWidth(4) : 14,
                 color: Colors.DEFAULT_GREEN,
               }}>
-              Tổng tiền cần thanh toán :
+              Tổng tiền thanh toán :
             </Text>
             <Text
               style={{
-                fontSize: Platform.OS === 'ios' ? 18 : 14,
+                fontSize: Platform.OS === 'ios' ? Display.setWidth(4) : 14,
                 color: Colors.DEFAULT_GREEN,
               }}>
               đ {SumMustPay}.000 VND

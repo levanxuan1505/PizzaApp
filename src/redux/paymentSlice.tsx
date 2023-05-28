@@ -5,12 +5,14 @@ export const paymentSlice = createSlice({
     {
       name: 'Chọn phương thức thanh toán',
       image: require('../assets/payment/default.jpeg'),
+      title: 'Dễ dàng thanh toán với nhiều lựa chọn',
     },
   ],
   reducers: {
     choosePayment: (state, action) => {
       state[0].name = action.payload.name;
       state[0].image = action.payload.image;
+      state[0].title = action.payload.title;
     },
   },
 });

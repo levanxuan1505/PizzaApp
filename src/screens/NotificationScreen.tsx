@@ -23,6 +23,7 @@ import styles from '@css/NotificationScreenStyle';
 
 import {useSelector, useDispatch} from 'react-redux';
 import {deleteNotification} from '../redux/notificationSlice';
+import {Display} from '@utils';
 //
 export default function NotificationScreen({navigation}) {
   // redux
@@ -108,7 +109,12 @@ export default function NotificationScreen({navigation}) {
   const Notification = () => {
     return !userName[0].userName ? (
       <View style={{alignItems: 'center'}}>
-        <Text style={{fontSize: 18, color: 'red', fontWeight: '700'}}>
+        <Text
+          style={{
+            fontSize: Display.setWidth(4),
+            color: 'red',
+            fontWeight: '700',
+          }}>
           Đăng nhập để xem thông báo
         </Text>
       </View>
@@ -209,7 +215,7 @@ export default function NotificationScreen({navigation}) {
         />
         <Text
           style={{
-            fontSize: 20,
+            fontSize: Display.setWidth(6),
             fontWeight: 'bold',
             color: Colors.DEFAULT_GREEN,
           }}>

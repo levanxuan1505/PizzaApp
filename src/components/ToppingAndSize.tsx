@@ -34,11 +34,11 @@ const ToppingAndSize = ({navigation, food, setVisible}) => {
   const toggleSwitch1 = () => setIsEnabled1(previousState => !previousState);
   const toggleSwitch2 = () => setIsEnabled2(previousState => !previousState);
   const toggleSwitch3 = () => setIsEnabled3(previousState => !previousState);
-  dispatch(
-    chooseMoreOption({
-      option: totalOption,
-    }),
-  );
+  // dispatch(
+  //   chooseMoreOption({
+  //     option: totalOption,
+  //   }),
+  // );
   const CartCard = ({item}: any) => {
     return (
       <TouchableHighlight

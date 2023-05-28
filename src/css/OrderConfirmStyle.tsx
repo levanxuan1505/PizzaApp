@@ -1,8 +1,9 @@
 import {StyleSheet, Platform} from 'react-native';
 import {Colors} from '@constants';
+import {Display} from '@utils';
 const styles = StyleSheet.create({
   header: {
-    marginTop: Platform.OS === 'ios' ? 0 : 20,
+    marginTop: Platform.OS === 'ios' ? -10 : 20,
     paddingVertical: 20,
     flexDirection: 'row',
     position: 'relative',
@@ -15,8 +16,8 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     backgroundColor: Colors.DEFAULT_WHITE,
     marginVertical: 10,
-    marginHorizontal: 20,
-    paddingHorizontal: 10,
+    marginHorizontal: Display.setWidth(3),
+    paddingHorizontal: Display.setWidth(1),
     flexDirection: 'column',
     justifyContent: 'space-around',
     shadowColor: '#000',
@@ -34,7 +35,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     backgroundColor: Colors.DEFAULT_WHITE,
     marginVertical: 10,
-    marginHorizontal: 20,
+    marginHorizontal: Display.setWidth(3),
     paddingHorizontal: 10,
     flexDirection: 'column',
     justifyContent: 'space-around',

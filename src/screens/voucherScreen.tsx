@@ -17,6 +17,7 @@ import {Colors, voucher} from '@constants';
 import styles from '@css/VoucherScreenStyle';
 import {useDispatch, useSelector} from 'react-redux';
 import {addVoucher} from '../redux/voucherSlice';
+import {Display} from '@utils';
 export default function VoucherScreen({navigation}: any) {
   // redux
   const dispatch = useDispatch();
@@ -57,12 +58,16 @@ export default function VoucherScreen({navigation}: any) {
             }}>
             <Image
               source={item.image}
-              style={{height: 60, width: 100, borderRadius: 5}}
+              style={{
+                height: Display.setWidth(14),
+                width: Display.setWidth(19),
+                borderRadius: 5,
+              }}
             />
             <View style={{justifyContent: 'center'}}>
               <Text
                 style={{
-                  fontSize: Platform.OS === 'ios' ? 18 : 14,
+                  fontSize: Platform.OS === 'ios' ? Display.setWidth(4) : 14,
                   fontWeight: '600',
                   paddingLeft: 10,
                 }}>
@@ -98,10 +103,9 @@ export default function VoucherScreen({navigation}: any) {
         />
         <Text
           style={{
-            fontSize: 20,
+            fontSize: Display.setWidth(5),
             fontWeight: 'bold',
             color: Colors.DEFAULT_GREEN,
-            paddingHorizontal: 100,
           }}>
           Kho Voucher
         </Text>
@@ -115,39 +119,7 @@ export default function VoucherScreen({navigation}: any) {
               contentContainerStyle={{paddingBottom: 80}}
               data={voucher}
               renderItem={({item}) => <CartCard item={item} />}
-              // ListFooterComponentStyle={{
-              //   paddingHorizontal: 20,
-              //   marginTop: 20,
-              //   marginBottom: -200,
-              // }}
             />
-            {/* <TouchableOpacity
-              style={{marginBottom: 200}}
-              onPress={navigation.goBack}>
-              <View
-                style={[
-                  styles.addBtn,
-                  {backgroundColor: Colors.DEFAULT_GREEN},
-                ]}>
-                <View
-                  style={{
-                    flexDirection: 'row',
-                    alignItems: 'center',
-                    paddingLeft: 9,
-                  }}>
-                  <Text
-                    style={{
-                      fontSize: 28,
-                      fontWeight: '600',
-                      color: Colors.DEFAULT_WHITE,
-                      paddingHorizontal: 5,
-                    }}>
-                    Chọn Voucher
-                  </Text>
-                </View>
-              </View>
-            </TouchableOpacity> */}
-            {/*  */}
             <View style={{marginVertical: 70}}></View>
           </ScrollView>
         ) : (
@@ -159,32 +131,7 @@ export default function VoucherScreen({navigation}: any) {
               renderItem={({item}) => <CartCard item={item} />}
               ListFooterComponentStyle={{paddingHorizontal: 20, marginTop: 20}}
             />
-            <TouchableOpacity
-              style={{marginBottom: 200}}
-              onPress={navigation.goBack}>
-              <View
-                style={[
-                  styles.addBtn,
-                  {backgroundColor: Colors.DEFAULT_GREEN},
-                ]}>
-                <View
-                  style={{
-                    flexDirection: 'row',
-                    alignItems: 'center',
-                    paddingLeft: 9,
-                  }}>
-                  <Text
-                    style={{
-                      fontSize: 28,
-                      fontWeight: '600',
-                      color: Colors.DEFAULT_WHITE,
-                      paddingHorizontal: 5,
-                    }}>
-                    Chọn Voucher
-                  </Text>
-                </View>
-              </View>
-            </TouchableOpacity>
+            <View style={{marginBottom: 200}}></View>
           </ScrollView>
         )}
       </View>

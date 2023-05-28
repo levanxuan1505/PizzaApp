@@ -155,9 +155,11 @@ const ConditionToAdd = ({navigation, food}) => {
           <View style={[styles.Header2, {top: -10, paddingBottom: 10}]}>
             <Text
               style={{
-                fontSize: 19,
+                fontSize: Display.setWidth(5),
+                paddingTop: Display.setWidth(1),
                 fontWeight: '500',
                 color: Colors.DEFAULT_GREEN,
+                textAlign: 'center',
               }}>
               Bạn cần đăng nhập để thêm món ăn
             </Text>
@@ -222,7 +224,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   modalContainer: {
-    width: Platform.OS === 'ios' ? '80%' : '90%',
+    width: Platform.OS === 'ios' ? '90%' : '90%',
     height: 140,
     backgroundColor: 'white',
     borderRadius: 15,

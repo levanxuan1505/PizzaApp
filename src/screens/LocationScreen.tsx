@@ -17,6 +17,7 @@ import {Colors, locations} from '@constants';
 import {useDispatch, useSelector} from 'react-redux';
 //
 import {changeLocation} from '../redux/locationSlice';
+import {Display} from '@utils';
 
 export default function LocationScreen({navigation}: any) {
   // redux
@@ -61,19 +62,23 @@ export default function LocationScreen({navigation}: any) {
               <Text
                 style={{
                   fontWeight: '500',
-                  fontSize: 15,
+                  fontSize: Display.setWidth(4),
                   color: Colors.DEFAULT_GREEN,
                 }}>
                 {item.name}
               </Text>
-              <Text style={{fontSize: 13, color: Colors.DARK_FOUR}}>
+              <Text
+                style={{
+                  fontSize: Display.setWidth(3.5),
+                  color: Colors.DARK_FOUR,
+                }}>
                 | {item.phone}
               </Text>
             </View>
             <View style={{position: 'relative'}}>
               <Text
                 style={{
-                  fontSize: Platform.OS === 'ios' ? 13 : 12,
+                  fontSize: Platform.OS === 'ios' ? Display.setWidth(3.2) : 12,
                   fontWeight: '400',
                 }}>
                 {item.dress}
@@ -81,7 +86,7 @@ export default function LocationScreen({navigation}: any) {
               <Text
                 style={{
                   fontWeight: '400',
-                  fontSize: Platform.OS === 'ios' ? 13 : 12,
+                  fontSize: Platform.OS === 'ios' ? Display.setWidth(3.2) : 12,
                   marginVertical: 5,
                 }}>
                 {item.title}
@@ -89,7 +94,7 @@ export default function LocationScreen({navigation}: any) {
               <Text
                 style={{
                   color: Colors.DEFAULT_YELLOW,
-                  fontSize: Platform.OS === 'ios' ? 13 : 11,
+                  fontSize: Platform.OS === 'ios' ? Display.setWidth(3.2) : 11,
                   fontWeight: '500',
                   bottom: -11,
                   position: 'absolute',
@@ -129,15 +134,14 @@ export default function LocationScreen({navigation}: any) {
           color={Colors.DEFAULT_GREEN}
           style={{
             position: 'absolute',
-            left: 5,
+            left: 25,
           }}
         />
         <Text
           style={{
-            fontSize: Platform.OS === 'ios' ? 20 : 18,
+            fontSize: Platform.OS === 'ios' ? Display.setWidth(6) : 18,
             fontWeight: 'bold',
             color: Colors.DEFAULT_GREEN,
-            paddingHorizontal: 100,
           }}>
           Địa chỉ của Tôi
         </Text>
@@ -201,33 +205,7 @@ export default function LocationScreen({navigation}: any) {
               renderItem={({item}) => <CartCard item={item} />}
               ListFooterComponentStyle={{paddingHorizontal: 20, marginTop: 20}}
             />
-            <TouchableHighlight
-              underlayColor="transparent"
-              style={{marginBottom: 10, marginTop: 0}}
-              onPress={navigation.goBack}>
-              <View
-                style={[
-                  styles.addBtn,
-                  {backgroundColor: Colors.DEFAULT_WHITE},
-                ]}>
-                <View
-                  style={{
-                    flexDirection: 'row',
-                    alignItems: 'center',
-                    paddingLeft: 9,
-                  }}>
-                  <Text
-                    style={{
-                      fontSize: 20,
-                      fontWeight: '600',
-                      color: Colors.DEFAULT_GREEN,
-                      paddingHorizontal: 5,
-                    }}>
-                    Chọn Địa Chỉ
-                  </Text>
-                </View>
-              </View>
-            </TouchableHighlight>
+
             {/*  */}
             <TouchableHighlight
               underlayColor="transparent"
@@ -247,7 +225,7 @@ export default function LocationScreen({navigation}: any) {
                   />
                   <Text
                     style={{
-                      fontSize: 22,
+                      fontSize: Display.setWidth(4),
                       fontWeight: '500',
                       color: Colors.DEFAULT_GREEN,
                       paddingHorizontal: 5,

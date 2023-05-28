@@ -10,6 +10,14 @@ const styles = StyleSheet.create({
     // justifyContent: 'center',
     alignItems: 'center',
   },
+  headerChat: {
+    marginTop: Platform.OS === 'ios' ? 0 : 25,
+    paddingVertical: 10,
+    flexDirection: 'row',
+    position: 'relative',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
   contact: {
     flexDirection: 'row',
     marginBottom: 4,

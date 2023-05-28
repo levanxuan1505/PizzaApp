@@ -3,13 +3,13 @@ import {Colors} from '@constants';
 
 const styles = StyleSheet.create({
   header: {
-    marginTop: Platform.OS === 'ios' ? 0 : 20,
+    marginTop: Platform.OS === 'ios' ? -10 : 20,
     position: 'relative',
     paddingVertical: 20,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
-    marginHorizontal: 20,
+    // marginHorizontal: 20,
   },
   cartCard: {
     height: 102,
