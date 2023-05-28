@@ -9,7 +9,7 @@ import {
   ScrollView,
   SafeAreaView,
 } from 'react-native';
-
+import {Display} from '@utils';
 import {Colors} from '@constants';
 import {Button, Loader, Input} from '@components';
 
@@ -92,11 +92,15 @@ const RegisterScreen = ({navigation}: any) => {
     <SafeAreaView style={{backgroundColor: Colors.DEFAULT_WHITE, flex: 1}}>
       <Loader visible={loading} />
       <ScrollView
-        contentContainerStyle={{paddingTop: 50, paddingHorizontal: 20}}>
+        contentContainerStyle={{
+          paddingTop: Display.setWidth(5),
+          paddingHorizontal: 20,
+          paddingBottom: Display.setWidth(20),
+        }}>
         <Text
           style={{
             color: Colors.DEFAULT_GREEN,
-            fontSize: 40,
+            fontSize: Display.setWidth(8),
             fontWeight: 'bold',
           }}>
           Đăng ký
@@ -105,11 +109,11 @@ const RegisterScreen = ({navigation}: any) => {
           style={{
             color: Colors.DEFAULT_GREEN,
             fontSize: 18,
-            marginVertical: 10,
+            marginVertical: Display.setWidth(1),
           }}>
           Hãy nhập thông tin để tiến hành đăng ký
         </Text>
-        <View style={{marginVertical: 20}}>
+        <View style={{marginVertical: Display.setWidth(1)}}>
           <Input
             onChangeText={(text: string) => handleOnchange(text, 'email')}
             onFocus={() => handleError(null, 'email')}

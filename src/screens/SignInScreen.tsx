@@ -12,6 +12,7 @@ import {
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {useDispatch} from 'react-redux';
 import {Colors} from '@constants';
+import {Display} from '@utils';
 import {Button, Input, Loader} from '@components';
 import {changeName} from '../redux/userSlice';
 export interface ISignUpData {
@@ -51,7 +52,7 @@ const SignInScreen = ({navigation}: any) => {
           inputs.password === userData?.password
         ) {
           dispatch(changeName({userName: userData.fullname}));
-          navigation.navigate('BottomHome');
+          navigation.replace('BottomHome');
           AsyncStorage.setItem(
             'userData',
             JSON.stringify({...userData, loggedIn: true}),
@@ -76,11 +77,11 @@ const SignInScreen = ({navigation}: any) => {
     <SafeAreaView style={{backgroundColor: Colors.DEFAULT_WHITE, flex: 1}}>
       <StatusBar barStyle="dark-content" />
       <Loader visible={loading} />
-      <View style={{paddingTop: 50, paddingHorizontal: 20}}>
+      <View style={{paddingTop: Display.setWidth(5), paddingHorizontal: 20}}>
         <Text
           style={{
             color: Colors.DEFAULT_GREEN,
-            fontSize: 40,
+            fontSize: Display.setWidth(8),
             fontWeight: 'bold',
           }}>
           Đăng nhập
@@ -89,11 +90,11 @@ const SignInScreen = ({navigation}: any) => {
           style={{
             color: Colors.DEFAULT_GREEN,
             fontSize: 18,
-            marginVertical: 10,
+            marginVertical: Display.setWidth(1),
           }}>
           Nhập thông tin để đăng nhập
         </Text>
-        <View style={{marginVertical: 20}}>
+        <View style={{marginVertical: Display.setWidth(1)}}>
           <Input
             onChangeText={(text: string) => handleOnchange(text, 'email')}
             onFocus={() => handleError(null, 'email')}

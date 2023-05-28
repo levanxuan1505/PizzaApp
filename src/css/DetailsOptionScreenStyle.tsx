@@ -37,9 +37,8 @@ const styles = StyleSheet.create({
   total: {
     backgroundColor: Colors.DEFAULT_GREEN,
     marginBottom: Platform.OS === 'ios' ? -10 : 0,
-    paddingHorizontal: 20,
     justifyContent: 'center',
-    alignItems: 'center',
+    paddingHorizontal: 20,
     paddingVertical: Platform.OS === 'ios' ? 25 : 15,
   },
   modalBackGround: {

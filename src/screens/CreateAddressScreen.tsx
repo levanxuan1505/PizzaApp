@@ -18,7 +18,7 @@ import styles from '@css/CreateAddressScreenStyle';
 import {TextInput} from 'react-native-gesture-handler';
 
 const CreateAddressScreen = ({navigation}: any) => {
-  const [collection, setCollection] = useState(false);
+  const [collection, setCollection] = useState(0);
   const [text, onChangeText] = useState('');
   const [number, onChangeNumber] = useState('');
   const [address, setAddDress] = useState('');
@@ -204,16 +204,17 @@ const CreateAddressScreen = ({navigation}: any) => {
               </Text>
               <TouchableOpacity
                 onPress={() => {
-                  setCollection(!collection);
+                  setCollection(0);
                 }}>
                 <Text
                   style={{
                     borderRadius: 5,
-                    borderWidth: !collection ? 2 : 0,
+                    borderWidth: collection === 0 ? 2 : 0,
                     borderColor: Colors.DEFAULT_YELLOW,
-                    backgroundColor: !collection
-                      ? Colors.DEFAULT_WHITE
-                      : Colors.DEFAULT_GREY,
+                    backgroundColor:
+                      collection === 0
+                        ? Colors.DEFAULT_WHITE
+                        : Colors.DEFAULT_GREY,
                     left: 30,
                     padding: 5,
                     color: Colors.DEFAULT_GREEN,
@@ -224,19 +225,20 @@ const CreateAddressScreen = ({navigation}: any) => {
               </TouchableOpacity>
               <TouchableOpacity
                 onPress={() => {
-                  setCollection(!collection);
+                  setCollection(1);
                 }}>
                 <Text
                   style={{
                     borderRadius: 5,
-                    borderWidth: collection ? 2 : 0,
+                    borderWidth: collection === 1 ? 2 : 0,
                     borderColor: Colors.DEFAULT_YELLOW,
                     color: Colors.DEFAULT_GREEN,
                     fontSize: 16,
                     padding: 5,
-                    backgroundColor: collection
-                      ? Colors.DEFAULT_WHITE
-                      : Colors.DEFAULT_GREY,
+                    backgroundColor:
+                      collection === 1
+                        ? Colors.DEFAULT_WHITE
+                        : Colors.DEFAULT_GREY,
                   }}>
                   Văn phòng
                 </Text>

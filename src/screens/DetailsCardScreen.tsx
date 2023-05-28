@@ -18,6 +18,9 @@ import Icons from 'react-native-vector-icons/Ionicons';
 import {Colors} from '@constants';
 import styles from '@css/DetailsCardScreenStyle';
 import {SecondaryButton, ConditionToAdd} from '@components';
+import {deleteBookmark} from '../redux/bookmarkSlice';
+import {Display} from '@utils';
+
 // redux import
 import {useDispatch, useSelector} from 'react-redux';
 import {addToCart} from '../redux/cartSlice';
@@ -30,6 +33,8 @@ const DetailsCardScreen = ({navigation, route}: any) => {
   const item = route.params;
   const [visible, setVisible] = useState(false);
   const [visible1, setVisible1] = useState(false);
+  const [isHeart, setIsHeart] = useState(true);
+
   const user = useSelector((state: any) => state.user);
   // redux
   const dispatch = useDispatch();
@@ -108,18 +113,32 @@ const DetailsCardScreen = ({navigation, route}: any) => {
     return user[0].userName ? (
       <TouchableOpacity
         onPress={() => {
-          dispatch(
-            addToBookmark({
-              name: item.name,
-              ingredients: item.ingredients,
-              price: item.price,
-              image: item.image,
-              title: item.title,
-            }),
-          );
+          isHeart
+            ? dispatch(
+                addToBookmark({
+                  id: item.id,
+                  name: item.name,
+                  ingredients: item.ingredients,
+                  price: item.price,
+                  image: item.image,
+                  title: item.title,
+                  toping1: item.toping1,
+                  toping2: item.toping2,
+                  toping3: item.toping3,
+                  value1: item.value1,
+                  value2: item.value2,
+                  value3: item.value3,
+                }),
+              )
+            : dispatch(deleteBookmark({id: item.id})),
+            setIsHeart(!isHeart);
         }}>
         <View style={styles.iconContainer}>
-          <Icons name="heart" color={Colors.DEFAULT_GREEN} size={25} />
+          <Icons
+            name={isHeart ? 'heart' : 'heart-dislike'}
+            color={Colors.DEFAULT_GREEN}
+            size={25}
+          />
         </View>
       </TouchableOpacity>
     ) : (
@@ -136,7 +155,7 @@ const DetailsCardScreen = ({navigation, route}: any) => {
   const HandleAction1 = () => {
     return user[0].userName ? (
       <View style={{position: 'relative'}}>
-        <SecondaryButton
+        {/* <SecondaryButton
           title="Thêm vào giỏ hàng"
           onPress={() => {
             dispatch(
@@ -150,16 +169,30 @@ const DetailsCardScreen = ({navigation, route}: any) => {
               }),
             );
           }}
-        />
+        /> */}
         <View
           style={{
-            position: 'absolute',
-            backgroundColor: Colors.DEFAULT_GREEN,
-            bottom: 14,
-            right: 280,
+            // position: 'absolute',
+            flexDirection: 'row',
+            justifyContent: 'center',
+            alignItems: 'center',
             borderRadius: 50,
+            paddingHorizontal: Display.setWidth(10),
+            paddingVertical: Display.setWidth(4),
+            backgroundColor: Colors.DEFAULT_WHITE,
           }}>
-          <ConditionToAdd navigation={navigation} food={item} />
+          <Text
+            style={{
+              color: Colors.DEFAULT_GREEN,
+              fontSize: Display.setWidth(5),
+              paddingHorizontal: 5,
+              fontWeight: '600',
+            }}>
+            Thêm vào giỏ hàng
+          </Text>
+          <View style={{backgroundColor: 'red', borderRadius: 20}}>
+            <ConditionToAdd navigation={navigation} food={item} />
+          </View>
         </View>
       </View>
     ) : (
@@ -249,7 +282,7 @@ const DetailsCardScreen = ({navigation, route}: any) => {
             style={[styles.Header, {borderBottomColor: Colors.DEFAULT_WHITE}]}>
             <Text
               style={{
-                fontSize: 24,
+                fontSize: Display.setWidth(6),
                 fontWeight: '600',
                 color: Colors.DEFAULT_RED,
                 paddingTop: 10,
@@ -257,14 +290,15 @@ const DetailsCardScreen = ({navigation, route}: any) => {
               Cảnh báo
             </Text>
           </View>
-          <View style={[styles.Header, {top: -10, paddingBottom: 10}]}>
+          <View style={[styles.Header, {top: -2, paddingBottom: 10}]}>
             <Text
               style={{
-                fontSize: 19,
+                fontSize: Display.setWidth(5),
                 fontWeight: '500',
                 color: Colors.DEFAULT_GREEN,
+                textAlign: 'center',
               }}>
-              Bạn cần đăng nhập để thêm món ăn
+              Đăng nhập để thêm món ăn
             </Text>
           </View>
           <View
@@ -281,7 +315,7 @@ const DetailsCardScreen = ({navigation, route}: any) => {
               <Text
                 style={{
                   color: Colors.DEFAULT_GREEN,
-                  fontSize: 20,
+                  fontSize: Display.setWidth(6),
                   fontWeight: '600',
                 }}>
                 Đăng nhập
@@ -291,7 +325,7 @@ const DetailsCardScreen = ({navigation, route}: any) => {
               <Text
                 style={{
                   color: Colors.DEFAULT_RED,
-                  fontSize: 20,
+                  fontSize: Display.setWidth(6),
                   fontWeight: '600',
                 }}>
                 Huỷ bỏ
@@ -311,7 +345,7 @@ const DetailsCardScreen = ({navigation, route}: any) => {
         />
         <Text
           style={{
-            fontSize: 22,
+            fontSize: Display.setWidth(6),
             fontWeight: 'bold',
             color: Colors.DEFAULT_GREEN,
           }}>
@@ -325,11 +359,15 @@ const DetailsCardScreen = ({navigation, route}: any) => {
           style={{
             justifyContent: 'center',
             alignItems: 'center',
-            height: 280,
+            height: Display.setHeight(35),
           }}>
           <Image
             source={item.image}
-            style={{height: 250, width: 350, borderRadius: 20}}
+            style={{
+              height: Display.setHeight(28),
+              width: Display.setWidth(85),
+              borderRadius: 20,
+            }}
           />
         </View>
         <View style={styles.details}>
@@ -342,7 +380,8 @@ const DetailsCardScreen = ({navigation, route}: any) => {
             }}>
             <Text
               style={{
-                fontSize: Platform.OS === 'ios' ? 25 : 18,
+                fontSize:
+                  Platform.OS === 'ios' ? Display.setWidth(12) - 23 : 18,
                 fontWeight: 'bold',
                 color: Colors.DEFAULT_WHITE,
               }}>
@@ -351,7 +390,8 @@ const DetailsCardScreen = ({navigation, route}: any) => {
             <Text
               style={{
                 position: 'absolute',
-                fontSize: Platform.OS === 'ios' ? 25 : 18,
+                fontSize:
+                  Platform.OS === 'ios' ? Display.setWidth(12) - 21 : 18,
                 color: Colors.DEFAULT_WHITE,
                 fontWeight: '600',
                 right: 65,

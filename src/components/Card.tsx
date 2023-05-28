@@ -2,34 +2,20 @@
 import {
   Text,
   View,
-  Modal,
   Image,
-  Animated,
-  Platform,
   LogBox,
-  FlatList,
   StyleSheet,
   Dimensions,
-  StatusBar,
-  SafeAreaView,
-  RefreshControl,
+  Platform,
   TouchableHighlight,
 } from 'react-native';
+import {Display} from '@utils';
 import {Colors} from '@constants';
 const {width} = Dimensions.get('screen');
 const cardWidth = width / 2 - 20;
 LogBox.ignoreLogs(['Sending...']);
-import React, {useState} from 'react';
-import Icon from 'react-native-vector-icons/MaterialIcons';
-import {TextInput} from 'react-native-gesture-handler';
-import Icons from 'react-native-vector-icons/Ionicons';
-// import {Colors} from '@constants';
-// import styles from '@css/HomeScreenStyle';
-import {foodList} from '@constants';
-import {ListCategories, ConditionToAdd, Header} from '@components';
-// redux import
-import {useSelector} from 'react-redux';
-//
+import React, {memo} from 'react';
+import {ConditionToAdd} from '@components';
 const Card = ({navigation, food}) => {
   return (
     <TouchableHighlight
@@ -40,32 +26,44 @@ const Card = ({navigation, food}) => {
         <View style={{alignItems: 'center', top: -30}}>
           <Image
             source={food.image}
-            style={{height: 130, width: 130, borderRadius: 70}}
+            style={{
+              height: Display.setWidth(30),
+              width: Display.setWidth(30),
+              borderRadius: 70,
+              borderWidth: 3,
+              borderColor: Colors.DEFAULT_GREEN,
+            }}
           />
         </View>
-        <View style={{marginHorizontal: 15, top: -10}}>
+        <View style={{marginHorizontal: Display.setHeight(3) / 2.2, top: -10}}>
           <Text
             style={{
-              fontSize: Platform.OS === 'ios' ? 17.4 : 13,
+              fontSize: Platform.OS === 'ios' ? Display.setWidth(7) - 12.5 : 13,
               fontWeight: Platform.OS === 'ios' ? 'bold' : '800',
               color: Colors.DEFAULT_GREEN,
             }}>
             {food.name}
           </Text>
           <Text
-            style={{fontSize: 15, color: Colors.DEFAULT_GREY, marginTop: 2}}>
+            style={{
+              fontSize: Display.setHeight(1.7),
+              color: Colors.DEFAULT_GREY,
+              marginTop: 2,
+            }}>
             {food.ingredients}
           </Text>
         </View>
         <View
           style={{
-            marginTop: 10,
+            marginTop: 5,
             marginHorizontal: 20,
             flexDirection: 'row',
             justifyContent: 'space-between',
             alignItems: 'flex-start',
           }}>
-          <Text style={{fontSize: 18, fontWeight: 'bold'}}>{food.price}k</Text>
+          <Text style={{fontSize: Display.setWidth(4.5), fontWeight: 'bold'}}>
+            {food.price}k
+          </Text>
 
           <View style={styles.addToCartBtn}>
             <ConditionToAdd navigation={navigation} food={food} />
@@ -77,7 +75,8 @@ const Card = ({navigation, food}) => {
 };
 const styles = StyleSheet.create({
   card: {
-    height: 220,
+    // height: 220,
+    height: Display.setWidth(51),
     width: cardWidth,
     marginHorizontal: 10,
     marginBottom: 20,
@@ -97,14 +96,14 @@ const styles = StyleSheet.create({
   },
   addToCartBtn: {
     position: 'absolute',
-    right: -11,
-    top: -22,
-    height: 52,
-    width: 52,
+    right: -8,
+    top: -18,
+    height: Display.setWidth(11),
+    width: Display.setWidth(11),
     borderRadius: 30,
     backgroundColor: Colors.DEFAULT_GREEN,
     justifyContent: 'center',
     alignItems: 'center',
   },
 });
-export default Card;
+export default memo(Card);

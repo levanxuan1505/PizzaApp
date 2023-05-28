@@ -16,6 +16,7 @@ import {Colors} from '@constants';
 import Icons from 'react-native-vector-icons/Fontisto';
 import {useSelector, useDispatch} from 'react-redux';
 import {addOrder} from '../redux/orderSlice';
+import {Display} from '@utils';
 const DetailTotal = ({navigation}) => {
   const cartGoods = useSelector((state: any) => state.cart);
   const coin = useSelector((state: any) => state.coin);
@@ -78,7 +79,7 @@ const DetailTotal = ({navigation}) => {
             style={[styles.Header, {borderBottomColor: Colors.DEFAULT_WHITE}]}>
             <Text
               style={{
-                fontSize: 24,
+                fontSize: Display.setWidth(6),
                 fontWeight: '600',
                 color: Colors.DEFAULT_GREEN,
                 paddingTop: 10,
@@ -90,9 +91,10 @@ const DetailTotal = ({navigation}) => {
           <View style={[styles.Header, {top: -10, paddingBottom: 10}]}>
             <Text
               style={{
-                fontSize: Platform.OS === 'ios' ? 19 : 16,
+                fontSize: Platform.OS === 'ios' ? Display.setWidth(5) - 2 : 20,
                 fontWeight: Platform.OS === 'ios' ? '500' : '600',
                 color: Colors.DEFAULT_GREEN,
+                textAlign: 'center',
               }}>
               Xác nhận order những món ăn này
             </Text>
@@ -113,7 +115,7 @@ const DetailTotal = ({navigation}) => {
               <Text
                 style={{
                   color: Colors.DEFAULT_GREEN,
-                  fontSize: 20,
+                  fontSize: Display.setWidth(6),
                   fontWeight: '600',
                 }}>
                 Xác nhận
@@ -123,7 +125,7 @@ const DetailTotal = ({navigation}) => {
               <Text
                 style={{
                   color: Colors.DEFAULT_RED,
-                  fontSize: 20,
+                  fontSize: Display.setWidth(6),
                   fontWeight: '600',
                 }}>
                 Huỷ bỏ
@@ -135,33 +137,49 @@ const DetailTotal = ({navigation}) => {
       {/* End modal */}
       <Icons
         name="opencart"
-        size={44}
+        size={Display.setWidth(8)}
         color={Colors.DEFAULT_GREEN}
         style={{
           position: 'absolute',
-          left: 35,
-          top: 10,
+          left: Display.setWidth(4),
+          top: Display.setWidth(5),
         }}
       />
-      <View>
+      <View
+        style={{
+          height: Display.setWidth(18),
+          justifyContent: 'center',
+          alignItems: 'center',
+        }}>
         <Text
           style={{
             color: Colors.DEFAULT_GREEN,
-            fontSize: Platform.OS === 'ios' ? 20 : 14,
+            fontSize: Platform.OS === 'ios' ? Display.setWidth(7) - 10 : 14,
             paddingRight: 10,
           }}>
           Tổng thanh toán
         </Text>
-        <Text style={{color: Colors.DEFAULT_GREEN, fontSize: 18}}>
+        <Text
+          style={{
+            color: Colors.DEFAULT_GREEN,
+            fontSize: Display.setWidth(6) - 6,
+          }}>
           đ{sum(cartGoods) + (50 - voucher[0].price - coin[0].price)}.000
         </Text>
       </View>
-      <TouchableOpacity onPress={() => setVisible(true)}>
+      <TouchableOpacity
+        style={{
+          height: Display.setWidth(18),
+          justifyContent: 'center',
+          alignItems: 'center',
+        }}
+        onPress={() => setVisible(true)}>
         <Text
           style={{
-            fontSize: 22,
+            fontSize: Display.setWidth(7),
             backgroundColor: Colors.DEFAULT_GREEN,
-            padding: 18,
+            padding: Display.setWidth(8) - 16,
+            height: Display.setWidth(18),
             fontWeight: '800',
             color: Colors.DEFAULT_WHITE,
           }}>
@@ -173,15 +191,16 @@ const DetailTotal = ({navigation}) => {
 };
 const styles = StyleSheet.create({
   total: {
+    height: 112,
     backgroundColor: Colors.DEFAULT_WHITE,
     flexDirection: 'row',
-    paddingBottom: Platform.OS === 'ios' ? 55 : 87,
+    // paddingBottom: Platform.OS === 'ios' ? 55 : 87,
     position: 'absolute',
     justifyContent: 'flex-end',
-    alignItems: 'center',
+    alignItems: 'flex-start',
     left: 0,
     right: 0,
-    bottom: Platform.OS === 'ios' ? 0 : 10,
+    bottom: Platform.OS === 'ios' ? Display.setWidth(3) : 55,
     shadowColor: '#000',
     shadowOffset: {
       width: 0,
@@ -200,7 +219,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   modalContainer: {
-    width: Platform.OS === 'ios' ? '80%' : '90%',
+    width: Platform.OS === 'ios' ? '89%' : '90%',
     height: 140,
     backgroundColor: 'white',
     borderRadius: 15,

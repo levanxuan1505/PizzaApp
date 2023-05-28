@@ -3,7 +3,7 @@ import {Colors} from '@constants';
 const styles = StyleSheet.create({
   header: {
     marginTop: Platform.OS === 'ios' ? 0 : 20,
-    paddingVertical: 20,
+    paddingVertical: 10,
     flexDirection: 'row',
     position: 'relative',
     alignItems: 'center',

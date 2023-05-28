@@ -1,3 +1,4 @@
+import Card from './Card';
 import Input from './Input';
 import Header from './Header';
 import Loader from './Loader';
@@ -6,11 +7,11 @@ import Voucher from './Voucher';
 import Payment from './Payment';
 import Location from './Location';
 import Separator from './Separator';
+import HistoryBuy from './HistoryBuy';
 import DetailTotal from './DetailTotal';
 import WelcomeCard from './WelcomeCard';
 import ToggleButton from './ToggleButton';
 import TotalCheckout from './TotalCheckout';
-import Card from './Card';
 import ToppingAndSize from './ToppingAndSize';
 import ListCategories from './ListCategories';
 import ConditionToAdd from './ConditionToAdd';
@@ -25,6 +26,7 @@ export {
   Payment,
   Location,
   Separator,
+  HistoryBuy,
   DetailTotal,
   WelcomeCard,
   ToggleButton,

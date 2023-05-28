@@ -62,9 +62,9 @@ const WelcomeScreen = ({navigation}: any) => {
           renderItem={({item}) => <WelcomeCard {...item} />}
         />
       </View>
-      <Separator height={Display.setHeight(8)} width={undefined} />
+      <Separator height={Display.setHeight(6)} width={undefined} />
       <Pagination index={welcomeListIndex} />
-      <Separator height={Display.setHeight(8)} width={undefined} />
+      <Separator height={Display.setHeight(6)} width={undefined} />
       {welcomeListIndex === 2 ? (
         <TouchableOpacity
           style={styles.gettingStartedButton}

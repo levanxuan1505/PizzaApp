@@ -30,7 +30,7 @@ const styles = StyleSheet.create({
   },
   titleText: {
     marginTop: 30,
-    fontSize: 28,
+    fontSize: Platform.OS === 'ios' ? Display.setHeight(3.2) : 28,
     fontWeight: '600',
     color: '#037E3F',
     textShadowColor: 'rgba(0, 0, 0, 0.5)',
@@ -39,7 +39,7 @@ const styles = StyleSheet.create({
   },
   contentText: {
     marginTop: 10,
-    fontSize: Platform.OS === 'ios' ? 22 : 20,
+    fontSize: Platform.OS === 'ios' ? Display.setHeight(2.5) : 20,
     textAlign: 'center',
     marginHorizontal: 20,
     color: '#037E3F',

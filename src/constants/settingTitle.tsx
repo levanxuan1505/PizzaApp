@@ -13,7 +13,7 @@ const setting3 = [
   {id: 1, title: 'Trung tâm hỗ trợ'},
   {id: 2, title: 'Tiêu chuẩn cộng đồng'},
   {id: 3, title: 'Điều khoản Pizza'},
-  {id: 4, title: 'Hài lòng với Pizza? Hãy đánh giá ngay!'},
+  {id: 4, title: 'Hài lòng với Pizza? Đánh giá ngay!'},
   {id: 5, title: 'Giới thiệu'},
   {id: 6, title: 'Yêu cầu huỷ tài khoản'},
 ];

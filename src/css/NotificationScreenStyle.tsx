@@ -38,7 +38,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   modalContainer: {
-    width: '65%',
+    width: '85%',
     height: 148,
     backgroundColor: 'white',
     borderRadius: 15,

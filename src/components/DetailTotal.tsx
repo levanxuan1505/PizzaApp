@@ -5,6 +5,7 @@ import React, {memo} from 'react';
 import {Colors} from '@constants';
 import Icons from 'react-native-vector-icons/Fontisto';
 import {useSelector} from 'react-redux';
+import {Display} from '@utils';
 const DetailTotal = () => {
   const cartGoods = useSelector((state: any) => state.cart);
   const coin = useSelector((state: any) => state.coin);
@@ -29,7 +30,7 @@ const DetailTotal = () => {
           style={{
             color: Colors.DEFAULT_GREEN,
             paddingLeft: 15,
-            fontSize: 20,
+            fontSize: Display.setWidth(5),
           }}>
           Chi tiết thanh toán
         </Text>
@@ -42,10 +43,16 @@ const DetailTotal = () => {
             flexDirection: 'row',
             justifyContent: 'space-between',
           }}>
-          <Text style={{fontSize: Platform.OS === 'ios' ? 18 : 16}}>
+          <Text
+            style={{
+              fontSize: Platform.OS === 'ios' ? Display.setWidth(4.5) : 16,
+            }}>
             Tổng tiền hàng
           </Text>
-          <Text style={{fontSize: Platform.OS === 'ios' ? 17 : 16}}>
+          <Text
+            style={{
+              fontSize: Platform.OS === 'ios' ? Display.setWidth(4.5) : 16,
+            }}>
             đ{sum(cartGoods)}.000
           </Text>
         </View>
@@ -55,10 +62,16 @@ const DetailTotal = () => {
             flexDirection: 'row',
             justifyContent: 'space-between',
           }}>
-          <Text style={{fontSize: Platform.OS === 'ios' ? 18 : 16}}>
-            Tổng tiền phí vận chuyển
+          <Text
+            style={{
+              fontSize: Platform.OS === 'ios' ? Display.setWidth(4.5) : 16,
+            }}>
+            Tiền phí vận chuyển
           </Text>
-          <Text style={{fontSize: Platform.OS === 'ios' ? 17 : 16}}>
+          <Text
+            style={{
+              fontSize: Platform.OS === 'ios' ? Display.setWidth(4.5) : 16,
+            }}>
             50.000
           </Text>
         </View>
@@ -68,10 +81,16 @@ const DetailTotal = () => {
             flexDirection: 'row',
             justifyContent: 'space-between',
           }}>
-          <Text style={{fontSize: Platform.OS === 'ios' ? 18 : 16}}>
+          <Text
+            style={{
+              fontSize: Platform.OS === 'ios' ? Display.setWidth(4.5) : 16,
+            }}>
             Voucher vận chuyển
           </Text>
-          <Text style={{fontSize: Platform.OS === 'ios' ? 17 : 16}}>
+          <Text
+            style={{
+              fontSize: Platform.OS === 'ios' ? Display.setWidth(4.5) : 16,
+            }}>
             -{voucher[0].price}.000
           </Text>
         </View>
@@ -81,10 +100,16 @@ const DetailTotal = () => {
             flexDirection: 'row',
             justifyContent: 'space-between',
           }}>
-          <Text style={{fontSize: Platform.OS === 'ios' ? 18 : 16}}>
+          <Text
+            style={{
+              fontSize: Platform.OS === 'ios' ? Display.setWidth(4.5) : 16,
+            }}>
             Triết khấu Xu
           </Text>
-          <Text style={{fontSize: Platform.OS === 'ios' ? 17 : 16}}>
+          <Text
+            style={{
+              fontSize: Platform.OS === 'ios' ? Display.setWidth(4.5) : 16,
+            }}>
             {coin[0].price === 4 ? `-${coin[0].price}.000` : 0}
           </Text>
         </View>
@@ -96,14 +121,14 @@ const DetailTotal = () => {
           }}>
           <Text
             style={{
-              fontSize: Platform.OS === 'ios' ? 20 : 18,
+              fontSize: Platform.OS === 'ios' ? Display.setWidth(5) : 18,
               color: Colors.DEFAULT_GREEN,
             }}>
             Tổng thanh toán
           </Text>
           <Text
             style={{
-              fontSize: Platform.OS === 'ios' ? 19 : 17,
+              fontSize: Platform.OS === 'ios' ? Display.setWidth(5) : 17,
               color: Colors.DEFAULT_GREEN,
             }}>
             {sum(cartGoods) + (50 - voucher[0].price - coin[0].price)}.000

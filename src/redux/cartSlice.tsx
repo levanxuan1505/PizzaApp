@@ -6,7 +6,7 @@ export const cartSlice = createSlice({
     addToCart: (state, action) => {
       const newToCart: never = {
         // id: action.payload.id,
-        id: nanoid(),
+        id: action.payload.id,
         name: action.payload.name,
         ingredients: action.payload.ingredients,
         price: action.payload.price,

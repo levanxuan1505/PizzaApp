@@ -8,6 +8,7 @@ import {
   Image,
   Platform,
   SafeAreaView,
+  RefreshControl,
   TouchableHighlight,
 } from 'react-native';
 import {FlatList} from 'react-native-gesture-handler';
@@ -20,6 +21,7 @@ import {PrimaryButton} from '@components';
 // redux import
 import {useSelector, useDispatch} from 'react-redux';
 import {removeCart} from '../redux/cartSlice';
+import {Display} from '@utils';
 //
 const CartScreen = ({navigation}: any) => {
   // reduxSelector
@@ -27,6 +29,13 @@ const CartScreen = ({navigation}: any) => {
   const userName = useSelector((state: any) => state.user);
   const enoughCondition = userName[0].userName && cartGoods.length;
   const dispatch = useDispatch();
+  const [refreshing, setRefreshing] = React.useState(false);
+  const onRefresh = React.useCallback(() => {
+    setRefreshing(true);
+    setTimeout(() => {
+      setRefreshing(false);
+    }, 1500);
+  }, []);
   const badge = cartGoods.length;
   function sum(cartGoods: any) {
     let sum = 0;
@@ -36,6 +45,8 @@ const CartScreen = ({navigation}: any) => {
     return sum;
   }
   const CartCard = ({item}: any) => {
+    const totalTopings =
+      (item.value1 ? 1 : 0) + (item.value2 ? 1 : 0) + (item.value3 ? 1 : 0);
     return (
       <TouchableHighlight
         underlayColor="transparent"
@@ -44,7 +55,11 @@ const CartScreen = ({navigation}: any) => {
         <View style={styles.cartCard}>
           <Image
             source={item.image}
-            style={{height: 80, width: 80, borderRadius: 40}}
+            style={{
+              height: Display.setWidth(18),
+              width: Display.setWidth(18),
+              borderRadius: 40,
+            }}
           />
           <View
             style={{
@@ -53,23 +68,46 @@ const CartScreen = ({navigation}: any) => {
               paddingVertical: 20,
               flex: 1,
             }}>
-            <Text style={{fontWeight: 'bold', fontSize: 16}}>{item.name}</Text>
-            <Text style={{fontSize: 13, color: Colors.DEFAULT_GREY}}>
+            <Text style={{fontWeight: 'bold', fontSize: Display.setWidth(3.7)}}>
+              {item.name}
+            </Text>
+            <Text
+              style={{
+                fontSize: Display.setWidth(3),
+                color: Colors.DEFAULT_GREY,
+              }}>
               {item.ingredients}
             </Text>
             <View style={{flexDirection: 'row'}}>
-              <Text style={{fontSize: 17, fontWeight: 'bold'}}>
+              <Text
+                style={{fontSize: Display.setWidth(3.5), fontWeight: 'bold'}}>
                 {item.price}k
               </Text>
-              <Text style={{fontSize: 17, fontWeight: 'bold', paddingLeft: 15}}>
+              <Text
+                style={{
+                  fontSize: Display.setWidth(3.5),
+                  fontWeight: 'bold',
+                  paddingLeft: 5,
+                }}>
                 Size: {item.size === 0 ? 'S' : item.size === 5 ? 'M' : 'L'}
+              </Text>
+              <Text
+                style={{
+                  fontSize: Display.setWidth(3.5),
+                  fontWeight: 'bold',
+                  paddingLeft: 5,
+                }}>
+                Topings: {totalTopings}
               </Text>
             </View>
           </View>
           <TouchableHighlight
             underlayColor="transparent"
             onPress={() => dispatch(removeCart({id: item.id}))}
-            style={{marginRight: 16, alignItems: 'center'}}>
+            style={{
+              marginRight: Display.setWidth(3) - 2,
+              alignItems: 'center',
+            }}>
             <Iconss name="trash" size={32} color={Colors.DEFAULT_GREEN} />
           </TouchableHighlight>
         </View>
@@ -81,22 +119,26 @@ const CartScreen = ({navigation}: any) => {
       <View style={styles.header}>
         <Icon
           name="arrow-back-ios"
-          size={28}
+          size={Display.setWidth(7)}
           onPress={navigation.goBack}
           color={Colors.DEFAULT_GREEN}
           style={{position: 'absolute', left: 8}}
         />
         <Text
           style={{
-            fontSize: 20,
+            fontSize: Display.setWidth(6),
             fontWeight: 'bold',
             color: Colors.DEFAULT_GREEN,
           }}>
           Giỏ hàng
         </Text>
-        <View style={{position: 'absolute', right: 25}}>
+        <View style={{position: 'absolute', right: Display.setWidth(3)}}>
           <View>
-            <Icon name="shopping-cart" size={32} color={Colors.DEFAULT_GREEN} />
+            <Icon
+              name="shopping-cart"
+              size={Display.setWidth(8)}
+              color={Colors.DEFAULT_GREEN}
+            />
           </View>
         </View>
       </View>
@@ -108,7 +150,7 @@ const CartScreen = ({navigation}: any) => {
         }}>
         <Text
           style={{
-            fontSize: 18,
+            fontSize: Display.setWidth(8) - 14,
             fontWeight: '700',
             color: Colors.DEFAULT_RED,
           }}>
@@ -128,13 +170,13 @@ const CartScreen = ({navigation}: any) => {
         />
         <Text
           style={{
-            fontSize: 20,
+            fontSize: Display.setWidth(5),
             fontWeight: 'bold',
             color: Colors.DEFAULT_GREEN,
           }}>
           Giỏ hàng
         </Text>
-        <View style={{position: 'absolute', right: 25}}>
+        <View style={{position: 'absolute', right: Display.setWidth(4)}}>
           <IconBadge
             MainElement={
               <View>
@@ -157,6 +199,9 @@ const CartScreen = ({navigation}: any) => {
         </View>
       </View>
       <FlatList
+        refreshControl={
+          <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
+        }
         showsVerticalScrollIndicator={false}
         contentContainerStyle={{paddingBottom: 10}}
         data={cartGoods}
@@ -167,12 +212,12 @@ const CartScreen = ({navigation}: any) => {
           style={{
             flexDirection: 'row',
             justifyContent: 'space-between',
-            marginVertical: 15,
-            marginHorizontal: 40,
+            marginVertical: Display.setWidth(3),
+            marginHorizontal: Display.setWidth(5.5),
           }}>
           <Text
             style={{
-              fontSize: 18,
+              fontSize: Display.setWidth(5),
               fontWeight: 'bold',
               color: Colors.DEFAULT_GREEN,
             }}>
@@ -180,14 +225,14 @@ const CartScreen = ({navigation}: any) => {
           </Text>
           <Text
             style={{
-              fontSize: 18,
+              fontSize: Display.setWidth(5),
               fontWeight: 'bold',
               color: Colors.DEFAULT_GREEN,
             }}>
             đ {sum(cartGoods)}.000
           </Text>
         </View>
-        <View style={{marginHorizontal: 30}}>
+        <View style={{marginHorizontal: Display.setWidth(5)}}>
           <PrimaryButton
             title="THANH TOÁN"
             onPress={() => navigation.navigate('Checkout')}

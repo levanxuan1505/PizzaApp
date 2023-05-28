@@ -1,5 +1,6 @@
 import {StyleSheet, Platform} from 'react-native';
 import {Colors} from '@constants';
+import {Display} from '@utils';
 
 const styles = StyleSheet.create({
   container: {
@@ -11,14 +12,14 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   image: {
-    marginTop: Platform.OS === 'ios' ? 300 : 180,
-    height: 240,
-    width: 376,
+    marginTop: Platform.OS === 'ios' ? Display.setHeight(20) : 180,
+    height: Display.setWidth(51),
+    width: Display.setWidth(80),
   },
   buttonHome: {
     backgroundColor: Colors.DEFAULT_GREEN,
-    marginHorizontal: 40,
-    marginVertical: 25,
+    marginHorizontal: Display.setWidth(10),
+    marginVertical: Display.setWidth(5),
     height: 70,
     borderRadius: 50,
     flexDirection: 'row',
@@ -26,18 +27,19 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   buttonSignIn: {
+    backgroundColor: Colors.DEFAULT_YELLOW,
+    marginHorizontal: Display.setWidth(10),
+    marginVertical: Display.setWidth(2),
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: Colors.DEFAULT_YELLOW,
-    marginHorizontal: 40,
     height: 70,
     borderRadius: 50,
   },
   buttonText: {
     paddingLeft: 12,
     fontWeight: 'bold',
-    fontSize: 25,
+    fontSize: Display.setWidth(6),
     textShadowColor: 'rgba(0, 0, 0, 0.8)',
     textShadowOffset: {width: -1, height: 1},
     textShadowRadius: 7,

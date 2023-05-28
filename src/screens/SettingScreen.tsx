@@ -20,6 +20,7 @@ import {setting1, setting2, setting3} from '@constants';
 import {ScrollView} from 'react-native-virtualized-view';
 import {useSelector, useDispatch} from 'react-redux';
 import {changeName} from '../redux/userSlice';
+import {Display} from '@utils';
 
 export default function SettingScreen({navigation}: any) {
   const [visible, setVisible] = useState(false);
@@ -69,7 +70,7 @@ export default function SettingScreen({navigation}: any) {
             borderBottomWidth: 0.2,
             borderBottomColor: Colors.DEFAULT_GREEN,
           }}>
-          <Text style={{fontSize: 17}}>{item.title}</Text>
+          <Text style={{fontSize: Display.setWidth(4.2)}}>{item.title}</Text>
           <Icon
             name="arrow-forward-ios"
             size={17}
@@ -169,31 +170,31 @@ export default function SettingScreen({navigation}: any) {
           </View>
         </View>
       </ModalPoup>
-      <View>
-        <View style={styles.header}>
-          <Icon
-            name="arrow-back-ios"
-            size={28}
-            onPress={navigation.goBack}
-            style={{position: 'absolute', left: 2, color: Colors.DEFAULT_GREEN}}
-          />
-          <Text
-            style={{
-              fontSize: 20,
-              fontWeight: 'bold',
-              color: Colors.DEFAULT_GREEN,
-            }}>
-            Thiết lập tài khoản
-          </Text>
+      <View style={styles.header}>
+        <Icon
+          name="arrow-back-ios"
+          size={28}
+          onPress={navigation.goBack}
+          style={{position: 'absolute', left: 2, color: Colors.DEFAULT_GREEN}}
+        />
+        <Text
+          style={{
+            fontSize: Display.setWidth(5),
+            fontWeight: 'bold',
+            color: Colors.DEFAULT_GREEN,
+          }}>
+          Thiết lập tài khoản
+        </Text>
 
-          <View style={{right: 20, position: 'absolute'}}>
-            <Icon name="settings" size={30} style={styles.icon} />
-          </View>
+        <View style={{right: Display.setWidth(1), position: 'absolute'}}>
+          <Icon name="settings" size={30} style={styles.icon} />
         </View>
+      </View>
+      <View>
         <ScrollView showsVerticalScrollIndicator={false}>
           <Text
             style={{
-              fontSize: 19,
+              fontSize: Display.setWidth(4.7),
               fontWeight: '500',
               color: Colors.DEFAULT_GREEN,
             }}>
@@ -208,7 +209,7 @@ export default function SettingScreen({navigation}: any) {
           <Text
             style={{
               paddingTop: 18,
-              fontSize: 19,
+              fontSize: Display.setWidth(4.7),
               fontWeight: '500',
               color: Colors.DEFAULT_GREEN,
             }}>
@@ -223,7 +224,7 @@ export default function SettingScreen({navigation}: any) {
           <Text
             style={{
               paddingTop: 18,
-              fontSize: 19,
+              fontSize: Display.setWidth(4.7),
               fontWeight: '500',
               color: Colors.DEFAULT_GREEN,
             }}>

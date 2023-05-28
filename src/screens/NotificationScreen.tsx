@@ -20,8 +20,7 @@ import IconBadge from 'react-native-icon-badge';
 
 import {Colors} from '@constants';
 import styles from '@css/NotificationScreenStyle';
-// import {notification} from '@constants';
-// redux
+
 import {useSelector, useDispatch} from 'react-redux';
 import {deleteNotification} from '../redux/notificationSlice';
 //
@@ -31,16 +30,9 @@ export default function NotificationScreen({navigation}) {
   const notification = useSelector((state: any) => state.notification);
   const userName = useSelector((state: any) => state.user);
   const a = notification.length;
-  //delete item by checking if id is equal to the id of the item
-  const onDelete = id => {
-    dispatch(
-      deleteNotification({
-        id: id,
-      }),
-    );
-  };
   //
   const [visible, setVisible] = useState(false);
+  const [id, setId] = useState(null);
 
   const ModalPoup = ({visible, children}) => {
     const [showModal, setShowModal] = React.useState(visible);
@@ -101,7 +93,10 @@ export default function NotificationScreen({navigation}) {
               {item.title}
             </Text>
           </View>
-          <TouchableOpacity onPress={() => onDelete(item.id)}>
+          <TouchableOpacity
+            onPress={() => {
+              setId(item.id), setVisible(true);
+            }}>
             <View style={{marginRight: 16, alignItems: 'center'}}>
               <Iconss name="trash" size={28} color={Colors.DEFAULT_GREEN} />
             </View>
@@ -154,23 +149,15 @@ export default function NotificationScreen({navigation}) {
           <View
             style={[
               styles.Header,
-              {top: -8, paddingBottom: 5, paddingHorizontal: 10},
+              {top: 0, paddingBottom: 20, paddingHorizontal: 10},
             ]}>
             <Text
               style={{
-                fontSize: 16,
+                fontSize: 18,
                 fontWeight: '500',
                 color: Colors.DEFAULT_GREEN,
               }}>
-              Bạn chắc chắn muốn xoá thông
-            </Text>
-            <Text
-              style={{
-                fontSize: 16,
-                fontWeight: '500',
-                color: Colors.DEFAULT_GREEN,
-              }}>
-              báo này
+              Bạn chắc chắn muốn xoá thông báo này
             </Text>
           </View>
           <View
@@ -180,7 +167,15 @@ export default function NotificationScreen({navigation}) {
               justifyContent: 'space-around',
               top: -5,
             }}>
-            <TouchableOpacity onPress={() => setVisible(false)}>
+            <TouchableOpacity
+              onPress={() => {
+                dispatch(
+                  deleteNotification({
+                    id: id,
+                  }),
+                ),
+                  setVisible(false);
+              }}>
               <Text
                 style={{
                   color: Colors.DEFAULT_RED,

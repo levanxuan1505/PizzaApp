@@ -476,7 +476,7 @@ const listTotal = [
       'Đây là món salad đơn giản nhất nhưng không phải ai cũng có thể thực hiện một cách hoàn hảo. Bí quyết có món salad ngon chính là ở dầu giấm. Với những hướng dẫn tỉ mỉ của Cooky, chắc chắn bạn sẽ có một món salad đơn giản mà hấp dẫn lạ kì.',
   },
   {
-    id: '31',
+    id: '32',
     name: 'Salad tổng hợp ',
     ingredients: 'Synthetic salad',
     toping1: 'Giá đỗ',

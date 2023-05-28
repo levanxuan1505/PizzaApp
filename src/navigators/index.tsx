@@ -19,6 +19,7 @@ import {
   NotificationScreen,
   EditLocationScreen,
   CreateAddressScreen,
+  HistoryBuyScreen,
   OrderConfirmScreen,
   OrderConfirmDetailScreen,
   ChatScreen,
@@ -39,6 +40,7 @@ const Navigators = () => {
         <Stack.Screen name="Checkout" component={CheckoutScreen} />
         <Stack.Screen name="Local" component={LocationScreen} />
         <Stack.Screen name="EditLocation" component={EditLocationScreen} />
+        <Stack.Screen name="HistoryBuy" component={HistoryBuyScreen} />
         <Stack.Screen name="Edit" component={EditProfileScreen} />
         <Stack.Screen name="Review" component={ReviewScreen} />
         <Stack.Screen name="Setting" component={SettingScreen} />

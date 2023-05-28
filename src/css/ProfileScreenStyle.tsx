@@ -4,10 +4,10 @@ import {Colors} from '@constants';
 const styles = StyleSheet.create({
   header: {
     marginTop: Platform.OS === 'ios' ? 0 : 25,
-    paddingVertical: 20,
+    paddingVertical: 10,
     flexDirection: 'row',
     position: 'relative',
-    justifyContent: 'center',
+    // justifyContent: 'center',
     alignItems: 'center',
   },
   contact: {

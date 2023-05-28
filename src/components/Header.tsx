@@ -13,6 +13,7 @@ import {
 import {useSelector} from 'react-redux';
 import IconBadge from 'react-native-icon-badge';
 import {Colors} from '@constants';
+import {Display} from '@utils';
 
 const Header = ({navigation}) => {
   const userName = useSelector((state: any) => state.user);
@@ -27,12 +28,12 @@ const Header = ({navigation}) => {
         {/*  */}
         <IconBadge
           MainElement={
-            <View style={{top: 5}}>
+            <View style={{top: 8}}>
               <Image
                 source={require('../assets/images/avatar.webp')}
                 style={{
-                  height: Platform.OS === 'ios' ? 50 : 45,
-                  width: Platform.OS === 'ios' ? 50 : 45,
+                  height: Platform.OS === 'ios' ? Display.setHeight(5) : 45,
+                  width: Platform.OS === 'ios' ? Display.setHeight(5) : 45,
                   borderRadius: 30,
                 }}
               />
@@ -40,9 +41,9 @@ const Header = ({navigation}) => {
           }
           BadgeElement={<Text style={{color: '#FFFFFF'}}>{badge}</Text>}
           IconBadgeStyle={{
-            marginRight: -9,
-            marginTop: -4,
-            width: 19,
+            marginRight: -8,
+            marginTop: -1,
+            width: 16,
             height: 20,
             backgroundColor: 'red',
           }}
@@ -53,15 +54,15 @@ const Header = ({navigation}) => {
         underlayColor="transparent"
         onPress={() => navigation.navigate('Profile')}
         style={{
-          right: Platform.OS === 'ios' ? 0 : 2,
-          top: Platform.OS === 'ios' ? -5 : 0,
+          right: Platform.OS === 'ios' ? Display.setHeight(0.1) : 2,
+          top: Platform.OS === 'ios' ? Display.setWidth(1.6) : 0,
         }}>
         <View>
           <Image
             source={require('../assets/images/nouser.jpeg')}
             style={{
-              height: Platform.OS === 'ios' ? 50 : 45,
-              width: Platform.OS === 'ios' ? 50 : 45,
+              height: Platform.OS === 'ios' ? Display.setHeight(5) : 45,
+              width: Platform.OS === 'ios' ? Display.setHeight(5) : 45,
               borderRadius: 30,
             }}
           />
@@ -75,7 +76,7 @@ const Header = ({navigation}) => {
         <View style={{flexDirection: 'row'}}>
           <Text
             style={{
-              fontSize: Platform.OS === 'ios' ? 30 : 24,
+              fontSize: Platform.OS === 'ios' ? Display.setWidth(6.5) : 24,
               color: Colors.DEFAULT_GREEN,
               fontWeight: '600',
             }}>
@@ -84,7 +85,12 @@ const Header = ({navigation}) => {
               : `Chào mừng trở lại`}
           </Text>
         </View>
-        <Text style={{marginTop: 1, fontSize: 22, color: Colors.DEFAULT_GREY}}>
+        <Text
+          style={{
+            marginTop: 1,
+            fontSize: Display.setWidth(5),
+            color: Colors.DEFAULT_GREY,
+          }}>
           Bạn muốn ăn gì hôm nay?
         </Text>
       </View>

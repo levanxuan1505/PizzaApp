@@ -18,6 +18,7 @@ import styles from '@css/BookmarkScreenStyle';
 // redux import
 import {useDispatch, useSelector} from 'react-redux';
 import {deleteBookmark} from '../redux/bookmarkSlice';
+import {Display} from '@utils';
 //
 
 const BookmarkScreen = ({navigation}: any) => {
@@ -69,20 +70,20 @@ const BookmarkScreen = ({navigation}: any) => {
       <View style={styles.header}>
         <Icon
           name="arrow-back-ios"
-          size={28}
+          size={Display.setWidth(7)}
           onPress={navigation.goBack}
           color={Colors.DEFAULT_GREEN}
           style={{position: 'absolute', left: 2}}
         />
         <Text
           style={{
-            fontSize: 20,
+            fontSize: Display.setWidth(6),
             fontWeight: 'bold',
             color: Colors.DEFAULT_GREEN,
           }}>
           Bookmark
         </Text>
-        <View style={{position: 'absolute', right: 15}}>
+        <View style={{position: 'absolute', right: Display.setWidth(1)}}>
           <Icons
             name="heart"
             size={32}
@@ -102,7 +103,7 @@ const BookmarkScreen = ({navigation}: any) => {
         }}>
         <Text
           style={{
-            fontSize: 19,
+            fontSize: Display.setWidth(8) - 14,
             fontWeight: '700',
             color: Colors.DEFAULT_RED,
           }}>

@@ -9,20 +9,19 @@ import {
   TouchableHighlight,
   TouchableOpacity,
 } from 'react-native';
-import Icon from 'react-native-vector-icons/MaterialIcons';
 import React, {memo, useState} from 'react';
 import {Colors} from '@constants';
+import {Display} from '@utils';
+import styles from '@css/TopingAndSizeScreenStyle';
+import Icon from 'react-native-vector-icons/MaterialIcons';
 import {useSelector, useDispatch} from 'react-redux';
-import {changePopUp} from '../redux/popUpOptionSlice';
 import {chooseSize} from '../redux/optionSizeSlice';
 import {addToCart} from '../redux/cartSlice';
 import {chooseMoreOption} from '../redux/moreOptionSlice';
 const ToppingAndSize = ({navigation, food, setVisible}) => {
   //   const [visible, setVisible] = useState(false);
-  const isPopUp = useSelector((state: any) => state.popUp);
   const size = useSelector((state: any) => state.size[0].size);
   const moneyOption = useSelector((state: any) => state.moreOption[0].option);
-  const [option, setOption] = useState(0);
   const [collection, setCollection] = useState(0);
   const [isEnabled1, setIsEnabled1] = useState(false);
   const [isEnabled2, setIsEnabled2] = useState(false);
@@ -48,11 +47,22 @@ const ToppingAndSize = ({navigation, food, setVisible}) => {
           navigation.navigate('DetailCard', food), setVisible(false);
         }}>
         <View style={styles.cartCard}>
+          <View style={{position: 'absolute', top: -70, right: -25}}>
+            <TouchableHighlight
+              underlayColor="transparent"
+              onPress={() => setVisible(false)}>
+              <Icon
+                name="cancel"
+                size={45}
+                style={{color: Colors.DEFAULT_GREEN}}
+              />
+            </TouchableHighlight>
+          </View>
           <Image
             source={item.image}
             style={{
-              height: Platform.OS === 'ios' ? 80 : 70,
-              width: Platform.OS === 'ios' ? 80 : 70,
+              height: Platform.OS === 'ios' ? Display.setHeight(8) : 70,
+              width: Platform.OS === 'ios' ? Display.setHeight(8) : 70,
               borderRadius: 40,
             }}
           />
@@ -66,12 +76,16 @@ const ToppingAndSize = ({navigation, food, setVisible}) => {
             <Text
               style={{
                 fontWeight: '700',
-                fontSize: 17,
+                fontSize: Display.setHeight(2.2),
                 color: Colors.DEFAULT_GREEN,
               }}>
               {item.name}
             </Text>
-            <Text style={{fontSize: 14, color: Colors.DARK_FOUR}}>
+            <Text
+              style={{
+                fontSize: Display.setHeight(1.8),
+                color: Colors.DARK_FOUR,
+              }}>
               {item.ingredients}
             </Text>
             <Text
@@ -95,14 +109,13 @@ const ToppingAndSize = ({navigation, food, setVisible}) => {
           <View style={{flexDirection: 'column'}}>
             <View
               style={{
-                height: 70,
                 marginLeft: Platform.OS === 'ios' ? 10 : 15,
-                paddingVertical: 20,
+                paddingVertical: 15,
               }}>
               <Text
                 style={{
                   fontWeight: '700',
-                  fontSize: 20,
+                  fontSize: Display.setWidth(5),
                   color: Colors.DEFAULT_RED,
                 }}>
                 Chọn kích cỡ
@@ -113,7 +126,7 @@ const ToppingAndSize = ({navigation, food, setVisible}) => {
               style={{flexDirection: 'row', justifyContent: 'space-around'}}>
               <TouchableOpacity
                 style={{
-                  width: 100,
+                  width: Display.setWidth(22),
                   height: 50,
                   borderRadius: 10,
                   justifyContent: 'center',
@@ -148,7 +161,7 @@ const ToppingAndSize = ({navigation, food, setVisible}) => {
 
               <TouchableOpacity
                 style={{
-                  width: 100,
+                  width: Display.setWidth(22),
                   height: 50,
                   borderRadius: 10,
                   justifyContent: 'center',
@@ -182,7 +195,8 @@ const ToppingAndSize = ({navigation, food, setVisible}) => {
               </TouchableOpacity>
               <TouchableOpacity
                 style={{
-                  width: 100,
+                  width: Display.setWidth(22),
+
                   height: 50,
                   borderRadius: 10,
                   justifyContent: 'center',
@@ -219,14 +233,14 @@ const ToppingAndSize = ({navigation, food, setVisible}) => {
           <View style={{position: 'relative'}}>
             <View
               style={{
-                height: 55,
+                // height: 55,
                 marginLeft: Platform.OS === 'ios' ? 10 : 15,
-                paddingTop: 20,
+                paddingVertical: Display.setHeight(2),
               }}>
               <Text
                 style={{
                   fontWeight: '700',
-                  fontSize: 20,
+                  fontSize: Display.setWidth(5),
                   color: Colors.DEFAULT_RED,
                 }}>
                 More Option
@@ -241,7 +255,7 @@ const ToppingAndSize = ({navigation, food, setVisible}) => {
                   }}
                   style={{
                     width: '90%',
-                    height: 50,
+                    height: Display.setHeight(6),
                     marginVertical: 5,
                     borderRadius: 10,
                     justifyContent: 'center',
@@ -277,7 +291,7 @@ const ToppingAndSize = ({navigation, food, setVisible}) => {
                   }}
                   style={{
                     width: '90%',
-                    height: 50,
+                    height: Display.setHeight(6),
                     marginVertical: 5,
                     borderRadius: 10,
                     justifyContent: 'center',
@@ -314,7 +328,7 @@ const ToppingAndSize = ({navigation, food, setVisible}) => {
                   }}
                   style={{
                     width: '90%',
-                    height: 50,
+                    height: Display.setHeight(6),
                     marginVertical: 5,
                     borderRadius: 10,
                     justifyContent: 'center',
@@ -365,7 +379,7 @@ const ToppingAndSize = ({navigation, food, setVisible}) => {
               style={{
                 position: 'absolute',
                 // bottom: 10,
-                top: 265,
+                bottom: -Display.setWidth(20),
                 justifyContent: 'center',
                 alignItems: 'center',
                 width: '98%',
@@ -389,161 +403,11 @@ const ToppingAndSize = ({navigation, food, setVisible}) => {
   };
 
   return (
-    <View>
+    <View style={{alignItems: 'center'}}>
       <CartCard item={food} />
       <CartCard1 item={food} />
     </View>
   );
 };
 
-const styles = StyleSheet.create({
-  modalBackGround: {
-    flex: 1,
-    backgroundColor: 'rgba(0,0,0,0.5)',
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  modalBackGround1: {
-    flex: 1,
-    backgroundColor: 'rgba(0,0,0,0.5)',
-    paddingBottom: 25,
-    justifyContent: 'flex-end',
-    alignItems: 'center',
-  },
-  modalContainer: {
-    width: Platform.OS === 'ios' ? '80%' : '90%',
-    height: 140,
-    backgroundColor: 'white',
-    borderRadius: 15,
-    elevation: 20,
-  },
-  modalContainer2: {
-    width: Platform.OS === 'ios' ? '90%' : '90%',
-    height: '68%',
-    backgroundColor: 'white',
-    borderRadius: 25,
-    elevation: 20,
-  },
-  size: {
-    width: 100,
-    height: 50,
-    borderRadius: 10,
-    justifyContent: 'center',
-    alignItems: 'center',
-    borderColor: Colors.DEFAULT_GREEN,
-    borderWidth: 2,
-    shadowColor: '#000',
-    shadowOffset: {
-      width: 0,
-      height: 10,
-    },
-    shadowOpacity: 0.53,
-    shadowRadius: 13.97,
-
-    elevation: 21,
-  },
-  sizeS: {
-    width: 100,
-    height: 50,
-    borderRadius: 10,
-    justifyContent: 'center',
-    alignItems: 'center',
-    // borderColor: collocation == 0 ? Colors.DEFAULT_R : Colors.DEFAULT_GREEN,
-    borderWidth: 2,
-    shadowColor: '#000',
-    shadowOffset: {
-      width: 0,
-      height: 10,
-    },
-    shadowOpacity: 0.53,
-    shadowRadius: 13.97,
-
-    elevation: 21,
-  },
-  size1: {
-    width: '90%',
-    height: 50,
-    marginVertical: 5,
-    borderRadius: 10,
-    justifyContent: 'center',
-    alignItems: 'center',
-    borderColor: Colors.DEFAULT_GREEN,
-    borderWidth: 2,
-    shadowColor: '#000',
-    shadowOffset: {
-      width: 0,
-      height: 10,
-    },
-    shadowOpacity: 0.53,
-    shadowRadius: 13.97,
-
-    elevation: 21,
-  },
-  textOption: {
-    fontSize: 24,
-    fontWeight: '600',
-    paddingHorizontal: 10,
-    color: Colors.DEFAULT_GREEN,
-  },
-  textOption1: {
-    fontSize: 24,
-    fontWeight: '600',
-    paddingHorizontal: 10,
-    color: Colors.DEFAULT_GREEN,
-  },
-  Header2: {
-    alignItems: 'center',
-    justifyContent: 'center',
-    borderBottomWidth: 0.17,
-    borderColor: Colors.DEFAULT_GREEN,
-    width: '100%',
-  },
-  cartCard: {
-    height: 100,
-    width: '90%',
-    borderRadius: 10,
-    backgroundColor: Colors.DEFAULT_WHITE,
-    marginVertical: 20,
-    marginHorizontal: 20,
-    paddingHorizontal: 10,
-    flexDirection: 'row',
-    alignItems: 'center',
-    shadowColor: '#000',
-    shadowOffset: {
-      width: 0,
-      height: 10,
-    },
-    shadowOpacity: 0.53,
-    shadowRadius: 13.97,
-
-    elevation: 21,
-  },
-  cartCard1: {
-    height: 455,
-    width: 345,
-    borderRadius: 10,
-    backgroundColor: Colors.DEFAULT_WHITE,
-    // marginVertical: 20,
-    marginHorizontal: 20,
-    paddingHorizontal: 10,
-    flexDirection: 'column',
-    // alignItems: 'center',
-    shadowColor: '#000',
-    shadowOffset: {
-      width: 0,
-      height: 10,
-    },
-    shadowOpacity: 0.53,
-    shadowRadius: 13.97,
-
-    elevation: 21,
-  },
-  Option: {
-    alignItems: 'center',
-    justifyContent: 'center',
-    borderBottomWidth: 0.17,
-    borderColor: Colors.DEFAULT_GREEN,
-    width: '100%',
-  },
-});
-export default ToppingAndSize;
+export default memo(ToppingAndSize);

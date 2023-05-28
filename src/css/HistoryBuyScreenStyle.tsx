@@ -1,19 +1,21 @@
 import {StyleSheet, Platform, Dimensions} from 'react-native';
 import {Colors} from '@constants';
-import {Display} from '@utils';
 const {width} = Dimensions.get('screen');
-const cardWidth = width / 2 - 20;
+const cardWidth = width - 20;
 
 const styles = StyleSheet.create({
   header: {
-    marginTop: Platform.OS === 'ios' ? 20 : 45,
+    marginTop: Platform.OS === 'ios' ? 0 : 20,
+    paddingVertical: 20,
     flexDirection: 'row',
-    justifyContent: 'space-between',
-    paddingHorizontal: 20,
+    position: 'relative',
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginHorizontal: 20,
   },
   inputContainer: {
     flex: 1,
-    height: Display.setWidth(12),
+    height: 50,
     borderRadius: 10,
     flexDirection: 'row',
     backgroundColor: Colors.DARK_FIVE,
@@ -21,11 +23,11 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
   },
   sortBtn: {
-    width: Display.setWidth(12),
-    height: Display.setWidth(12),
+    width: 50,
+    height: 50,
     marginLeft: 10,
     backgroundColor: Colors.DEFAULT_GREEN,
-    borderRadius: Display.setHeight(1),
+    borderRadius: 10,
     justifyContent: 'center',
     alignItems: 'center',
   },

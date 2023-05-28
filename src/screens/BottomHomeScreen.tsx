@@ -12,6 +12,7 @@ import BookmarkScreen from './BookmarkScreen';
 import ProfileScreen from './ProfileScreen';
 // redux import
 import {useSelector} from 'react-redux';
+import {Display} from '@utils';
 //
 const Tab = createBottomTabNavigator();
 
@@ -37,7 +38,8 @@ export default function BottomHomeScreen() {
           {
             display: 'flex',
             paddingTop: 3,
-            paddingBottom: 20,
+            // paddingBottom: 20,
+            paddingBottom: Display.setWidth(4),
             borderTopWidth: 0,
             height: Platform.OS === 'ios' ? 70 : 65,
           },

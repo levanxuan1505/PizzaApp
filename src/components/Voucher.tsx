@@ -13,6 +13,7 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 import Iconsss from 'react-native-vector-icons/Ionicons';
 import {useSelector, useDispatch} from 'react-redux';
 import {changeCoin} from '../redux/coinSlice';
+import {Display} from '@utils';
 const Voucher = ({navigation}) => {
   // const coin = useSelector((state: any) => state.coin);
   const [isEnabled, setIsEnabled] = useState(false);
@@ -52,7 +53,7 @@ const Voucher = ({navigation}) => {
 
           <Text
             style={{
-              fontSize: Platform.OS === 'ios' ? 20 : 17,
+              fontSize: Platform.OS === 'ios' ? Display.setWidth(5) : 17,
               color: Colors.DEFAULT_GREEN,
               paddingLeft: 5,
             }}>
@@ -95,7 +96,7 @@ const Voucher = ({navigation}) => {
               color: Colors.DEFAULT_YELLOW,
               paddingLeft: 13,
               marginTop: 0,
-              fontSize: Platform.OS === 'ios' ? 18 : 16,
+              fontSize: Platform.OS === 'ios' ? Display.setWidth(5) : 16,
             }}>
             Dùng 4.000 xu
           </Text>

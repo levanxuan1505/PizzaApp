@@ -1,10 +1,11 @@
 import {StyleSheet, Platform} from 'react-native';
 import {Colors} from '@constants';
+import {Display} from '@utils';
 
 const styles = StyleSheet.create({
   inputContainer: {
     flex: 1,
-    height: 50,
+    height: Display.setWidth(12),
     borderRadius: 10,
     flexDirection: 'row',
     backgroundColor: Colors.DARK_FIVE,
@@ -21,8 +22,8 @@ const styles = StyleSheet.create({
     marginHorizontal: 20,
   },
   sortBtn: {
-    width: 50,
-    height: 50,
+    height: Display.setWidth(12),
+    width: Display.setWidth(12),
     marginLeft: 10,
     backgroundColor: Colors.DEFAULT_GREEN,
     borderRadius: 10,
@@ -60,16 +61,17 @@ const styles = StyleSheet.create({
   history: {
     position: 'relative',
     flexDirection: 'row',
-    marginVertical: 5,
+    alignItems: 'center',
+    marginVertical: Display.setWidth(2.2),
     marginHorizontal: 15,
     borderBottomColor: Colors.DEFAULT_GREEN,
-    borderBottomWidth: 0.2,
+    borderBottomWidth: 0.5,
   },
   text: {
     marginLeft: 8,
-    marginVertical: 7,
-    paddingBottom: 5,
-    fontSize: 16,
+    // marginVertical: 7,
+    // paddingBottom: 5,
+    fontSize: Display.setWidth(9.5) - 20,
   },
   status: {
     padding: 10,

@@ -7,6 +7,7 @@ import {
   ImageBackground,
   TouchableOpacity,
 } from 'react-native';
+import {Display} from '@utils';
 import React from 'react';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import Icon from 'react-native-vector-icons/Ionicons';
@@ -33,8 +34,12 @@ export default function Options({navigation}: any) {
           <TouchableOpacity
             style={styles.buttonHome}
             activeOpacity={0.6}
-            onPress={() => navigation.navigate('BottomHome', {data: 'Xuaan'})}>
-            <Icon name="home" size={32} color={Colors.DEFAULT_WHITE} />
+            onPress={() => navigation.replace('BottomHome', {data: 'Xuaan'})}>
+            <Icon
+              name="home"
+              size={Display.setWidth(6)}
+              color={Colors.DEFAULT_WHITE}
+            />
             <Text style={styles.buttonText}>HOME</Text>
           </TouchableOpacity>
         </View>
@@ -45,7 +50,7 @@ export default function Options({navigation}: any) {
             onPress={() => navigation.navigate('SignIn')}>
             <Icon
               name="log-in-outline"
-              size={32}
+              size={Display.setWidth(8)}
               color={Colors.DEFAULT_WHITE}
             />
             <Text style={styles.buttonText}>ĐĂNG NHẬP</Text>

@@ -16,21 +16,24 @@ import {
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import Icons from 'react-native-vector-icons/Ionicons';
 import {Colors} from '@constants';
-import styles from '@css/DetailsCardScreenStyle';
+import styles from '@css/DetailsOptionScreenStyle';
 import {SecondaryButton} from '@components';
 // redux import
 import {useDispatch, useSelector} from 'react-redux';
 import {removeCart} from '../redux/cartSlice';
+import {deleteBookmark} from '../redux/bookmarkSlice';
 
 //
 
 import {ScrollView} from 'react-native-gesture-handler';
 import {addToBookmark} from '../redux/bookmarkSlice';
+import {Display} from '@utils';
 
 const DetailsOptionScreen = ({navigation, route}: any) => {
   const item = route.params;
   const [visible, setVisible] = useState(false);
   const [visible1, setVisible1] = useState(false);
+  const [isHeart, setIsHeart] = useState(true);
   const user = useSelector((state: any) => state.user);
   // redux
   const dispatch = useDispatch();
@@ -109,18 +112,32 @@ const DetailsOptionScreen = ({navigation, route}: any) => {
     return user[0].userName ? (
       <TouchableOpacity
         onPress={() => {
-          dispatch(
-            addToBookmark({
-              name: item.name,
-              ingredients: item.ingredients,
-              price: item.price,
-              image: item.image,
-              title: item.title,
-            }),
-          );
+          isHeart
+            ? dispatch(
+                addToBookmark({
+                  id: item.id,
+                  name: item.name,
+                  ingredients: item.ingredients,
+                  price: item.price,
+                  image: item.image,
+                  title: item.title,
+                  toping1: item.toping1,
+                  toping2: item.toping2,
+                  toping3: item.toping3,
+                  value1: item.value1,
+                  value2: item.value2,
+                  value3: item.value3,
+                }),
+              )
+            : dispatch(deleteBookmark({id: item.id})),
+            setIsHeart(!isHeart);
         }}>
         <View style={styles.iconContainer}>
-          <Icons name="heart" color={Colors.DEFAULT_GREEN} size={25} />
+          <Icons
+            name={isHeart ? 'heart' : 'heart-dislike'}
+            color={Colors.DEFAULT_GREEN}
+            size={25}
+          />
         </View>
       </TouchableOpacity>
     ) : (
@@ -226,19 +243,20 @@ const DetailsOptionScreen = ({navigation, route}: any) => {
             style={[styles.Header, {borderBottomColor: Colors.DEFAULT_WHITE}]}>
             <Text
               style={{
-                fontSize: 24,
+                fontSize: Display.setWidth(6),
                 fontWeight: '600',
-                color: Colors.DEFAULT_RED,
+                color: Colors.DEFAULT_GREEN,
                 paddingTop: 10,
               }}>
               Cảnh báo
             </Text>
           </View>
-          <View style={[styles.Header, {top: -10, paddingBottom: 10}]}>
+          <View style={[styles.Header, {top: -2, paddingBottom: 10}]}>
             <Text
               style={{
-                fontSize: 19,
+                fontSize: Display.setWidth(5),
                 fontWeight: '500',
+                textAlign: 'center',
                 color: Colors.DEFAULT_RED,
               }}>
               Bạn có chắc chắn muốn xoá món ăn
@@ -260,7 +278,7 @@ const DetailsOptionScreen = ({navigation, route}: any) => {
               <Text
                 style={{
                   color: Colors.DEFAULT_RED,
-                  fontSize: 20,
+                  fontSize: Display.setWidth(6),
                   fontWeight: '600',
                 }}>
                 Xoá
@@ -270,7 +288,7 @@ const DetailsOptionScreen = ({navigation, route}: any) => {
               <Text
                 style={{
                   color: Colors.DEFAULT_GREEN,
-                  fontSize: 20,
+                  fontSize: Display.setWidth(6),
                   fontWeight: '600',
                 }}>
                 Huỷ bỏ
@@ -290,7 +308,7 @@ const DetailsOptionScreen = ({navigation, route}: any) => {
         />
         <Text
           style={{
-            fontSize: 22,
+            fontSize: Display.setWidth(5),
             fontWeight: 'bold',
             color: Colors.DEFAULT_GREEN,
           }}>
@@ -304,11 +322,15 @@ const DetailsOptionScreen = ({navigation, route}: any) => {
           style={{
             justifyContent: 'center',
             alignItems: 'center',
-            height: 280,
+            height: Display.setWidth(65),
           }}>
           <Image
             source={item.image}
-            style={{height: 250, width: 350, borderRadius: 20}}
+            style={{
+              height: Display.setWidth(60),
+              width: Display.setWidth(90),
+              borderRadius: 20,
+            }}
           />
         </View>
         <View style={styles.details}>
@@ -321,7 +343,7 @@ const DetailsOptionScreen = ({navigation, route}: any) => {
             }}>
             <Text
               style={{
-                fontSize: Platform.OS === 'ios' ? 25 : 18,
+                fontSize: Platform.OS === 'ios' ? Display.setWidth(6) : 18,
                 fontWeight: 'bold',
                 color: Colors.DEFAULT_WHITE,
               }}>
@@ -330,7 +352,7 @@ const DetailsOptionScreen = ({navigation, route}: any) => {
             <Text
               style={{
                 position: 'absolute',
-                fontSize: Platform.OS === 'ios' ? 25 : 18,
+                fontSize: Platform.OS === 'ios' ? Display.setWidth(6) : 18,
                 color: Colors.DEFAULT_WHITE,
                 fontWeight: '600',
                 right: 65,
@@ -340,10 +362,19 @@ const DetailsOptionScreen = ({navigation, route}: any) => {
             <HandleAction />
           </View>
           <View style={{flexDirection: 'row'}}>
-            <Text style={{fontSize: 24, color: Colors.DEFAULT_WHITE}}>
+            <Text
+              style={{
+                fontSize: Display.setWidth(6),
+                color: Colors.DEFAULT_WHITE,
+                fontWeight: 'bold',
+              }}>
               Size:
             </Text>
-            <Text style={{fontSize: 24, color: Colors.DEFAULT_WHITE}}>
+            <Text
+              style={{
+                fontSize: Display.setWidth(6),
+                color: Colors.DEFAULT_WHITE,
+              }}>
               {item.size === 0 ? ' S' : item.size === 5 ? ' M' : ' L'}
             </Text>
           </View>
@@ -351,9 +382,10 @@ const DetailsOptionScreen = ({navigation, route}: any) => {
             <View>
               <Text
                 style={{
-                  fontSize: 24,
+                  fontSize: Display.setWidth(6),
                   color: Colors.DEFAULT_WHITE,
                   paddingRight: 10,
+                  fontWeight: 'bold',
                 }}>
                 Toppings:
               </Text>

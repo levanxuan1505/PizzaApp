@@ -10,6 +10,7 @@ import {
 import {Colors} from '@constants';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import {useSelector} from 'react-redux';
+import {Display} from '@utils';
 const Location = ({navigation}) => {
   const location = useSelector((state: any) => state.location);
 
@@ -25,22 +26,36 @@ const Location = ({navigation}) => {
             alignItems: 'flex-end',
             paddingLeft: 9,
           }}>
-          <Icon name="location-pin" size={28} color={Colors.DEFAULT_GREEN} />
-          <Text style={{bottom: 2, fontSize: Platform.OS === 'ios' ? 16 : 12}}>
+          <Icon
+            name="location-pin"
+            size={Display.setWidth(6)}
+            color={Colors.DEFAULT_GREEN}
+          />
+          <Text
+            style={{
+              bottom: 2,
+              fontSize: Platform.OS === 'ios' ? Display.setWidth(3.8) : 15,
+            }}>
             Địa chỉ nhận hàng
           </Text>
         </View>
         <View style={{flexDirection: 'row'}}>
           <View style={{paddingLeft: 15}}>
-            <Text style={{fontSize: Platform.OS === 'ios' ? 16 : 12}}>
+            <Text
+              style={{
+                fontSize: Platform.OS === 'ios' ? Display.setWidth(3.8) : 15,
+              }}>
               {location[0].name} | {location[0].phone}
             </Text>
-            <Text style={{fontSize: Platform.OS === 'ios' ? 16 : 12}}>
+            <Text
+              style={{
+                fontSize: Platform.OS === 'ios' ? Display.setWidth(3.8) : 15,
+              }}>
               {location[0].dress},
             </Text>
             <Text
               style={{
-                fontSize: Platform.OS === 'ios' ? 16 : 12,
+                fontSize: Platform.OS === 'ios' ? Display.setWidth(3.8) : 15,
                 paddingBottom: 5,
               }}>
               {location[0].title}
@@ -53,7 +68,7 @@ const Location = ({navigation}) => {
           color={Colors.DEFAULT_GREEN}
           style={{
             position: 'absolute',
-            right: 25,
+            right: Display.setWidth(8.5) / 2,
           }}
         />
       </View>
@@ -64,12 +79,12 @@ const styles = StyleSheet.create({
   location: {
     position: 'relative',
     borderRadius: 10,
-    height: 100,
+    height: 110,
     marginBottom: 10,
     justifyContent: 'center',
     marginTop: 10,
-    marginHorizontal: 8,
-    paddingLeft: 10,
+    marginHorizontal: 5,
+    paddingLeft: 5,
     backgroundColor: Colors.DEFAULT_WHITE,
     shadowColor: '#000',
     shadowOffset: {

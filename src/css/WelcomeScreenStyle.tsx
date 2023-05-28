@@ -9,7 +9,7 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.DEFAULT_WHITE,
   },
   welcomeListContainer: {
-    height: Display.setHeight(70),
+    height: Display.setHeight(71),
   },
   pageContainer: {
     flexDirection: 'row',
@@ -43,8 +43,8 @@ const styles = StyleSheet.create({
   },
   gettingStartedButton: {
     backgroundColor: Colors.DEFAULT_GREEN,
-    paddingVertical: 5,
-    paddingHorizontal: 40,
+    paddingVertical: Display.setWidth(1),
+    paddingHorizontal: Display.setWidth(8),
     borderRadius: 8,
     justifyContent: 'center',
     alignItems: 'center',
@@ -56,7 +56,7 @@ const styles = StyleSheet.create({
     color: Colors.DEFAULT_WHITE,
     justifyContent: 'center',
     alignItems: 'center',
-    paddingVertical: Platform.OS === 'ios' ? 10 : 3,
+    paddingVertical: Platform.OS === 'ios' ? 8 : 3,
     paddingHorizontal: 50,
   },
 });

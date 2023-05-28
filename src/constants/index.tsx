@@ -8,9 +8,10 @@ import voucher from './voucher';
 import General from './General';
 import foodList from './foodList';
 import listTotal from './listTotal';
-import videoReview from './videoReview';
 import locations from './Locations';
+import historyBuy from './historyBuy';
 import Categories from './Categories';
+import videoReview from './videoReview';
 import notification from './Notification';
 import {setting1, setting2, setting3} from './settingTitle';
 export {
@@ -29,6 +30,7 @@ export {
   locations,
   listTotal,
   Categories,
+  historyBuy,
   videoReview,
   notification,
 };

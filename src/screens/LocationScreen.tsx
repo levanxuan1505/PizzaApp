@@ -28,17 +28,18 @@ export default function LocationScreen({navigation}: any) {
     return (
       <TouchableHighlight
         underlayColor="transparent"
-        onPress={() =>
-          dispatch(
-            changeLocation({
-              id: local.id,
-              name: local.name,
-              phone: local.phone,
-              dress: local.dress,
-              title: local.title,
-            }),
-          )
-        }>
+        onPress={() => {
+          navigation.goBack(),
+            dispatch(
+              changeLocation({
+                id: local.id,
+                name: local.name,
+                phone: local.phone,
+                dress: local.dress,
+                title: local.title,
+              }),
+            );
+        }}>
         <View
           style={[
             styles.cartCard,
@@ -161,34 +162,6 @@ export default function LocationScreen({navigation}: any) {
               renderItem={({item}) => <CartCard item={item} />}
               ListFooterComponentStyle={{paddingHorizontal: 20, marginTop: 20}}
             />
-            <TouchableHighlight
-              underlayColor="transparent"
-              style={{marginBottom: 10}}
-              onPress={navigation.goBack}>
-              <View
-                style={[
-                  styles.addBtn,
-                  {backgroundColor: Colors.DEFAULT_WHITE},
-                ]}>
-                <View
-                  style={{
-                    flexDirection: 'row',
-                    alignItems: 'center',
-                    paddingLeft: 9,
-                  }}>
-                  <Text
-                    style={{
-                      fontSize: 28,
-                      fontWeight: '600',
-                      color: Colors.DEFAULT_GREEN,
-                      paddingHorizontal: 5,
-                    }}>
-                    Chọn Địa Chỉ
-                  </Text>
-                </View>
-              </View>
-            </TouchableHighlight>
-            {/*  */}
             <TouchableHighlight
               underlayColor="transparent"
               style={{marginBottom: 200}}

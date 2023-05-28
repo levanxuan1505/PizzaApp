@@ -71,7 +71,6 @@ const styles = StyleSheet.create({
     fontSize: 18,
     color: Colors.DEFAULT_GREEN,
   },
-  // modal
 
   modalBackGround: {
     flex: 1,

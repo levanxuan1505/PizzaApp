@@ -1,3 +1,4 @@
+/* eslint-disable react/self-closing-comp */
 /* eslint-disable react/no-unstable-nested-components */
 /* eslint-disable react-native/no-inline-styles */
 import React from 'react';
@@ -25,15 +26,16 @@ export default function VoucherScreen({navigation}: any) {
     return (
       <TouchableOpacity
         activeOpacity={Platform.OS === 'ios' ? 0.5 : 0.8}
-        onPress={() =>
-          dispatch(
-            addVoucher({
-              id: item.id,
-              name: item.name,
-              price: item.price,
-            }),
-          )
-        }>
+        onPress={() => {
+          navigation.goBack(),
+            dispatch(
+              addVoucher({
+                id: item.id,
+                name: item.name,
+                price: item.price,
+              }),
+            );
+        }}>
         <View
           style={[
             styles.cartCard,
@@ -113,9 +115,13 @@ export default function VoucherScreen({navigation}: any) {
               contentContainerStyle={{paddingBottom: 80}}
               data={voucher}
               renderItem={({item}) => <CartCard item={item} />}
-              ListFooterComponentStyle={{paddingHorizontal: 20, marginTop: 20}}
+              // ListFooterComponentStyle={{
+              //   paddingHorizontal: 20,
+              //   marginTop: 20,
+              //   marginBottom: -200,
+              // }}
             />
-            <TouchableOpacity
+            {/* <TouchableOpacity
               style={{marginBottom: 200}}
               onPress={navigation.goBack}>
               <View
@@ -140,8 +146,9 @@ export default function VoucherScreen({navigation}: any) {
                   </Text>
                 </View>
               </View>
-            </TouchableOpacity>
+            </TouchableOpacity> */}
             {/*  */}
+            <View style={{marginVertical: 70}}></View>
           </ScrollView>
         ) : (
           <ScrollView showsVerticalScrollIndicator={false}>

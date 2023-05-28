@@ -9,6 +9,7 @@ import {
   Image,
   Platform,
   SafeAreaView,
+  RefreshControl,
   TouchableHighlight,
 } from 'react-native';
 import React, {memo} from 'react';
@@ -27,22 +28,31 @@ import {
   TotalCheckout,
 } from '@components';
 import {useSelector} from 'react-redux';
+import {Display} from '@utils';
 
 const CheckoutScreen = ({navigation}) => {
   const cartGoods = useSelector((state: any) => state.cart);
   const badge: number = cartGoods.length;
-
+  const [refreshing, setRefreshing] = React.useState(false);
+  const onRefresh = React.useCallback(() => {
+    setRefreshing(true);
+    setTimeout(() => {
+      setRefreshing(false);
+    }, 1500);
+  }, []);
   const CartCard = ({item}: any) => {
+    const totalTopings =
+      (item.value1 ? 1 : 0) + (item.value2 ? 1 : 0) + (item.value3 ? 1 : 0);
     return (
       <TouchableHighlight
         underlayColor="transparent"
-        onPress={() => navigation.navigate('DetailCard', item)}>
+        onPress={() => navigation.navigate('DetailOption', item)}>
         <View style={styles.cartCard}>
           <Image
             source={item.image}
             style={{
-              height: Platform.OS === 'ios' ? 80 : 70,
-              width: Platform.OS === 'ios' ? 80 : 70,
+              height: Platform.OS === 'ios' ? Display.setWidth(18) : 70,
+              width: Platform.OS === 'ios' ? Display.setWidth(18) : 70,
               borderRadius: 40,
             }}
           />
@@ -56,28 +66,50 @@ const CheckoutScreen = ({navigation}) => {
             <Text
               style={{
                 fontWeight: '700',
-                fontSize: 17,
+                fontSize: Display.setWidth(3.7),
                 color: Colors.DEFAULT_GREEN,
               }}>
               {item.name}
             </Text>
-            <Text style={{fontSize: 14, color: Colors.DARK_FOUR}}>
-              {item.ingredients}
-            </Text>
             <Text
               style={{
-                fontSize: 17,
-                fontWeight: '600',
-                color: Colors.GOOGLE_BLUE,
+                fontSize: Display.setWidth(3),
+                color: Colors.DARK_FOUR,
               }}>
-              {item.price}k
+              {item.ingredients}
             </Text>
+            <View style={{flexDirection: 'row'}}>
+              <Text
+                style={{
+                  fontSize: Display.setWidth(3.5),
+                  fontWeight: '600',
+                  color: Colors.GOOGLE_BLUE,
+                }}>
+                {item.price}k
+              </Text>
+              <Text
+                style={{
+                  fontSize: Display.setWidth(3.5),
+                  fontWeight: '500',
+                  paddingLeft: 12,
+                }}>
+                Size:{item.size === 0 ? 'S' : item.size === 5 ? 'M' : 'L'}
+              </Text>
+              <Text
+                style={{
+                  fontSize: Display.setWidth(3.5),
+                  fontWeight: '500',
+                  paddingLeft: 5,
+                }}>
+                Topings: {totalTopings}
+              </Text>
+            </View>
           </View>
         </View>
       </TouchableHighlight>
     );
   };
-  return (
+  return !cartGoods.length ? (
     <SafeAreaView style={{backgroundColor: Colors.DEFAULT_WHITE, flex: 1}}>
       <View style={styles.header}>
         <Icon
@@ -96,7 +128,48 @@ const CheckoutScreen = ({navigation}) => {
           Thanh toán
         </Text>
 
-        <View style={{position: 'absolute', right: 10}}>
+        <View style={{position: 'absolute', right: 20}}>
+          <View>
+            <Iconss name="cart-check" size={32} color={Colors.DEFAULT_GREEN} />
+          </View>
+        </View>
+      </View>
+      <View
+        style={{
+          justifyContent: 'center',
+          alignItems: 'center',
+          paddingTop: 10,
+        }}>
+        <Text
+          style={{
+            fontSize: 18,
+            fontWeight: '700',
+            color: Colors.DEFAULT_RED,
+          }}>
+          Không có món ăn để thanh toán
+        </Text>
+      </View>
+    </SafeAreaView>
+  ) : (
+    <SafeAreaView style={{backgroundColor: Colors.DEFAULT_WHITE, flex: 1}}>
+      <View style={styles.header}>
+        <Icon
+          name="arrow-back-ios"
+          size={28}
+          onPress={navigation.goBack}
+          color={Colors.DEFAULT_GREEN}
+          style={{position: 'absolute', left: 8}}
+        />
+        <Text
+          style={{
+            fontSize: Display.setWidth(5),
+            fontWeight: 'bold',
+            color: Colors.DEFAULT_GREEN,
+          }}>
+          Thanh toán
+        </Text>
+
+        <View style={{position: 'absolute', right: 20}}>
           <IconBadge
             MainElement={
               <View>
@@ -115,13 +188,15 @@ const CheckoutScreen = ({navigation}) => {
               height: 20,
               backgroundColor: 'red',
             }}
-            // Hidden={this.state.BadgeCount == 0}
           />
         </View>
       </View>
       {/* body */}
       <View style={{position: 'relative'}}>
         <ScrollView
+          refreshControl={
+            <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
+          }
           showsVerticalScrollIndicator={false}
           nestedScrollEnabled={true}>
           <Location navigation={navigation} />
@@ -151,16 +226,19 @@ const CheckoutScreen = ({navigation}) => {
                 size={26}
                 color={Colors.DEFAULT_GREEN}
               />
-              <Text
-                style={{
-                  color: Colors.DEFAULT_GREEN,
-                  paddingLeft: 7,
-                  paddingRight: Platform.OS === 'ios' ? 7 : 20,
-                  fontSize: Platform.OS === 'ios' ? 16 : 13,
-                }}>
-                {`Nhấn "Đặt hàng" đồng nghĩa với việc bạn 
-đồng ý tuân theo "Điều khoản của Pizza"`}
-              </Text>
+              <View style={{width: Display.setWidth(85)}}>
+                <Text
+                  style={{
+                    color: Colors.DEFAULT_GREEN,
+                    paddingLeft: 7,
+                    textAlign: 'left',
+                    paddingRight: Platform.OS === 'ios' ? 7 : 20,
+                    fontSize: Platform.OS === 'ios' ? Display.setWidth(4) : 13,
+                  }}>
+                  Nhấn "Đặt hàng" đồng nghĩa với việc bạn đồng ý tuân theo "Điều
+                  khoản của Pizza"
+                </Text>
+              </View>
             </View>
           </View>
         </ScrollView>

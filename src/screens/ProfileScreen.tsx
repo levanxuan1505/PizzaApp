@@ -19,10 +19,12 @@ import styles from '@css/ProfileScreenStyle';
 import {ScrollView} from 'react-native-gesture-handler';
 // redux
 import {useSelector} from 'react-redux';
+import {Display} from '@utils';
 //
 
 export default function ProfileScreen({navigation}: any) {
   const notification = useSelector((state: any) => state.notification);
+  const bookmark = useSelector((state: any) => state.bookmark);
   const userName = useSelector((state: any) => state.user);
   const order = useSelector((state: any) => state.order);
   const badge = notification.length;
@@ -76,7 +78,7 @@ export default function ProfileScreen({navigation}: any) {
     return userName[0].userName ? (
       <Text
         style={{
-          fontSize: Platform.OS === 'ios' ? 20 : 16,
+          fontSize: Platform.OS === 'ios' ? Display.setWidth(5) : 16,
           fontWeight: '600',
           color: Colors.DEFAULT_GREEN,
           paddingBottom: 3,
@@ -87,7 +89,7 @@ export default function ProfileScreen({navigation}: any) {
     ) : (
       <Text
         style={{
-          fontSize: Platform.OS === 'ios' ? 20 : 16,
+          fontSize: Platform.OS === 'ios' ? Display.setWidth(5) : 16,
           fontWeight: '600',
           color: Colors.DEFAULT_GREEN,
           paddingBottom: 3,
@@ -100,7 +102,7 @@ export default function ProfileScreen({navigation}: any) {
     return userName[0].userName ? (
       <Text
         style={{
-          fontSize: Platform.OS === 'ios' ? 14 : 11,
+          fontSize: Platform.OS === 'ios' ? Display.setWidth(4) : 11,
           color: Colors.FACEBOOK_BLUE,
         }}>
         Thành viên Bạc
@@ -109,7 +111,7 @@ export default function ProfileScreen({navigation}: any) {
       <TouchableOpacity onPress={() => navigation.navigate('SignIn')}>
         <Text
           style={{
-            fontSize: Platform.OS === 'ios' ? 14 : 11,
+            fontSize: Platform.OS === 'ios' ? Display.setWidth(3.5) : 11,
             color: Colors.FACEBOOK_BLUE,
           }}>
           Vui lòng đăng nhập
@@ -123,18 +125,20 @@ export default function ProfileScreen({navigation}: any) {
         <View style={styles.header}>
           <Icon
             name="arrow-back-ios"
-            size={28}
+            size={Display.setWidth(6)}
             onPress={navigation.goBack}
             style={{position: 'absolute', left: 2, color: Colors.DEFAULT_GREEN}}
           />
-          <Text
-            style={{
-              fontSize: 20,
-              fontWeight: 'bold',
-              color: Colors.DEFAULT_GREEN,
-            }}>
-            Profile
-          </Text>
+          <View style={{left: Display.setWidth(10)}}>
+            <Text
+              style={{
+                fontSize: Display.setWidth(5.5),
+                fontWeight: 'bold',
+                color: Colors.DEFAULT_GREEN,
+              }}>
+              Profile
+            </Text>
+          </View>
           <TouchableOpacity
             style={styles.bell}
             onPress={() => navigation.navigate('Notification')}>
@@ -218,7 +222,7 @@ export default function ProfileScreen({navigation}: any) {
                 />
                 <Text
                   style={{
-                    fontSize: Platform.OS === 'ios' ? 18 : 14,
+                    fontSize: Platform.OS === 'ios' ? Display.setWidth(4) : 14,
                     paddingLeft: 8,
                     color: Colors.GOOGLE_BLUE,
                   }}>
@@ -226,14 +230,15 @@ export default function ProfileScreen({navigation}: any) {
                 </Text>
               </View>
               <TouchableOpacity
-                onPress={() => navigation.navigate('Order')}
+                onPress={() => navigation.navigate('HistoryBuy')}
                 style={{
                   flexDirection: 'row',
                   alignItems: 'center',
                 }}>
                 <Text
                   style={{
-                    fontSize: Platform.OS === 'ios' ? 16 : 12,
+                    fontSize:
+                      Platform.OS === 'ios' ? Display.setWidth(3.5) : 12,
                     right: 2,
                     color: Colors.SECONDARY_RED,
                   }}>
@@ -269,7 +274,8 @@ export default function ProfileScreen({navigation}: any) {
               </TouchableOpacity>
               <Text
                 style={{
-                  fontSize: Platform.OS === 'ios' ? 15 : 12,
+                  fontSize:
+                    Platform.OS === 'ios' ? Display.setWidth(9) - 22.5 : 12,
                   color: Colors.DEFAULT_GREEN,
                   paddingTop: 4,
                 }}>
@@ -295,7 +301,8 @@ export default function ProfileScreen({navigation}: any) {
 
                 <Text
                   style={{
-                    fontSize: Platform.OS === 'ios' ? 15 : 12,
+                    fontSize:
+                      Platform.OS === 'ios' ? Display.setWidth(9) - 22.5 : 12,
                     color: Colors.GOOGLE_BLUE,
                     paddingTop: 4,
                   }}>
@@ -311,7 +318,8 @@ export default function ProfileScreen({navigation}: any) {
               />
               <Text
                 style={{
-                  fontSize: Platform.OS === 'ios' ? 15 : 12,
+                  fontSize:
+                    Platform.OS === 'ios' ? Display.setWidth(9) - 22.5 : 12,
                   color: Colors.DEFAULT_YELLOW,
                   paddingTop: 4,
                 }}>
@@ -326,7 +334,8 @@ export default function ProfileScreen({navigation}: any) {
               />
               <Text
                 style={{
-                  fontSize: Platform.OS === 'ios' ? 15 : 12,
+                  fontSize:
+                    Platform.OS === 'ios' ? Display.setWidth(9) - 22.5 : 12,
                   color: Colors.FACEBOOK_BLUE,
                   paddingTop: 4,
                 }}>
@@ -354,7 +363,8 @@ export default function ProfileScreen({navigation}: any) {
                 />
                 <Text
                   style={{
-                    fontSize: Platform.OS === 'ios' ? 18 : 14,
+                    fontSize:
+                      Platform.OS === 'ios' ? Display.setWidth(9) - 22.5 : 14,
                     paddingLeft: 8,
                     color: Colors.SECONDARY_RED,
                   }}>
@@ -384,7 +394,8 @@ export default function ProfileScreen({navigation}: any) {
               />
               <Text
                 style={{
-                  fontSize: Platform.OS === 'ios' ? 15 : 12,
+                  fontSize:
+                    Platform.OS === 'ios' ? Display.setWidth(9) - 22.5 : 12,
                   color: Colors.DEFAULT_GREEN,
                   paddingTop: 2,
                 }}>
@@ -401,7 +412,8 @@ export default function ProfileScreen({navigation}: any) {
               />
               <Text
                 style={{
-                  fontSize: Platform.OS === 'ios' ? 15 : 12,
+                  fontSize:
+                    Platform.OS === 'ios' ? Display.setWidth(9) - 22.5 : 12,
                   color: Colors.FACEBOOK_BLUE,
                 }}>
                 Kho Voucher
@@ -416,7 +428,8 @@ export default function ProfileScreen({navigation}: any) {
               <Icons name="bitcoin" size={32} color={Colors.DEFAULT_GREEN} />
               <Text
                 style={{
-                  fontSize: Platform.OS === 'ios' ? 15 : 12,
+                  fontSize:
+                    Platform.OS === 'ios' ? Display.setWidth(9) - 22.5 : 12,
                   color: Colors.GOOGLE_BLUE,
                   paddingTop: 2,
                 }}>
@@ -432,7 +445,8 @@ export default function ProfileScreen({navigation}: any) {
               />
               <Text
                 style={{
-                  fontSize: Platform.OS === 'ios' ? 15 : 12,
+                  fontSize:
+                    Platform.OS === 'ios' ? Display.setWidth(9) - 22.5 : 12,
                   color: Colors.DEFAULT_YELLOW,
                   paddingTop: 2,
                 }}>
@@ -468,7 +482,8 @@ export default function ProfileScreen({navigation}: any) {
               />
               <Text
                 style={{
-                  fontSize: Platform.OS === 'ios' ? 17 : 13,
+                  fontSize:
+                    Platform.OS === 'ios' ? Display.setWidth(6) - 8 : 13,
                   paddingLeft: 8,
                   color: Colors.GOOGLE_BLUE,
                 }}>
@@ -476,10 +491,9 @@ export default function ProfileScreen({navigation}: any) {
               </Text>
               <Text
                 style={{
-                  fontSize: Platform.OS === 'ios' ? 16 : 13,
-                  position: 'absolute',
-                  right: 20,
-                  top: 15,
+                  fontSize:
+                    Platform.OS === 'ios' ? Display.setWidth(9) - 20.5 : 13,
+                  right: -Display.setWidth(5),
                   color: Colors.SECONDARY_RED,
                 }}>
                 Thành viên Bạc
@@ -488,7 +502,7 @@ export default function ProfileScreen({navigation}: any) {
                 name="arrow-forward-ios"
                 size={13}
                 color={Colors.SECONDARY_RED}
-                style={{position: 'absolute', right: 0}}
+                style={{position: 'absolute', right: 0, top: 18}}
               />
             </View>
           </View>
@@ -517,7 +531,7 @@ export default function ProfileScreen({navigation}: any) {
               />
               <Text
                 style={{
-                  fontSize: Platform.OS === 'ios' ? 17 : 13,
+                  fontSize: Platform.OS === 'ios' ? Display.setWidth(4) : 13,
                   paddingLeft: 8,
                   color: Colors.DEFAULT_YELLOW,
                 }}>
@@ -556,7 +570,7 @@ export default function ProfileScreen({navigation}: any) {
               />
               <Text
                 style={{
-                  fontSize: Platform.OS === 'ios' ? 17 : 13,
+                  fontSize: Platform.OS === 'ios' ? Display.setWidth(4) : 13,
                   paddingLeft: 8,
                   color: Colors.GOOGLE_BLUE,
                 }}>
@@ -564,13 +578,13 @@ export default function ProfileScreen({navigation}: any) {
               </Text>
               <Text
                 style={{
-                  fontSize: Platform.OS === 'ios' ? 17 : 13,
+                  fontSize: Platform.OS === 'ios' ? Display.setWidth(5) : 13,
                   paddingLeft: 8,
                   position: 'absolute',
                   right: 20,
                   color: Colors.GOOGLE_BLUE,
                 }}>
-                9 Likes
+                {bookmark.length}
               </Text>
               <Icon
                 name="arrow-forward-ios"
@@ -605,7 +619,7 @@ export default function ProfileScreen({navigation}: any) {
               />
               <Text
                 style={{
-                  fontSize: Platform.OS === 'ios' ? 17 : 13,
+                  fontSize: Platform.OS === 'ios' ? Display.setWidth(4) : 13,
                   paddingLeft: 8,
                   color: Colors.DEFAULT_GREEN,
                 }}>
@@ -643,7 +657,7 @@ export default function ProfileScreen({navigation}: any) {
               />
               <Text
                 style={{
-                  fontSize: Platform.OS === 'ios' ? 17 : 13,
+                  fontSize: Platform.OS === 'ios' ? Display.setWidth(4) : 13,
                   paddingLeft: 8,
                   color: Colors.SECONDARY_RED,
                 }}>
@@ -681,7 +695,7 @@ export default function ProfileScreen({navigation}: any) {
               />
               <Text
                 style={{
-                  fontSize: Platform.OS === 'ios' ? 17 : 13,
+                  fontSize: Platform.OS === 'ios' ? Display.setWidth(4) : 13,
                   paddingLeft: 8,
                   color: Colors.FACEBOOK_BLUE,
                 }}>
@@ -689,7 +703,7 @@ export default function ProfileScreen({navigation}: any) {
               </Text>
               <Text
                 style={{
-                  fontSize: Platform.OS === 'ios' ? 16 : 13,
+                  fontSize: Platform.OS === 'ios' ? Display.setWidth(4) : 13,
                   paddingLeft: 8,
                   position: 'absolute',
                   right: 20,
@@ -730,7 +744,7 @@ export default function ProfileScreen({navigation}: any) {
               />
               <Text
                 style={{
-                  fontSize: Platform.OS === 'ios' ? 17 : 13,
+                  fontSize: Platform.OS === 'ios' ? Display.setWidth(4) : 13,
                   paddingLeft: 8,
                   color: Colors.SECONDARY_GREEN,
                 }}>
@@ -772,7 +786,8 @@ export default function ProfileScreen({navigation}: any) {
               />
               <Text
                 style={{
-                  fontSize: Platform.OS === 'ios' ? 17 : 13,
+                  fontSize:
+                    Platform.OS === 'ios' ? Display.setWidth(7) - 11 : 13,
                   paddingLeft: 8,
                   color: Colors.DEFAULT_YELLOW,
                 }}>
@@ -780,7 +795,8 @@ export default function ProfileScreen({navigation}: any) {
               </Text>
               <Text
                 style={{
-                  fontSize: Platform.OS === 'ios' ? 16 : 13,
+                  fontSize:
+                    Platform.OS === 'ios' ? Display.setWidth(6) - 10 : 13,
                   paddingLeft: 8,
                   position: 'absolute',
                   right: 20,
@@ -821,7 +837,7 @@ export default function ProfileScreen({navigation}: any) {
               />
               <Text
                 style={{
-                  fontSize: Platform.OS === 'ios' ? 17 : 13,
+                  fontSize: Platform.OS === 'ios' ? Display.setWidth(4) : 13,
                   paddingLeft: 8,
                   color: Colors.DEFAULT_GREEN,
                 }}>
@@ -859,7 +875,7 @@ export default function ProfileScreen({navigation}: any) {
               />
               <Text
                 style={{
-                  fontSize: Platform.OS === 'ios' ? 17 : 13,
+                  fontSize: Platform.OS === 'ios' ? Display.setWidth(4) : 13,
                   paddingLeft: 8,
                   color: Colors.SECONDARY_RED,
                 }}>
@@ -896,7 +912,7 @@ export default function ProfileScreen({navigation}: any) {
               />
               <Text
                 style={{
-                  fontSize: Platform.OS === 'ios' ? 17 : 13,
+                  fontSize: Platform.OS === 'ios' ? Display.setWidth(4) : 13,
                   paddingLeft: 8,
                   color: Colors.DEFAULT_GREEN,
                 }}>

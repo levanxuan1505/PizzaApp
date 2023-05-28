@@ -5,12 +5,10 @@
 /* eslint-disable react/self-closing-comp */
 /* eslint-disable react/no-unstable-nested-components */
 import {
-  Text,
   View,
   Modal,
   Image,
   Animated,
-  Platform,
   LogBox,
   FlatList,
   StatusBar,
@@ -18,7 +16,7 @@ import {
   RefreshControl,
   TouchableHighlight,
 } from 'react-native';
-
+import {Display} from '@utils';
 LogBox.ignoreLogs(['Sending...']);
 import React, {useState} from 'react';
 import Icon from 'react-native-vector-icons/MaterialIcons';
@@ -28,7 +26,7 @@ import {Colors} from '@constants';
 import styles from '@css/HomeScreenStyle';
 import {foodList} from '@constants';
 
-import {Card, ListCategories, ConditionToAdd, Header} from '@components';
+import {Card, ListCategories, Header} from '@components';
 // redux import
 import {useSelector} from 'react-redux';
 //
@@ -78,53 +76,6 @@ export default function HomeScreen({navigation}: any) {
       </Modal>
     );
   };
-  // const Card = ({food}: any) => {
-  //   return (
-  //     <TouchableHighlight
-  //       underlayColor="transparent"
-  //       activeOpacity={0.9}
-  //       onPress={() => navigation.navigate('DetailCard', food)}>
-  //       <View style={styles.card}>
-  //         <View style={{alignItems: 'center', top: -30}}>
-  //           <Image
-  //             source={food.image}
-  //             style={{height: 130, width: 130, borderRadius: 70}}
-  //           />
-  //         </View>
-  //         <View style={{marginHorizontal: 15, top: -10}}>
-  //           <Text
-  //             style={{
-  //               fontSize: Platform.OS === 'ios' ? 17.4 : 13,
-  //               fontWeight: Platform.OS === 'ios' ? 'bold' : '800',
-  //               color: Colors.DEFAULT_GREEN,
-  //             }}>
-  //             {food.name}
-  //           </Text>
-  //           <Text
-  //             style={{fontSize: 15, color: Colors.DEFAULT_GREY, marginTop: 2}}>
-  //             {food.ingredients}
-  //           </Text>
-  //         </View>
-  //         <View
-  //           style={{
-  //             marginTop: 10,
-  //             marginHorizontal: 20,
-  //             flexDirection: 'row',
-  //             justifyContent: 'space-between',
-  //             alignItems: 'flex-start',
-  //           }}>
-  //           <Text style={{fontSize: 18, fontWeight: 'bold'}}>
-  //             {food.price}k
-  //           </Text>
-
-  //           <View style={styles.addToCartBtn}>
-  //             <ConditionToAdd navigation={navigation} food={food} />
-  //           </View>
-  //         </View>
-  //       </View>
-  //     </TouchableHighlight>
-  //   );
-  // };
 
   return (
     <SafeAreaView style={{flex: 1, backgroundColor: Colors.DEFAULT_WHITE}}>
@@ -147,7 +98,11 @@ export default function HomeScreen({navigation}: any) {
           <View style={{alignItems: 'center'}}>
             <Image
               source={require('../assets/images/bigsale.png')}
-              style={{height: 400, width: 460, marginVertical: 10}}
+              style={{
+                height: Display.setWidth(100),
+                width: Display.setWidth(90),
+                marginVertical: 10,
+              }}
             />
           </View>
         </ModalPopup>
@@ -157,25 +112,33 @@ export default function HomeScreen({navigation}: any) {
       <Header navigation={navigation} />
       <View
         style={{
-          marginTop: 10,
+          marginTop: Display.setWidth(1.6),
           flexDirection: 'row',
           paddingHorizontal: 20,
         }}>
         <View style={styles.inputContainer}>
-          <Icon name="search" size={28} color={Colors.DEFAULT_GREEN} />
+          <Icon
+            name="search"
+            size={Display.setHeight(4)}
+            color={Colors.DEFAULT_GREEN}
+          />
           <TextInput
-            style={{flex: 1, fontSize: 18, marginLeft: 5}}
+            style={{flex: 1, fontSize: Display.setWidth(5), marginLeft: 5}}
             placeholder="Tìm kiếm"></TextInput>
           <TouchableHighlight underlayColor="transparent">
             <Icons
               name="camera-outline"
-              size={30}
+              size={Display.setHeight(4)}
               color={Colors.DEFAULT_GREEN}
             />
           </TouchableHighlight>
         </View>
         <View style={styles.sortBtn}>
-          <Icon name="tune" size={30} color={Colors.DEFAULT_WHITE} />
+          <Icon
+            name="tune"
+            size={Display.setHeight(4)}
+            color={Colors.DEFAULT_WHITE}
+          />
         </View>
       </View>
       <View>
