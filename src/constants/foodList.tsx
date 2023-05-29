@@ -246,7 +246,7 @@ const foodList = [
   //   burger
   [
     {
-      id: '1',
+      id: '17',
       name: 'Burger Cá hồi',
       ingredients: 'Salmon burger',
       price: 59,
@@ -261,7 +261,7 @@ const foodList = [
         'Ngon mê ly với món pizza hải sản đầy ụ nhân này. Mùi phô mai nướng lên hòa lẫn với mùi thơm của hải sản, các loại rau củ sẽ khiến bạn phải phát thèm. Đế bánh mỏng, nóng giòn, kết hợp với phần sốt cà chua đậm đà, tôm và mực tươi ngon, chắc thịt. Thêm vào đó một chút giòn giòn, ngọt ngọt của ớt chuông. Tất cả hải sản và rau củ ngập trong phô mai béo ngậy, tan chảy cực thích. Bạn sẽ không cưỡng lại sức hấp dẫn của món bánh này đâu.',
     },
     {
-      id: '2',
+      id: '18',
       name: 'Burger Bò phô mai',
       ingredients: 'Cheese burger',
       price: 59,
@@ -276,7 +276,7 @@ const foodList = [
         'Một chiếc pizza "đậm chất sinh viên" đó chính là pizza mì gói. Chỉ với những nguyên liệu cực đơn giản là bạn đã có thể làm ngay món bánh thơm ngon này rồi. Đế bánh được làm từ mì và trứng nên có độ giòn giòn, mềm mềm, thêm một lớp phô mai béo ngậy bên trên. Cắn một miếng bạn sẽ cảm nhận được độ béo, thơm, vừa vị của món pizza độc lạ này. Đây sẽ là lựa chọn tuyệt vời cho ngày lười nấu nướng cầu kỳ của bạn.',
     },
     {
-      id: '3',
+      id: '19',
       name: 'Burger WHOPPER',
       ingredients: 'WHOPPER Burger',
       price: 51,
@@ -291,7 +291,7 @@ const foodList = [
         'Một chiếc pizza sốt pesto sẽ là món ăn tuyệt vời lắp đầy cái bụng đói của bạn. Bánh được nướng lên cùng với sốt pesto thơm nức mùi húng tây cực kỳ cuốn hút. Vỏ bánh bên trong xốp mềm, bên ngoài giòn tan, lớp nhân bánh bên trên là sự kết hợp hòan hảo giữa sốt pesto lạ miệng, phô mai béo ngậy, thịt tôm tươi ngọt, ớt chuông giòn giòn, đúng là ngon hết ý.',
     },
     {
-      id: '4',
+      id: '20',
       name: 'Burger Cá rán',
       ingredients: 'Fish fry burger',
       price: 46,
@@ -306,7 +306,7 @@ const foodList = [
         'Makizushi là một loại cuộn sushi Nhật Bản chứa đầy các chất hàn khác nhau. Thuật ngữ makizushi đề cập đến thực tế là sushi được cuộn: maki có nghĩa là "cuộn" và zushi là phiên bản liên hợp của từ "sushi". Makizushi là loại sushi nổi tiếng nhất bên ngoài Nhật Bản. Makizushi cũng được gọi là nori maki hoặc norimaki bởi vì cơm sushi và các chất hàn đều được gói lại hoặc cuộn bên trong rong biển sấy khô.',
     },
     {
-      id: '5',
+      id: '21',
       name: ' Burger Bò Hành',
       ingredients: ' Onion burger',
       price: 51,
@@ -321,7 +321,7 @@ const foodList = [
         'Kimbap hay còn gọi là gimbap là tên gọi của món cơm gói trong lá rong biển (kim có nghĩa là rong biển, bap là cơm). Người Hàn thường làm kimbap để mang đi ăn trong những buổi dã ngoại hoặc các sự kiện ngoài trời, hoặc là trong các bữa ăn trưa nhẹ. Kimbap hay được ăn cùng với củ cải muối hay kim chi.',
     },
     {
-      id: '6',
+      id: '22',
       name: 'Burger Gà Nướng',
       ingredients: 'Grill burger',
       price: 69,
@@ -336,7 +336,7 @@ const foodList = [
         'Một chiếc pizza bắp phô mai vàng tươi, thơm ngây ngất chính là "chân ái" của các tín đồ phô mai đó. Chỉ với những nguyên liệu dễ tìm, cách làm siêu đơn giản là bạn đã có ngay chiếc pizza cực hấp dẫn này rồi. Những hạt bắp Mỹ vàng ươm, giòn ngọt ngập trong phô mai béo ngậy. Cắn một miếng bạn có thể cảm nhận được ngay độ béo và thơm của phô mai. Kết hợp với đế bánh giòn tan, sốt cà chua ngọt, đúng là khiến cho người ta phải chết mê với món này.',
     },
     {
-      id: '7',
+      id: '23',
       name: 'Burger Bò Khoai',
       ingredients: 'Potato burger',
       price: 147,
@@ -351,7 +351,7 @@ const foodList = [
         'Biến tấu chiếc bánh sandwich thường ngày của bạn thành chiếc pizza nóng hổi, thơm lừng, cực hấp dẫn thôi nào. Lớp vỏ bánh sandwich khi được nướng lên cực giòn tan, thêm lớp phô mai tan chảy bên trên, mới chỉ nhìn thôi là đã thấy muốn ăn rồi. Pizza sandwich sẽ là bữa sáng tuyệt vời cho bạn, bánh thơm kết hợp với phô mai béo ngậy, rau củ giòn ngọt, thêm một chút xúc xích đậm đà, giúp bạn nạp nhanh và đủ năng lượng để khởi động ngày mới.',
     },
     {
-      id: '8',
+      id: '24',
       name: 'Burger 2 Miếng Bò',
       ingredients: 'Two Beef burger',
       price: 169,
@@ -369,7 +369,7 @@ const foodList = [
   //   sushi
   [
     {
-      id: '1',
+      id: '25',
       name: 'Sushi Nigirizushi',
       ingredients: 'Sushi Nigirizushi',
       price: 189,
@@ -384,7 +384,7 @@ const foodList = [
         'Ngon mê ly với món pizza hải sản đầy ụ nhân này. Mùi phô mai nướng lên hòa lẫn với mùi thơm của hải sản, các loại rau củ sẽ khiến bạn phải phát thèm. Đế bánh mỏng, nóng giòn, kết hợp với phần sốt cà chua đậm đà, tôm và mực tươi ngon, chắc thịt. Thêm vào đó một chút giòn giòn, ngọt ngọt của ớt chuông. Tất cả hải sản và rau củ ngập trong phô mai béo ngậy, tan chảy cực thích. Bạn sẽ không cưỡng lại sức hấp dẫn của món bánh này đâu.',
     },
     {
-      id: '2',
+      id: '26',
       name: 'Sushi Chirashizushi',
       ingredients: 'Sushi Chirashizushi',
       price: 215,
@@ -399,7 +399,7 @@ const foodList = [
         'Một chiếc pizza "đậm chất sinh viên" đó chính là pizza mì gói. Chỉ với những nguyên liệu cực đơn giản là bạn đã có thể làm ngay món bánh thơm ngon này rồi. Đế bánh được làm từ mì và trứng nên có độ giòn giòn, mềm mềm, thêm một lớp phô mai béo ngậy bên trên. Cắn một miếng bạn sẽ cảm nhận được độ béo, thơm, vừa vị của món pizza độc lạ này. Đây sẽ là lựa chọn tuyệt vời cho ngày lười nấu nướng cầu kỳ của bạn.',
     },
     {
-      id: '3',
+      id: '27',
       name: 'Sushi Makimono',
       ingredients: 'Sushi Makimono',
       price: 179,
@@ -414,7 +414,7 @@ const foodList = [
         'Một chiếc pizza sốt pesto sẽ là món ăn tuyệt vời lắp đầy cái bụng đói của bạn. Bánh được nướng lên cùng với sốt pesto thơm nức mùi húng tây cực kỳ cuốn hút. Vỏ bánh bên trong xốp mềm, bên ngoài giòn tan, lớp nhân bánh bên trên là sự kết hợp hòan hảo giữa sốt pesto lạ miệng, phô mai béo ngậy, thịt tôm tươi ngọt, ớt chuông giòn giòn, đúng là ngon hết ý.',
     },
     {
-      id: '4',
+      id: '28',
       name: 'Sushi Gunkan',
       ingredients: 'Sushi Gunkan',
       price: 146,
@@ -429,7 +429,7 @@ const foodList = [
         'Makizushi là một loại cuộn sushi Nhật Bản chứa đầy các chất hàn khác nhau. Thuật ngữ makizushi đề cập đến thực tế là sushi được cuộn: maki có nghĩa là "cuộn" và zushi là phiên bản liên hợp của từ "sushi". Makizushi là loại sushi nổi tiếng nhất bên ngoài Nhật Bản. Makizushi cũng được gọi là nori maki hoặc norimaki bởi vì cơm sushi và các chất hàn đều được gói lại hoặc cuộn bên trong rong biển sấy khô.',
     },
     {
-      id: '5',
+      id: '29',
       name: 'Sushi Oshizushi',
       ingredients: 'Sushi Oshizushi',
       price: 151,
@@ -444,7 +444,7 @@ const foodList = [
         'Kimbap hay còn gọi là gimbap là tên gọi của món cơm gói trong lá rong biển (kim có nghĩa là rong biển, bap là cơm). Người Hàn thường làm kimbap để mang đi ăn trong những buổi dã ngoại hoặc các sự kiện ngoài trời, hoặc là trong các bữa ăn trưa nhẹ. Kimbap hay được ăn cùng với củ cải muối hay kim chi.',
     },
     {
-      id: '6',
+      id: '30',
       name: 'Sushi Temaki',
       ingredients: 'Sushi Temaki',
       price: 199,
@@ -462,7 +462,7 @@ const foodList = [
   //   Salad
   [
     {
-      id: '1',
+      id: '31',
       name: 'Salad dầu giấm',
       ingredients: 'Vinegar salad',
       toping1: 'Giá đỗ',
@@ -477,7 +477,7 @@ const foodList = [
         'Đây là món salad đơn giản nhất nhưng không phải ai cũng có thể thực hiện một cách hoàn hảo. Bí quyết có món salad ngon chính là ở dầu giấm. Với những hướng dẫn tỉ mỉ của Cooky, chắc chắn bạn sẽ có một món salad đơn giản mà hấp dẫn lạ kì.',
     },
     {
-      id: '2',
+      id: '32',
       name: 'Salad tổng hợp ',
       ingredients: 'Synthetic salad',
       toping1: 'Giá đỗ',
@@ -493,7 +493,7 @@ const foodList = [
         'Salad tổng hợp với các loại rau quả như xà lách, cà chua, dưa leo, hành tây hoà quyện vào nhau trong vị chua ngọt của dầu giấm, vừa dễ ăn vừa tốt cho sức khoẻ. Món này làm cũng khá nhanh, bạn có thể làm cả trong những ngày bận rộn đấy.',
     },
     {
-      id: '3',
+      id: '33',
       name: 'Salad dưa leo',
       ingredients: 'Cucumber salad',
       toping1: 'Giá đỗ',
@@ -509,7 +509,7 @@ const foodList = [
         'Món ăn cực kì dễ làm, và nguyên liệu thì gần như luôn luôn có sẵn trong tủ lạnh nhà bạn rồi. Thay vì chỉ cắt dưa leo ăn sống, bạn đầu tư thêm vài phút để có một món ăn thơm ngon, đủ vị nhé.',
     },
     {
-      id: '4',
+      id: '34',
       name: 'Salad giá đỗ',
       ingredients: 'Bean sprouts salad',
       toping1: 'Giá đỗ',
@@ -525,7 +525,7 @@ const foodList = [
         'Giá đỗ chứa ít năng lượng, lại có nhiều chất xơ, vitamin và khoáng chất. Các món ăn từ giá đỗ vừa ngon miệng vừa tốt cho sức khoẻ. Salad giá đỗ cũng không là ngoại lệ. Món ăn này còn rất thích hợp cho những người đang có nhu cầu giảm cân đấy. ',
     },
     {
-      id: '5',
+      id: '35',
       name: ' Salad súp lơ',
       ingredients: 'Cauliflower salad',
       toping1: 'Giá đỗ',
@@ -541,7 +541,7 @@ const foodList = [
         'Món salad súp lơ xanh thanh mát này rất thích hợp cho những bạn đang muốn giảm cân. Hơn nữa, súp lơ xanh còn có nhiều lợi ích cho sức khoẻ như chống ung thư, ngăn ngừa tiểu đường. Thay vì xào, bạn hãy thử làm món salad để đổi vị nhé.',
     },
     {
-      id: '6',
+      id: '36',
       name: 'Salad kim châm',
       ingredients: 'Enokitake salad',
       toping1: 'Giá đỗ',
@@ -557,7 +557,7 @@ const foodList = [
         'Salad nấm kim châm có hương vị thanh đạm, ngọt tự nhiên, tươi giòn và chua ngọt nên rất dễ ăn. Không những vậy, món ăn này còn có nhiều chất dinh dưỡng nữa. Món này còn rất thích hợp khi nấu tiệc đó.',
     },
     {
-      id: '7',
+      id: '37',
       name: 'Salad đậu bắp',
       ingredients: 'Sever salad',
       toping1: 'Giá đỗ',
@@ -573,7 +573,7 @@ const foodList = [
         'Bạn sẽ thấy thích thú và ngon miệng với món salad đậu bắp này. Vị chua chua, ngọt ngọt hòa quyện vào nhau sẽ làm tăng thêm độ hấp dẫn cho món ăn. Nguyên liệu cực kì đơn giản, mà chỉ cần 35 phút thôi.',
     },
     {
-      id: '8',
+      id: '38',
       name: 'Salad bơ đậu',
       ingredients: 'Peanut salad',
       toping1: 'Giá đỗ',
@@ -589,7 +589,7 @@ const foodList = [
         'Nguyên liệu chính chỉ có đậu hũ non và bơ, món salad này vô cùng đơn giản nhưng vị ngon lại khiến bạn bất ngờ đấy. Mùa hè nhiều bơ, làm món salad thanh mát này ăn thì quá tuyệt.',
     },
     {
-      id: '9',
+      id: '39',
       name: 'Salad xoài Thái',
       ingredients: 'Thai mango salad',
       toping1: 'Giá đỗ',
@@ -605,7 +605,7 @@ const foodList = [
         'Chỉ cầu bỏ ra chút thời gian với những nguyên liệu quen thuộc như xoài, dưa leo, ớt chuông,... bạn đã có ngay món salad xoài kiểu Thái chua ngọt ăn hoài không chán.',
     },
     {
-      id: '10',
+      id: '40',
       name: 'Salad ớt chuông',
       ingredients: 'Bell pepper salad',
       toping1: 'Giá đỗ',
@@ -624,7 +624,7 @@ const foodList = [
   // chicken
   [
     {
-      id: '1',
+      id: '41',
       name: 'Gà giòn không cay',
       ingredients: 'Not spicy chicken',
       price: 36,
@@ -639,7 +639,7 @@ const foodList = [
         'Cách chế biến gà đơn giản nhất chính là đem đi luộc. Thịt gà được sơ chế kỹ sau đó cho vào nồi, đổ ngập nước thêm vài ba lát gừng để át mùi và luộc chín. Gà luộc chín có lớp bên ngoài màu vàng ruộm trông vừa đẹp mắt, vừa hấp dẫn, mùi thịt gà tỏa thơm lừng, thịt gà chắc không bị nát, khi ăn cảm nhận được sự dai giòn của da và vị ngọt của thịt. Thật ra luộc gà cũng là một nghệ thuật vì bạn có thể luộc gà theo nhiều cách khác nhau. Ví như gà luộc muối, gà luộc lá chanh hay gà luộc nước dừa,...',
     },
     {
-      id: '2',
+      id: '42',
       name: 'Gà MIX WING ',
       ingredients: 'MIX WING chicken',
       price: 75,
@@ -655,7 +655,7 @@ const foodList = [
         'Giữa tiết trời se lạnh của buổi sớm mà được thưởng thức một tô cháo gà nóng hổi mới ra lò thì còn gì bằng đúng không! Cháo gà được nấu từ nước hầm xương gà nên có vị ngọt thanh, khi chế biến không cần nêm nếm quá nhiều gia vị mà vẫn tạo được hương vị thơm ngon khó cưỡng. Cho cháo gà ra tô, rắc thêm vào một ít tiêu, một ít rau tía tô, hành lá cắt nhỏ, ai đó muốn ăn cay hơn nữa thì cho thêm vào một ít ớt bột hoặc ớt cắt lát nhỏ nữa là có thể thưởng thức được hương vị tuyệt vời của tô cháo gà rồi.',
     },
     {
-      id: '3',
+      id: '43',
       name: 'Gà rán giòn cay',
       ingredients: 'Fried chicken',
       price: 36,
@@ -670,7 +670,7 @@ const foodList = [
         'Những ngày cuối tuần tụ tập cùng gia đình hay bạn bè chắc chắn sẽ không thể thiếu được món gà nướng để nhâm nhi cùng đồ uống mát lạnh rồi. Gà được sơ chế thật kỹ để loại bỏ mùi tanh thì được đem đi tẩm ướp gia vị đầy đủ, đợi cho gà thấm gia vị thì đem đi nướng. Gà mới nướng xong toả hương thơm nức mũi, mùi da vàng nâu óng ánh đẹp mắt. Thịt gà ngoài giòn dai, cay mặn còn bên trọng thì mềm, ngọt thanh, ăn kèm với muối ớt sữa hoặc muối tiêu chanh thì đúng là hết bài.',
     },
     {
-      id: '4',
+      id: '44',
       name: 'Gà BBQ',
       ingredients: 'BBQ chicken',
       price: 39,
@@ -685,7 +685,7 @@ const foodList = [
         'Một cách chế biến đơn giản khác từ gà đó là mang đi hấp. Hấp gà cũng có nhiều cách, tùy theo ý thích của mình mà bạn có thể lựa chọn cách hấp. Ở đây, Điện máy XANH giới thiệu đến bạn hai cách hấp gà. Gà ta hấp hành Món đầu tiên trong mục gà hấp sẽ là gà hấp hành. Gà được đem đi hấp với hành lá, sả và gừng tạo nên mùi vị mới lạ, độc đáo nhưng vẫn đọng lại một chút gì đó dân dã, gần gũi. Gà hấp hành mới ra lò bốc khói nghi ngút, hương thơm mộc mạc từ thịt gà quyện với hành lá, sả, gừng kích thích vị giác của bất kỳ thực khách khó tính nào.',
     },
     {
-      id: '5',
+      id: '45',
       name: ' Commbo Gà rán',
       ingredients: ' Commbo fried chicken',
       price: 90,
@@ -699,7 +699,7 @@ const foodList = [
       title: '',
     },
     {
-      id: '6',
+      id: '46',
       name: 'Commbo cay',
       ingredients: 'Commbo spicy',
       price: 119,
@@ -716,7 +716,7 @@ const foodList = [
   // rice king
   [
     {
-      id: '1',
+      id: '47',
       name: 'Cơm Vua cánh gà',
       ingredients: ' King rice chicken',
       price: 49,
@@ -731,7 +731,7 @@ const foodList = [
         'Dĩa cơm gà đầy ụ, miếng gà bắt ngang dĩa to chà bá, gà bóng dầu cánh gián vô cùng bắt mắt. Miếng gà giòn da, thơm thịt bên ngoài, ngọt đậm bên trong làm tất cả các giác quan dường như được đánh thức. Gà tại quán là gà ta còn tươi sống, được mua về và chế biến kỹ càng. Từ công đoạn sơ chế đến nấu nướng vô cùng kỹ lưỡng, đảm bảo phục vụ cho thực khách món ăn vừa ngon vừa đảm bảo.',
     },
     {
-      id: '2',
+      id: '48',
       name: 'Cơm Vua bò',
       ingredients: 'Beef rice king',
       price: 61,
@@ -747,7 +747,7 @@ const foodList = [
         'Với bữa cơm cung đình xưa, món ăn phải được trình bày đẹp, mũi ngửi thơm, cảm giác thèm, tai nghe nhưng âm thanh quyến rũ. Từng món được múc ra tô, đĩa rồi đặt trong các quả hộp bằng gỗ sơn son thếp vàng, được niêm phong bằng giấy bản và có chữ kí, đóng dấu của Thượng thiện. Chuông đổ, thức ăn được thị vệ gánh vào cửa cung giao cho phi tần bày biện cho vua. Cuối cùng, nữ quan hoặc các bà nội cung bậc thấp của vua phải thử đũa trước mặt ngài để kiểm tra độc tố. Sở dĩ bữa cơm vua có nhiều món là vì ăn vài món cố định, nhà vua dễ bị đầu độc.',
     },
     {
-      id: '3',
+      id: '49',
       name: 'Combo Bò nướng',
       ingredients: 'Commbo beef rice',
       price: 61,
@@ -763,7 +763,7 @@ const foodList = [
         'Tại Festival nghề năm 2011, lần đầu tiên nữ nghệ nhân Hoàng Anh đã áp dụng kỹ thuật nấu nướng tuyệt xảo trong cung đình do ông mình truyền lại để tái hiện nguyên bản buổi yến tiệc cung đình xưa với những sơn hào hải vị quý hiếm. Bữa tiệc thịnh soạn này chỉ đủ chiêu đãi cho 26 thực khách may mắn. Giá cả ước tính của bữa cơm cung đình “thứ thiệt” này khoảng 6 triệu đồng/suất. Nhiều người đánh giá, từ trước đến nay, bữa tiệc này mới là cơm cung đình đúng nguyên bản nhất, không như những bữa cơm cung đình phục vụ du khách ở các nhà hàng, khách sạn bây giờ.',
     },
     {
-      id: '4',
+      id: '50',
       name: 'Combo phô mai',
       ingredients: 'Commbo cheese rice ',
       price: 64,
@@ -779,7 +779,7 @@ const foodList = [
         'Tuy nhiên, có một điều làm người Huế mãi day dứt: Hương vị của món ăn Huế đang nhạt dần theo thời gian. Đặc biệt, chỉ cần khoảng vài chục USD/suất, thực khách đã có thể thưởng thức cái gọi là “cơm cùng đình” nhan nhản ở các nhà hàng, khách sạn dù cũng là nem công, chả phượng, màu sắc và hình thức bắt mắt. Khách được mặc áo hoàng bào, được đóng vai ông hoàng bà chúa trong cung cấm, đóng các vương tôn công tử hay sứ thần các nước để “ngự thiện” như các ông vua thời xưa. Nhưng nói như ông Hồ Tấn Phan, một nhà nghiên cứu văn hóa Huế: “Cơm cung đình bây giờ chỉ là sự “phỉnh phờ”. Họ khéo léo tỉa tót đấy nhưng sao tôi thấy món ăn không có hồn gì của Huế? Với lại, người người đều nấu cơm cung đình thế này mang tiếng quá bởi cơm cung đình xưa đâu có như vậy.',
     },
     {
-      id: '5',
+      id: '51',
       name: 'Cơm Vua BBQ',
       ingredients: ' King rice BBQ',
       price: 49,
@@ -794,7 +794,7 @@ const foodList = [
         'Dĩa cơm gà đầy ụ, miếng gà bắt ngang dĩa to chà bá, gà bóng dầu cánh gián vô cùng bắt mắt. Miếng gà giòn da, thơm thịt bên ngoài, ngọt đậm bên trong làm tất cả các giác quan dường như được đánh thức. Gà tại quán là gà ta còn tươi sống, được mua về và chế biến kỹ càng. Từ công đoạn sơ chế đến nấu nướng vô cùng kỹ lưỡng, đảm bảo phục vụ cho thực khách món ăn vừa ngon vừa đảm bảo.',
     },
     {
-      id: '6',
+      id: '52',
       name: 'Combo Gà nướng',
       ingredients: 'Commbo chicken rice',
       price: 61,
@@ -812,7 +812,7 @@ const foodList = [
   // drink
   [
     {
-      id: '1',
+      id: '53',
       name: 'Nước Cam',
       ingredients: 'Orange juice',
       price: 22,
@@ -825,7 +825,7 @@ const foodList = [
         'Nước cam có chứa flavonoid có lợi cho sức khỏe và là một nguồn cung cấp các chất chống oxy hóa hesperidin. Đồng thời trong nước cam có chứa nhiều vitamin C,[1] có tác dụng tăng cường đề kháng, chống mệt mỏi. Nước cam thường có sự thay đổi giữa màu cam và màu vàng, mặc dù một số màu đỏ ruby ​​hoặc màu cam giống màu đỏ cam hoặc thậm chí hơi hồng.',
     },
     {
-      id: '2',
+      id: '54',
       name: 'Milo',
       ingredients: 'Milo drink',
       price: 25,
@@ -838,7 +838,7 @@ const foodList = [
         'Sữa Milo của Netstle đã có mặt và liên tục phát triển tại thị trường Việt Nam từ hơn 17 năm qua và là nhãn hiệu uy tín, dẫn đầu về chất lượng và thị phần trong ngành hàng thức uống cacao dinh dưỡng dành cho trẻ em từ 6-12 tuổi. Thức uống lúa mạch Sữa Milo của Netstle là sự kết hợp hoàn hảo từ hương vị thơm ngon độc đáo của cacao và nguồn dưỡng chất thiên nhiên giàu đạm và các chất dinh dưỡng từ sữa, mầm lúa mạch nguyên cám và các vitamin, khoáng chất.',
     },
     {
-      id: '3',
+      id: '55',
       name: 'DASANI',
       ingredients: 'DASANI',
       price: 22,
@@ -851,7 +851,7 @@ const foodList = [
         'Nước tinh khiết Dasani có mặt trên thị trường và khẳng định những ưu điểm vượt trội của mình. Ví dụ điển hình nằm ở thiết kế vỏ chai. Trọng lượng không đáng kể, chất liệu thân thiện với môi trường, dễ dàng bóp nhỏ để tiết kiệm diện tích…Những lý do đó cũng đủ để Dasani nhận được quan tâm chứ chưa nói đến chất lượng sản phẩm và mức độ hài lòng của khách hàng khi uống nước.',
     },
     {
-      id: '4',
+      id: '56',
       name: 'Xoài đào',
       ingredients: 'Mango juice',
       price: 25,
@@ -867,7 +867,7 @@ const foodList = [
     - Sản phẩm chất lượng, an toàn cho mọi lứa tuổi.`,
     },
     {
-      id: '5',
+      id: '57',
       name: 'Trà Chanh',
       ingredients: 'Lemon tea',
       price: 22,
@@ -880,7 +880,7 @@ const foodList = [
         'Trà chanh vốn là thức uống khá nổi vào những năm trước. Khi phong trà ‘trà chanh chém gió’ từ Hà Nội lan rộng đến nhiều thành phố khác. Thức uống có công thức quá đơn giản, bao gồm: nước trà Thái Nguyên, chanh, đường và một ít đá. Lại lan toả rất mạnh đến khắp phố phường. Thời gian gần đây, phong trào lê la đường phố, uống trà chanh cũng giảm mạnh. Một phần sức nóng của xu hướng này đã nguội lạnh. Ngoài ra thì một phần cũng là do những thông tin vệ sinh không tốt về thức uống này. Điển hình là trà chanh mà không làm từ trà, cũng chẳng có chanh, mà nước cũng chưa chắc đã được đun sôi.',
     },
     {
-      id: '6',
+      id: '58',
       name: 'CoCa',
       ingredients: 'Coca Cola',
       price: 22,
@@ -893,7 +893,7 @@ const foodList = [
         'Coca-Cola được phát minh bởi dược sĩ John Stith Pemberton, chủ một phòng thí nghiệm và hiệu thuốc tư nhân. Ban đầu, Pemberton chỉ định sáng chế ra một loại thuốc bình dân giúp chống đau đầu và mệt mỏi. Ông đã mày mò và thử nghiệm, pha chế thành công một loại siro có màu đen như cà phê. Loại siro này trộn với nước lạnh sẽ có thể được một thứ nước giảm nhức đầu và tăng sảng khoái.',
     },
     {
-      id: '7',
+      id: '59',
       name: 'FanTa',
       ingredients: 'Fanta drink',
       price: 22,
@@ -906,7 +906,7 @@ const foodList = [
         'Fanta là một thương hiệu đồ uống có ga có hương vị trái cây được tạo ra bởi Công ty Coca-Cola và được bán trên thị trường toàn cầu. Có hơn 100 hương vị trên toàn thế giới. Đồ uống Fanta có nguồn gốc là loại đồ uống thay thế Cola ở Đức (trong thời Thế chiến II) do việc cấm vận đối với hàng hóa của Coca-Cola vào năm 1940.',
     },
     {
-      id: '8',
+      id: '60',
       name: 'Sprite',
       ingredients: 'Sprite drink',
       price: 22,
@@ -919,7 +919,7 @@ const foodList = [
         'Sprite là một loại nước giải khát không màu, có vị chanh - chanh được sản xuất bởi Công ty Coca-Cola. Sprite có nhiều hương vị, bao gồm việt quất, anh đào, nho, cam, nhiệt đới, gừng và vani. Sprite được tạo ra để cạnh tranh chủ yếu với 7 Up của Keurig Dr Pepper.',
     },
     {
-      id: '9',
+      id: '61',
       name: 'COKE Light',
       ingredients: 'Coke Light drink',
       price: 25,
@@ -932,7 +932,7 @@ const foodList = [
         'Coca Light là một dòng sản phẩm nước uống có ga, không đường, dành cho người ăn kiêng, ra đời năm 1982. Với vị ngọt tạo từ Aspartame, đây là loại chất tạo ngọt chứa cực kì ít calo giúp bạn có thể dễ dàng kiểm soát được lượng đường và calo mình hấp thụ vào cơ thể. Nhưng bù lại, chất này có thể gây cảm giác thèm đường cho người uống và một số phản ứng cho cơ thể như mất ngủ, tâm trạng thay đổi. Vị của Coca Light được đánh giá là ít ngọt hơn so với bản gốc, và vị ngọt cũng khác với vị ngọt đường thông thường.',
     },
     {
-      id: '10',
+      id: '62',
       name: 'Mojito',
       ingredients: 'Mojito',
       price: 25,
@@ -945,7 +945,7 @@ const foodList = [
         'Coca Light là một dòng sản phẩm nước uống có ga, không đường, dành cho người ăn kiêng, ra đời năm 1982. Với vị ngọt tạo từ Aspartame, đây là loại chất tạo ngọt chứa cực kì ít calo giúp bạn có thể dễ dàng kiểm soát được lượng đường và calo mình hấp thụ vào cơ thể. Nhưng bù lại, chất này có thể gây cảm giác thèm đường cho người uống và một số phản ứng cho cơ thể như mất ngủ, tâm trạng thay đổi. Vị của Coca Light được đánh giá là ít ngọt hơn so với bản gốc, và vị ngọt cũng khác với vị ngọt đường thông thường.',
     },
     {
-      id: '11',
+      id: '63',
       name: 'Cafe đá bào',
       ingredients: 'Grinded ice coffee',
       price: 32,
@@ -958,7 +958,7 @@ const foodList = [
         'Coca Light là một dòng sản phẩm nước uống có ga, không đường, dành cho người ăn kiêng, ra đời năm 1982. Với vị ngọt tạo từ Aspartame, đây là loại chất tạo ngọt chứa cực kì ít calo giúp bạn có thể dễ dàng kiểm soát được lượng đường và calo mình hấp thụ vào cơ thể. Nhưng bù lại, chất này có thể gây cảm giác thèm đường cho người uống và một số phản ứng cho cơ thể như mất ngủ, tâm trạng thay đổi. Vị của Coca Light được đánh giá là ít ngọt hơn so với bản gốc, và vị ngọt cũng khác với vị ngọt đường thông thường.',
     },
     {
-      id: '12',
+      id: '64',
       name: 'Cafe nghệ thuật',
       ingredients: 'Art coffee',
       price: 45,
@@ -971,7 +971,7 @@ const foodList = [
         'Coca Light là một dòng sản phẩm nước uống có ga, không đường, dành cho người ăn kiêng, ra đời năm 1982. Với vị ngọt tạo từ Aspartame, đây là loại chất tạo ngọt chứa cực kì ít calo giúp bạn có thể dễ dàng kiểm soát được lượng đường và calo mình hấp thụ vào cơ thể. Nhưng bù lại, chất này có thể gây cảm giác thèm đường cho người uống và một số phản ứng cho cơ thể như mất ngủ, tâm trạng thay đổi. Vị của Coca Light được đánh giá là ít ngọt hơn so với bản gốc, và vị ngọt cũng khác với vị ngọt đường thông thường.',
     },
     {
-      id: '13',
+      id: '65',
       name: 'Cafe nóng',
       ingredients: 'Hot coffee',
       price: 35,
@@ -984,7 +984,7 @@ const foodList = [
         'Coca Light là một dòng sản phẩm nước uống có ga, không đường, dành cho người ăn kiêng, ra đời năm 1982. Với vị ngọt tạo từ Aspartame, đây là loại chất tạo ngọt chứa cực kì ít calo giúp bạn có thể dễ dàng kiểm soát được lượng đường và calo mình hấp thụ vào cơ thể. Nhưng bù lại, chất này có thể gây cảm giác thèm đường cho người uống và một số phản ứng cho cơ thể như mất ngủ, tâm trạng thay đổi. Vị của Coca Light được đánh giá là ít ngọt hơn so với bản gốc, và vị ngọt cũng khác với vị ngọt đường thông thường.',
     },
     {
-      id: '14',
+      id: '66',
       name: 'Nước dâu',
       ingredients: 'Strawberry water',
       price: 29,

@@ -230,7 +230,12 @@ const ToppingAndSize = ({navigation, food, setVisible}) => {
               </TouchableOpacity>
             </View>
           </View>
-          <View style={{position: 'relative'}}>
+          <View
+            style={{
+              position: 'relative',
+              justifyContent: 'center',
+              // alignItems: 'center',
+            }}>
             <View
               style={{
                 // height: 55,
@@ -357,45 +362,45 @@ const ToppingAndSize = ({navigation, food, setVisible}) => {
               ) : (
                 <View>{/* <Text style={styles.textOption}>5</Text> */}</View>
               )}
-            </View>
-            <TouchableOpacity
-              onPress={() => {
-                dispatch(
-                  addToCart({
-                    id: food.id,
-                    name: food.name,
-                    ingredients: food.ingredients,
-                    price: food.price + size + moneyOption,
-                    image: food.image,
-                    title: food.title,
-                    size: size,
-                    value1: isEnabled1 ? item.toping1 : '',
-                    value2: isEnabled2 ? item.toping2 : '',
-                    value3: isEnabled3 ? item.toping3 : '',
-                  }),
-                ),
-                  setVisible(false);
-              }}
-              style={{
-                position: 'absolute',
-                // bottom: 10,
-                bottom: -Display.setWidth(20),
-                justifyContent: 'center',
-                alignItems: 'center',
-                width: '98%',
-                height: 60,
-                borderRadius: 10,
-                backgroundColor: Colors.DEFAULT_GREEN,
-              }}>
-              <Text
+              <TouchableOpacity
+                onPress={() => {
+                  dispatch(
+                    addToCart({
+                      // id: food.id,
+                      name: food.name,
+                      ingredients: food.ingredients,
+                      price: food.price + size + moneyOption,
+                      image: food.image,
+                      title: food.title,
+                      size: size,
+                      value1: isEnabled1 ? item.toping1 : '',
+                      value2: isEnabled2 ? item.toping2 : '',
+                      value3: isEnabled3 ? item.toping3 : '',
+                    }),
+                  ),
+                    setVisible(false);
+                }}
                 style={{
-                  fontSize: 24,
-                  fontWeight: '600',
-                  color: Colors.DEFAULT_WHITE,
+                  position: 'absolute',
+                  // bottom: 10,
+                  bottom: -Display.setWidth(21),
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                  width: '98%',
+                  height: 60,
+                  borderRadius: 10,
+                  backgroundColor: Colors.DEFAULT_GREEN,
                 }}>
-                Thêm vào giỏ
-              </Text>
-            </TouchableOpacity>
+                <Text
+                  style={{
+                    fontSize: Display.setWidth(6),
+                    fontWeight: '600',
+                    color: Colors.DEFAULT_WHITE,
+                  }}>
+                  Thêm vào giỏ
+                </Text>
+              </TouchableOpacity>
+            </View>
           </View>
         </View>
       </View>

@@ -108,33 +108,27 @@ export default function SettingScreen({navigation}: any) {
             alignItems: 'center',
           }}>
           <View
-            style={[styles.Header, {borderBottomColor: Colors.DEFAULT_WHITE}]}>
+            style={[styles.Header2, {borderBottomColor: Colors.DEFAULT_WHITE}]}>
             <Text
               style={{
-                fontSize: 24,
+                fontSize: Display.setWidth(6),
                 fontWeight: '600',
                 color: Colors.DEFAULT_RED,
-                paddingTop: 10,
+                paddingTop: 5,
               }}>
               Cảnh Báo
             </Text>
           </View>
-          <View style={[styles.Header, {top: -10, paddingBottom: 10}]}>
+          <View style={[styles.Header2, {top: -10, paddingBottom: 10}]}>
             <Text
               style={{
-                fontSize: 19,
+                fontSize: Display.setWidth(5),
+                paddingTop: Display.setWidth(1),
                 fontWeight: '500',
                 color: Colors.DEFAULT_GREEN,
+                textAlign: 'center',
               }}>
-              Hành động này sẽ đăng xuất
-            </Text>
-            <Text
-              style={{
-                fontSize: 19,
-                fontWeight: '500',
-                color: Colors.DEFAULT_GREEN,
-              }}>
-              bạn khỏi hệ thống
+              Bạn sẽ đăng xuất ra khỏi hệ thống
             </Text>
           </View>
           <View
@@ -142,7 +136,7 @@ export default function SettingScreen({navigation}: any) {
               width: '100%',
               flexDirection: 'row',
               justifyContent: 'space-around',
-              top: -10,
+              top: -5,
             }}>
             <TouchableOpacity
               onPress={() => {
@@ -151,7 +145,7 @@ export default function SettingScreen({navigation}: any) {
               <Text
                 style={{
                   color: Colors.DEFAULT_RED,
-                  fontSize: 20,
+                  fontSize: Display.setWidth(5),
                   fontWeight: '600',
                 }}>
                 Đăng xuất
@@ -161,7 +155,7 @@ export default function SettingScreen({navigation}: any) {
               <Text
                 style={{
                   color: Colors.DEFAULT_GREEN,
-                  fontSize: 20,
+                  fontSize: Display.setWidth(5),
                   fontWeight: '600',
                 }}>
                 Huỷ bỏ
@@ -240,7 +234,7 @@ export default function SettingScreen({navigation}: any) {
           <View
             style={{
               bottom: -20,
-              marginHorizontal: 20,
+              marginHorizontal: Display.setWidth(3),
               marginBottom: Platform.OS === 'ios' ? 200 : 230,
             }}>
             <Option />

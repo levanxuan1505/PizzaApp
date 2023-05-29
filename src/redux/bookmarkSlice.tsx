@@ -1,11 +1,12 @@
-import {createSlice} from '@reduxjs/toolkit';
+import {createSlice, nanoid} from '@reduxjs/toolkit';
 export const bookmarkSlice = createSlice({
   name: 'bookmark',
   initialState: [],
   reducers: {
     addToBookmark: (state, action) => {
       const newToBookmark: never = {
-        id: action.payload.id,
+        // id: action.payload.id,
+        id: nanoid(),
         name: action.payload.name,
         ingredients: action.payload.ingredients,
         price: action.payload.price,

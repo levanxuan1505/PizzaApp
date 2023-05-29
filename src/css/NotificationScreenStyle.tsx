@@ -38,18 +38,19 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   modalContainer: {
-    width: '85%',
-    height: 148,
+    width: '95%',
+    height: 150,
     backgroundColor: 'white',
     borderRadius: 15,
     elevation: 20,
   },
   Header: {
-    width: '100%',
     alignItems: 'center',
     justifyContent: 'center',
+    textAlign: 'center',
     borderBottomWidth: 0.17,
     borderColor: Colors.DEFAULT_GREEN,
+    width: '100%',
   },
 });
 

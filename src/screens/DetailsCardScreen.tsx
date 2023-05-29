@@ -12,31 +12,28 @@ import {
   Animated,
   SafeAreaView,
   TouchableOpacity,
+  TouchableHighlight,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import Icons from 'react-native-vector-icons/Ionicons';
 import {Colors} from '@constants';
 import styles from '@css/DetailsCardScreenStyle';
 import {SecondaryButton, ConditionToAdd} from '@components';
-import {deleteBookmark} from '../redux/bookmarkSlice';
+import {ScrollView} from 'react-native-gesture-handler';
 import {Display} from '@utils';
-
 // redux import
 import {useDispatch, useSelector} from 'react-redux';
-import {addToCart} from '../redux/cartSlice';
-//
-
-import {ScrollView} from 'react-native-gesture-handler';
+import {deleteBookmark} from '../redux/bookmarkSlice';
 import {addToBookmark} from '../redux/bookmarkSlice';
-
+//
 const DetailsCardScreen = ({navigation, route}: any) => {
   const item = route.params;
   const [visible, setVisible] = useState(false);
   const [visible1, setVisible1] = useState(false);
   const [isHeart, setIsHeart] = useState(true);
 
-  const user = useSelector((state: any) => state.user);
   // redux
+  const user = useSelector((state: any) => state.user);
   const dispatch = useDispatch();
   //
 
@@ -214,24 +211,25 @@ const DetailsCardScreen = ({navigation, route}: any) => {
             alignItems: 'center',
           }}>
           <View
-            style={[styles.Header, {borderBottomColor: Colors.DEFAULT_WHITE}]}>
+            style={[styles.Header2, {borderBottomColor: Colors.DEFAULT_WHITE}]}>
             <Text
               style={{
-                fontSize: Display.setWidth(6),
+                fontSize: 24,
                 fontWeight: '600',
                 color: Colors.DEFAULT_RED,
-                paddingTop: 10,
+                paddingTop: 5,
               }}>
               Cảnh báo
             </Text>
           </View>
-          <View style={[styles.Header, {top: -10, paddingBottom: 10}]}>
+          <View style={[styles.Header2, {top: -10, paddingBottom: 10}]}>
             <Text
               style={{
-                paddingTop: 10,
-                fontSize: Display.setWidth(4.5),
+                fontSize: Display.setWidth(5),
+                paddingTop: Display.setWidth(1),
                 fontWeight: '500',
                 color: Colors.DEFAULT_GREEN,
+                textAlign: 'center',
               }}>
               Bạn cần đăng nhập để bookmark
             </Text>
@@ -243,7 +241,8 @@ const DetailsCardScreen = ({navigation, route}: any) => {
               justifyContent: 'space-around',
               top: -10,
             }}>
-            <TouchableOpacity
+            <TouchableHighlight
+              underlayColor="transparent"
               onPress={() => {
                 setVisible(false), navigation.navigate('SignIn');
               }}>
@@ -255,8 +254,10 @@ const DetailsCardScreen = ({navigation, route}: any) => {
                 }}>
                 Đăng nhập
               </Text>
-            </TouchableOpacity>
-            <TouchableOpacity onPress={() => setVisible(false)}>
+            </TouchableHighlight>
+            <TouchableHighlight
+              underlayColor="transparent"
+              onPress={() => setVisible(false)}>
               <Text
                 style={{
                   color: Colors.DEFAULT_RED,
@@ -265,7 +266,7 @@ const DetailsCardScreen = ({navigation, route}: any) => {
                 }}>
                 Huỷ bỏ
               </Text>
-            </TouchableOpacity>
+            </TouchableHighlight>
           </View>
         </View>
       </ModalPopup>
@@ -280,26 +281,27 @@ const DetailsCardScreen = ({navigation, route}: any) => {
             alignItems: 'center',
           }}>
           <View
-            style={[styles.Header, {borderBottomColor: Colors.DEFAULT_WHITE}]}>
+            style={[styles.Header2, {borderBottomColor: Colors.DEFAULT_WHITE}]}>
             <Text
               style={{
-                fontSize: Display.setWidth(6),
+                fontSize: 24,
                 fontWeight: '600',
                 color: Colors.DEFAULT_RED,
-                paddingTop: 10,
+                paddingTop: 5,
               }}>
               Cảnh báo
             </Text>
           </View>
-          <View style={[styles.Header, {top: -2, paddingBottom: 10}]}>
+          <View style={[styles.Header2, {top: -10, paddingBottom: 10}]}>
             <Text
               style={{
                 fontSize: Display.setWidth(5),
+                paddingTop: Display.setWidth(1),
                 fontWeight: '500',
                 color: Colors.DEFAULT_GREEN,
                 textAlign: 'center',
               }}>
-              Đăng nhập để thêm món ăn
+              Bạn cần đăng nhập để thêm món ăn
             </Text>
           </View>
           <View
@@ -309,29 +311,32 @@ const DetailsCardScreen = ({navigation, route}: any) => {
               justifyContent: 'space-around',
               top: -10,
             }}>
-            <TouchableOpacity
+            <TouchableHighlight
+              underlayColor="transparent"
               onPress={() => {
                 setVisible1(false), navigation.navigate('SignIn');
               }}>
               <Text
                 style={{
                   color: Colors.DEFAULT_GREEN,
-                  fontSize: Display.setWidth(5.5),
+                  fontSize: 20,
                   fontWeight: '600',
                 }}>
                 Đăng nhập
               </Text>
-            </TouchableOpacity>
-            <TouchableOpacity onPress={() => setVisible1(false)}>
+            </TouchableHighlight>
+            <TouchableHighlight
+              underlayColor="transparent"
+              onPress={() => setVisible1(false)}>
               <Text
                 style={{
                   color: Colors.DEFAULT_RED,
-                  fontSize: Display.setWidth(5.5),
+                  fontSize: 20,
                   fontWeight: '600',
                 }}>
                 Huỷ bỏ
               </Text>
-            </TouchableOpacity>
+            </TouchableHighlight>
           </View>
         </View>
       </ModalPopup1>
@@ -382,7 +387,7 @@ const DetailsCardScreen = ({navigation, route}: any) => {
             <Text
               style={{
                 fontSize:
-                  Platform.OS === 'ios' ? Display.setWidth(12) - 23 : 18,
+                  Platform.OS === 'ios' ? Display.setWidth(12) - 24 : 18,
                 fontWeight: 'bold',
                 color: Colors.DEFAULT_WHITE,
               }}>
@@ -392,7 +397,7 @@ const DetailsCardScreen = ({navigation, route}: any) => {
               style={{
                 position: 'absolute',
                 fontSize:
-                  Platform.OS === 'ios' ? Display.setWidth(12) - 21 : 18,
+                  Platform.OS === 'ios' ? Display.setWidth(12) - 24 : 18,
                 color: Colors.DEFAULT_WHITE,
                 fontWeight: '600',
                 right: 65,

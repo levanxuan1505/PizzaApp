@@ -85,9 +85,8 @@ const styles = StyleSheet.create({
     elevation: 21,
   },
   textOption: {
-    fontSize: Display.setWidth(7) - 12,
+    fontSize: Display.setWidth(8) - 12,
     fontWeight: '600',
-    paddingHorizontal: 10,
     color: Colors.DEFAULT_GREEN,
   },
   textOption1: {

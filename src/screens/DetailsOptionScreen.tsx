@@ -201,7 +201,6 @@ const DetailsOptionScreen = ({navigation, route}: any) => {
               width: '100%',
               flexDirection: 'row',
               justifyContent: 'space-around',
-              top: -10,
             }}>
             <TouchableOpacity
               onPress={() => {

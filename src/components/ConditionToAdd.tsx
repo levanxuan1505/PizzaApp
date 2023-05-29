@@ -56,8 +56,8 @@ const ConditionToAdd = ({navigation, food}) => {
       </Modal>
     );
   };
-  // Popup1 nếu đã đăng nhập có thể thêm toping
   // Poup nếu như chưa đăng nhâp
+  // Popup1 nếu đã đăng nhập có thể thêm toping
   const [visible1, setVisible1] = useState(false);
   const ModalPopup1 = ({visible, children}: any) => {
     const [showModal, setShowModal] = React.useState(visible);

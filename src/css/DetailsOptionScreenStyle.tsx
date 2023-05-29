@@ -57,6 +57,7 @@ const styles = StyleSheet.create({
   Header: {
     alignItems: 'center',
     justifyContent: 'center',
+    textAlign: 'center',
     borderBottomWidth: 0.17,
     borderColor: Colors.DEFAULT_GREEN,
     width: '100%',

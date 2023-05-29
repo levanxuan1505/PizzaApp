@@ -21,16 +21,17 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   modalContainer: {
-    width: '72%',
+    width: '95%',
     height: 150,
     backgroundColor: 'white',
     paddingHorizontal: 5,
     borderRadius: 15,
     elevation: 20,
   },
-  Header: {
+  Header2: {
     alignItems: 'center',
     justifyContent: 'center',
+    textAlign: 'center',
     borderBottomWidth: 0.17,
     borderColor: Colors.DEFAULT_GREEN,
     width: '100%',

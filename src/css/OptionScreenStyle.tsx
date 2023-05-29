@@ -39,7 +39,7 @@ const styles = StyleSheet.create({
   buttonText: {
     paddingLeft: 12,
     fontWeight: 'bold',
-    fontSize: Display.setWidth(6),
+    fontSize: Display.setWidth(11) - 20,
     textShadowColor: 'rgba(0, 0, 0, 0.8)',
     textShadowOffset: {width: -1, height: 1},
     textShadowRadius: 7,

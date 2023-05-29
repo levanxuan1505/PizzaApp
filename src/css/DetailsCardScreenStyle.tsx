@@ -39,7 +39,6 @@ const styles = StyleSheet.create({
     marginBottom: Platform.OS === 'ios' ? -10 : 0,
     paddingHorizontal: 20,
     justifyContent: 'center',
-    // alignItems: 'center',
     paddingVertical: Platform.OS === 'ios' ? 25 : 15,
   },
   modalBackGround: {
@@ -55,9 +54,11 @@ const styles = StyleSheet.create({
     borderRadius: 15,
     elevation: 20,
   },
-  Header: {
+
+  Header2: {
     alignItems: 'center',
     justifyContent: 'center',
+    textAlign: 'center',
     borderBottomWidth: 0.17,
     borderColor: Colors.DEFAULT_GREEN,
     width: '100%',

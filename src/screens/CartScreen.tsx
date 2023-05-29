@@ -45,7 +45,7 @@ const CartScreen = ({navigation}: any) => {
     return sum;
   }
   const CartCard = ({item}: any) => {
-    const totalTopings =
+    const totalToppings =
       (item.value1 ? 1 : 0) + (item.value2 ? 1 : 0) + (item.value3 ? 1 : 0);
     return (
       <TouchableHighlight
@@ -97,7 +97,7 @@ const CartScreen = ({navigation}: any) => {
                   fontWeight: 'bold',
                   paddingLeft: 5,
                 }}>
-                Topings: {totalTopings}
+                Topings: {totalToppings}
               </Text>
             </View>
           </View>
@@ -176,7 +176,7 @@ const CartScreen = ({navigation}: any) => {
           }}>
           Giỏ hàng
         </Text>
-        <View style={{position: 'absolute', right: Display.setWidth(4)}}>
+        <View style={{position: 'absolute', right: Display.setWidth(2.5)}}>
           <IconBadge
             MainElement={
               <View>
@@ -189,10 +189,10 @@ const CartScreen = ({navigation}: any) => {
             }
             BadgeElement={<Text style={{color: '#FFFFFF'}}>{badge}</Text>}
             IconBadgeStyle={{
-              marginRight: -5,
+              marginRight: -7,
               marginTop: -6,
               width: 17,
-              height: 20,
+              height: 19,
               backgroundColor: 'red',
             }}
           />
