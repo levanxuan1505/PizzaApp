@@ -27,9 +27,12 @@ export default function ProfileScreen({navigation}: any) {
   const bookmark = useSelector((state: any) => state.bookmark);
   const userName = useSelector((state: any) => state.user);
   const order = useSelector((state: any) => state.order);
+  const waitForGood = useSelector((state: any) => state.waitForGood);
+  const delivering = useSelector((state: any) => state.delivering);
+
   const badge = notification.length;
   const Confirm = () => {
-    return !order[0].order ? (
+    return !order.length ? (
       <View>
         <Icons
           name="wallet-plus-outline"
@@ -49,7 +52,77 @@ export default function ProfileScreen({navigation}: any) {
           </View>
         }
         BadgeElement={
-          <Text style={{color: '#FFFFFF', fontSize: 12}}>{order[0].order}</Text>
+          <Text style={{color: '#FFFFFF', fontSize: 12}}>{order.length}</Text>
+        }
+        IconBadgeStyle={{
+          marginRight: -13,
+          marginTop: -2,
+          width: 4,
+          height: 20,
+          backgroundColor: 'red',
+        }}
+      />
+    );
+  };
+  const WaitForGoods = () => {
+    return !waitForGood.length ? (
+      <View>
+        <Icons
+          name="wallet-giftcard"
+          size={32}
+          style={{color: Colors.DEFAULT_YELLOW}}
+        />
+      </View>
+    ) : (
+      <IconBadge
+        MainElement={
+          <View>
+            <Icons
+              name="wallet-giftcard"
+              size={32}
+              style={{color: Colors.DEFAULT_YELLOW}}
+            />
+          </View>
+        }
+        BadgeElement={
+          <Text style={{color: '#FFFFFF', fontSize: 12}}>
+            {waitForGood.length}
+          </Text>
+        }
+        IconBadgeStyle={{
+          marginRight: -13,
+          marginTop: -2,
+          width: 4,
+          height: 20,
+          backgroundColor: 'red',
+        }}
+      />
+    );
+  };
+  const Delivery = () => {
+    return !delivering.length ? (
+      <View>
+        <Icons
+          name="truck-cargo-container"
+          size={32}
+          style={{color: Colors.DEFAULT_YELLOW}}
+        />
+      </View>
+    ) : (
+      <IconBadge
+        MainElement={
+          <View>
+            <Icons
+              name="truck-cargo-container"
+              size={32}
+              style={{color: Colors.DEFAULT_YELLOW}}
+            />
+          </View>
+        }
+        BadgeElement={
+          <Text style={{color: '#FFFFFF', fontSize: 12}}>
+            {delivering.length}
+          </Text>
         }
         IconBadgeStyle={{
           marginRight: -13,
@@ -292,13 +365,8 @@ export default function ProfileScreen({navigation}: any) {
                   justifyContent: 'center',
                   alignItems: 'center',
                 }}
-                onPress={() => navigation.navigate('Order')}>
-                <Icons
-                  name="wallet-giftcard"
-                  size={32}
-                  style={{color: Colors.DEFAULT_GREEN}}
-                />
-
+                onPress={() => navigation.navigate('WaitForGoods')}>
+                <WaitForGoods />
                 <Text
                   style={{
                     fontSize:
@@ -311,20 +379,23 @@ export default function ProfileScreen({navigation}: any) {
               </TouchableOpacity>
             </View>
             <View style={{justifyContent: 'center', alignItems: 'center'}}>
-              <Icons
-                name="truck-cargo-container"
-                size={32}
-                color={Colors.FACEBOOK_BLUE}
-              />
-              <Text
+              <TouchableOpacity
                 style={{
-                  fontSize:
-                    Platform.OS === 'ios' ? Display.setWidth(9) - 22.5 : 12,
-                  color: Colors.DEFAULT_YELLOW,
-                  paddingTop: 4,
-                }}>
-                Đang giao
-              </Text>
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                }}
+                onPress={() => navigation.navigate('Delivery')}>
+                <Delivery />
+                <Text
+                  style={{
+                    fontSize:
+                      Platform.OS === 'ios' ? Display.setWidth(9) - 22.5 : 12,
+                    color: Colors.DEFAULT_YELLOW,
+                    paddingTop: 4,
+                  }}>
+                  Đang giao
+                </Text>
+              </TouchableOpacity>
             </View>
             <View style={{justifyContent: 'center', alignItems: 'center'}}>
               <Icons

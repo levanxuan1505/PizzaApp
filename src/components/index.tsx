@@ -11,11 +11,14 @@ import HistoryBuy from './HistoryBuy';
 import DetailTotal from './DetailTotal';
 import WelcomeCard from './WelcomeCard';
 import ToggleButton from './ToggleButton';
+import OrderConfirmList from './OrderConfirmList';
 import TotalCheckout from './TotalCheckout';
 import ToppingAndSize from './ToppingAndSize';
 import ListCategories from './ListCategories';
 import ConditionToAdd from './ConditionToAdd';
+import ToppingAndSizeEdit from './ToppingAndSizeEdit';
 import {SecondaryButton, PrimaryButton} from './SecondaryButton';
+import CardTag from './CardTag';
 export {
   Card,
   Input,
@@ -25,6 +28,7 @@ export {
   Voucher,
   Payment,
   Location,
+  CardTag,
   Separator,
   HistoryBuy,
   DetailTotal,
@@ -36,4 +40,6 @@ export {
   ConditionToAdd,
   ToppingAndSize,
   SecondaryButton,
+  OrderConfirmList,
+  ToppingAndSizeEdit,
 };

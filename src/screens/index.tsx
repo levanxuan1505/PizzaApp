@@ -22,7 +22,9 @@ import NotificationScreen from './NotificationScreen';
 import OrderConfirmScreen from './OrderConfirmScreen';
 import EditLocationScreen from './EditLocationScreen';
 import CreateAddressScreen from './CreateAddressScreen';
+import WaitForGoodsScreen from './WaitForGoodsScreen';
 import DetailsOptionScreen from './DetailsOptionScreen';
+import DeliveryScreen from './DeliveryScreen';
 import OrderConfirmDetailScreen from './OrderConfirmDetailScreen';
 export {
   Search,
@@ -39,12 +41,14 @@ export {
   PaymentScreen,
   BookmarkScreen,
   CheckoutScreen,
+  DeliveryScreen,
   LocationScreen,
   RegisterScreen,
   HistoryBuyScreen,
   BottomHomeScreen,
   DetailsCardScreen,
   EditProfileScreen,
+  WaitForGoodsScreen,
   OrderConfirmScreen,
   EditLocationScreen,
   NotificationScreen,

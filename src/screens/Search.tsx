@@ -15,6 +15,7 @@ import {
   TouchableOpacity,
   TouchableHighlight,
 } from 'react-native';
+import {FlashList} from '@shopify/flash-list';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import Icons from 'react-native-vector-icons/Ionicons';
 import {SafeAreaView} from 'react-native-safe-area-context';

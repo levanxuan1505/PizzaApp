@@ -1,16 +1,16 @@
 import {createSlice} from '@reduxjs/toolkit';
 export const orderSlice = createSlice({
   name: 'order',
-  initialState: [
-    {
-      order: 0,
-    },
-  ],
+  initialState: [],
   reducers: {
     addOrder: (state, action) => {
-      state[0].order += action.payload.order;
+      const newOrder: never = action.payload.food;
+      state.unshift(newOrder);
+    },
+    removeToWaitForGood: (state, action) => {
+      return state.filter((item: any) => item[0].id !== action.payload.id);
     },
   },
 });
-export const {addOrder} = orderSlice.actions;
+export const {addOrder, removeToWaitForGood} = orderSlice.actions;
 export default orderSlice.reducer;

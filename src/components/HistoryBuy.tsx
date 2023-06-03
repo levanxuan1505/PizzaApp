@@ -13,10 +13,11 @@ import {useDispatch} from 'react-redux';
 import {addFood} from '../redux/foodSlice';
 import {useSelector} from 'react-redux';
 
-const HistoryBuy = () => {
+const HistoryBuy = ({setOption}) => {
   const dispatch = useDispatch();
   const indexCategory = useSelector((state: any) => state.food);
   const handleAction = (index: any) => {
+    setOption(index);
     dispatch(addFood({id: index}));
   };
   return (

@@ -13,7 +13,7 @@ const DetailTotal = () => {
   function sum(cartGoodsTotal: any) {
     let sum: number = 0;
     for (let i = 0; i < cartGoodsTotal.length; i++) {
-      sum += cartGoodsTotal[i].price;
+      sum += cartGoodsTotal[i].priceTotal;
     }
     return sum;
   }

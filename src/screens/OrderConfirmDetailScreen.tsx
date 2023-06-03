@@ -16,14 +16,14 @@ import Icons from 'react-native-vector-icons/Ionicons';
 import {Colors} from '@constants';
 import styles from '@css/OrderConfirmStyle';
 // redux import
-import {useSelector} from 'react-redux';
 import {Display} from '@utils';
 //
 
 const OrderConfirmDetailScreen = ({navigation, route}: any) => {
   //redux Using
-  const cartGoods = useSelector((state: any) => state.cart);
   const SumMustPay = route.params.item;
+  const foods = route.params.food;
+  const numberOfFoods = route.params.numberOfFoods;
   //
   const CartCard = ({item}: any) => {
     return (
@@ -156,12 +156,12 @@ const OrderConfirmDetailScreen = ({navigation, route}: any) => {
             right: Display.setWidth(4),
             color: Colors.DEFAULT_RED,
           }}>
-          {cartGoods.length}
+          {numberOfFoods}
         </Text>
       </View>
       <FlatList
         showsVerticalScrollIndicator={false}
-        data={cartGoods}
+        data={foods}
         renderItem={({item}) => <CartCard item={item} />}
       />
       <View style={{marginBottom: -40}}></View>

@@ -41,8 +41,6 @@ const CheckoutScreen = ({navigation}) => {
     }, 1500);
   }, []);
   const CartCard = ({item}: any) => {
-    const totalTopings =
-      (item.value1 ? 1 : 0) + (item.value2 ? 1 : 0) + (item.value3 ? 1 : 0);
     return (
       <TouchableHighlight
         underlayColor="transparent"
@@ -101,7 +99,7 @@ const CheckoutScreen = ({navigation}) => {
                   fontWeight: '500',
                   paddingLeft: 5,
                 }}>
-                Topings: {totalTopings}
+                Topings: {item.numberOfToping}
               </Text>
             </View>
           </View>
@@ -242,7 +240,7 @@ const CheckoutScreen = ({navigation}) => {
             </View>
           </View>
         </ScrollView>
-        <TotalCheckout navigation={navigation} />
+        <TotalCheckout navigation={navigation} food={cartGoods} />
       </View>
     </SafeAreaView>
   );

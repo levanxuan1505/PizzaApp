@@ -5,36 +5,40 @@ import {
   View,
   Image,
   Platform,
-  TouchableHighlight,
   TouchableOpacity,
+  TouchableHighlight,
 } from 'react-native';
 import React, {memo, useState} from 'react';
-import {Colors} from '@constants';
 import {Display} from '@utils';
+import {Colors} from '@constants';
+import {changeFoodInCart} from '../redux/cartSlice';
 import styles from '@css/TopingAndSizeScreenStyle';
-import Icon from 'react-native-vector-icons/MaterialIcons';
 import {useDispatch} from 'react-redux';
-import {chooseSize} from '../redux/optionSizeSlice';
-import {addToCart} from '../redux/cartSlice';
-const ToppingAndSize = ({navigation, food, setVisible}) => {
-  const [collectionSize, setCollectionSize] = useState(0);
-  const [isEnabled1, setIsEnabled1] = useState(false);
-  const [isEnabled2, setIsEnabled2] = useState(false);
-  const [isEnabled3, setIsEnabled3] = useState(false);
+import Icon from 'react-native-vector-icons/MaterialIcons';
 
+const ToppingAndSizeEdit = ({navigation, food, setVisible}) => {
+  // const size = useSelector((state: any) => state.size[0].size);
+  // const moneyOption = useSelector((state: any) => state.moreOption[0].option);
+  // const foodSize = food.size === 0 ? 0 : food.size === 5 ? 1 : 2;
   const dispatch = useDispatch();
-  // More option
+  const [collectionSize, setCollectionSize] = useState(food.size);
+  const moneyOfSize = collectionSize === 0 ? 0 : collectionSize === 5 ? 5 : 10;
+  const [isEnabled1, setIsEnabled1] = useState(food.toping1Check);
+  const [isEnabled2, setIsEnabled2] = useState(food.toping2Check);
+  const [isEnabled3, setIsEnabled3] = useState(food.toping3Check);
   const option1 = isEnabled1 ? 1 : 0;
   const option2 = isEnabled2 ? 1 : 0;
   const option3 = isEnabled3 ? 1 : 0;
-  const totalOptions: number = option1 + option2 + option3;
+  const totalOption = option1 + option2 + option3;
   const moneyMoreOptions =
     (option1 ? food.value1 : 0) +
     (option2 ? food.value2 : 0) +
     (option3 ? food.value3 : 0);
+  console.log(totalOption);
   const toggleSwitch1 = () => setIsEnabled1(previousState => !previousState);
   const toggleSwitch2 = () => setIsEnabled2(previousState => !previousState);
   const toggleSwitch3 = () => setIsEnabled3(previousState => !previousState);
+
   const CartCard = ({item}: any) => {
     return (
       <TouchableHighlight
@@ -90,7 +94,7 @@ const ToppingAndSize = ({navigation, food, setVisible}) => {
                 fontWeight: '600',
                 color: Colors.GOOGLE_BLUE,
               }}>
-              {item.price + collectionSize + moneyMoreOptions}k
+              {item.price + moneyOfSize + moneyMoreOptions}k
             </Text>
           </View>
         </View>
@@ -144,14 +148,7 @@ const ToppingAndSize = ({navigation, food, setVisible}) => {
 
                   elevation: 21,
                 }}
-                onPress={() => {
-                  setCollectionSize(0),
-                    dispatch(
-                      chooseSize({
-                        size: 0,
-                      }),
-                    );
-                }}>
+                onPress={() => setCollectionSize(0)}>
                 <Text style={styles.textOption}>S +0k</Text>
               </TouchableOpacity>
 
@@ -179,14 +176,7 @@ const ToppingAndSize = ({navigation, food, setVisible}) => {
 
                   elevation: 21,
                 }}
-                onPress={() => {
-                  setCollectionSize(5),
-                    dispatch(
-                      chooseSize({
-                        size: 5,
-                      }),
-                    );
-                }}>
+                onPress={() => setCollectionSize(5)}>
                 <Text style={styles.textOption}>M +5k</Text>
               </TouchableOpacity>
               <TouchableOpacity
@@ -214,14 +204,7 @@ const ToppingAndSize = ({navigation, food, setVisible}) => {
 
                   elevation: 21,
                 }}
-                onPress={() => {
-                  setCollectionSize(10),
-                    dispatch(
-                      chooseSize({
-                        size: 10,
-                      }),
-                    );
-                }}>
+                onPress={() => setCollectionSize(10)}>
                 <Text style={styles.textOption}>L +10k</Text>
               </TouchableOpacity>
             </View>
@@ -230,6 +213,7 @@ const ToppingAndSize = ({navigation, food, setVisible}) => {
             style={{
               position: 'relative',
               justifyContent: 'center',
+              // alignItems: 'center',
             }}>
             <View
               style={{
@@ -313,7 +297,6 @@ const ToppingAndSize = ({navigation, food, setVisible}) => {
                     elevation: 21,
                   }}>
                   <Text style={styles.textOption}>
-                    {' '}
                     {item.toping2} +{item.value2}k
                   </Text>
                 </TouchableOpacity>
@@ -359,8 +342,8 @@ const ToppingAndSize = ({navigation, food, setVisible}) => {
               <TouchableOpacity
                 onPress={() => {
                   dispatch(
-                    addToCart({
-                      // id: food.id,
+                    changeFoodInCart({
+                      id: food.id,
                       name: food.name,
                       ingredients: food.ingredients,
                       image: food.image,
@@ -368,21 +351,18 @@ const ToppingAndSize = ({navigation, food, setVisible}) => {
                       price: food.price,
                       priceTotal:
                         food.price + collectionSize + moneyMoreOptions,
+                      size: collectionSize,
                       toping1: item.toping1,
                       toping2: item.toping2,
                       toping3: item.toping3,
                       value1: item.value1,
                       value2: item.value2,
                       value3: item.value3,
-                      // check Size
-                      size: collectionSize,
-                      // check Topping
                       toping1Check: isEnabled1,
                       toping2Check: isEnabled2,
                       toping3Check: isEnabled3,
                       // number Of Toping
-                      numberOfToping: totalOptions,
-                      // check Price Of Toping
+                      numberOfToping: totalOption,
                       value1Check: isEnabled1 ? item.value1 : 0,
                       value2Check: isEnabled2 ? item.value2 : 0,
                       value3Check: isEnabled3 ? item.value3 : 0,
@@ -407,7 +387,7 @@ const ToppingAndSize = ({navigation, food, setVisible}) => {
                     fontWeight: '600',
                     color: Colors.DEFAULT_WHITE,
                   }}>
-                  Thêm vào giỏ
+                  Xác nhận
                 </Text>
               </TouchableOpacity>
             </View>
@@ -425,4 +405,4 @@ const ToppingAndSize = ({navigation, food, setVisible}) => {
   );
 };
 
-export default memo(ToppingAndSize);
+export default memo(ToppingAndSizeEdit);

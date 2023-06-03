@@ -14,7 +14,9 @@ import {
   BottomHomeScreen,
   EditProfileScreen,
   ReviewScreen,
+  WaitForGoodsScreen,
   DetailsCardScreen,
+  DeliveryScreen,
   DetailsOptionScreen,
   NotificationScreen,
   EditLocationScreen,
@@ -44,6 +46,8 @@ const Navigators = () => {
         <Stack.Screen name="Edit" component={EditProfileScreen} />
         <Stack.Screen name="Review" component={ReviewScreen} />
         <Stack.Screen name="Setting" component={SettingScreen} />
+        <Stack.Screen name="WaitForGoods" component={WaitForGoodsScreen} />
+        <Stack.Screen name="Delivery" component={DeliveryScreen} />
         <Stack.Screen name="Payment" component={PaymentScreen} />
         <Stack.Screen name="Order" component={OrderConfirmScreen} />
         <Stack.Screen name="OrderDetail" component={OrderConfirmDetailScreen} />

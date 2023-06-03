@@ -12,11 +12,11 @@ import {OrderConfirmList} from '@components';
 import {useSelector} from 'react-redux';
 import {Display} from '@utils';
 //
-const OrderConfirmScreen = ({navigation}: any) => {
+const WaitForGoodsScreen = ({navigation}: any) => {
   //redux Using
-  const order = useSelector((state: any) => state.order);
-  console.log(order[0]);
-  return !order.length ? (
+  const waitForGood = useSelector((state: any) => state.waitForGood);
+
+  return !waitForGood.length ? (
     <SafeAreaView style={{backgroundColor: Colors.DEFAULT_WHITE, flex: 1}}>
       <View style={styles.header}>
         <Icon
@@ -59,7 +59,7 @@ const OrderConfirmScreen = ({navigation}: any) => {
             color: Colors.DEFAULT_GREEN,
             textAlign: 'center',
           }}>
-          Bạn chưa có đơn hàng nào cần xác nhận
+          Bạn chưa có đơn hàng nào đang chờ lấy
         </Text>
       </View>
     </SafeAreaView>
@@ -79,7 +79,7 @@ const OrderConfirmScreen = ({navigation}: any) => {
             fontWeight: 'bold',
             color: Colors.DEFAULT_GREEN,
           }}>
-          Chờ xác nhận
+          Chờ lấy hàng
         </Text>
         <View style={{position: 'absolute', right: 0}}>
           <Icons
@@ -95,11 +95,11 @@ const OrderConfirmScreen = ({navigation}: any) => {
       </View>
       <OrderConfirmList
         navigation={navigation}
-        data={order}
-        indexOfDispatch={0}
+        data={waitForGood}
+        indexOfDispatch={1}
       />
     </SafeAreaView>
   );
 };
 
-export default OrderConfirmScreen;
+export default WaitForGoodsScreen;

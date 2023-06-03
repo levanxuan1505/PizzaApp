@@ -7,9 +7,10 @@ import {
   Image,
   Platform,
   SafeAreaView,
-  TouchableOpacity,
+  TouchableHighlight,
 } from 'react-native';
-import {FlatList} from 'react-native-gesture-handler';
+import {FlashList} from '@shopify/flash-list';
+// import {FlatList} from 'react-native-gesture-handler';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import Icons from 'react-native-vector-icons/Ionicons';
 
@@ -30,7 +31,9 @@ const BookmarkScreen = ({navigation}: any) => {
   //
   const CartCard = ({item}: any) => {
     return (
-      <TouchableOpacity onPress={() => navigation.navigate('DetailCard', item)}>
+      <TouchableHighlight
+        underlayColor="transparent"
+        onPress={() => navigation.navigate('DetailCard', item)}>
         <View style={styles.cartCard}>
           <Image
             source={item.image}
@@ -52,17 +55,17 @@ const BookmarkScreen = ({navigation}: any) => {
             </Text>
           </View>
           <View style={{marginRight: 25, alignItems: 'center'}}>
-            <View>
+            <TouchableHighlight>
               <Icons
                 onPress={() => dispatch(deleteBookmark({id: item.id}))}
                 name="heart-dislike-sharp"
                 size={32}
                 color={Colors.DEFAULT_GREEN}
               />
-            </View>
+            </TouchableHighlight>
           </View>
         </View>
-      </TouchableOpacity>
+      </TouchableHighlight>
     );
   };
   return !condition ? (
@@ -142,7 +145,8 @@ const BookmarkScreen = ({navigation}: any) => {
         </View>
       </View>
 
-      <FlatList
+      <FlashList
+        estimatedItemSize={200}
         showsVerticalScrollIndicator={false}
         contentContainerStyle={{paddingBottom: 80}}
         data={bookmark}

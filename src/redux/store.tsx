@@ -10,8 +10,11 @@ import moreOptionReducer from './moreOptionSlice';
 import bookmarkReducer from './bookmarkSlice';
 import popUpOptionReducer from './popUpOptionSlice';
 import locationReducer from './locationSlice';
+import evaluateReducer from './evaluateSlice';
+import waitForGoods from './waitForGoods';
 import {configureStore} from '@reduxjs/toolkit';
 import notificationReducer from './notificationSlice';
+import deliveringSlice from './deliveringSlice';
 export default configureStore({
   reducer: {
     cart: cartReducer,
@@ -19,8 +22,11 @@ export default configureStore({
     coin: coinReducer,
     user: userReducer,
     order: orderReducer,
+    delivering: deliveringSlice,
+    evaluate: evaluateReducer,
     voucher: voucherReducer,
     moreOption: moreOptionReducer,
+    waitForGood: waitForGoods,
     size: optionSizeReducer,
     payment: paymentReducer,
     location: locationReducer,

@@ -145,12 +145,13 @@ export default function HomeScreen({navigation}: any) {
         <ListCategories />
       </View>
       <FlatList
+        // estimatedItemSize={200}
         refreshControl={
           <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
         }
         showsVerticalScrollIndicator={false}
         numColumns={2}
-        style={{paddingTop: 10}}
+        contentContainerStyle={{paddingTop: 10}}
         data={foodList[food[0].id]}
         renderItem={({item}) => <Card navigation={navigation} food={item} />}
       />

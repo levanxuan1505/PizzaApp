@@ -17,7 +17,7 @@ import Icons from 'react-native-vector-icons/Fontisto';
 import {useSelector, useDispatch} from 'react-redux';
 import {addOrder} from '../redux/orderSlice';
 import {Display} from '@utils';
-const DetailTotal = ({navigation}) => {
+const TotalCheckout = ({navigation, food}) => {
   const cartGoods = useSelector((state: any) => state.cart);
   const coin = useSelector((state: any) => state.coin);
   const voucher = useSelector((state: any) => state.voucher);
@@ -60,7 +60,7 @@ const DetailTotal = ({navigation}) => {
   function sum(cartGoodsTotal: any) {
     let sum: number = 0;
     for (let i = 0; i < cartGoodsTotal.length; i++) {
-      sum += cartGoodsTotal[i].price;
+      sum += cartGoodsTotal[i].priceTotal;
     }
     return sum;
   }
@@ -108,7 +108,7 @@ const DetailTotal = ({navigation}) => {
             }}>
             <TouchableOpacity
               onPress={() => {
-                dispatch(addOrder({order: 1})),
+                dispatch(addOrder({food})),
                   setVisible(false),
                   navigation.navigate('Profile');
               }}>
@@ -233,4 +233,4 @@ const styles = StyleSheet.create({
     width: '100%',
   },
 });
-export default memo(DetailTotal);
+export default memo(TotalCheckout);

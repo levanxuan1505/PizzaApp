@@ -386,18 +386,18 @@ const DetailsOptionScreen = ({navigation, route}: any) => {
                   paddingRight: 10,
                   fontWeight: 'bold',
                 }}>
-                Toppings:
+                Toppings: {item.numberOfToping}
               </Text>
             </View>
             <View style={{paddingLeft: 10}}>
               <Text style={{fontSize: 20, color: Colors.DEFAULT_WHITE}}>
-                {item.value1 ? `+ ${item.value1}` : ''}
+                {item.toping1Check ? `+ ${item.toping1}: ${item.value1}k` : ''}
               </Text>
               <Text style={{fontSize: 20, color: Colors.DEFAULT_WHITE}}>
-                {item.value2 ? `+ ${item.value2}` : ''}
+                {item.toping2Check ? `+ ${item.toping2}: ${item.value2}k` : ''}
               </Text>
               <Text style={{fontSize: 20, color: Colors.DEFAULT_WHITE}}>
-                {item.value3 ? `+ ${item.value3}` : ''}
+                {item.toping3Check ? `+ ${item.toping3}: ${item.value3}k` : ''}
               </Text>
             </View>
           </View>

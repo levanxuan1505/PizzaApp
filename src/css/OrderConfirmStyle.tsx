@@ -17,7 +17,7 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.DEFAULT_WHITE,
     marginVertical: 10,
     marginHorizontal: Display.setWidth(3),
-    paddingHorizontal: Display.setWidth(1),
+    paddingHorizontal: Display.setWidth(3),
     flexDirection: 'column',
     justifyContent: 'space-around',
     shadowColor: '#000',
